@@ -90,7 +90,7 @@ namespace Monage.GUI.Dialogs {
                         if (u.ID == 0) { db.Users.Add(u); } else { }
                         db.SaveChanges();
                         getList();
-                    } catch (Exception eX) {
+                    } catch {
                         MessageBox.Show("An unkown exception has occured");
                     }
                 }
