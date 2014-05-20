@@ -8,8 +8,8 @@ namespace Monage.Migrations {
                 "dbo.Accounts",
                 c => new {
                     ID = c.Int(nullable: false, identity: true),
-                    Name = c.String(maxLength: 4000),
-                    Description = c.String(maxLength: 4000),
+                    Name = c.String(),
+                    Description = c.String(),
                     AccountType = c.Int(nullable: false),
                     TaxDeductible = c.Boolean(nullable: false),
                 })
@@ -19,7 +19,7 @@ namespace Monage.Migrations {
                 "dbo.Banks",
                 c => new {
                     ID = c.Int(nullable: false, identity: true),
-                    Name = c.String(maxLength: 4000),
+                    Name = c.String(nullable: false, maxLength: 350),
                     Balance = c.Double(nullable: false),
                     User_ID = c.Int(),
                 })
@@ -45,8 +45,8 @@ namespace Monage.Migrations {
                 "dbo.Buckets",
                 c => new {
                     ID = c.Int(nullable: false, identity: true),
-                    Name = c.String(maxLength: 4000),
-                    Description = c.String(maxLength: 4000),
+                    Name = c.String(nullable: false, maxLength: 350),
+                    Description = c.String(),
                     User_ID = c.Int(),
                 })
                 .PrimaryKey(t => t.ID)
@@ -57,7 +57,7 @@ namespace Monage.Migrations {
                 "dbo.Users",
                 c => new {
                     ID = c.Int(nullable: false, identity: true),
-                    Username = c.String(maxLength: 4000),
+                    Username = c.String(nullable: false, maxLength: 350),
                 })
                 .PrimaryKey(t => t.ID);
 
