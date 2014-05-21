@@ -15,23 +15,23 @@ using System.Windows.Forms;
 namespace Monage.GUI.Dialogs {
     public partial class UserDialog : Form {
         private bool endOk;
-        private UserDialog() {
+        private MainFrame parent;
+        private UserDialog(MainFrame p) {
+            parent = p;
             InitializeComponent();
             endOk = false;
             getList();
             lbxUsers.Focus();
         }
 
-        public static int? SelectUser() {
-            using (Context db = new Context()) {
-                UserDialog i = new UserDialog();
-                if (i.ShowDialog() == DialogResult.OK) {
-                    return db.Users.Where(
-                        x => x.Username == (string)i.lbxUsers.SelectedItem
-                    ).First().ID;
-                } else {
-                    return null;
-                }
+        public static int? SelectUser(MainFrame p) {
+            UserDialog i = new UserDialog(p);
+            if (i.ShowDialog(p) == DialogResult.OK) {
+                return Program.db.Users.Where(
+                    x => x.Username == (string)i.lbxUsers.SelectedItem
+                ).First().ID;
+            } else {
+                return null;
             }
         }
 
@@ -40,17 +40,15 @@ namespace Monage.GUI.Dialogs {
         }
 
         private void getList() {
-            using (Context db = new Context()) {
-                int prev = lbxUsers.SelectedIndex;
-                lbxUsers.Items.Clear();
-                foreach (User u in db.Users) {
-                    lbxUsers.Items.Add(u.Username);
-                }
-
-                lbxUsers.SelectedIndex =
-                    prev == -1 && lbxUsers.Items.Count > 0
-                    ? 0 : prev;
+            int prev = lbxUsers.SelectedIndex;
+            lbxUsers.Items.Clear();
+            foreach (User u in Program.db.Users) {
+                lbxUsers.Items.Add(u.Username);
             }
+
+            lbxUsers.SelectedIndex =
+                prev == -1 && lbxUsers.Items.Count > 0
+                ? 0 : prev;
         }
 
         private void lbxUsers_DoubleClick(object sender, EventArgs e) { Open(); }
@@ -63,35 +61,33 @@ namespace Monage.GUI.Dialogs {
                 endOk = true;
                 this.Close();
             } else {
-                MessageBox.Show("No user selected");
+                MessageBox.Show(parent, "No user selected");
             }
         }
 
         private void Rename() {
-            using (Context db = new Context()) {
-                if (lbxUsers.SelectedIndex != -1) {
-                    getUsername(db.Users.Where(x => x.Username == (string)lbxUsers.SelectedItem).First(), db);
-                } else {
-                    MessageBox.Show("No user selected");
-                }
+            if (lbxUsers.SelectedIndex != -1) {
+                getUsername(Program.db.Users.Where(x => x.Username == (string)lbxUsers.SelectedItem).First());
+            } else {
+                MessageBox.Show(parent, "No user selected");
             }
         }
 
-        private void New() { getUsername(new User(), new Context()); }
+        private void New() { getUsername(new User()); }
 
-        private void getUsername(User u, Context db) {
-            String result = InputDialog.ShowDialog("Enter a new Username", "Set Username", u.Username);
+        private void getUsername(User u) {
+            String result = InputDialog.ShowDialog(parent, "Enter a new Username", "Set Username", u.Username);
             if (u.Username != result && result != null && result != "") {
                 u.Username = result;
-                if (db.Users.Where(x => x.Username == result).Any()) {
-                    MessageBox.Show("Username \"" + result + "\" is already in use");
+                if (Program.db.Users.Where(x => x.Username == result).Any()) {
+                    MessageBox.Show(parent, "Username \"" + result + "\" is already in use");
                 } else {
                     try {
-                        if (u.ID == 0) { db.Users.Add(u); } else { }
-                        db.SaveChanges();
+                        if (u.ID == 0) { Program.db.Users.Add(u); } else { }
+                        Program.db.SaveChanges();
                         getList();
                     } catch {
-                        MessageBox.Show("An unkown exception has occured");
+                        MessageBox.Show(parent, "An unkown exception has occured");
                     }
                 }
             }

@@ -1,4 +1,5 @@
 ﻿using Monage.GUI.Dialogs;
+using Monage.GUI.Frames;
 using Monage.Models;
 using Monage.Utilities;
 using System;
@@ -13,28 +14,57 @@ using System.Windows.Forms;
 
 namespace Monage.GUI {
     public partial class MainFrame : Form {
-        private Context db;
         private User user;
 
+        #region MainFrame Control-Flow Management
+        
         public MainFrame() {
             InitializeComponent();
-        }
-
-        public void Open(int userID) {
-            db = new Context();
-            user = db.Users.Where(x => x.ID == (int)userID).First();
-            MessageBox.Show("Hi " + user.Username + "!");
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e) {
-            this.Close();
-        }
-
-        private void switchUserToolStripMenuItem_Click(object sender, EventArgs e) {
-            int? userID = UserDialog.SelectUser();
-            if (userID != null) {
-                Open((int)userID);
+            if (Program.db.Users.Count() == 1) {
+                Open(Program.db.Users.First());
+            } else {
+                su();
             }
         }
+
+        private void Content_Resize(object sender, EventArgs e) {
+            foreach (Frame c in Content.Controls) { c.Adjust(); }
+        }
+
+        private void Title() {
+            this.Text = "Monage ~ " + (
+                user == null
+                ? "Login"
+                : user.Username
+            );
+
+            if (user == null) { MenuBar.Hide(); } else { MenuBar.Show(); }
+        }
+
+        #endregion
+
+        private void su() {
+            user = null;
+            Title();
+
+            new Users().Set(this, Content);
+        }
+        public void Open(User u) {
+            user = u;
+            Title();
+
+            new Session().Set(this, Content);
+        }
+
+        #region MenuBar Event Handlers
+
+        private void switchUserToolStripMenuItem_Click(object sender, EventArgs e) { su(); }
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) { this.Close(); }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
+            new About().ShowDialog();
+        }
+
+        #endregion
     }
 }

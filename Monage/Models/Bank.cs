@@ -10,8 +10,8 @@ namespace Monage.Models {
         [Key]
         public int ID { get; set; }
         public string Name { get; set; }
-        public double Balance { get; set; }
-        public virtual List<Division> Divisions { get; set; }
+        public string Description { get; set; }
+        public virtual List<Balance> Balances { get; set; }
         public virtual User User { get; set; }
     }
 }

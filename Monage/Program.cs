@@ -1,14 +1,18 @@
 ﻿using Monage.GUI;
-using Monage.GUI.Dialogs;
+using Monage.Migrations;
+using Monage.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Monage {
-    static class Program {
+    public static class Program {
+        public static Context db;
+
         [STAThread]
         static void Main() {
             Application.EnableVisualStyles();
@@ -18,20 +22,20 @@ namespace Monage {
             Splash s = new Splash();
             s.Show();
 
+            // Give some (short) time for the splash to show
             Thread.Sleep(TimeSpan.FromSeconds(1));
-            // Run Migrations
 
+            // Run Migrations
+            Database.SetInitializer(
+                new MigrateDatabaseToLatestVersion<Context, Configuration>()
+            ); // TODO: Fix this...doesn't do anything?
+
+            // Open database
+            db = new Context();
             s.Close();
 
-            // Request user login
-            int? userID = UserDialog.SelectUser();
-            if (userID != null) {
-                MainFrame window = new MainFrame();
-                window.Open((int)userID);
-
-                // Start the application
-                Application.Run(window);
-            }
+            // Start the application
+            Application.Run(new MainFrame());
         }
     }
 }

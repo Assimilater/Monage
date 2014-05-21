@@ -11,7 +11,9 @@ using System.Windows.Forms;
 namespace Monage.GUI.Dialogs {
     public partial class InputDialog : Form {
         private bool endOk;
-        private InputDialog(string prompt, string caption, string val) {
+        private MainFrame parent;
+        private InputDialog(MainFrame p, string prompt, string caption, string val) {
+            parent = p;
             InitializeComponent();
             endOk = false;
             this.Text = caption;
@@ -20,9 +22,9 @@ namespace Monage.GUI.Dialogs {
             txtResponse.Focus();
         }
 
-        public static String ShowDialog(string prompt, string caption, string val = "") {
-            InputDialog i = new InputDialog(prompt, caption, val);
-            return i.ShowDialog() == DialogResult.OK ? i.txtResponse.Text : null;
+        public static String ShowDialog(MainFrame p, string prompt, string caption, string val = "") {
+            InputDialog i = new InputDialog(p, prompt, caption, val);
+            return i.ShowDialog(p) == DialogResult.OK ? i.txtResponse.Text : null;
         }
 
         private void InputDialog_FormClosing(object sender, FormClosingEventArgs e) {

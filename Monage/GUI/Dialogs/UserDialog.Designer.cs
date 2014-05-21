@@ -91,11 +91,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbxUsers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = global::Monage.Properties.Resources.favicon;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(297, 292);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(297, 292);
             this.Name = "UserDialog";
+            this.ShowIcon = false;
             this.Text = "Select User";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserDialog_FormClosing);
             this.ResumeLayout(false);
