@@ -31,12 +31,12 @@
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Content = new System.Windows.Forms.Panel();
             this.accountsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.budgetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Content = new System.Windows.Forms.Panel();
             this.MenuBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,15 +103,6 @@
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // Content
-            // 
-            this.Content.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Content.Location = new System.Drawing.Point(0, 28);
-            this.Content.Name = "Content";
-            this.Content.Size = new System.Drawing.Size(772, 349);
-            this.Content.TabIndex = 1;
-            this.Content.Resize += new System.EventHandler(this.Content_Resize);
-            // 
             // accountsToolStripMenuItem
             // 
             this.accountsToolStripMenuItem.Name = "accountsToolStripMenuItem";
@@ -141,9 +132,18 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(119, 24);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // Content
+            // 
+            this.Content.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Content.Location = new System.Drawing.Point(0, 28);
+            this.Content.Name = "Content";
+            this.Content.Size = new System.Drawing.Size(772, 349);
+            this.Content.TabIndex = 1;
+            this.Content.Resize += new System.EventHandler(this.Content_Resize);
             // 
             // MainFrame
             // 
@@ -154,6 +154,7 @@
             this.Controls.Add(this.MenuBar);
             this.Icon = global::Monage.Properties.Resources.favicon;
             this.MainMenuStrip = this.MenuBar;
+            this.MinimumSize = new System.Drawing.Size(380, 280);
             this.Name = "MainFrame";
             this.Text = "MainFrame";
             this.MenuBar.ResumeLayout(false);
