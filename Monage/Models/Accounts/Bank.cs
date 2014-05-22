@@ -6,16 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Monage.Models {
-    public class User {
+    public class Bank {
         [Key]
         public int ID { get; set; }
 
         [Required]
         [MaxLength(Program.NameLen)]
-        public string Username { get; set; }
+        public string Name { get; set; }
 
-        public virtual List<Bank> Banks { get; set; }
-        public virtual List<Bucket> Buckets { get; set; }
-        public virtual List<Budget> Budgets { get; set; }
+        public string Description { get; set; }
+        public virtual List<Balance> Balances { get; set; }
+        public virtual User User { get; set; }
     }
 }

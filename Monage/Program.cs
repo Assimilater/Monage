@@ -12,6 +12,7 @@ using System.Windows.Forms;
 namespace Monage {
     public static class Program {
         public static Context db;
+        public const int NameLen = 45;
 
         [STAThread]
         static void Main() {

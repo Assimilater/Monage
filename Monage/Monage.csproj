@@ -114,10 +114,17 @@
     <Compile Include="Migrations\201405200159363_Initial_AccountModels.Designer.cs">
       <DependentUpon>201405200159363_Initial_AccountModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405220313053_Initial_BudgetModels.cs" />
+    <Compile Include="Migrations\201405220313053_Initial_BudgetModels.Designer.cs">
+      <DependentUpon>201405220313053_Initial_BudgetModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Bank.cs" />
-    <Compile Include="Models\Bucket.cs" />
-    <Compile Include="Models\Balance.cs" />
+    <Compile Include="Models\Accounts\Bank.cs" />
+    <Compile Include="Models\Accounts\Bucket.cs" />
+    <Compile Include="Models\Accounts\Balance.cs" />
+    <Compile Include="Models\Budget\Budget.cs" />
+    <Compile Include="Models\Budget\Step.cs" />
+    <Compile Include="Models\Budget\Tier.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405200159363_Initial_AccountModels.resx">
       <DependentUpon>201405200159363_Initial_AccountModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405220313053_Initial_BudgetModels.resx">
+      <DependentUpon>201405220313053_Initial_BudgetModels.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

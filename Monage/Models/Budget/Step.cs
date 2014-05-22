@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Monage.Models {
-    public class Bank {
+    public class Step {
         [Key]
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public virtual List<Balance> Balances { get; set; }
-        public virtual User User { get; set; }
+        public int Order { get; set; }
+        public virtual Tier Tier { get; set; }
+        public virtual Bucket Bucket { get; set; }
+        public double Value { get; set; }
     }
 }
