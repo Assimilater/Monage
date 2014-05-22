@@ -33,7 +33,7 @@ namespace Monage.GUI {
 
 
             view.Set(this, Content);
-            Update();
+            UpdateShell();
         }
 
         private void Content_Resize(object sender, EventArgs e) {
@@ -44,7 +44,7 @@ namespace Monage.GUI {
 
         #region Window Title, Status Bar, and Context Menu Configuration
 
-        private void Update() {
+        private void UpdateShell() {
             Title();
             LogoutStrip();
         }
@@ -73,7 +73,7 @@ namespace Monage.GUI {
             } else {
                 new Session().Set(this, Content);
             }
-            Update();
+            UpdateShell();
         }
 
         #endregion
