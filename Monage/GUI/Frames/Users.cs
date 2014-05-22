@@ -11,29 +11,16 @@ using Monage.Models;
 using Monage.GUI.Dialogs;
 
 namespace Monage.GUI.Frames {
-    public partial class Users : UserControl, Frame {
-        MainFrame parent;
-        Panel canvas;
+    public partial class Users : CenteredFrame, Frame {
         public Users() {
             InitializeComponent();
         }
 
-        public void Set(MainFrame p, Panel c) {
-            parent = p;
-            canvas = c;
+        public new void Set(Shell p, Panel c) {
+            base.Set(p, c);
             getList();
-
-            canvas.Controls.Clear();
-            canvas.Controls.Add(this);
-            Adjust();
         }
-        public void Adjust() {
-            this.Location = new Point(
-                canvas.Width / 2 - (this.Width / 2),
-                canvas.Height / 2 - (this.Height / 2)
-            );
-        }
-
+        
         private void getList() {
             int prev = cbxUsers.SelectedIndex;
             cbxUsers.Items.Clear();
@@ -47,9 +34,9 @@ namespace Monage.GUI.Frames {
 
         private void btnOpen_Click(object sender, EventArgs e) {
             if (cbxUsers.SelectedIndex != -1) {
-                parent.Open(Program.db.Users.Where(x => x.Username == (string)cbxUsers.SelectedItem).First());
+                parent.Login(Program.db.Users.Where(x => x.Username == (string)cbxUsers.SelectedItem).First());
             } else {
-                MessageBox.Show(parent, "No user selected");
+                MessageBox.Show(Program.Host, "No user selected");
             }
         }
 
@@ -58,7 +45,7 @@ namespace Monage.GUI.Frames {
             if (cbxUsers.SelectedIndex != -1) {
                 getUsername(Program.db.Users.Where(x => x.Username == (string)cbxUsers.SelectedItem).First());
             } else {
-                MessageBox.Show(parent, "No user selected");
+                MessageBox.Show(Program.Host, "No user selected");
             }
         }
 
@@ -67,14 +54,14 @@ namespace Monage.GUI.Frames {
             if (u.Username != result && result != null && result != "") {
                 u.Username = result;
                 if (Program.db.Users.Where(x => x.Username == result).Any()) {
-                    MessageBox.Show(parent, "Username \"" + result + "\" is already in use");
+                    MessageBox.Show(Program.Host, "Username \"" + result + "\" is already in use");
                 } else {
                     try {
                         if (u.ID == 0) { Program.db.Users.Add(u); }
                         Program.db.SaveChanges();
                         getList();
                     } catch {
-                        MessageBox.Show(parent, "An unkown exception has occured");
+                        MessageBox.Show(Program.Host, "An unkown exception has occured");
                     }
                 }
             }

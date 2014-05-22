@@ -11,8 +11,9 @@ using System.Windows.Forms;
 
 namespace Monage {
     public static class Program {
-        public static Context db;
         public const int NameLen = 45;
+        public static MDIHost Host;
+        public static Context db;
 
         [STAThread]
         static void Main() {
@@ -36,7 +37,8 @@ namespace Monage {
             s.Close();
 
             // Start the application
-            Application.Run(new MainFrame());
+            Host = new MDIHost();
+            Application.Run(Host);
         }
     }
 }

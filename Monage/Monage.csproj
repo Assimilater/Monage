@@ -85,7 +85,15 @@
     <Compile Include="GUI\Dialogs\InputDialog.Designer.cs">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Frame.cs" />
+    <Compile Include="GUI\Frames\Frame.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\MDIHost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MDIHost.Designer.cs">
+      <DependentUpon>MDIHost.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Frames\Session.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -98,11 +106,11 @@
     <Compile Include="GUI\Frames\Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\MainFrame.cs">
+    <Compile Include="GUI\Shell.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\MainFrame.Designer.cs">
-      <DependentUpon>MainFrame.cs</DependentUpon>
+    <Compile Include="GUI\Shell.Designer.cs">
+      <DependentUpon>Shell.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Splash.cs">
       <SubType>Form</SubType>
@@ -136,14 +144,17 @@
     <EmbeddedResource Include="GUI\Dialogs\InputDialog.resx">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MDIHost.resx">
+      <DependentUpon>MDIHost.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Frames\Session.resx">
       <DependentUpon>Session.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Frames\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\MainFrame.resx">
-      <DependentUpon>MainFrame.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Shell.resx">
+      <DependentUpon>Shell.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
