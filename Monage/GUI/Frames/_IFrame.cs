@@ -10,6 +10,9 @@ namespace Monage.GUI.Frames {
     public interface Frame {
         void Set(Shell p, Panel c);
         void Adjust();
+
+        string TitleAppend();
+        bool Ready(string con, string conf);
     }
 
     public class CenteredFrame : UserControl {
@@ -35,6 +38,10 @@ namespace Monage.GUI.Frames {
     public class DockedFrame : UserControl {
         protected Shell parent;
         protected Panel canvas;
+
+        public DockedFrame() {
+            this.AutoScroll = true;
+        }
 
         public void Set(Shell p, Panel c) {
             parent = p;

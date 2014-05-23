@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputDialog));
             this.lblPrompt = new System.Windows.Forms.Label();
             this.txtResponse = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -56,17 +55,16 @@
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOk
             // 
+            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.Location = new System.Drawing.Point(296, 58);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(76, 28);
             this.btnOk.TabIndex = 1;
             this.btnOk.Text = "&Ok";
             this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // InputDialog
             // 
@@ -80,7 +78,7 @@
             this.Controls.Add(this.txtResponse);
             this.Controls.Add(this.lblPrompt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(Monage.Properties.Resources.favicon));
+            this.Icon = global::Monage.Properties.Resources.favicon;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(484, 143);
             this.MinimizeBox = false;
@@ -89,7 +87,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Caption";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InputDialog_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

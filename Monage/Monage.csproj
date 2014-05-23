@@ -85,8 +85,44 @@
     <Compile Include="GUI\Dialogs\InputDialog.Designer.cs">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Frame.cs">
+    <Compile Include="GUI\Frames\Banks.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Frames\Banks.Designer.cs">
+      <DependentUpon>Banks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Frames\Buckets.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Frames\Buckets.Designer.cs">
+      <DependentUpon>Buckets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Frames\Budgets.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Frames\Budgets.Designer.cs">
+      <DependentUpon>Budgets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Frames\_iFrame.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Frames\History.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Frames\History.Designer.cs">
+      <DependentUpon>History.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Frames\Transactions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Frames\Transactions.Designer.cs">
+      <DependentUpon>Transactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Frames\Tiers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Frames\Tiers.Designer.cs">
+      <DependentUpon>Tiers.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\MDIHost.cs">
       <SubType>Form</SubType>
@@ -94,11 +130,11 @@
     <Compile Include="GUI\MDIHost.Designer.cs">
       <DependentUpon>MDIHost.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Session.cs">
+    <Compile Include="GUI\Frames\Summary.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\Session.Designer.cs">
-      <DependentUpon>Session.cs</DependentUpon>
+    <Compile Include="GUI\Frames\Summary.Designer.cs">
+      <DependentUpon>Summary.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Frames\Users.cs">
       <SubType>UserControl</SubType>
@@ -147,8 +183,8 @@
     <EmbeddedResource Include="GUI\MDIHost.resx">
       <DependentUpon>MDIHost.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Frames\Session.resx">
-      <DependentUpon>Session.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Frames\Summary.resx">
+      <DependentUpon>Summary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Frames\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>

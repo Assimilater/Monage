@@ -13,14 +13,14 @@ namespace Monage.GUI {
         private int childFormNumber = 0;
         private const string fileFilter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
 
-        public MDIHost() {
-            InitializeComponent();
-        }
+        public MDIHost() { InitializeComponent(); }
 
         public string AddShell(Shell c) {
             c.MdiParent = this;
-            return "Connection " + childFormNumber++;
+            return "Connection " + ++childFormNumber;
         }
+
+        #region MenuBar Event Handlers
 
         private void NewConnection(object sender, EventArgs e) {
             Shell childForm = new Shell("Connection " + childFormNumber++);
@@ -46,7 +46,17 @@ namespace Monage.GUI {
             }
         }
 
-        #region MenuBar Event Handlers
+        private void Print(object sender, EventArgs e) {
+            throw new NotImplementedException();
+        }
+
+        private void PrintPreview(object sender, EventArgs e) {
+            throw new NotImplementedException();
+        }
+        
+        private void PrintSetup(object sender, EventArgs e) {
+            throw new NotImplementedException();
+        }
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e) {
             this.Close();
@@ -58,6 +68,10 @@ namespace Monage.GUI {
 
         private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e) {
             statusStrip.Visible = statusBarToolStripMenuItem.Checked;
+        }
+
+        private void OptionsToolStripMenuItem_Click(object sender, EventArgs e) {
+            throw new NotImplementedException();
         }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -73,15 +87,28 @@ namespace Monage.GUI {
         }
 
         private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e) {
-            foreach (Form childForm in MdiChildren) {
-                childForm.Close();
-            }
+            Ready();
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e) {
             new About().ShowDialog();
         }
 
         #endregion
+
+        private void MDIHost_FormClosing(object sender, FormClosingEventArgs e) {
+            e.Cancel = !Ready();
+        }
+
+        private bool Ready() {
+            foreach (Shell childForm in MdiChildren) {
+                if (childForm.Ready("Close")) {
+                    childForm.Close();
+                } else {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace Monage {
         public static Context db;
 
         [STAThread]
-        static void Main() {
+        public static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -39,6 +39,17 @@ namespace Monage {
             // Start the application
             Host = new MDIHost();
             Application.Run(Host);
+        }
+
+        public static bool ConfirmClose(string con, string conf) {
+            return DialogResult.Yes == MessageBox.Show(
+                Host,
+                con + ":\n" +
+                    "You have unsaved changes.\n" +
+                    "Are you sure you wish to close?",
+                "Confirm " + conf,
+                MessageBoxButtons.YesNo
+            );
         }
     }
 }

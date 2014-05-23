@@ -26,18 +26,5 @@ namespace Monage.GUI.Dialogs {
             InputDialog i = new InputDialog(p, prompt, caption, val);
             return i.ShowDialog(p) == DialogResult.OK ? i.txtResponse.Text : null;
         }
-
-        private void InputDialog_FormClosing(object sender, FormClosingEventArgs e) {
-            this.DialogResult = endOk ? DialogResult.OK : DialogResult.Cancel;
-        }
-        
-        private void btnOk_Click(object sender, EventArgs e) {
-            endOk = true;
-            this.Close();
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e) {
-            this.Close();
-        }
     }
 }

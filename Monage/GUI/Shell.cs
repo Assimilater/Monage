@@ -16,13 +16,19 @@ namespace Monage.GUI {
     public partial class Shell : Form {
         private string pre;
         private User user;
+        private Frame active;
 
         #region Shell Control-Flow Management
         
         public Shell(string p) {
             InitializeComponent();
+
             pre = p;
-            Login(Program.db.Users.Count() == 1 ? Program.db.Users.First() : null);
+            Login(
+                Program.db.Users.Count() == 1
+                ? Program.db.Users.First()
+                : null
+            );
         }
 
         public Shell(Shell copy, Frame view) {
@@ -30,9 +36,21 @@ namespace Monage.GUI {
 
             pre = Program.Host.AddShell(this);
             user = copy.user;
+            SetFrame(view);
+        }
 
+        public bool Ready(string conf = "Navigation") {
+            return
+                active != null
+                ? active.Ready(pre, conf)
+                : true;
+        }
 
-            view.Set(this, Content);
+        private void SetFrame(Frame view, string conf = "Navigation") {
+            if (Ready(conf)) {
+                active = view;
+                active.Set(this, Content);
+            }
             UpdateShell();
         }
 
@@ -40,54 +58,104 @@ namespace Monage.GUI {
             foreach (Frame c in Content.Controls) { c.Adjust(); }
         }
 
-        #endregion
-
-        #region Window Title, Status Bar, and Context Menu Configuration
-
         private void UpdateShell() {
-            Title();
-            LogoutStrip();
+            UpdateTitle();
+            UpdateMenuBar();
         }
 
-        private void Title() {
-            this.Text = pre + " - " + (
+        public void UpdateTitle() {
+            this.Text = pre + (
                 user == null
-                ? "Login"
-                : user.Username
+                ? ""
+                : " - " + (
+                    user.Username + (
+                        active != null
+                        ? ": " + active.TitleAppend()
+                        : ""
+                    )
+                )
             );
         }
 
-        private void LogoutStrip() {
-            logoutToolStripMenuItem.Visible = user != null;
-            toolStripSeparator1.Visible = user != null;
-        }
+        private void UpdateMenuBar() {
+            summaryToolStripMenuItem.Visible = 
+            newTransactionToolStripMenuItem.Visible =
+            historyToolStripMenuItem.Visible =
 
-        #endregion
+            toolStripSeparator1.Visible =
+            
+            banksToolStripMenuItem.Visible =
+            bucketsToolStripMenuItem.Visible =
+            budgetsToolStripMenuItem.Visible =
+            
+            toolStripSeparator2.Visible =
+                        
+            logoutToolStripMenuItem.Visible =
 
-        #region Action and Frame Events
-
-        public void Login(User u) {
-            user = u;
-            if (user == null) {
-                new Users().Set(this, Content);
-            } else {
-                new Session().Set(this, Content);
-            }
-            UpdateShell();
+                user != null;
         }
 
         #endregion
 
         #region MenuBar Event Handlers
+        
+        private void summaryToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (user != null) {
+                SetFrame(new Summary());
+            }
+        }
+
+        private void newTransactionToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (user != null) {
+                SetFrame(new Transactions());
+            }
+        }
+
+        private void historyToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (user != null) {
+                SetFrame(new History());
+            }
+        }
+
+        private void banksToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (user != null) {
+                SetFrame(new Banks());
+            }
+        }
+
+        private void bucketsToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (user != null) {
+                SetFrame(new Buckets());
+            }
+        }
+
+        private void budgetsToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (user != null) {
+                SetFrame(new Budgets());
+            }
+        }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
             Login(null);
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e) {
-            this.Close();
+            if (Ready("Close")) {
+                this.Close();
+            }
         }
 
         #endregion
+
+        public void Login(User u) {
+            user = u;
+
+            Frame view =
+                user == null
+                ? new Users() as Frame
+                : new Summary() as Frame;
+
+            SetFrame(view, "Logout");
+        }
     }
 }

@@ -12,10 +12,9 @@ using Monage.GUI.Dialogs;
 
 namespace Monage.GUI.Frames {
     public partial class Users : CenteredFrame, Frame {
-        public Users() {
-            InitializeComponent();
-        }
-
+        public Users() { InitializeComponent(); }
+        public string TitleAppend() { return "Login"; }
+        public bool Ready(string con, string conf) { return true; }
         public new void Set(Shell p, Panel c) {
             base.Set(p, c);
             getList();

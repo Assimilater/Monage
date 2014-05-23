@@ -1,5 +1,5 @@
 ﻿namespace Monage.GUI.Frames {
-    partial class Session {
+    partial class History {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -23,19 +23,10 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.SuspendLayout();
-            // 
-            // Session
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "Session";
-            this.Size = new System.Drawing.Size(359, 291);
-            this.ResumeLayout(false);
-
         }
 
         #endregion
-
     }
 }
