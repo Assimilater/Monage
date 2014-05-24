@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Monage.GUI.Frames {
-    public partial class Budgets : DockedFrame, Frame {
+    public partial class Budgets : DockedFrame {
         public Budgets() {
             InitializeComponent();
         }
-        public string TitleAppend() { return "Manage Budgets"; }
-        public bool Ready(string con, string conf) { return Program.ConfirmClose(con, conf); }
+        public override string TitleAppend() { return "Manage Budgets"; }
+        public override bool Ready(string con, string conf) { return Program.ConfirmClose(con, conf); }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Monage.GUI.Frames {
-    public interface Frame {
+    public interface IFrame {
         void Set(Shell p, Panel c);
         void Adjust();
 
@@ -15,11 +15,11 @@ namespace Monage.GUI.Frames {
         bool Ready(string con, string conf);
     }
 
-    public class CenteredFrame : UserControl {
+    public abstract class CenteredFrame : UserControl, IFrame {
         protected Shell parent;
         protected Panel canvas;
 
-        public void Set(Shell p, Panel c) {
+        public virtual void Set(Shell p, Panel c) {
             parent = p;
             canvas = c;
 
@@ -27,15 +27,19 @@ namespace Monage.GUI.Frames {
             canvas.Controls.Add(this);
             Adjust();
         }
-        public void Adjust() {
+        public virtual void Adjust() {
             this.Location = new Point(
                 canvas.Width / 2 - (this.Width / 2),
                 canvas.Height / 2 - (this.Height / 2)
             );
         }
+
+        // Methods to pass on to derrived classes
+        public abstract string TitleAppend();
+        public abstract bool Ready(string con, string conf);
     }
 
-    public class DockedFrame : UserControl {
+    public abstract class DockedFrame : UserControl, IFrame {
         protected Shell parent;
         protected Panel canvas;
 
@@ -43,7 +47,7 @@ namespace Monage.GUI.Frames {
             this.AutoScroll = true;
         }
 
-        public void Set(Shell p, Panel c) {
+        public virtual void Set(Shell p, Panel c) {
             parent = p;
             canvas = c;
 
@@ -52,8 +56,12 @@ namespace Monage.GUI.Frames {
             this.Dock = DockStyle.Fill;
         }
 
-        public void Adjust() {
+        public virtual void Adjust() {
             // No need to do anything
         }
+
+        // Methods to pass on to derrived classes
+        public abstract string TitleAppend();
+        public abstract bool Ready(string con, string conf);
     }
 }

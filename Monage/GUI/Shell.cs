@@ -16,7 +16,7 @@ namespace Monage.GUI {
     public partial class Shell : Form {
         private string pre;
         private User user;
-        private Frame active;
+        private IFrame active;
 
         #region Shell Control-Flow Management
         
@@ -31,7 +31,7 @@ namespace Monage.GUI {
             );
         }
 
-        public Shell(Shell copy, Frame view) {
+        public Shell(Shell copy, IFrame view) {
             InitializeComponent();
 
             pre = Program.Host.AddShell(this);
@@ -46,7 +46,7 @@ namespace Monage.GUI {
                 : true;
         }
 
-        private void SetFrame(Frame view, string conf = "Navigation") {
+        private void SetFrame(IFrame view, string conf = "Navigation") {
             if (Ready(conf)) {
                 active = view;
                 active.Set(this, Content);
@@ -55,7 +55,7 @@ namespace Monage.GUI {
         }
 
         private void Content_Resize(object sender, EventArgs e) {
-            foreach (Frame c in Content.Controls) { c.Adjust(); }
+            foreach (IFrame c in Content.Controls) { c.Adjust(); }
         }
 
         private void UpdateShell() {
@@ -150,10 +150,10 @@ namespace Monage.GUI {
         public void Login(User u) {
             user = u;
 
-            Frame view =
+            IFrame view =
                 user == null
-                ? new Users() as Frame
-                : new Summary() as Frame;
+                ? new Users() as IFrame
+                : new Summary() as IFrame;
 
             SetFrame(view, "Logout");
         }

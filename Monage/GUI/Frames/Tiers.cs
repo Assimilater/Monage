@@ -10,13 +10,13 @@ using System.Windows.Forms;
 using Monage.Models;
 
 namespace Monage.GUI.Frames {
-    public partial class Tiers : DockedFrame, Frame {
+    public partial class Tiers : DockedFrame {
         Budget budget;
         public Tiers(Budget b) {
             InitializeComponent();
             budget = b;
         }
-        public string TitleAppend() { return (budget.ID == 0 ? "New" : "Edit") + " Budget"; }
-        public bool Ready(string con, string conf) { return Program.ConfirmClose(con, conf); }
+        public override string TitleAppend() { return (budget.ID == 0 ? "New" : "Edit") + " Budget"; }
+        public override bool Ready(string con, string conf) { return Program.ConfirmClose(con, conf); }
     }
 }

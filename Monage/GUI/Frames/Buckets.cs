@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Monage.GUI.Frames {
-    public partial class Buckets : DockedFrame, Frame {
+    public partial class Buckets : DockedFrame {
         public Buckets() {
             InitializeComponent();
         }
-        public string TitleAppend() { return "Manage Buckets"; }
-        public bool Ready(string con, string conf) { return Program.ConfirmClose(con, conf); }
+        public override string TitleAppend() { return "Manage Buckets"; }
+        public override bool Ready(string con, string conf) { return Program.ConfirmClose(con, conf); }
     }
 }
