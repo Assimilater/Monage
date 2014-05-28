@@ -17,5 +17,7 @@ namespace Monage.Models {
         public string Description { get; set; }
         public virtual List<Balance> Balances { get; set; }
         public virtual User User { get; set; }
+
+        public Amount Balance() { return new Amount(this); }
     }
 }
