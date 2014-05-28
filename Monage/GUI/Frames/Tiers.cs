@@ -17,6 +17,6 @@ namespace Monage.GUI.Frames {
             budget = b;
         }
         public override string TitleAppend() { return (budget.ID == 0 ? "New" : "Edit") + " Budget"; }
-        public override bool Ready(string con, string conf) { return Program.ConfirmClose(con, conf); }
+        public override bool Ready(string con, string conf) { return Program.ConfirmReady(con, conf); }
     }
 }

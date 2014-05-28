@@ -14,6 +14,6 @@ namespace Monage.GUI.Frames {
             InitializeComponent();
         }
         public override string TitleAppend() { return "Manage Banks"; }
-        public override bool Ready(string con, string conf) { return Program.ConfirmClose(con, conf); }
+        public override bool Ready(string con, string conf) { return Program.ConfirmReady(con, conf); }
     }
 }

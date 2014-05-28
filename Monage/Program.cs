@@ -39,12 +39,13 @@ namespace Monage {
             Application.Run(Host);
         }
 
-        public static bool ConfirmClose(string con, string conf) {
+        public static bool ConfirmReady(string con, string conf) {
             return DialogResult.Yes == MessageBox.Show(
                 Host,
                 con + ":\n" +
                     "You have unsaved changes.\n" +
-                    "Are you sure you wish to close?",
+                    "These changes will be lost.\n" +
+                    "Are you sure you wish to proceed?",
                 "Confirm " + conf,
                 MessageBoxButtons.YesNo
             );
