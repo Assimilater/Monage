@@ -16,7 +16,7 @@ namespace Monage.GUI.Frames.Controls {
             InitializeComponent();
             bank = b;
             lblName.Text = bank.Name;
-            lblAmount.Text = bank.Balance.ToString();
+            lblAmount.Text = bank.Balance().ToString();
         }
 
         private void refRename_Click(object sender, EventArgs e) {
