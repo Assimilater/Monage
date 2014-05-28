@@ -14,6 +14,6 @@ namespace Monage.GUI.Frames {
             InitializeComponent();
         }
         public override string TitleAppend() { return "Transaction History"; }
-        public override bool Ready(string con, string conf) { return Program.ConfirmClose(con, conf); }
+        public override bool Ready(string con, string conf) { return true; }
     }
 }

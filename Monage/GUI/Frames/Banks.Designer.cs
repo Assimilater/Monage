@@ -23,8 +23,16 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Banks
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "Banks";
+            this.Size = new System.Drawing.Size(662, 376);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

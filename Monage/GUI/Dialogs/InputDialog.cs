@@ -10,12 +10,10 @@ using System.Windows.Forms;
 
 namespace Monage.GUI.Dialogs {
     public partial class InputDialog : Form {
-        private bool endOk;
         private Shell parent;
         private InputDialog(Shell p, string prompt, string caption, string val) {
             parent = p;
             InitializeComponent();
-            endOk = false;
             this.Text = caption;
             this.lblPrompt.Text = prompt;
             this.txtResponse.Text = val;

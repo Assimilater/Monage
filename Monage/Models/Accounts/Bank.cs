@@ -18,6 +18,8 @@ namespace Monage.Models {
         public virtual List<Balance> Balances { get; set; }
         public virtual User User { get; set; }
 
-        public Amount Balance() { return new Amount(this); }
+        public Amount Other { get; set; }
+
+        public Amount Balance() { return new Amount(this, this.Other); }
     }
 }

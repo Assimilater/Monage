@@ -12,15 +12,18 @@ namespace Monage.Models {
         public Amount(double a = 0) { Physical = a; Actual = a; }
         public Amount(double p, double a) { Physical = p; Actual = a; }
 
-        public Amount(Bank b) { Aggregate(b.Balances); }
+        public Amount(Bank b, Amount o) { Aggregate(b.Balances); Add(o); }
         public Amount(Bucket b) { Aggregate(b.Balances); }
 
         private void Aggregate(List<Balance> balances) {
             Physical = 0; Actual = 0;
             foreach (Balance b in balances) {
-                this.Physical += b.Amount.Physical;
-                this.Actual += b.Amount.Actual;
+                this.Add(b.Amount);
             }
+        }
+        private void Add(Amount a) {
+            this.Physical += a.Physical;
+            this.Actual += a.Actual;
         }
 
         public override string ToString() {
