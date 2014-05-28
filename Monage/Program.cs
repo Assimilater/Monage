@@ -31,8 +31,8 @@ namespace Monage {
 
             // Open database
             db = new Context();
-            db.Users.First();   // Make a call to db so migrations are triggered
-            s.Close();          // Close the splash screen
+            db.Users.FirstOrDefault(); // Make a call to db so migrations are triggered
+            s.Close();                 // Close the splash screen
 
             // Start the application
             Host = new MDIHost();

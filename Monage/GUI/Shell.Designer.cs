@@ -164,7 +164,6 @@
             this.MainMenuStrip = this.MenuBar;
             this.Name = "Shell";
             this.Text = "Shell";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.MenuBar.ResumeLayout(false);
             this.MenuBar.PerformLayout();
             this.ResumeLayout(false);
