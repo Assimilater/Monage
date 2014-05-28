@@ -24,17 +24,15 @@ namespace Monage {
             Splash s = new Splash();
             s.Show();
 
-            // Give some (short) time for the splash to show
-            Thread.Sleep(TimeSpan.FromSeconds(1));
-
-            // Run Migrations
+            // Set Migrations To Update DB on First Connection
             Database.SetInitializer(
                 new MigrateDatabaseToLatestVersion<Context, Configuration>()
-            ); // TODO: Fix this...doesn't do anything?
+            );
 
             // Open database
             db = new Context();
-            s.Close();
+            db.Users.First();   // Make a call to db so migrations are triggered
+            s.Close();          // Close the splash screen
 
             // Start the application
             Host = new MDIHost();

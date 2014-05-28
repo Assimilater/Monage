@@ -103,7 +103,9 @@
     <Compile Include="GUI\Frames\Budgets.Designer.cs">
       <DependentUpon>Budgets.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\BankListItem.cs" />
+    <Compile Include="GUI\Frames\Controls\BankListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="GUI\Frames\Controls\BankListItem.designer.cs">
       <DependentUpon>BankListItem.cs</DependentUpon>
     </Compile>
