@@ -162,6 +162,14 @@
     <Compile Include="Migrations\201405220313053_Initial_BudgetModels.Designer.cs">
       <DependentUpon>201405220313053_Initial_BudgetModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405280125420_AddAmount.cs" />
+    <Compile Include="Migrations\201405280125420_AddAmount.Designer.cs">
+      <DependentUpon>201405280125420_AddAmount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405280126147_AddIndexes.cs" />
+    <Compile Include="Migrations\201405280126147_AddIndexes.Designer.cs">
+      <DependentUpon>201405280126147_AddIndexes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accounts\Bank.cs" />
     <Compile Include="Models\Accounts\Bucket.cs" />
@@ -169,6 +177,7 @@
     <Compile Include="Models\Budget\Budget.cs" />
     <Compile Include="Models\Budget\Step.cs" />
     <Compile Include="Models\Budget\Tier.cs" />
+    <Compile Include="Models\Helpers\Amount.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,6 +209,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405220313053_Initial_BudgetModels.resx">
       <DependentUpon>201405220313053_Initial_BudgetModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405280125420_AddAmount.resx">
+      <DependentUpon>201405280125420_AddAmount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405280126147_AddIndexes.resx">
+      <DependentUpon>201405280126147_AddIndexes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -250,6 +265,7 @@
   <ItemGroup>
     <None Include="Resources\favicon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

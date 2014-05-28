@@ -49,12 +49,6 @@ namespace Monage.Migrations {
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Users", t => t.User_ID)
                 .Index(t => t.User_ID);
-
-            // Custom code
-            CreateIndex("dbo.Users", "Username", true, "Unique");
-            CreateIndex("dbo.Banks", new string[] { "Name", "User_ID" }, true, "Unique");
-            CreateIndex("dbo.Buckets", new string[] { "Name", "User_ID" }, true, "Unique");
-            CreateIndex("dbo.Balances", new string[] { "Bank_ID", "Bucket_ID" }, true, "Unique");
         }
 
         public override void Down() {
@@ -70,12 +64,6 @@ namespace Monage.Migrations {
             DropTable("dbo.Users");
             DropTable("dbo.Banks");
             DropTable("dbo.Balances");
-
-            // Custom code
-            DropIndex("dbo.Users", "Unique");
-            DropIndex("dbo.Banks", "Unique");
-            DropIndex("dbo.Buckets", "Unique");
-            DropIndex("dbo.Balances", "Unique");
         }
     }
 }

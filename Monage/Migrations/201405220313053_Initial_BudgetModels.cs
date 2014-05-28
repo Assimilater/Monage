@@ -45,9 +45,6 @@ namespace Monage.Migrations {
                 .ForeignKey("dbo.Tiers", t => t.Tier_ID)
                 .Index(t => t.Bucket_ID)
                 .Index(t => t.Tier_ID);
-
-            // Custom code
-            CreateIndex("dbo.Budgets", new string[] { "Name", "User_ID" }, true, "Unique");
         }
 
         public override void Down() {
@@ -67,9 +64,6 @@ namespace Monage.Migrations {
             DropTable("dbo.Steps");
             DropTable("dbo.Tiers");
             DropTable("dbo.Budgets");
-
-            // Custom code
-            DropIndex("dbo.Budgets", "Unique");
         }
     }
 }
