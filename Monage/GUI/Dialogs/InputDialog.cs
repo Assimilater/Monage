@@ -10,9 +10,7 @@ using System.Windows.Forms;
 
 namespace Monage.GUI.Dialogs {
     public partial class InputDialog : Form {
-        private Shell parent;
-        private InputDialog(Shell p, string prompt, string caption, string val) {
-            parent = p;
+        private InputDialog(string prompt, string caption, string val) {
             InitializeComponent();
             this.Text = caption;
             this.lblPrompt.Text = prompt;
@@ -20,9 +18,9 @@ namespace Monage.GUI.Dialogs {
             txtResponse.Focus();
         }
 
-        public static String ShowDialog(Shell p, string prompt, string caption, string val = "") {
-            InputDialog i = new InputDialog(p, prompt, caption, val);
-            return i.ShowDialog(p) == DialogResult.OK ? i.txtResponse.Text : null;
+        public static String ShowDialog(string prompt, string caption, string val = "") {
+            InputDialog i = new InputDialog(prompt, caption, val);
+            return i.ShowDialog(Program.Host) == DialogResult.OK ? i.txtResponse.Text : null;
         }
     }
 }

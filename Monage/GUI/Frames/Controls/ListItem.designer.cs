@@ -1,5 +1,5 @@
 ﻿namespace Monage.GUI.Frames.Controls {
-    partial class BankListItem {
+    partial class ListItem {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -34,9 +34,9 @@
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(3, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(138, 29);
+            this.lblName.Size = new System.Drawing.Size(78, 29);
             this.lblName.TabIndex = 0;
-            this.lblName.Text = "Bank Name";
+            this.lblName.Text = "Name";
             // 
             // lblAmount
             // 
@@ -60,15 +60,15 @@
             this.refRename.Text = "Rename";
             this.refRename.Click += new System.EventHandler(this.refRename_Click);
             // 
-            // BankListItem
+            // ListItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.refRename);
             this.Controls.Add(this.lblAmount);
             this.Controls.Add(this.lblName);
-            this.Name = "BankListItem";
-            this.Size = new System.Drawing.Size(264, 74);
+            this.Name = "ListItem";
+            this.Size = new System.Drawing.Size(275, 74);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -13,8 +13,8 @@ using System.Windows.Forms;
 
 namespace Monage.GUI {
     public partial class Shell : Form {
+        public User User { get; private set; }
         private string pre;
-        private User user;
         private IFrame active;
 
         #region Shell Control-Flow Management
@@ -34,7 +34,7 @@ namespace Monage.GUI {
             InitializeComponent();
 
             pre = Program.Host.AddShell(this);
-            user = copy.user;
+            User = copy.User;
             SetFrame(view);
         }
 
@@ -64,10 +64,10 @@ namespace Monage.GUI {
 
         public void UpdateTitle() {
             this.Text = pre + (
-                user == null
+                User == null
                 ? ""
                 : " - " + (
-                    user.Username + (
+                    User.Username + (
                         active != null
                         ? ": " + active.TitleAppend()
                         : ""
@@ -91,7 +91,7 @@ namespace Monage.GUI {
                         
             logoutToolStripMenuItem.Visible =
 
-                user != null;
+                User != null;
         }
 
         #endregion
@@ -99,37 +99,37 @@ namespace Monage.GUI {
         #region MenuBar Event Handlers
         
         private void summaryToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (user != null) {
+            if (User != null) {
                 SetFrame(new Summary());
             }
         }
 
         private void newTransactionToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (user != null) {
+            if (User != null) {
                 SetFrame(new Transactions());
             }
         }
 
         private void historyToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (user != null) {
+            if (User != null) {
                 SetFrame(new History());
             }
         }
 
         private void banksToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (user != null) {
+            if (User != null) {
                 SetFrame(new Banks());
             }
         }
 
         private void bucketsToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (user != null) {
+            if (User != null) {
                 SetFrame(new Buckets());
             }
         }
 
         private void budgetsToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (user != null) {
+            if (User != null) {
                 SetFrame(new Budgets());
             }
         }
@@ -147,10 +147,10 @@ namespace Monage.GUI {
         #endregion
 
         public void Login(User u) {
-            user = u;
+            User = u;
 
             IFrame view =
-                user == null
+                User == null
                 ? new Users() as IFrame
                 : new Summary() as IFrame;
 

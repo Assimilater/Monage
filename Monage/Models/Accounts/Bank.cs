@@ -21,5 +21,22 @@ namespace Monage.Models {
         public Amount Other { get; set; }
 
         public Amount Balance() { return new Amount(this, this.Other); }
+
+        public Bank Rename(String name) {
+            if (Name != name && name != null && name != "") {
+                if (Program.db.Banks.Where(x => x.User.ID == User.ID && x.Name == name).Any()) {
+                    throw new ValidationException("A bank named \"" + name + "\" already exists");
+                } else {
+                    try {
+                        Name = name;
+                        if (ID == 0) { Program.db.Banks.Add(this); }
+                        Program.db.SaveChanges();
+                    } catch {
+                        throw new ValidationException("An unkown exception has occured");
+                    }
+                }
+            }
+            return this;
+        }
     }
 }

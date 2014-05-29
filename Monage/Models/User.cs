@@ -17,5 +17,22 @@ namespace Monage.Models {
         public virtual List<Bank> Banks { get; set; }
         public virtual List<Bucket> Buckets { get; set; }
         public virtual List<Budget> Budgets { get; set; }
+
+        public User Rename(String name) {
+            if (Username != name && name != null && name != "") {
+                if (Program.db.Users.Where(x => x.Username == name).Any()) {
+                    throw new ValidationException("Username \"" + name + "\" is already in use");
+                } else {
+                    try {
+                        Username = name;
+                        if (ID == 0) { Program.db.Users.Add(this); }
+                        Program.db.SaveChanges();
+                    } catch {
+                        throw new ValidationException("An unkown exception has occured");
+                    }
+                }
+            }
+            return this;
+        }
     }
 }

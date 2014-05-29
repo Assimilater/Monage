@@ -85,17 +85,11 @@
     <Compile Include="GUI\Dialogs\InputDialog.Designer.cs">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Banks.cs">
+    <Compile Include="GUI\Frames\Controls\ListFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\Banks.Designer.cs">
-      <DependentUpon>Banks.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Frames\Buckets.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\Frames\Buckets.Designer.cs">
-      <DependentUpon>Buckets.cs</DependentUpon>
+    <Compile Include="GUI\Frames\Controls\ListFrame.Designer.cs">
+      <DependentUpon>ListFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Frames\Budgets.cs">
       <SubType>UserControl</SubType>
@@ -103,11 +97,11 @@
     <Compile Include="GUI\Frames\Budgets.Designer.cs">
       <DependentUpon>Budgets.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\BankListItem.cs">
+    <Compile Include="GUI\Frames\Controls\ListItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\BankListItem.designer.cs">
-      <DependentUpon>BankListItem.cs</DependentUpon>
+    <Compile Include="GUI\Frames\Controls\ListItem.designer.cs">
+      <DependentUpon>ListItem.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Frames\_iFrame.cs">
       <SubType>UserControl</SubType>
@@ -198,20 +192,11 @@
     <EmbeddedResource Include="GUI\Dialogs\InputDialog.resx">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Frames\Banks.resx">
-      <DependentUpon>Banks.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Frames\Controls\BankListItem.resx">
-      <DependentUpon>BankListItem.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Frames\Controls\ListFrame.resx">
+      <DependentUpon>ListFrame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\MDIHost.resx">
       <DependentUpon>MDIHost.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Frames\Summary.resx">
-      <DependentUpon>Summary.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Frames\Users.resx">
-      <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Shell.resx">
       <DependentUpon>Shell.cs</DependentUpon>

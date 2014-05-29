@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Monage.Models;
 using Monage.GUI.Dialogs;
+using System.ComponentModel.DataAnnotations;
 
 namespace Monage.GUI.Frames {
     public partial class Users : CenteredFrame {
@@ -48,21 +49,18 @@ namespace Monage.GUI.Frames {
             }
         }
 
-        private void getUsername(User u) {
-            String result = InputDialog.ShowDialog(parent, "Enter a new Username", "Set Username", u.Username);
-            if (u.Username != result && result != null && result != "") {
-                u.Username = result;
-                if (Program.db.Users.Where(x => x.Username == result).Any()) {
-                    MessageBox.Show(Program.Host, "Username \"" + result + "\" is already in use");
-                } else {
-                    try {
-                        if (u.ID == 0) { Program.db.Users.Add(u); }
-                        Program.db.SaveChanges();
-                        getList();
-                    } catch {
-                        MessageBox.Show(Program.Host, "An unkown exception has occured");
-                    }
-                }
+        private void getUsername(User user) {
+            try {
+                user.Rename(
+                    InputDialog.ShowDialog(
+                        "Enter a new Username for: " + user.Username,
+                        "Set Username",
+                        user.Username
+                    )
+                );
+                getList();
+            } catch (ValidationException e) {
+                MessageBox.Show(Program.Host, e.Message);
             }
         }
     }
