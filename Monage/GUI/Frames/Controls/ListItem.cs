@@ -25,7 +25,7 @@ namespace Monage.GUI.Frames.Controls {
         protected override void refRename_Click(object sender, EventArgs e) {
             try {
                 bank.Rename(
-                    InputDialog.ShowDialog(
+                    PairDialog.ShowDialog(
                         "Enter a new name for bank: " + bank.Name,
                         "Rename Bank",
                         bank.Name
@@ -44,7 +44,7 @@ namespace Monage.GUI.Frames.Controls {
         protected override void refRename_Click(object sender, EventArgs e) {
             try {
                 bucket.Rename(
-                    InputDialog.ShowDialog(
+                    PairDialog.ShowDialog(
                         "Enter a new name for bucket: " + bucket.Name,
                         "Rename Bucket",
                         bucket.Name

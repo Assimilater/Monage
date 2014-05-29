@@ -41,9 +41,9 @@ namespace Monage.GUI.Frames {
         }
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
-                new Bucket().Rename(
-                    InputDialog.ShowDialog(
-                        "Enter a name for your new bucket",
+                new Bucket(parent.User).Rename(
+                    PairDialog.ShowDialog(
+                        "Enter a name and description  for your new bucket",
                         "Create Bank"
                     )
                 );
@@ -70,9 +70,9 @@ namespace Monage.GUI.Frames {
         }
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
-                new Bank().Rename(
-                    InputDialog.ShowDialog(
-                        "Enter a name for your new bank",
+                new Bank(parent.User).Rename(
+                    PairDialog.ShowDialog(
+                        "Enter a name and description for your new bank",
                         "Create Bank"
                     )
                 );

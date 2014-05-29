@@ -20,13 +20,27 @@ namespace Monage.Models {
 
         public Amount Balance() { return new Amount(this); }
 
-        public Bucket Rename(String name) {
-            if (Name != name && name != null && name != "") {
-                if (Program.db.Buckets.Where(x => x.User.ID == User.ID && x.Name == name).Any()) {
-                    throw new ValidationException("A bucket named \"" + name + "\" already exists");
-                } else {
+        public Bucket(User user) { User = user; }
+        public Bucket Rename(Pair val) {
+            if (val != null) {
+                bool changes = false;
+
+                if (Description != val.Description) {
+                    Description = val.Description;
+                    changes = true;
+                }
+
+                if (Name != val.Name && val.Name != "") {
+                    if (Program.db.Buckets.Where(x => x.User.ID == User.ID && x.Name == val.Name).Any()) {
+                        throw new ValidationException("A bucket named \"" + val.Name + "\" already exists");
+                    } else {
+                        Name = val.Name;
+                        changes = true;
+                    }
+                }
+
+                if (changes) {
                     try {
-                        Name = name;
                         if (ID == 0) { Program.db.Buckets.Add(this); }
                         Program.db.SaveChanges();
                     } catch {
