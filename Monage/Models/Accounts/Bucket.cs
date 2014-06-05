@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Monage.Models {
     public class Bucket {
+        #region Schema
+
         [Key]
         public int ID { get; set; }
 
@@ -18,9 +20,18 @@ namespace Monage.Models {
         public virtual List<Balance> Balances { get; set; }
         public virtual User User { get; set; }
 
+        #endregion
+
+        public Bucket() {
+            Balances = new List<Balance>();
+        }
+        public Bucket(User user) {
+            Balances = new List<Balance>();
+            User = user;
+        }
+
         public Amount Balance() { return new Amount(this); }
 
-        public Bucket(User user) { User = user; }
         public Bucket Rename(Pair val) {
             if (val != null) {
                 bool changes = false;

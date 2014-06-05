@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Monage.Models {
     public class Bank {
+        #region Schema
+
         [Key]
         public int ID { get; set; }
 
@@ -20,9 +23,20 @@ namespace Monage.Models {
 
         public Amount Other { get; set; }
 
+        #endregion
+
+        public Bank() {
+            Balances = new List<Balance>();
+            Other = new Amount();
+        }
+        public Bank(User user) {
+            Balances = new List<Balance>();
+            Other = new Amount();
+            User = user;
+        }
+
         public Amount Balance() { return new Amount(this, this.Other); }
 
-        public Bank(User user) { User = user; }
         public Bank Rename(Pair val) {
             if (val != null) {
                 bool changes = false;

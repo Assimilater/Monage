@@ -9,7 +9,8 @@ namespace Monage.Models {
         public double Physical { get; set; }
         public double Actual { get; set; }
 
-        public Amount(double a = 0) { Physical = a; Actual = a; }
+        public Amount() { Physical = 0; Actual = 0; }
+        public Amount(double a) { Physical = a; Actual = a; }
         public Amount(double p, double a) { Physical = p; Actual = a; }
 
         public Amount(Bank b, Amount o) { Aggregate(b.Balances); Add(o); }

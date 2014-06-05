@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Monage.Models {
     public class Budget {
+        #region Schema
+
         [Key]
         public int ID { get; set; }
 
@@ -18,5 +20,7 @@ namespace Monage.Models {
         public virtual List<Tier> Tiers { get; set; }
         public virtual Bucket Final { get; set; }
         public virtual User User { get; set; }
+
+        #endregion
     }
 }

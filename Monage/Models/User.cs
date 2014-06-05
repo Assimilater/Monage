@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Monage.Models {
     public class User {
+        #region Schema
+
         [Key]
         public int ID { get; set; }
 
@@ -17,6 +19,8 @@ namespace Monage.Models {
         public virtual List<Bank> Banks { get; set; }
         public virtual List<Bucket> Buckets { get; set; }
         public virtual List<Budget> Budgets { get; set; }
+
+        #endregion
 
         public User Rename(String name) {
             if (Username != name && name != null && name != "") {
