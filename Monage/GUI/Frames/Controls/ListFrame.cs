@@ -34,7 +34,7 @@ namespace Monage.GUI.Frames {
     public class Buckets : ListFrame {
         public Buckets() : base("Buckets") { }
         public override string TitleAppend() { return "Manage Buckets"; }
-        public override bool Ready(string con, string conf) { return Program.ConfirmReady(con, conf); }
+        public override bool Ready(string con, string conf) { return true; }
         public override void Set(Shell p, Panel c) {
             base.Set(p, c);
             getList();
@@ -63,7 +63,7 @@ namespace Monage.GUI.Frames {
     public class Banks : ListFrame {
         public Banks() : base("Banks") { }
         public override string TitleAppend() { return "Manage Banks"; }
-        public override bool Ready(string con, string conf) { return Program.ConfirmReady(con, conf); }
+        public override bool Ready(string con, string conf) { return true; }
         public override void Set(Shell p, Panel c) {
             base.Set(p, c);
             getList();

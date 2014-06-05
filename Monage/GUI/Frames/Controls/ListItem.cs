@@ -28,7 +28,8 @@ namespace Monage.GUI.Frames.Controls {
                     PairDialog.ShowDialog(
                         "Enter a new name for bank: " + bank.Name,
                         "Rename Bank",
-                        bank.Name
+                        bank.Name,
+                        bank.Description
                     )
                 );
                 SetText();
@@ -47,7 +48,8 @@ namespace Monage.GUI.Frames.Controls {
                     PairDialog.ShowDialog(
                         "Enter a new name for bucket: " + bucket.Name,
                         "Rename Bucket",
-                        bucket.Name
+                        bucket.Name,
+                        bucket.Description
                     )
                 );
                 SetText();
