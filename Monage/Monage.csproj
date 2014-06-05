@@ -180,6 +180,14 @@
     <Compile Include="Migrations\201405280158390_AddOtherDefault.Designer.cs">
       <DependentUpon>201405280158390_AddOtherDefault.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201406050401464_AddExpenses.cs" />
+    <Compile Include="Migrations\201406050401464_AddExpenses.Designer.cs">
+      <DependentUpon>201406050401464_AddExpenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406050404008_AddExpenses_Indexes.cs" />
+    <Compile Include="Migrations\201406050404008_AddExpenses_Indexes.Designer.cs">
+      <DependentUpon>201406050404008_AddExpenses_Indexes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accounts\Bank.cs" />
     <Compile Include="Models\Accounts\Bucket.cs" />
@@ -188,6 +196,8 @@
     <Compile Include="Models\Budget\Tier.cs" />
     <Compile Include="Models\Funds\Amount.cs" />
     <Compile Include="Models\Funds\Balance.cs" />
+    <Compile Include="Models\Funds\Expense.cs" />
+    <Compile Include="Models\Funds\ExpenseCategory.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -228,6 +238,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405280158390_AddOtherDefault.resx">
       <DependentUpon>201405280158390_AddOtherDefault.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406050401464_AddExpenses.resx">
+      <DependentUpon>201406050401464_AddExpenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406050404008_AddExpenses_Indexes.resx">
+      <DependentUpon>201406050404008_AddExpenses_Indexes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
