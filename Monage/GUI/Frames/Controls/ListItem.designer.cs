@@ -51,6 +51,7 @@
             // refRename
             // 
             this.refRename.AutoSize = true;
+            this.refRename.Cursor = System.Windows.Forms.Cursors.Hand;
             this.refRename.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refRename.ForeColor = System.Drawing.Color.Blue;
             this.refRename.Location = new System.Drawing.Point(4, 53);

@@ -17,9 +17,10 @@ namespace Monage.Models {
         public string Name { get; set; }
         
         public string Description { get; set; }
-        public virtual List<Tier> Tiers { get; set; }
-        public virtual Bucket Final { get; set; }
+
         public virtual User User { get; set; }
+        public virtual Bucket Final { get; set; }
+        public virtual List<Tier> Tiers { get; set; }
 
         #endregion
     }

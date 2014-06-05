@@ -183,11 +183,11 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accounts\Bank.cs" />
     <Compile Include="Models\Accounts\Bucket.cs" />
-    <Compile Include="Models\Accounts\Balance.cs" />
     <Compile Include="Models\Budget\Budget.cs" />
     <Compile Include="Models\Budget\Step.cs" />
     <Compile Include="Models\Budget\Tier.cs" />
-    <Compile Include="Models\Helpers\Amount.cs" />
+    <Compile Include="Models\Funds\Amount.cs" />
+    <Compile Include="Models\Funds\Balance.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

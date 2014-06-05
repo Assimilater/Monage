@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Monage.Models {
-    public enum TierClass { Percentage, Amount }
+    public enum TierClass { Ratio, Fixed }
     public class Tier {
         [Key]
         public int ID { get; set; }

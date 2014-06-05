@@ -54,7 +54,7 @@ namespace Monage.GUI.Frames {
         }
         private void getList() {
             List<ListItem> list = new List<ListItem>();
-            foreach (Bucket bucket in Program.db.Buckets.Where(x => x.User.ID == parent.User.ID)) {
+            foreach (Bucket bucket in Program.db.Buckets.Where(x => x.User.ID == parent.User.ID).OrderBy(x => x.Name).ToList()) {
                 list.Add(new BucketListItem(bucket));
             }
             setList(list);
@@ -83,7 +83,7 @@ namespace Monage.GUI.Frames {
         }
         private void getList() {
             List<ListItem> list = new List<ListItem>();
-            foreach (Bank bank in Program.db.Banks.Where(x => x.User.ID == parent.User.ID)) {
+            foreach (Bank bank in Program.db.Banks.Where(x => x.User.ID == parent.User.ID).OrderBy(x => x.Name).ToList()) {
                 list.Add(new BankListItem(bank));
             }
             setList(list);
