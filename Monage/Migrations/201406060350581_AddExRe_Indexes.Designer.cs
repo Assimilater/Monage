@@ -7,13 +7,13 @@ namespace Monage.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class AddRevenues_Indexes : IMigrationMetadata
+    public sealed partial class AddExRe_Indexes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddRevenues_Indexes));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddExRe_Indexes));
         
         string IMigrationMetadata.Id
         {
-            get { return "201406060350581_AddRevenues_Indexes"; }
+            get { return "201406060350581_AddExRe_Indexes"; }
         }
         
         string IMigrationMetadata.Source

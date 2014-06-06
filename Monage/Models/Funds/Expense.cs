@@ -16,10 +16,10 @@ namespace Monage.Models {
         [MaxLength(Program.NameLen)]
         public string Name { get; set; }
 
-        public string Description { get; set; }
+        [MaxLength(Program.NameLen)]
+        public string Category { get; set; }
 
         public virtual User User { get; set; }
-        public virtual ExpenseCategory Category { get; set; }
 
         [Required]
         public bool TaxDeductible { get; set; }
@@ -32,28 +32,6 @@ namespace Monage.Models {
         public Expense(User user) {
             User = user;
             TaxDeductible = false;
-        }
-    }
-
-    public class ExpenseCategory {
-        #region Schema
-
-        [Key]
-        public int ID { get; set; }
-
-        [Required]
-        [MaxLength(Program.NameLen)]
-        public string Name { get; set; }
-
-        public string Description { get; set; }
-
-        public virtual User User { get; set; }
-
-        #endregion
-
-        public ExpenseCategory() { }
-        public ExpenseCategory(User user) {
-            User = user;
         }
     }
 }

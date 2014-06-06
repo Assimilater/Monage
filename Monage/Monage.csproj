@@ -184,21 +184,21 @@
     <Compile Include="Migrations\201406050401464_AddExpenses.Designer.cs">
       <DependentUpon>201406050401464_AddExpenses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201406050404008_AddExpenses_Indexes.cs" />
-    <Compile Include="Migrations\201406050404008_AddExpenses_Indexes.Designer.cs">
-      <DependentUpon>201406050404008_AddExpenses_Indexes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201406060349435_AddRevenues.cs" />
     <Compile Include="Migrations\201406060349435_AddRevenues.Designer.cs">
       <DependentUpon>201406060349435_AddRevenues.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201406060350581_AddRevenues_Indexes.cs" />
-    <Compile Include="Migrations\201406060350581_AddRevenues_Indexes.Designer.cs">
-      <DependentUpon>201406060350581_AddRevenues_Indexes.cs</DependentUpon>
+    <Compile Include="Migrations\201406060350581_AddExRe_Indexes.cs" />
+    <Compile Include="Migrations\201406060350581_AddExRe_Indexes.Designer.cs">
+      <DependentUpon>201406060350581_AddExRe_Indexes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201406060517465_AddTransactions.cs" />
     <Compile Include="Migrations\201406060517465_AddTransactions.Designer.cs">
       <DependentUpon>201406060517465_AddTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406060531426_ReduceExpenseCategoryModel.cs" />
+    <Compile Include="Migrations\201406060531426_ReduceExpenseCategoryModel.Designer.cs">
+      <DependentUpon>201406060531426_ReduceExpenseCategoryModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accounts\Balance.cs" />
@@ -257,17 +257,17 @@
     <EmbeddedResource Include="Migrations\201406050401464_AddExpenses.resx">
       <DependentUpon>201406050401464_AddExpenses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201406050404008_AddExpenses_Indexes.resx">
-      <DependentUpon>201406050404008_AddExpenses_Indexes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201406060349435_AddRevenues.resx">
       <DependentUpon>201406060349435_AddRevenues.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201406060350581_AddRevenues_Indexes.resx">
-      <DependentUpon>201406060350581_AddRevenues_Indexes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201406060350581_AddExRe_Indexes.resx">
+      <DependentUpon>201406060350581_AddExRe_Indexes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201406060517465_AddTransactions.resx">
       <DependentUpon>201406060517465_AddTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406060531426_ReduceExpenseCategoryModel.resx">
+      <DependentUpon>201406060531426_ReduceExpenseCategoryModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

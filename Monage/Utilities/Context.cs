@@ -18,10 +18,10 @@ namespace Monage.Utilities {
         
         public DbSet<Revenue> Revenues { get; set; }
         public DbSet<Expense> Expenses { get; set; }
-        public DbSet<ExpenseCategory> ExpenseCategories { get; set; }
 
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+
         public DbSet<Credit> Credits { get; set; }
         public DbSet<Debit> Debits { get; set; }
     }
