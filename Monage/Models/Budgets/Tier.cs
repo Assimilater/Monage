@@ -14,5 +14,9 @@ namespace Monage.Models {
         public TierClass Type { get; set; }
         public virtual Budget Budget { get; set; }
         public virtual List<Step> Steps { get; set; }
+
+        public Tier() {
+            Steps = new List<Step>();
+        }
     }
 }

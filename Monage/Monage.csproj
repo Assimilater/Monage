@@ -188,16 +188,23 @@
     <Compile Include="Migrations\201406050404008_AddExpenses_Indexes.Designer.cs">
       <DependentUpon>201406050404008_AddExpenses_Indexes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201406060349435_AddRevenues.cs" />
+    <Compile Include="Migrations\201406060349435_AddRevenues.Designer.cs">
+      <DependentUpon>201406060349435_AddRevenues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406060350581_AddRevenues_Indexes.cs" />
+    <Compile Include="Migrations\201406060350581_AddRevenues_Indexes.Designer.cs">
+      <DependentUpon>201406060350581_AddRevenues_Indexes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Accounts\Balance.cs" />
     <Compile Include="Models\Accounts\Bank.cs" />
     <Compile Include="Models\Accounts\Bucket.cs" />
-    <Compile Include="Models\Budget\Budget.cs" />
-    <Compile Include="Models\Budget\Step.cs" />
-    <Compile Include="Models\Budget\Tier.cs" />
-    <Compile Include="Models\Funds\Amount.cs" />
-    <Compile Include="Models\Funds\Balance.cs" />
+    <Compile Include="Models\Budgets\Budget.cs" />
+    <Compile Include="Models\Budgets\Step.cs" />
+    <Compile Include="Models\Budgets\Tier.cs" />
     <Compile Include="Models\Funds\Expense.cs" />
-    <Compile Include="Models\Funds\ExpenseCategory.cs" />
+    <Compile Include="Models\Funds\Revenue.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -244,6 +251,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201406050404008_AddExpenses_Indexes.resx">
       <DependentUpon>201406050404008_AddExpenses_Indexes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406060349435_AddRevenues.resx">
+      <DependentUpon>201406060349435_AddRevenues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406060350581_AddRevenues_Indexes.resx">
+      <DependentUpon>201406060350581_AddRevenues_Indexes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

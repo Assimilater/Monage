@@ -23,5 +23,9 @@ namespace Monage.Models {
         public virtual List<Tier> Tiers { get; set; }
 
         #endregion
+
+        public Budget() {
+            Tiers = new List<Tier>();
+        }
     }
 }

@@ -15,7 +15,8 @@ namespace Monage.Utilities {
         public DbSet<Bank> Banks { get; set; }
         public DbSet<Bucket> Buckets { get; set; }
         public DbSet<Balance> Balances { get; set; }
-
+        
+        public DbSet<Revenue> Revenues { get; set; }
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<ExpenseCategory> ExpenseCategories { get; set; }
     }
