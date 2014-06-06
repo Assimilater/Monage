@@ -12,9 +12,7 @@ namespace Monage.Models {
         [Key]
         public int ID { get; set; }
         public Amount Amount { get; set; }
-        [Required]
         public virtual Bank Bank { get; set; }
-        [Required]
         public virtual Bucket Bucket { get; set; }
     }
 
