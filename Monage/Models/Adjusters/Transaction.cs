@@ -18,7 +18,7 @@ namespace Monage.Models {
         public string Details { get; set; }
 
         [Required]
-        public DateTime Created { get; set; }
+        public DateTime Incurred { get; set; }
         public DateTime? Confirmed { get; set; }
 
         public virtual List<Ticket> Tickets { get; set; }
@@ -27,7 +27,7 @@ namespace Monage.Models {
 
         public Transaction() {
             Tickets = new List<Ticket>();
-            Created = DateTime.Now;
+            Incurred = DateTime.Now;
             Confirmed = null;
         }
 
