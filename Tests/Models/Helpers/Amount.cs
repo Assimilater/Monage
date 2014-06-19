@@ -9,7 +9,8 @@ using Monage.Models;
 namespace Tests.Models {
     [TestClass]
     public class Test_Amount {
-        [TestMethod][TestProperty("_Level", "0: One-time")]
+        [TestMethod]
+        [TestProperty("_Level", "0: One-time")]
         public void Amount_StringFormat() {
             Amount a = new Amount(10, 15);
             Assert.IsTrue(
