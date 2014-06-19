@@ -13,7 +13,9 @@ namespace Monage.GUI.Frames {
         public Budgets() {
             InitializeComponent();
         }
+        public override IFrame Clone() { return new Budgets(); }
         public override string TitleAppend() { return "Manage Budgets"; }
         public override bool Ready(string con, string conf) { return Program.ConfirmReady(con, conf); }
+
     }
 }

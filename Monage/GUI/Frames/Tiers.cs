@@ -16,6 +16,11 @@ namespace Monage.GUI.Frames {
             InitializeComponent();
             budget = b;
         }
+        public Tiers(Tiers obj) {
+            InitializeComponent();
+            budget = obj.budget;
+        }
+        public override IFrame Clone() { return new Tiers(this); }
         public override string TitleAppend() { return (budget.ID == 0 ? "New" : "Edit") + " Budget"; }
         public override bool Ready(string con, string conf) { return Program.ConfirmReady(con, conf); }
     }

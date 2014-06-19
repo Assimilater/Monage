@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Data;
 using System.Linq;
@@ -9,16 +10,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Monage.Models;
 using Monage.GUI.Dialogs;
-using System.ComponentModel.DataAnnotations;
 
 namespace Monage.GUI.Frames {
     public partial class Users : CenteredFrame {
         public Users() { InitializeComponent(); }
+        public override IFrame Clone() { return new Users(); }
         public override string TitleAppend() { return "Login"; }
         public override bool Ready(string con, string conf) { return true; }
-        public override void Set(Shell p, Panel c) {
+        public override IFrame Set(Shell p, Panel c) {
             base.Set(p, c);
             getList();
+            return this;
         }
         
         private void getList() {

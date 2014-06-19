@@ -23,11 +23,22 @@ namespace Monage.GUI {
             InitializeComponent();
 
             pre = p;
+
+            bool
+                isGants = Program.db.Users.Count() == 1,
+                noSetting = Settings.ActiveUser == Settings.NullInt,
+                errSetting = Program.db.Users.FirstOrDefault(x => x.ID == Settings.ActiveUser) == null;
+
             Login(
-                Program.db.Users.Count() == 1
+                (isGants && noSetting)
                 ? Program.db.Users.First()
-                : null
+                : ((noSetting || errSetting) ? null
+                : Program.db.Users.First(x => x.ID == Settings.ActiveUser))
             );
+        }
+
+        private void cloneConnectionToolStripMenuItem_Click(object sender, EventArgs e) {
+            Program.Host.AddShell(new Shell(this, active));
         }
 
         public Shell(Shell copy, IFrame view) {
@@ -35,7 +46,7 @@ namespace Monage.GUI {
 
             pre = Program.Host.AddShell(this);
             User = copy.User;
-            SetFrame(view);
+            SetFrame(view.Clone());
         }
 
         public bool Ready(string conf = "Navigation") {
@@ -148,6 +159,7 @@ namespace Monage.GUI {
 
         public void Login(User u) {
             User = u;
+            Settings.ActiveUser = User == null ? -1 : User.ID;
 
             IFrame view =
                 User == null

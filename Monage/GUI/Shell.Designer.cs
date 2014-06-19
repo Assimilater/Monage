@@ -36,6 +36,7 @@
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Content = new System.Windows.Forms.Panel();
+            this.cloneConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +63,7 @@
             this.budgetsToolStripMenuItem,
             this.toolStripSeparator2,
             this.logoutToolStripMenuItem,
+            this.cloneConnectionToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.connectionToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.connectionToolStripMenuItem.MergeIndex = 1;
@@ -147,11 +149,19 @@
             // 
             this.Content.AutoScroll = true;
             this.Content.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Content.Location = new System.Drawing.Point(0, 0);
+            this.Content.Location = new System.Drawing.Point(0, 28);
             this.Content.Name = "Content";
-            this.Content.Size = new System.Drawing.Size(772, 377);
+            this.Content.Size = new System.Drawing.Size(772, 349);
             this.Content.TabIndex = 1;
             this.Content.Resize += new System.EventHandler(this.Content_Resize);
+            // 
+            // cloneConnectionToolStripMenuItem
+            // 
+            this.cloneConnectionToolStripMenuItem.Name = "cloneConnectionToolStripMenuItem";
+            this.cloneConnectionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.cloneConnectionToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
+            this.cloneConnectionToolStripMenuItem.Text = "Clone Connection";
+            this.cloneConnectionToolStripMenuItem.Click += new System.EventHandler(this.cloneConnectionToolStripMenuItem_Click);
             // 
             // Shell
             // 
@@ -186,5 +196,6 @@
         private System.Windows.Forms.ToolStripMenuItem newTransactionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem summaryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cloneConnectionToolStripMenuItem;
     }
 }

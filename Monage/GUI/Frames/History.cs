@@ -13,6 +13,7 @@ namespace Monage.GUI.Frames {
         public History() {
             InitializeComponent();
         }
+        public override IFrame Clone() { return new History(); }
         public override string TitleAppend() { return "Transaction History"; }
         public override bool Ready(string con, string conf) { return true; }
     }

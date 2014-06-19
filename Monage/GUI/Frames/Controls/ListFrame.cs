@@ -18,6 +18,7 @@ namespace Monage.GUI.Frames {
             InitializeComponent();
             lblCategory.Text = category;
         }
+        public override IFrame Clone() { return new ListFrame(lblCategory.Text); }
         public override string TitleAppend() { return "Manage List"; }
         public override bool Ready(string con, string conf) { return true; }
         protected virtual void btnNew_Click(object sender, EventArgs e) { }
@@ -33,11 +34,13 @@ namespace Monage.GUI.Frames {
     }
     public class Buckets : ListFrame {
         public Buckets() : base("Buckets") { }
+        public override IFrame Clone() { return new Buckets(); }
         public override string TitleAppend() { return "Manage Buckets"; }
         public override bool Ready(string con, string conf) { return true; }
-        public override void Set(Shell p, Panel c) {
+        public override IFrame Set(Shell p, Panel c) {
             base.Set(p, c);
             getList();
+            return this;
         }
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
@@ -62,11 +65,13 @@ namespace Monage.GUI.Frames {
     }
     public class Banks : ListFrame {
         public Banks() : base("Banks") { }
+        public override IFrame Clone() { return new Banks(); }
         public override string TitleAppend() { return "Manage Banks"; }
         public override bool Ready(string con, string conf) { return true; }
-        public override void Set(Shell p, Panel c) {
+        public override IFrame Set(Shell p, Panel c) {
             base.Set(p, c);
             getList();
+            return this;
         }
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {

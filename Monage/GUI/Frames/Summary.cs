@@ -13,6 +13,10 @@ namespace Monage.GUI.Frames {
         public Summary() {
             InitializeComponent();
         }
+        public Summary(Summary obj) {
+            InitializeComponent();
+        }
+        public override IFrame Clone() { return new Summary(this); }
         public override string TitleAppend() { return "Financial Summary"; }
         public override bool Ready(string con, string conf) { return true; }
     }

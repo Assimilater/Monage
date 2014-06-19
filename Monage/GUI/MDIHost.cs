@@ -10,22 +10,52 @@ using System.Windows.Forms;
 
 namespace Monage.GUI {
     public partial class MDIHost : Form {
-        private int childFormNumber = 0;
         private const string fileFilter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+        private string IdShell() { return "Connection " + childFormNumber++; }
+        private int childFormNumber = 0;
+        private bool watch = false;
 
-        public MDIHost() { InitializeComponent(); }
+        public MDIHost() {
+            InitializeComponent();
+
+            this.WindowState =
+                Settings.Maximized
+                ? FormWindowState.Maximized
+                : FormWindowState.Normal;
+
+            watch = true;
+
+            ConnectShell(new Shell(IdShell())); 
+        }
+
+        private void MDIHost_Adjust(object sender, EventArgs e) {
+            if (!watch) { return; }
+            
+            if (this.WindowState == FormWindowState.Maximized) {
+                Settings.Maximized = true;
+            } else if (this.WindowState != FormWindowState.Minimized) {
+                Settings.Maximized = false;
+            }
+        }
 
         public string AddShell(Shell c) {
+            ConnectShell(c);
+            return IdShell();
+        }
+
+        private void ConnectShell(Shell c) {
             c.MdiParent = this;
-            return "Connection " + ++childFormNumber;
+            c.Show();
+            c.Activate();
+            if (MdiChildren.Count() == 1) {
+                c.WindowState = FormWindowState.Maximized;
+            }
         }
 
         #region MenuBar Event Handlers
 
         private void NewConnection(object sender, EventArgs e) {
-            Shell childForm = new Shell("Connection " + childFormNumber++);
-            childForm.MdiParent = this;
-            childForm.Show();
+            ConnectShell(new Shell(IdShell())); 
         }
 
         private void ImportDB(object sender, EventArgs e) {
@@ -53,7 +83,7 @@ namespace Monage.GUI {
         private void PrintPreview(object sender, EventArgs e) {
             throw new NotImplementedException();
         }
-        
+
         private void PrintSetup(object sender, EventArgs e) {
             throw new NotImplementedException();
         }
