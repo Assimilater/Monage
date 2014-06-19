@@ -14,14 +14,11 @@ namespace Monage.Utilities {
 
         public DbSet<Bank> Banks { get; set; }
         public DbSet<Bucket> Buckets { get; set; }
-        public DbSet<Balance> Balances { get; set; }
         
         public DbSet<Revenue> Revenues { get; set; }
         public DbSet<Expense> Expenses { get; set; }
 
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<Ticket> Tickets { get; set; }
-
         public DbSet<Credit> Credits { get; set; }
         public DbSet<Debit> Debits { get; set; }
     }

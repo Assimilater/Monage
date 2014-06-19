@@ -20,23 +20,13 @@ namespace Monage.Models {
         public string Description { get; set; }
 
         public virtual User User { get; set; }
-        public virtual List<Balance> Balances { get; set; }
-
-        public Amount Other { get; set; }
 
         #endregion
 
-        public Bank() {
-            Balances = new List<Balance>();
-            Other = new Amount();
-        }
-        public Bank(User user) {
-            Balances = new List<Balance>();
-            Other = new Amount();
-            User = user;
-        }
-
-        public Amount Balance() { return new Amount(this, this.Other); }
+        public Bank() { }
+        public Bank(User user) { User = user; }
+        
+        public Amount GetBalance(Bucket b = null) { return new Amount(this, b); }
 
         public Bank Rename(Pair val) {
             if (val != null) {

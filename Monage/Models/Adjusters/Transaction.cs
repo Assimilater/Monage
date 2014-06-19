@@ -21,12 +21,14 @@ namespace Monage.Models {
         public DateTime Incurred { get; set; }
         public DateTime? Confirmed { get; set; }
 
-        public virtual List<Ticket> Tickets { get; set; }
+        public virtual List<Debit> Debits { get; set; }
+        public virtual List<Credit> Credits { get; set; }
 
         #endregion
 
         public Transaction() {
-            Tickets = new List<Ticket>();
+            Debits = new List<Debit>();
+            Credits = new List<Credit>();
             Incurred = DateTime.Now;
             Confirmed = null;
         }
@@ -39,8 +41,11 @@ namespace Monage.Models {
             if (Valid()) {
                 if (ID == 0) {
                     Program.db.Transactions.Add(this);
-                    foreach (Ticket t in Tickets) {
-                        Program.db.Tickets.Add(t);
+                    foreach (Debit t in Debits) {
+                        Program.db.Debits.Add(t);
+                    }
+                    foreach (Credit t in Credits) {
+                        Program.db.Credits.Add(t);
                     }
                     Program.db.SaveChanges();
                 }

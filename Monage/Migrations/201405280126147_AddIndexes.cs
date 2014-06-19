@@ -7,7 +7,6 @@ namespace Monage.Migrations {
             CreateIndex("dbo.Users", "Username", true, "Unique");
             CreateIndex("dbo.Banks", new string[] { "Name", "User_ID" }, true, "Unique");
             CreateIndex("dbo.Buckets", new string[] { "Name", "User_ID" }, true, "Unique");
-            CreateIndex("dbo.Balances", new string[] { "Bank_ID", "Bucket_ID" }, true, "Unique");
             CreateIndex("dbo.Budgets", new string[] { "Name", "User_ID" }, true, "Unique");
         }
 
@@ -15,7 +14,6 @@ namespace Monage.Migrations {
             DropIndex("dbo.Users", "Unique");
             DropIndex("dbo.Banks", "Unique");
             DropIndex("dbo.Buckets", "Unique");
-            DropIndex("dbo.Balances", "Unique");
             DropIndex("dbo.Budgets", "Unique");
         }
     }

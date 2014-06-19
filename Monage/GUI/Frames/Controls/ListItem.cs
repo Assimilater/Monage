@@ -21,7 +21,7 @@ namespace Monage.GUI.Frames.Controls {
     public class BankListItem : ListItem {
         private Bank bank;
         public BankListItem(Bank b) : base() { bank = b; SetText(); }
-        private void SetText() { Caption = bank.Name; Amount = bank.Balance().ToString(); }
+        private void SetText() { Caption = bank.Name; Amount = bank.GetBalance().ToString(); }
         protected override void refRename_Click(object sender, EventArgs e) {
             try {
                 bank.Rename(
@@ -41,7 +41,7 @@ namespace Monage.GUI.Frames.Controls {
     public class BucketListItem : ListItem {
         private Bucket bucket;
         public BucketListItem(Bucket b) : base() { bucket = b; SetText(); }
-        private void SetText() { Caption = bucket.Name; Amount = bucket.Balance().ToString(); }
+        private void SetText() { Caption = bucket.Name; Amount = bucket.GetBalance().ToString(); }
         protected override void refRename_Click(object sender, EventArgs e) {
             try {
                 bucket.Rename(

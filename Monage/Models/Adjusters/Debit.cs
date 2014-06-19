@@ -11,12 +11,14 @@ namespace Monage.Models {
 
         [Key]
         public int ID { get; set; }
+
         [Required]
         public double Amount { get; set; }
         public virtual Expense Expense { get; set; }
-        public virtual Balance Account { get; set; }
-        public double? AccountBefore { get; set; }
-        public double? AccountAfter { get; set; }
+
+        [Required]
+        public virtual Bank Bank { get; set; }
+        public virtual Bucket Bucket { get; set; }
 
         #endregion
 
