@@ -1,6 +1,5 @@
 ﻿using Monage.GUI;
 using Monage.Migrations;
-using Monage.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,7 +10,6 @@ using System.Windows.Forms;
 
 namespace Monage {
     public static class Program {
-        public const int NameLen = 45;
         public static MDIHost Host;
         public static Context db;
 
@@ -20,19 +18,16 @@ namespace Monage {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Load the application
+            // Show the splash screen
             Splash s = new Splash();
             s.Show();
 
-            // Set Migrations To Update DB on First Connection
-            Database.SetInitializer(
-                new MigrateDatabaseToLatestVersion<Context, Configuration>()
-            );
-
-            // Open database
-            db = new Context();
-            db.Users.FirstOrDefault(); // Make a call to db so migrations are triggered
-            s.Close();                 // Close the splash screen
+            // Run Migrations and Establish Database Connection
+            new MigrateDatabaseToLatestVersion<Context, Configuration>()
+                .InitializeDatabase(Program.db = new Context());
+            
+            // Close the splash screen
+            s.Close();
 
             // Start the application
             Host = new MDIHost();

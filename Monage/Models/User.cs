@@ -13,7 +13,7 @@ namespace Monage.Models {
         public int ID { get; set; }
 
         [Required]
-        [MaxLength(Program.NameLen)]
+        [MaxLength(Settings.NameLen)]
         public string Username { get; set; }
 
         public virtual List<Bank> Banks { get; set; }

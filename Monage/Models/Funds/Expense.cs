@@ -13,10 +13,10 @@ namespace Monage.Models {
         public int ID { get; set; }
 
         [Required]
-        [MaxLength(Program.NameLen)]
+        [MaxLength(Settings.NameLen)]
         public string Name { get; set; }
 
-        [MaxLength(Program.NameLen)]
+        [MaxLength(Settings.NameLen)]
         public string Category { get; set; }
 
         public virtual User User { get; set; }

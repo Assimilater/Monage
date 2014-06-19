@@ -13,7 +13,7 @@ namespace Monage.Models {
         public int ID { get; set; }
 
         [Required]
-        [MaxLength(Program.NameLen)]
+        [MaxLength(Settings.NameLen)]
         public string Brief { get; set; }
         public string Details { get; set; }
 

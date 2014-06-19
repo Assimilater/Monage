@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Monage.Utilities {
+namespace Monage {
     public class Context : DbContext {
         public Context() : base("Monage") { }
 
