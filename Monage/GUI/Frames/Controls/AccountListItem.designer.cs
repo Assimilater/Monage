@@ -1,5 +1,5 @@
 ﻿namespace Monage.GUI.Frames.Controls {
-    partial class ListItem {
+    partial class AccountListItem {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -26,6 +26,7 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblAmount = new System.Windows.Forms.Label();
             this.refRename = new System.Windows.Forms.Label();
+            this.refDelete = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblName
@@ -61,10 +62,24 @@
             this.refRename.Text = "Rename";
             this.refRename.Click += new System.EventHandler(this.refRename_Click);
             // 
+            // refDelete
+            // 
+            this.refDelete.AutoSize = true;
+            this.refDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refDelete.ForeColor = System.Drawing.Color.Blue;
+            this.refDelete.Location = new System.Drawing.Point(81, 53);
+            this.refDelete.Name = "refDelete";
+            this.refDelete.Size = new System.Drawing.Size(58, 20);
+            this.refDelete.TabIndex = 4;
+            this.refDelete.Text = "Delete";
+            this.refDelete.Click += new System.EventHandler(this.refDelete_Click);
+            // 
             // ListItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.refDelete);
             this.Controls.Add(this.refRename);
             this.Controls.Add(this.lblAmount);
             this.Controls.Add(this.lblName);
@@ -80,5 +95,6 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblAmount;
         private System.Windows.Forms.Label refRename;
+        private System.Windows.Forms.Label refDelete;
     }
 }

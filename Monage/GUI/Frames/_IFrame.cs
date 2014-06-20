@@ -16,8 +16,8 @@ namespace Monage.GUI.Frames {
         bool Ready(string con, string conf);
     }
 
-    public abstract class CenteredFrame : UserControl, IFrame {
-    //public class CenteredFrame : UserControl, IFrame {
+    //public abstract class CenteredFrame : UserControl, IFrame {
+    public class CenteredFrame : UserControl, IFrame {
         protected Shell parent;
         protected Panel canvas;
 
@@ -39,16 +39,16 @@ namespace Monage.GUI.Frames {
         }
 
         // Methods to pass on to derrived classes
-        public abstract string TitleAppend();
-        public abstract bool Ready(string con, string conf);
-        public abstract IFrame Clone();
-        //public virtual string TitleAppend() { return ""; }
-        //public virtual bool Ready(string con, string conf) { return true; }
-        //public virtual IFrame Clone() { return new CenteredFrame(); }
+        //public abstract string TitleAppend();
+        //public abstract bool Ready(string con, string conf);
+        //public abstract IFrame Clone();
+        public virtual string TitleAppend() { return ""; }
+        public virtual bool Ready(string con, string conf) { return true; }
+        public virtual IFrame Clone() { return new CenteredFrame(); }
     }
 
-    public abstract class DockedFrame : UserControl, IFrame {
-    //public class DockedFrame : UserControl, IFrame {
+    //public abstract class DockedFrame : UserControl, IFrame {
+    public class DockedFrame : UserControl, IFrame {
         protected Shell parent;
         protected Panel canvas;
 
@@ -72,11 +72,11 @@ namespace Monage.GUI.Frames {
         }
 
         // Methods to pass on to derrived classes
-        public abstract string TitleAppend();
-        public abstract bool Ready(string con, string conf);
-        public abstract IFrame Clone();
-        //public virtual string TitleAppend() { return ""; }
-        //public virtual bool Ready(string con, string conf) { return true; }
-        //public virtual IFrame Clone() { return new DockedFrame(); }
+        //public abstract string TitleAppend();
+        //public abstract bool Ready(string con, string conf);
+        //public abstract IFrame Clone();
+        public virtual string TitleAppend() { return ""; }
+        public virtual bool Ready(string con, string conf) { return true; }
+        public virtual IFrame Clone() { return new DockedFrame(); }
     }
 }

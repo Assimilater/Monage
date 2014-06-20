@@ -1,24 +1,17 @@
-﻿using System;
+﻿using Monage.GUI.Dialogs;
+using Monage.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Monage.Models;
-using Monage.GUI.Dialogs;
-using System.ComponentModel.DataAnnotations;
 
 namespace Monage.GUI.Frames.Controls {
-    public partial class ListItem : UserControl {
-        public ListItem() { InitializeComponent(); }
-        protected string Caption { get { return lblName.Text; } set { lblName.Text = value; } }
-        protected string Amount { get { return lblAmount.Text; } set { lblAmount.Text = value; } }
-        protected virtual void refRename_Click(object sender, EventArgs e) { }
-    }
-    public class BankListItem : ListItem {
+    public class ListItem : UserControl { }
+
+    public class BankListItem : AccountListItem {
         private Bank bank;
         public BankListItem(Bank b) : base() { bank = b; SetText(); }
         private void SetText() { Caption = bank.Name; Amount = bank.GetBalance().ToString(); }
@@ -37,8 +30,12 @@ namespace Monage.GUI.Frames.Controls {
                 MessageBox.Show(Program.Host, ex.Message);
             }
         }
+        protected override void refDelete_Click(object sender, EventArgs e) {
+
+        }
     }
-    public class BucketListItem : ListItem {
+
+    public class BucketListItem : AccountListItem {
         private Bucket bucket;
         public BucketListItem(Bucket b) : base() { bucket = b; SetText(); }
         private void SetText() { Caption = bucket.Name; Amount = bucket.GetBalance().ToString(); }
@@ -57,5 +54,9 @@ namespace Monage.GUI.Frames.Controls {
                 MessageBox.Show(Program.Host, ex.Message);
             }
         }
+        protected override void refDelete_Click(object sender, EventArgs e) {
+
+        }
     }
+
 }

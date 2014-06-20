@@ -14,19 +14,35 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Monage.GUI.Frames {
     public partial class ListFrame : DockedFrame {
+        public string Category {
+            get { return lblCategory.Text; }
+            private set { lblCategory.Text = value; }
+        }
+        protected ListPane Pane { get; set; }
         protected ListFrame(string category) {
             InitializeComponent();
-            lblCategory.Text = category;
+            this.Category = category;
         }
-        public override IFrame Clone() { return new ListFrame(lblCategory.Text); }
-        public override string TitleAppend() { return "Manage List"; }
-        public override bool Ready(string con, string conf) { return true; }
+        public override IFrame Clone() { return new ListFrame(this.Category); }
+        public override string TitleAppend() { return "Manage " + this.Category; }
+        public override IFrame Set(Shell p, Panel c) {
+            base.Set(p, c);
+            getList();
+            return this;
+        }
+        public override bool Ready(string con, string conf) {
+            return
+                this.Pane != null
+                ? this.Pane.Ready(con, conf)
+                : true;
+        }
         protected virtual void btnNew_Click(object sender, EventArgs e) { }
+        protected virtual void getList() { }
         protected void setList(List<ListItem> items) {
             lbxList.Controls.Clear();
             int cnt = 0;
             foreach (ListItem item in items) {
-                item.Location = new Point(3, 7 + 80 * cnt);
+                item.Location = new Point(3, 7 + ((item.Height) * cnt));
                 lbxList.Controls.Add(item);
                 ++cnt;
             }
@@ -35,19 +51,12 @@ namespace Monage.GUI.Frames {
     public class Buckets : ListFrame {
         public Buckets() : base("Buckets") { }
         public override IFrame Clone() { return new Buckets(); }
-        public override string TitleAppend() { return "Manage Buckets"; }
-        public override bool Ready(string con, string conf) { return true; }
-        public override IFrame Set(Shell p, Panel c) {
-            base.Set(p, c);
-            getList();
-            return this;
-        }
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
                 new Bucket(parent.User).Rename(
                     PairDialog.ShowDialog(
                         "Enter a name and description  for your new bucket",
-                        "Create Bank"
+                        "Create Bucket"
                     )
                 );
                 getList();
@@ -55,7 +64,7 @@ namespace Monage.GUI.Frames {
                 MessageBox.Show(Program.Host, ex.Message);
             }
         }
-        private void getList() {
+        protected override void getList() {
             List<ListItem> list = new List<ListItem>();
             foreach (Bucket bucket in Program.db.Buckets.Where(x => x.User.ID == parent.User.ID).OrderBy(x => x.Name).ToList()) {
                 list.Add(new BucketListItem(bucket));
@@ -66,13 +75,6 @@ namespace Monage.GUI.Frames {
     public class Banks : ListFrame {
         public Banks() : base("Banks") { }
         public override IFrame Clone() { return new Banks(); }
-        public override string TitleAppend() { return "Manage Banks"; }
-        public override bool Ready(string con, string conf) { return true; }
-        public override IFrame Set(Shell p, Panel c) {
-            base.Set(p, c);
-            getList();
-            return this;
-        }
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
                 new Bank(parent.User).Rename(
@@ -86,7 +88,32 @@ namespace Monage.GUI.Frames {
                 MessageBox.Show(Program.Host, ex.Message);
             }
         }
-        private void getList() {
+        protected override void getList() {
+            List<ListItem> list = new List<ListItem>();
+            foreach (Bank bank in Program.db.Banks.Where(x => x.User.ID == parent.User.ID).OrderBy(x => x.Name).ToList()) {
+                list.Add(new BankListItem(bank));
+            }
+            setList(list);
+        }
+    }
+    public class Budgets : ListFrame {
+        public Budgets() : base("Budgets") { }
+        public override IFrame Clone() { return new Budgets(); }
+
+        protected override void btnNew_Click(object sender, EventArgs e) {
+            try {
+                new Budget(parent.User).Rename(
+                    PairDialog.ShowDialog(
+                        "Enter a name and description for your new budget",
+                        "Create Budget"
+                    )
+                );
+                getList();
+            } catch (ValidationException ex) {
+                MessageBox.Show(Program.Host, ex.Message);
+            }
+        }
+        protected override void getList() {
             List<ListItem> list = new List<ListItem>();
             foreach (Bank bank in Program.db.Banks.Where(x => x.User.ID == parent.User.ID).OrderBy(x => x.Name).ToList()) {
                 list.Add(new BankListItem(bank));
