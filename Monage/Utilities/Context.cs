@@ -21,5 +21,9 @@ namespace Monage {
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Credit> Credits { get; set; }
         public DbSet<Debit> Debits { get; set; }
+
+        //public DbSet<Budget> Budgets { get; set; }
+        //public DbSet<Tier> Tiers { get; set; }
+        //public DbSet<Step> Step { get; set; }
     }
 }
