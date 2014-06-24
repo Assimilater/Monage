@@ -91,14 +91,23 @@
     <Compile Include="GUI\Dialogs\InputDialog.Designer.cs">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Frames\Controls\AccountListPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Frames\Controls\AccountListPane.Designer.cs">
+      <DependentUpon>AccountListPane.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Frames\Controls\BudgetListItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GUI\Frames\Controls\BudgetListItem.Designer.cs">
       <DependentUpon>BudgetListItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\ListItem.cs">
+    <Compile Include="GUI\Frames\Controls\BudgetListPane.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Frames\Controls\BudgetListPane.Designer.cs">
+      <DependentUpon>BudgetListPane.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Frames\Controls\ListFrame.cs">
       <SubType>UserControl</SubType>
@@ -111,12 +120,6 @@
     </Compile>
     <Compile Include="GUI\Frames\Controls\AccountListItem.designer.cs">
       <DependentUpon>AccountListItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Frames\Controls\ListPane.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\Frames\Controls\ListPane.Designer.cs">
-      <DependentUpon>ListPane.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Frames\_iFrame.cs">
       <SubType>UserControl</SubType>
@@ -247,14 +250,11 @@
     <EmbeddedResource Include="GUI\Frames\Controls\BudgetListItem.resx">
       <DependentUpon>BudgetListItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Frames\Controls\ListFrame.resx">
-      <DependentUpon>ListFrame.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Frames\Controls\AccountListItem.resx">
       <DependentUpon>AccountListItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Frames\Controls\ListPane.resx">
-      <DependentUpon>ListPane.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Frames\Controls\ListFrame.resx">
+      <DependentUpon>ListFrame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\MDIHost.resx">
       <DependentUpon>MDIHost.cs</DependentUpon>

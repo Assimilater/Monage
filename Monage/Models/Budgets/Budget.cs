@@ -43,7 +43,7 @@ namespace Monage.Models {
         public void Save() {
             Validate();
             try {
-                if (ID == 0) { Program.db.Budgets.Add(this); }
+                //if (ID == 0) { Program.db.Budgets.Add(this); }
                 Program.db.SaveChanges();
             } catch {
                 throw new ValidationException("An unkown exception has occured");
@@ -60,12 +60,12 @@ namespace Monage.Models {
                 }
 
                 if (Name != val.Name && val.Name != "") {
-                    if (Program.db.Budgets.Where(x => x.User.ID == User.ID && x.Name == val.Name).Any()) {
-                        throw new ValidationException("A budget named \"" + val.Name + "\" already exists");
-                    } else {
-                        Name = val.Name;
-                        changes = true;
-                    }
+                    //if (Program.db.Budgets.Where(x => x.User.ID == User.ID && x.Name == val.Name).Any()) {
+                    //    throw new ValidationException("A budget named \"" + val.Name + "\" already exists");
+                    //} else {
+                    //    Name = val.Name;
+                    //    changes = true;
+                    //}
                 }
 
                 if (changes && ID == 0) {

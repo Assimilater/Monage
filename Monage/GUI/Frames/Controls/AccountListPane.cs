@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Monage.GUI.Frames.Controls {
-    public partial class ListPane : UserControl {
-        public ListPane() {
+    public partial class AccountListPane : ListPane {
+        public AccountListPane() {
             InitializeComponent();
         }
-        public bool Ready(string con, string conf) { return true; }
     }
 }

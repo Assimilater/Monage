@@ -1,15 +1,24 @@
-﻿using Monage.GUI.Dialogs;
-using Monage.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Monage.Models;
+using Monage.GUI.Dialogs;
+using System.ComponentModel.DataAnnotations;
 
 namespace Monage.GUI.Frames.Controls {
-    public class ListItem : UserControl { }
+    public partial class AccountListItem : ListItem {
+        public AccountListItem() { InitializeComponent(); }
+        protected string Caption { get { return lblName.Text; } set { lblName.Text = value; } }
+        protected string Amount { get { return lblAmount.Text; } set { lblAmount.Text = value; } }
+        protected virtual void refRename_Click(object sender, EventArgs e) { }
+        protected virtual void refDelete_Click(object sender, EventArgs e) { }
+    }
 
     public class BankListItem : AccountListItem {
         private Bank bank;

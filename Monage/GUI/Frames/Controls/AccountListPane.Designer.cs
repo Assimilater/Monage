@@ -1,5 +1,5 @@
 ﻿namespace Monage.GUI.Frames.Controls {
-    partial class ListPane {
+    partial class AccountListPane {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -23,16 +23,8 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.SuspendLayout();
-            // 
-            // ListPane
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "ListPane";
-            this.Size = new System.Drawing.Size(652, 488);
-            this.ResumeLayout(false);
-
         }
 
         #endregion

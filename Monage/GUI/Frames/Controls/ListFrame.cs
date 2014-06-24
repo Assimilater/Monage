@@ -13,6 +13,11 @@ using Monage.GUI.Dialogs;
 using System.ComponentModel.DataAnnotations;
 
 namespace Monage.GUI.Frames {
+    public class ListItem : UserControl { }
+    public class ListPane : UserControl {
+        public virtual bool Ready(string con, string conf) { return true; }
+    }
+
     public partial class ListFrame : DockedFrame {
         public string Category {
             get { return lblCategory.Text; }
@@ -48,6 +53,7 @@ namespace Monage.GUI.Frames {
             }
         }
     }
+    
     public class Buckets : ListFrame {
         public Buckets() : base("Buckets") { }
         public override IFrame Clone() { return new Buckets(); }
@@ -72,6 +78,7 @@ namespace Monage.GUI.Frames {
             setList(list);
         }
     }
+
     public class Banks : ListFrame {
         public Banks() : base("Banks") { }
         public override IFrame Clone() { return new Banks(); }
@@ -96,6 +103,7 @@ namespace Monage.GUI.Frames {
             setList(list);
         }
     }
+
     public class Budgets : ListFrame {
         public Budgets() : base("Budgets") { }
         public override IFrame Clone() { return new Budgets(); }
