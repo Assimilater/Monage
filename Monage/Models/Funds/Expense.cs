@@ -26,6 +26,10 @@ namespace Monage.Models {
 
         #endregion
 
+        public static List<Expense> Enumerate(User u) {
+            return Program.db.Expenses.Where(x => x.User.ID == u.ID).OrderBy(x => x.Name).ToList();
+        }
+
         public Expense() {
             TaxDeductible = false;
         }

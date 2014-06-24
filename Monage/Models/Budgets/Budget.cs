@@ -24,6 +24,11 @@ namespace Monage.Models {
 
         #endregion
 
+        public static List<Budget> Enumerate(User u) {
+            //return Program.db.Budgets.Where(x => x.User.ID == u.ID).OrderBy(x => x.Name).ToList();
+            return new List<Budget>();
+        }
+
         public Budget() {
             Tiers = new List<Tier>();
         }

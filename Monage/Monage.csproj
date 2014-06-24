@@ -250,6 +250,9 @@
     <EmbeddedResource Include="GUI\Frames\Lists\ListFrame.resx">
       <DependentUpon>ListFrame.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Frames\SummaryFrame.resx">
+      <DependentUpon>SummaryFrame.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Frames\TransactionFrame.resx">
       <DependentUpon>TransactionFrame.cs</DependentUpon>
     </EmbeddedResource>

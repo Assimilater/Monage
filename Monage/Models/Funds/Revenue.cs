@@ -21,5 +21,10 @@ namespace Monage.Models {
         public virtual User User { get; set; }
 
         #endregion
+
+        public static List<Revenue> Enumerate(User u) {
+            return Program.db.Revenues.Where(x => x.User.ID == u.ID).OrderBy(x => x.Name).ToList();
+        }
+
     }
 }

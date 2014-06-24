@@ -8,8 +8,7 @@ using System.Windows.Forms;
 
 namespace Monage.GUI.Frames {
     public interface IFrame {
-        IFrame Clone();
-        IFrame Set(Shell p, Panel c);
+        IFrame Set(Shell connection, Panel canvas);
         IFrame Adjust();
         
         string TitleAppend();
@@ -18,22 +17,22 @@ namespace Monage.GUI.Frames {
 
     //public abstract class CenteredFrame : UserControl, IFrame {
     public class CenteredFrame : UserControl, IFrame {
-        protected Shell parent;
-        protected Panel canvas;
+        protected Shell Connection { get; private set; }
+        protected Panel Canvas { get; private set; }
 
-        public virtual IFrame Set(Shell p, Panel c) {
-            parent = p;
-            canvas = c;
+        public virtual IFrame Set(Shell connection, Panel canvas) {
+            Connection = connection;
+            Canvas = canvas;
 
-            canvas.Controls.Clear();
-            canvas.Controls.Add(this);
+            Canvas.Controls.Clear();
+            Canvas.Controls.Add(this);
             Adjust();
             return this;
         }
         public virtual IFrame Adjust() {
             this.Location = new Point(
-                canvas.Width / 2 - (this.Width / 2),
-                canvas.Height / 2 - (this.Height / 2)
+                Canvas.Width / 2 - (this.Width / 2),
+                Canvas.Height / 2 - (this.Height / 2)
             );
             return this;
         }
@@ -41,24 +40,22 @@ namespace Monage.GUI.Frames {
         // Methods to pass on to derrived classes
         //public abstract string TitleAppend();
         //public abstract bool Ready(string con, string conf);
-        //public abstract IFrame Clone();
         public virtual string TitleAppend() { return ""; }
         public virtual bool Ready(string con, string conf) { return true; }
-        public virtual IFrame Clone() { return new CenteredFrame(); }
     }
 
     //public abstract class DockedFrame : UserControl, IFrame {
     public class DockedFrame : UserControl, IFrame {
-        protected Shell parent;
-        protected Panel canvas;
+        protected Shell Connection { get; private set; }
+        protected Panel Canvas { get; private set; }
 
         public DockedFrame() {
             this.AutoScroll = true;
         }
 
-        public virtual IFrame Set(Shell p, Panel c) {
-            parent = p;
-            canvas = c;
+        public virtual IFrame Set(Shell connection, Panel canvas) {
+            Connection = connection;
+            Canvas = canvas;
 
             canvas.Controls.Clear();
             canvas.Controls.Add(this);
@@ -74,9 +71,7 @@ namespace Monage.GUI.Frames {
         // Methods to pass on to derrived classes
         //public abstract string TitleAppend();
         //public abstract bool Ready(string con, string conf);
-        //public abstract IFrame Clone();
         public virtual string TitleAppend() { return ""; }
         public virtual bool Ready(string con, string conf) { return true; }
-        public virtual IFrame Clone() { return new DockedFrame(); }
     }
 }

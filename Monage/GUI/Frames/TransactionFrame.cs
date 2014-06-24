@@ -7,14 +7,63 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Monage.Models;
 
 namespace Monage.GUI.Frames {
     public partial class TransactionFrame : DockedFrame {
-        public TransactionFrame() {
+        Transaction Ticket;
+        public TransactionFrame(Transaction ticket = null) {
             InitializeComponent();
+            Ticket = ticket == null ? new Transaction() : ticket;
+
+            /*
+            dtConfirm.ValueChanged += (s, e) =>
+                txtDetails.Text =
+                    "Is Checked: " + dtConfirm.Checked.ToString() + Environment.NewLine +
+                    dtConfirm.Value.ToString();
+             */
         }
-        public override IFrame Clone() { return new TransactionFrame(); }
         public override string TitleAppend() { return "New Transaction"; }
         public override bool Ready(string con, string conf) { return Program.ConfirmReady(con, conf); }
+
+        public override IFrame Set(Shell connection, Panel canvas) {
+            base.Set(connection, canvas);
+
+            BindingList<KeyValuePair<int, string>> Banks = new BindingList<KeyValuePair<int, string>>();
+            foreach (Bank b in Bank.Enumerate(Connection.User)) {
+                Banks.Add(new KeyValuePair<int, string>(b.ID, b.Name));
+            }
+
+            cbxBanks.DataSource = Banks;
+            cbxBanks.ValueMember = "Key";
+            cbxBanks.DisplayMember = "Value";
+
+            cbxExpense.Hide();
+            return this;
+        }
+
+        private void dtConfirm_ValueChanged(object sender, EventArgs e) {
+
+        }
+
+        private void dtRecord_ValueChanged(object sender, EventArgs e) {
+
+        }
+
+        private void txtDetails_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void cbxCreditType_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
+
+        private void cbxExpense_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
+
+        private void cbxBanks_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
     }
 }

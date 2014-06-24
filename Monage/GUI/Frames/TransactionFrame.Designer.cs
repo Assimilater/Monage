@@ -40,6 +40,7 @@
             this.txtDetails.Name = "txtDetails";
             this.txtDetails.Size = new System.Drawing.Size(558, 122);
             this.txtDetails.TabIndex = 1;
+            this.txtDetails.TextChanged += new System.EventHandler(this.txtDetails_TextChanged);
             // 
             // cbxCreditType
             // 
@@ -53,6 +54,7 @@
             this.cbxCreditType.Name = "cbxCreditType";
             this.cbxCreditType.Size = new System.Drawing.Size(232, 26);
             this.cbxCreditType.TabIndex = 2;
+            this.cbxCreditType.SelectedIndexChanged += new System.EventHandler(this.cbxCreditType_SelectedIndexChanged);
             // 
             // dtConfirm
             // 
@@ -66,6 +68,7 @@
             this.dtConfirm.Size = new System.Drawing.Size(153, 24);
             this.dtConfirm.TabIndex = 3;
             this.dtConfirm.Value = new System.DateTime(2014, 6, 23, 0, 0, 0, 0);
+            this.dtConfirm.ValueChanged += new System.EventHandler(this.dtConfirm_ValueChanged);
             // 
             // label1
             // 
@@ -98,6 +101,7 @@
             this.dtRecord.Size = new System.Drawing.Size(153, 24);
             this.dtRecord.TabIndex = 6;
             this.dtRecord.Value = new System.DateTime(2014, 6, 23, 0, 0, 0, 0);
+            this.dtRecord.ValueChanged += new System.EventHandler(this.dtRecord_ValueChanged);
             // 
             // cbxBanks
             // 
@@ -111,6 +115,7 @@
             this.cbxBanks.Name = "cbxBanks";
             this.cbxBanks.Size = new System.Drawing.Size(232, 26);
             this.cbxBanks.TabIndex = 8;
+            this.cbxBanks.SelectedIndexChanged += new System.EventHandler(this.cbxBanks_SelectedIndexChanged);
             // 
             // cbxExpense
             // 
@@ -124,6 +129,7 @@
             this.cbxExpense.Name = "cbxExpense";
             this.cbxExpense.Size = new System.Drawing.Size(232, 26);
             this.cbxExpense.TabIndex = 9;
+            this.cbxExpense.SelectedIndexChanged += new System.EventHandler(this.cbxExpense_SelectedIndexChanged);
             // 
             // TransactionFrame
             // 

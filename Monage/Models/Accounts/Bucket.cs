@@ -22,6 +22,10 @@ namespace Monage.Models {
 
         #endregion
 
+        public static List<Bucket> Enumerate(User u) {
+            return Program.db.Buckets.Where(x => x.User.ID == u.ID).OrderBy(x => x.Name).ToList();
+        }
+
         public Bucket() { }
         public Bucket(User user) { User = user; }
 

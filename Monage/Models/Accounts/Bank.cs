@@ -23,6 +23,10 @@ namespace Monage.Models {
 
         #endregion
 
+        public static List<Bank> Enumerate(User u) {
+            return Program.db.Banks.Where(x => x.User.ID == u.ID).OrderBy(x => x.Name).ToList();
+        }
+
         public Bank() { }
         public Bank(User user) { User = user; }
         

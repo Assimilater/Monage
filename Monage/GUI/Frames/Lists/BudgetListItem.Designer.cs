@@ -1,5 +1,5 @@
 ﻿namespace Monage.GUI.Frames.Controls {
-    partial class BudgetListItem {
+    partial class FundListItem {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -63,14 +63,14 @@
             this.lblName.TabIndex = 5;
             this.lblName.Text = "Name";
             // 
-            // BudgetListItem
+            // FundListItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.refDelete);
             this.Controls.Add(this.refRename);
             this.Controls.Add(this.lblName);
-            this.Name = "BudgetListItem";
+            this.Name = "FundListItem";
             this.Size = new System.Drawing.Size(275, 50);
             this.ResumeLayout(false);
             this.PerformLayout();

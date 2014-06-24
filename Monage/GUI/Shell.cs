@@ -46,7 +46,7 @@ namespace Monage.GUI {
 
             pre = Program.Host.AddShell(this);
             User = copy.User;
-            SetFrame(view.Clone());
+            SetFrame(new SummaryFrame());
         }
 
         public bool Ready(string conf = "Navigation") {
@@ -88,18 +88,11 @@ namespace Monage.GUI {
         }
 
         private void UpdateMenuBar() {
-            summaryToolStripMenuItem.Visible = 
+            accountSummaryToolStripMenuItem.Visible = 
             newTransactionToolStripMenuItem.Visible =
-            historyToolStripMenuItem.Visible =
+            transactionHistoryToolStripMenuItem.Visible =
 
             toolStripSeparator1.Visible =
-            
-            banksToolStripMenuItem.Visible =
-            bucketsToolStripMenuItem.Visible =
-            budgetsToolStripMenuItem.Visible =
-            
-            toolStripSeparator2.Visible =
-                        
             logoutToolStripMenuItem.Visible =
 
                 User != null;
@@ -124,24 +117,6 @@ namespace Monage.GUI {
         private void historyToolStripMenuItem_Click(object sender, EventArgs e) {
             if (User != null) {
                 SetFrame(new HistoryFrame());
-            }
-        }
-
-        private void banksToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (User != null) {
-                SetFrame(new BanksFrame());
-            }
-        }
-
-        private void bucketsToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (User != null) {
-                SetFrame(new BucketsFrame());
-            }
-        }
-
-        private void budgetsToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (User != null) {
-                SetFrame(new BudgetsFrame());
             }
         }
 

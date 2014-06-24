@@ -13,29 +13,39 @@ using Monage.Models;
 using Monage.GUI.Dialogs;
 
 namespace Monage.GUI.Frames {
-    public partial class ListFrame : DockedFrame {
+    public partial class ListFrame : UserControl {
         public string Category {
             get { return lblCategory.Text; }
             private set { lblCategory.Text = value; }
         }
-        protected ListPane Pane { get; set; }
         protected ListFrame(string category) {
             InitializeComponent();
             this.Category = category;
+            SelectedItem = null;
         }
-        public override IFrame Clone() { return new ListFrame(this.Category); }
-        public override string TitleAppend() { return "Manage " + this.Category; }
-        public override IFrame Set(Shell p, Panel c) {
-            base.Set(p, c);
+
+        protected User User { get; set; }
+        protected SummaryFrame ParentFrame { get; set; }
+        public ListFrame Set(SummaryFrame parent, User user) {
+            this.ParentFrame = parent;
+            this.User = user;
             getList();
             return this;
         }
-        public override bool Ready(string con, string conf) {
-            return
-                this.Pane != null
-                ? this.Pane.Ready(con, conf)
-                : true;
+
+        protected ListItem SelectedItem { get; set; }
+        public void SelectItem(ListItem i) {
+            if (this.SelectedItem != null) { this.SelectedItem.Deselect(); }
+            this.SelectedItem = i;
         }
+        public ListFrame Deselect() {
+            if (this.SelectedItem != null) {
+                this.SelectedItem.Deselect();
+                this.SelectedItem = null;
+            }
+            return this;
+        }
+
         protected virtual void btnNew_Click(object sender, EventArgs e) { }
         protected virtual void getList() { }
         protected void setList(List<ListItem> items) {
@@ -48,13 +58,50 @@ namespace Monage.GUI.Frames {
             }
         }
     }
+
+    public class ListItem : UserControl {
+        public ListItem() { this.Click += ListItem_Click; }
+        protected virtual ListPane getPane() { return null; }
+
+        protected ListFrame Frame { get; set; }
+        public ListItem SetFrame(ListFrame frame) {
+            this.Frame = frame;
+            return this;
+        }
+
+        protected void ListItem_Click(object sender, EventArgs e) {
+            ListPane p = this.getPane();
+            if (p != null) {
+                this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+                Frame.SelectItem(this);
+            }
+        }
+
+        public ListItem Deselect() {
+            this.BackColor = System.Drawing.SystemColors.Control;
+            return this;
+        }
+
+    }
+
+    public class ListPane : UserControl {
+        protected User User { get; set; }
+        public ListPane Set(User user) {
+            this.User = user;
+            this.getInfo();
+            return this;
+        }
+
+        protected virtual ListPane getInfo() { return this; }
+        public virtual bool Ready(string con, string conf) { return true; }
+    }
     
     public class BucketsFrame : ListFrame {
         public BucketsFrame() : base("Buckets") { }
-        public override IFrame Clone() { return new BucketsFrame(); }
+
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
-                new Bucket(parent.User).Rename(
+                new Bucket(this.User).Rename(
                     PairDialog.ShowDialog(
                         "Enter a name and description  for your new bucket",
                         "Create Bucket"
@@ -65,10 +112,11 @@ namespace Monage.GUI.Frames {
                 MessageBox.Show(Program.Host, ex.Message);
             }
         }
+
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
-            foreach (Bucket bucket in Program.db.Buckets.Where(x => x.User.ID == parent.User.ID).OrderBy(x => x.Name).ToList()) {
-                list.Add(new BucketListItem(bucket));
+            foreach (Bucket bucket in Bucket.Enumerate(this.User)) {
+                list.Add(new BucketListItem(bucket).SetFrame(this));
             }
             setList(list);
         }
@@ -76,10 +124,10 @@ namespace Monage.GUI.Frames {
 
     public class BanksFrame : ListFrame {
         public BanksFrame() : base("Banks") { }
-        public override IFrame Clone() { return new BanksFrame(); }
+
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
-                new Bank(parent.User).Rename(
+                new Bank(this.User).Rename(
                     PairDialog.ShowDialog(
                         "Enter a name and description for your new bank",
                         "Create Bank"
@@ -90,10 +138,11 @@ namespace Monage.GUI.Frames {
                 MessageBox.Show(Program.Host, ex.Message);
             }
         }
+
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
-            foreach (Bank bank in Program.db.Banks.Where(x => x.User.ID == parent.User.ID).OrderBy(x => x.Name).ToList()) {
-                list.Add(new BankListItem(bank));
+            foreach (Bank bank in Bank.Enumerate(this.User)) {
+                list.Add(new BankListItem(bank).SetFrame(this));
             }
             setList(list);
         }
@@ -101,32 +150,82 @@ namespace Monage.GUI.Frames {
 
     public class BudgetsFrame : ListFrame {
         public BudgetsFrame() : base("Budgets") { }
-        public override IFrame Clone() { return new BudgetsFrame(); }
 
-        protected override void btnNew_Click(object sender, EventArgs e) {
-            try {
-                new Budget(parent.User).Rename(
-                    PairDialog.ShowDialog(
-                        "Enter a name and description for your new budget",
-                        "Create Budget"
-                    )
-                );
-                getList();
-            } catch (ValidationException ex) {
-                MessageBox.Show(Program.Host, ex.Message);
-            }
-        }
+        //protected override void btnNew_Click(object sender, EventArgs e) {
+        //    try {
+        //        // *FIX*
+        //        new Budget(this.User).Rename(
+        //            PairDialog.ShowDialog(
+        //                "Enter a name and description for your new budget",
+        //                "Create Budget"
+        //            )
+        //        );
+        //        getList();
+        //    } catch (ValidationException ex) {
+        //        MessageBox.Show(Program.Host, ex.Message);
+        //    }
+        //}
+
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
-            foreach (Bank bank in Program.db.Banks.Where(x => x.User.ID == parent.User.ID).OrderBy(x => x.Name).ToList()) {
-                list.Add(new BankListItem(bank));
+            foreach (Budget budget in Budget.Enumerate(this.User)) {
+                list.Add(new BudgetListItem(budget).SetFrame(this));
             }
             setList(list);
         }
     }
 
-    public class ListItem : UserControl { }
-    public class ListPane : UserControl {
-        public virtual bool Ready(string con, string conf) { return true; }
+    public class ExpenseFrame : ListFrame {
+        public ExpenseFrame() : base("Expense Categories") { }
+
+        //protected override void btnNew_Click(object sender, EventArgs e) {
+        //    try {
+        //        // *FIX*
+        //        new Bank(this.User).Rename(
+        //            PairDialog.ShowDialog(
+        //                "Enter a name and description for your new bank",
+        //                "Create Bank"
+        //            )
+        //        );
+        //        getList();
+        //    } catch (ValidationException ex) {
+        //        MessageBox.Show(Program.Host, ex.Message);
+        //    }
+        //}
+
+        protected override void getList() {
+            List<ListItem> list = new List<ListItem>();
+            foreach (Expense expense in Expense.Enumerate(this.User)) {
+                list.Add(new ExpenseListItem(expense).SetFrame(this));
+            }
+            setList(list);
+        }
+    }
+
+    public class RevenueFrame : ListFrame {
+        public RevenueFrame() : base("Revenue Sources") { }
+
+        //protected override void btnNew_Click(object sender, EventArgs e) {
+        //    try {
+        //        // *FIX*
+        //        new Bank(this.User).Rename(
+        //            PairDialog.ShowDialog(
+        //                "Enter a name and description for your new bank",
+        //                "Create Bank"
+        //            )
+        //        );
+        //        getList();
+        //    } catch (ValidationException ex) {
+        //        MessageBox.Show(Program.Host, ex.Message);
+        //    }
+        //}
+
+        protected override void getList() {
+            List<ListItem> list = new List<ListItem>();
+            foreach (Revenue revenue in Revenue.Enumerate(this.User)) {
+                list.Add(new RevenueListItem(revenue).SetFrame(this));
+            }
+            setList(list);
+        }
     }
 }

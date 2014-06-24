@@ -13,7 +13,11 @@ using Monage.GUI.Dialogs;
 
 namespace Monage.GUI.Frames.Controls {
     public partial class AccountListItem : ListItem {
-        public AccountListItem() { InitializeComponent(); }
+        public AccountListItem() {
+            InitializeComponent();
+            lblName.Click += this.ListItem_Click;
+            lblAmount.Click += this.ListItem_Click;
+        }
         protected string Caption { get { return lblName.Text; } set { lblName.Text = value; } }
         protected string Amount { get { return lblAmount.Text; } set { lblAmount.Text = value; } }
         protected virtual void refRename_Click(object sender, EventArgs e) { }

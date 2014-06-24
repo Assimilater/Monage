@@ -25,18 +25,14 @@
         private void InitializeComponent() {
             this.MenuBar = new System.Windows.Forms.MenuStrip();
             this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.summaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accountSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.banksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bucketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.budgetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cloneConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Content = new System.Windows.Forms.Panel();
-            this.cloneConnectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,14 +50,10 @@
             // connectionToolStripMenuItem
             // 
             this.connectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.summaryToolStripMenuItem,
+            this.accountSummaryToolStripMenuItem,
             this.newTransactionToolStripMenuItem,
-            this.historyToolStripMenuItem,
+            this.transactionHistoryToolStripMenuItem,
             this.toolStripSeparator1,
-            this.banksToolStripMenuItem,
-            this.bucketsToolStripMenuItem,
-            this.budgetsToolStripMenuItem,
-            this.toolStripSeparator2,
             this.logoutToolStripMenuItem,
             this.cloneConnectionToolStripMenuItem,
             this.closeToolStripMenuItem});
@@ -73,10 +65,11 @@
             // 
             // summaryToolStripMenuItem
             // 
-            this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
-            this.summaryToolStripMenuItem.Text = "&Summary";
-            this.summaryToolStripMenuItem.Click += new System.EventHandler(this.summaryToolStripMenuItem_Click);
+            this.accountSummaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
+            this.accountSummaryToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.accountSummaryToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
+            this.accountSummaryToolStripMenuItem.Text = "Account &Summary";
+            this.accountSummaryToolStripMenuItem.Click += new System.EventHandler(this.summaryToolStripMenuItem_Click);
             // 
             // newTransactionToolStripMenuItem
             // 
@@ -88,45 +81,16 @@
             // 
             // historyToolStripMenuItem
             // 
-            this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            this.historyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.historyToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
-            this.historyToolStripMenuItem.Text = "Transaction &History";
-            this.historyToolStripMenuItem.Click += new System.EventHandler(this.historyToolStripMenuItem_Click);
+            this.transactionHistoryToolStripMenuItem.Name = "historyToolStripMenuItem";
+            this.transactionHistoryToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
+            this.transactionHistoryToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
+            this.transactionHistoryToolStripMenuItem.Text = "Transaction &History";
+            this.transactionHistoryToolStripMenuItem.Click += new System.EventHandler(this.historyToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(255, 6);
-            // 
-            // banksToolStripMenuItem
-            // 
-            this.banksToolStripMenuItem.Name = "banksToolStripMenuItem";
-            this.banksToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.banksToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
-            this.banksToolStripMenuItem.Text = "B&anks";
-            this.banksToolStripMenuItem.Click += new System.EventHandler(this.banksToolStripMenuItem_Click);
-            // 
-            // bucketsToolStripMenuItem
-            // 
-            this.bucketsToolStripMenuItem.Name = "bucketsToolStripMenuItem";
-            this.bucketsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.bucketsToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
-            this.bucketsToolStripMenuItem.Text = "B&uckets";
-            this.bucketsToolStripMenuItem.Click += new System.EventHandler(this.bucketsToolStripMenuItem_Click);
-            // 
-            // budgetsToolStripMenuItem
-            // 
-            this.budgetsToolStripMenuItem.Name = "budgetsToolStripMenuItem";
-            this.budgetsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D3)));
-            this.budgetsToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
-            this.budgetsToolStripMenuItem.Text = "&Budgets";
-            this.budgetsToolStripMenuItem.Click += new System.EventHandler(this.budgetsToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(255, 6);
             // 
             // logoutToolStripMenuItem
             // 
@@ -136,6 +100,14 @@
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
             this.logoutToolStripMenuItem.Text = "&Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            // 
+            // cloneConnectionToolStripMenuItem
+            // 
+            this.cloneConnectionToolStripMenuItem.Name = "cloneConnectionToolStripMenuItem";
+            this.cloneConnectionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.cloneConnectionToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
+            this.cloneConnectionToolStripMenuItem.Text = "Clone Connection";
+            this.cloneConnectionToolStripMenuItem.Click += new System.EventHandler(this.cloneConnectionToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
@@ -149,19 +121,11 @@
             // 
             this.Content.AutoScroll = true;
             this.Content.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Content.Location = new System.Drawing.Point(0, 28);
+            this.Content.Location = new System.Drawing.Point(0, 0);
             this.Content.Name = "Content";
-            this.Content.Size = new System.Drawing.Size(772, 349);
+            this.Content.Size = new System.Drawing.Size(772, 377);
             this.Content.TabIndex = 1;
             this.Content.Resize += new System.EventHandler(this.Content_Resize);
-            // 
-            // cloneConnectionToolStripMenuItem
-            // 
-            this.cloneConnectionToolStripMenuItem.Name = "cloneConnectionToolStripMenuItem";
-            this.cloneConnectionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.cloneConnectionToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
-            this.cloneConnectionToolStripMenuItem.Text = "Clone Connection";
-            this.cloneConnectionToolStripMenuItem.Click += new System.EventHandler(this.cloneConnectionToolStripMenuItem_Click);
             // 
             // Shell
             // 
@@ -189,13 +153,9 @@
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem banksToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bucketsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem budgetsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem newTransactionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem summaryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem accountSummaryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transactionHistoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cloneConnectionToolStripMenuItem;
     }
 }
