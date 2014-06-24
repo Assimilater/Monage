@@ -67,7 +67,7 @@ namespace Monage.GUI.Frames {
         }
 
         public virtual IFrame Adjust() {
-            // No need to do anything
+            // No need to do anything here
             return this;
         }
 

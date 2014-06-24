@@ -111,37 +111,37 @@ namespace Monage.GUI {
         
         private void summaryToolStripMenuItem_Click(object sender, EventArgs e) {
             if (User != null) {
-                SetFrame(new Summary());
+                SetFrame(new SummaryFrame());
             }
         }
 
         private void newTransactionToolStripMenuItem_Click(object sender, EventArgs e) {
             if (User != null) {
-                SetFrame(new Transactions());
+                SetFrame(new TransactionFrame());
             }
         }
 
         private void historyToolStripMenuItem_Click(object sender, EventArgs e) {
             if (User != null) {
-                SetFrame(new History());
+                SetFrame(new HistoryFrame());
             }
         }
 
         private void banksToolStripMenuItem_Click(object sender, EventArgs e) {
             if (User != null) {
-                SetFrame(new Banks());
+                SetFrame(new BanksFrame());
             }
         }
 
         private void bucketsToolStripMenuItem_Click(object sender, EventArgs e) {
             if (User != null) {
-                SetFrame(new Buckets());
+                SetFrame(new BucketsFrame());
             }
         }
 
         private void budgetsToolStripMenuItem_Click(object sender, EventArgs e) {
             if (User != null) {
-                SetFrame(new Budgets());
+                SetFrame(new BudgetsFrame());
             }
         }
 
@@ -163,8 +163,8 @@ namespace Monage.GUI {
 
             IFrame view =
                 User == null
-                ? new Users() as IFrame
-                : new Summary() as IFrame;
+                ? new UsersFrame() as IFrame
+                : new SummaryFrame() as IFrame;
 
             SetFrame(view, "Logout");
         }

@@ -13,11 +13,6 @@ using Monage.Models;
 using Monage.GUI.Dialogs;
 
 namespace Monage.GUI.Frames {
-    public class ListItem : UserControl { }
-    public class ListPane : UserControl {
-        public virtual bool Ready(string con, string conf) { return true; }
-    }
-
     public partial class ListFrame : DockedFrame {
         public string Category {
             get { return lblCategory.Text; }
@@ -54,9 +49,9 @@ namespace Monage.GUI.Frames {
         }
     }
     
-    public class Buckets : ListFrame {
-        public Buckets() : base("Buckets") { }
-        public override IFrame Clone() { return new Buckets(); }
+    public class BucketsFrame : ListFrame {
+        public BucketsFrame() : base("Buckets") { }
+        public override IFrame Clone() { return new BucketsFrame(); }
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
                 new Bucket(parent.User).Rename(
@@ -79,9 +74,9 @@ namespace Monage.GUI.Frames {
         }
     }
 
-    public class Banks : ListFrame {
-        public Banks() : base("Banks") { }
-        public override IFrame Clone() { return new Banks(); }
+    public class BanksFrame : ListFrame {
+        public BanksFrame() : base("Banks") { }
+        public override IFrame Clone() { return new BanksFrame(); }
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
                 new Bank(parent.User).Rename(
@@ -104,9 +99,9 @@ namespace Monage.GUI.Frames {
         }
     }
 
-    public class Budgets : ListFrame {
-        public Budgets() : base("Budgets") { }
-        public override IFrame Clone() { return new Budgets(); }
+    public class BudgetsFrame : ListFrame {
+        public BudgetsFrame() : base("Budgets") { }
+        public override IFrame Clone() { return new BudgetsFrame(); }
 
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
@@ -128,5 +123,10 @@ namespace Monage.GUI.Frames {
             }
             setList(list);
         }
+    }
+
+    public class ListItem : UserControl { }
+    public class ListPane : UserControl {
+        public virtual bool Ready(string con, string conf) { return true; }
     }
 }

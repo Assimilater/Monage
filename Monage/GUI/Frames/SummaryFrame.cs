@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Monage.GUI.Frames {
-    public partial class Summary : DockedFrame {
-        public Summary() {
+    public partial class SummaryFrame : DockedFrame {
+        public SummaryFrame() {
             InitializeComponent();
         }
-        public Summary(Summary obj) {
+        public SummaryFrame(SummaryFrame obj) {
             InitializeComponent();
         }
-        public override IFrame Clone() { return new Summary(this); }
+        public override IFrame Clone() { return new SummaryFrame(this); }
         public override string TitleAppend() { return "Financial Summary"; }
         public override bool Ready(string con, string conf) { return true; }
     }

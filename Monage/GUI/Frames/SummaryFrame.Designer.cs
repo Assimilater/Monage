@@ -1,5 +1,5 @@
 ﻿namespace Monage.GUI.Frames {
-    partial class History {
+    partial class SummaryFrame {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -23,10 +23,19 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Summary
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "Summary";
+            this.Size = new System.Drawing.Size(359, 291);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
     }
 }

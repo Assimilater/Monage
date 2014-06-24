@@ -124,23 +124,17 @@
     <Compile Include="GUI\Frames\IFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\History.cs">
+    <Compile Include="GUI\Frames\HistoryFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\History.Designer.cs">
-      <DependentUpon>History.cs</DependentUpon>
+    <Compile Include="GUI\Frames\HistoryFrame.Designer.cs">
+      <DependentUpon>HistoryFrame.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Transactions.cs">
+    <Compile Include="GUI\Frames\TransactionFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\Transactions.Designer.cs">
-      <DependentUpon>Transactions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Frames\Tiers.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\Frames\Tiers.Designer.cs">
-      <DependentUpon>Tiers.cs</DependentUpon>
+    <Compile Include="GUI\Frames\TransactionFrame.Designer.cs">
+      <DependentUpon>TransactionFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\MDIHost.cs">
       <SubType>Form</SubType>
@@ -148,17 +142,17 @@
     <Compile Include="GUI\MDIHost.Designer.cs">
       <DependentUpon>MDIHost.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Summary.cs">
+    <Compile Include="GUI\Frames\SummaryFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\Summary.Designer.cs">
-      <DependentUpon>Summary.cs</DependentUpon>
+    <Compile Include="GUI\Frames\SummaryFrame.Designer.cs">
+      <DependentUpon>SummaryFrame.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Users.cs">
+    <Compile Include="GUI\Frames\UsersFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\Users.Designer.cs">
-      <DependentUpon>Users.cs</DependentUpon>
+    <Compile Include="GUI\Frames\UsersFrame.Designer.cs">
+      <DependentUpon>UsersFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Shell.cs">
       <SubType>Form</SubType>
@@ -255,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Frames\Lists\ListFrame.resx">
       <DependentUpon>ListFrame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Frames\TransactionFrame.resx">
+      <DependentUpon>TransactionFrame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\MDIHost.resx">
       <DependentUpon>MDIHost.cs</DependentUpon>

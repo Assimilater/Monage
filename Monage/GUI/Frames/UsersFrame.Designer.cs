@@ -1,5 +1,5 @@
 ﻿namespace Monage.GUI.Frames {
-    partial class Users {
+    partial class UsersFrame {
         /// <summary> 
         /// Required designer variable.
         /// </summary>

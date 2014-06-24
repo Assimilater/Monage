@@ -73,9 +73,10 @@
             this.refDelete.Size = new System.Drawing.Size(58, 20);
             this.refDelete.TabIndex = 4;
             this.refDelete.Text = "Delete";
+            this.refDelete.Visible = false;
             this.refDelete.Click += new System.EventHandler(this.refDelete_Click);
             // 
-            // ListItem
+            // AccountListItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -83,7 +84,7 @@
             this.Controls.Add(this.refRename);
             this.Controls.Add(this.lblAmount);
             this.Controls.Add(this.lblName);
-            this.Name = "ListItem";
+            this.Name = "AccountListItem";
             this.Size = new System.Drawing.Size(275, 74);
             this.ResumeLayout(false);
             this.PerformLayout();

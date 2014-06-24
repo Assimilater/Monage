@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Monage.GUI.Frames {
-    public partial class History : DockedFrame {
-        public History() {
+    public partial class HistoryFrame : DockedFrame {
+        public HistoryFrame() {
             InitializeComponent();
         }
-        public override IFrame Clone() { return new History(); }
+        public override IFrame Clone() { return new HistoryFrame(); }
         public override string TitleAppend() { return "Transaction History"; }
         public override bool Ready(string con, string conf) { return true; }
     }

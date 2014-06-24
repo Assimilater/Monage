@@ -12,9 +12,9 @@ using Monage.Models;
 using Monage.GUI.Dialogs;
 
 namespace Monage.GUI.Frames {
-    public partial class Users : CenteredFrame {
-        public Users() { InitializeComponent(); }
-        public override IFrame Clone() { return new Users(); }
+    public partial class UsersFrame : CenteredFrame {
+        public UsersFrame() { InitializeComponent(); }
+        public override IFrame Clone() { return new UsersFrame(); }
         public override string TitleAppend() { return "Login"; }
         public override bool Ready(string con, string conf) { return true; }
         public override IFrame Set(Shell p, Panel c) {

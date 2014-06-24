@@ -1,5 +1,5 @@
 ﻿namespace Monage.GUI.Frames {
-    partial class Tiers {
+    partial class HistoryFrame {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
