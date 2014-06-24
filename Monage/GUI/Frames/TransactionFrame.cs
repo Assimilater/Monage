@@ -23,8 +23,8 @@ namespace Monage.GUI.Frames {
                     dtConfirm.Value.ToString();
              */
         }
-        public override string TitleAppend() { return "New Transaction"; }
-        public override bool Ready(string con, string conf) { return Program.ConfirmReady(con, conf); }
+        public override string Title() { return "New Transaction"; }
+        public override bool Ready(string conf) { return Program.ConfirmReady(Connection.ConnectionString, conf); }
 
         public override IFrame Set(Shell connection, Panel canvas) {
             base.Set(connection, canvas);

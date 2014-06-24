@@ -11,13 +11,13 @@ namespace Monage.GUI.Frames {
         IFrame Set(Shell connection, Panel canvas);
         IFrame Adjust();
         
-        string TitleAppend();
-        bool Ready(string con, string conf);
+        string Title();
+        bool Ready(string conf);
     }
 
     //public abstract class CenteredFrame : UserControl, IFrame {
     public class CenteredFrame : UserControl, IFrame {
-        protected Shell Connection { get; private set; }
+        public Shell Connection { get; private set; }
         protected Panel Canvas { get; private set; }
 
         public virtual IFrame Set(Shell connection, Panel canvas) {
@@ -39,14 +39,14 @@ namespace Monage.GUI.Frames {
 
         // Methods to pass on to derrived classes
         //public abstract string TitleAppend();
-        //public abstract bool Ready(string con, string conf);
-        public virtual string TitleAppend() { return ""; }
-        public virtual bool Ready(string con, string conf) { return true; }
+        //public abstract bool Ready(string conf);
+        public virtual string Title() { return ""; }
+        public virtual bool Ready(string conf) { return true; }
     }
 
     //public abstract class DockedFrame : UserControl, IFrame {
     public class DockedFrame : UserControl, IFrame {
-        protected Shell Connection { get; private set; }
+        public Shell Connection { get; private set; }
         protected Panel Canvas { get; private set; }
 
         public DockedFrame() {
@@ -70,8 +70,8 @@ namespace Monage.GUI.Frames {
 
         // Methods to pass on to derrived classes
         //public abstract string TitleAppend();
-        //public abstract bool Ready(string con, string conf);
-        public virtual string TitleAppend() { return ""; }
-        public virtual bool Ready(string con, string conf) { return true; }
+        //public abstract bool Ready(string conf);
+        public virtual string Title() { return ""; }
+        public virtual bool Ready(string conf) { return true; }
     }
 }

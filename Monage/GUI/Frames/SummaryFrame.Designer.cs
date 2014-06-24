@@ -28,45 +28,45 @@
             this.banksFrame = new Monage.GUI.Frames.BanksFrame();
             this.expenseFrame = new Monage.GUI.Frames.ExpenseFrame();
             this.revenueFrame = new Monage.GUI.Frames.RevenueFrame();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.splitContainer = new System.Windows.Forms.SplitContainer();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
+            this.splitContainer.Panel1.SuspendLayout();
+            this.splitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // budgetsFrame
             // 
             this.budgetsFrame.AutoScroll = true;
             this.budgetsFrame.Dock = System.Windows.Forms.DockStyle.Left;
-            this.budgetsFrame.Location = new System.Drawing.Point(0, 0);
+            this.budgetsFrame.Location = new System.Drawing.Point(612, 0);
             this.budgetsFrame.Name = "budgetsFrame";
-            this.budgetsFrame.Size = new System.Drawing.Size(306, 561);
+            this.budgetsFrame.Size = new System.Drawing.Size(306, 557);
             this.budgetsFrame.TabIndex = 3;
             // 
             // bucketsFrame
             // 
             this.bucketsFrame.AutoScroll = true;
             this.bucketsFrame.Dock = System.Windows.Forms.DockStyle.Left;
-            this.bucketsFrame.Location = new System.Drawing.Point(612, 0);
+            this.bucketsFrame.Location = new System.Drawing.Point(306, 0);
             this.bucketsFrame.Name = "bucketsFrame";
-            this.bucketsFrame.Size = new System.Drawing.Size(306, 561);
+            this.bucketsFrame.Size = new System.Drawing.Size(306, 557);
             this.bucketsFrame.TabIndex = 2;
             // 
             // banksFrame
             // 
             this.banksFrame.AutoScroll = true;
             this.banksFrame.Dock = System.Windows.Forms.DockStyle.Left;
-            this.banksFrame.Location = new System.Drawing.Point(1224, 0);
+            this.banksFrame.Location = new System.Drawing.Point(0, 0);
             this.banksFrame.Name = "banksFrame";
-            this.banksFrame.Size = new System.Drawing.Size(306, 561);
+            this.banksFrame.Size = new System.Drawing.Size(306, 557);
             this.banksFrame.TabIndex = 1;
             // 
             // expenseFrame
             // 
             this.expenseFrame.Dock = System.Windows.Forms.DockStyle.Left;
-            this.expenseFrame.Location = new System.Drawing.Point(306, 0);
+            this.expenseFrame.Location = new System.Drawing.Point(1224, 0);
             this.expenseFrame.Name = "expenseFrame";
-            this.expenseFrame.Size = new System.Drawing.Size(306, 561);
+            this.expenseFrame.Size = new System.Drawing.Size(306, 557);
             this.expenseFrame.TabIndex = 5;
             // 
             // revenueFrame
@@ -74,37 +74,39 @@
             this.revenueFrame.Dock = System.Windows.Forms.DockStyle.Left;
             this.revenueFrame.Location = new System.Drawing.Point(918, 0);
             this.revenueFrame.Name = "revenueFrame";
-            this.revenueFrame.Size = new System.Drawing.Size(306, 561);
+            this.revenueFrame.Size = new System.Drawing.Size(306, 557);
             this.revenueFrame.TabIndex = 4;
             // 
-            // splitContainer1
+            // splitContainer
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer.Name = "splitContainer";
             // 
-            // splitContainer1.Panel1
+            // splitContainer.Panel1
             // 
-            this.splitContainer1.Panel1.AutoScroll = true;
-            this.splitContainer1.Panel1.Controls.Add(this.banksFrame);
-            this.splitContainer1.Panel1.Controls.Add(this.revenueFrame);
-            this.splitContainer1.Panel1.Controls.Add(this.bucketsFrame);
-            this.splitContainer1.Panel1.Controls.Add(this.expenseFrame);
-            this.splitContainer1.Panel1.Controls.Add(this.budgetsFrame);
-            this.splitContainer1.Size = new System.Drawing.Size(1230, 582);
-            this.splitContainer1.SplitterDistance = 592;
-            this.splitContainer1.TabIndex = 16;
+            this.splitContainer.Panel1.AutoScroll = true;
+            this.splitContainer.Panel1.Controls.Add(this.expenseFrame);
+            this.splitContainer.Panel1.Controls.Add(this.revenueFrame);
+            this.splitContainer.Panel1.Controls.Add(this.budgetsFrame);
+            this.splitContainer.Panel1.Controls.Add(this.bucketsFrame);
+            this.splitContainer.Panel1.Controls.Add(this.banksFrame);
+            this.splitContainer.Size = new System.Drawing.Size(1230, 582);
+            this.splitContainer.SplitterDistance = 615;
+            this.splitContainer.TabIndex = 16;
             // 
             // SummaryFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.splitContainer);
             this.Name = "SummaryFrame";
             this.Size = new System.Drawing.Size(1230, 582);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
+            this.splitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -116,7 +118,7 @@
         private BudgetsFrame budgetsFrame;
         private ExpenseFrame expenseFrame;
         private RevenueFrame revenueFrame;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer;
 
 
     }

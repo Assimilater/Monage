@@ -21,7 +21,6 @@ namespace Monage.GUI.Frames {
         protected ListFrame(string category) {
             InitializeComponent();
             this.Category = category;
-            SelectedItem = null;
         }
 
         protected User User { get; set; }
@@ -30,19 +29,6 @@ namespace Monage.GUI.Frames {
             this.ParentFrame = parent;
             this.User = user;
             getList();
-            return this;
-        }
-
-        protected ListItem SelectedItem { get; set; }
-        public void SelectItem(ListItem i) {
-            if (this.SelectedItem != null) { this.SelectedItem.Deselect(); }
-            this.SelectedItem = i;
-        }
-        public ListFrame Deselect() {
-            if (this.SelectedItem != null) {
-                this.SelectedItem.Deselect();
-                this.SelectedItem = null;
-            }
             return this;
         }
 
@@ -61,39 +47,35 @@ namespace Monage.GUI.Frames {
 
     public class ListItem : UserControl {
         public ListItem() { this.Click += ListItem_Click; }
-        protected virtual ListPane getPane() { return null; }
+        public virtual ListPane getPane(Shell connection) { return null; }
 
-        protected ListFrame Frame { get; set; }
-        public ListItem SetFrame(ListFrame frame) {
+        protected SummaryFrame Frame { get; set; }
+        public ListItem SetFrame(SummaryFrame frame) {
             this.Frame = frame;
             return this;
         }
 
         protected void ListItem_Click(object sender, EventArgs e) {
-            ListPane p = this.getPane();
-            if (p != null) {
-                this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-                Frame.SelectItem(this);
-            }
+            Frame.SelectItem(this);
         }
-
-        public ListItem Deselect() {
-            this.BackColor = System.Drawing.SystemColors.Control;
-            return this;
+        public void Toggle(bool isSelected) {
+            this.BackColor =
+                isSelected
+                ? System.Drawing.SystemColors.ActiveCaption
+                : System.Drawing.SystemColors.Control;
         }
-
     }
 
     public class ListPane : UserControl {
-        protected User User { get; set; }
-        public ListPane Set(User user) {
-            this.User = user;
+        protected Shell Connection { get; set; }
+        public ListPane Set(Shell connection) {
+            this.Connection = connection;
             this.getInfo();
             return this;
         }
 
         protected virtual ListPane getInfo() { return this; }
-        public virtual bool Ready(string con, string conf) { return true; }
+        public virtual bool Ready(string conf) { return true; }
     }
     
     public class BucketsFrame : ListFrame {
@@ -116,7 +98,7 @@ namespace Monage.GUI.Frames {
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
             foreach (Bucket bucket in Bucket.Enumerate(this.User)) {
-                list.Add(new BucketListItem(bucket).SetFrame(this));
+                list.Add(new BucketListItem(bucket).SetFrame(this.ParentFrame));
             }
             setList(list);
         }
@@ -142,7 +124,7 @@ namespace Monage.GUI.Frames {
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
             foreach (Bank bank in Bank.Enumerate(this.User)) {
-                list.Add(new BankListItem(bank).SetFrame(this));
+                list.Add(new BankListItem(bank).SetFrame(this.ParentFrame));
             }
             setList(list);
         }
@@ -169,7 +151,7 @@ namespace Monage.GUI.Frames {
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
             foreach (Budget budget in Budget.Enumerate(this.User)) {
-                list.Add(new BudgetListItem(budget).SetFrame(this));
+                list.Add(new BudgetListItem(budget).SetFrame(this.ParentFrame));
             }
             setList(list);
         }
@@ -196,7 +178,7 @@ namespace Monage.GUI.Frames {
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
             foreach (Expense expense in Expense.Enumerate(this.User)) {
-                list.Add(new ExpenseListItem(expense).SetFrame(this));
+                list.Add(new ExpenseListItem(expense).SetFrame(this.ParentFrame));
             }
             setList(list);
         }
@@ -223,7 +205,7 @@ namespace Monage.GUI.Frames {
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
             foreach (Revenue revenue in Revenue.Enumerate(this.User)) {
-                list.Add(new RevenueListItem(revenue).SetFrame(this));
+                list.Add(new RevenueListItem(revenue).SetFrame(this.ParentFrame));
             }
             setList(list);
         }

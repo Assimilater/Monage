@@ -14,8 +14,8 @@ using Monage.GUI.Dialogs;
 namespace Monage.GUI.Frames {
     public partial class UsersFrame : CenteredFrame {
         public UsersFrame() { InitializeComponent(); }
-        public override string TitleAppend() { return "Login"; }
-        public override bool Ready(string con, string conf) { return true; }
+        public override string Title() { return "Login"; }
+        public override bool Ready(string conf) { return true; }
         public override IFrame Set(Shell connection, Panel canvas) {
             base.Set(connection, canvas);
             getList();

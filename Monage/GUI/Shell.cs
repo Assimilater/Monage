@@ -14,15 +14,15 @@ using System.Windows.Forms;
 namespace Monage.GUI {
     public partial class Shell : Form {
         public User User { get; private set; }
-        private string pre;
+        public string ConnectionString { get; private set; }
         private IFrame active;
 
         #region Shell Control-Flow Management
         
-        public Shell(string p) {
+        public Shell(string con) {
             InitializeComponent();
 
-            pre = p;
+            ConnectionString = con;
 
             bool
                 isGants = Program.db.Users.Count() == 1,
@@ -44,7 +44,7 @@ namespace Monage.GUI {
         public Shell(Shell copy, IFrame view) {
             InitializeComponent();
 
-            pre = Program.Host.AddShell(this);
+            ConnectionString = Program.Host.AddShell(this);
             User = copy.User;
             SetFrame(new SummaryFrame());
         }
@@ -52,7 +52,7 @@ namespace Monage.GUI {
         public bool Ready(string conf = "Navigation") {
             return
                 active != null
-                ? active.Ready(pre, conf)
+                ? active.Ready(conf)
                 : true;
         }
 
@@ -74,13 +74,13 @@ namespace Monage.GUI {
         }
 
         public void UpdateTitle() {
-            this.Text = pre + (
+            this.Text = ConnectionString + (
                 User == null
                 ? ""
                 : " - " + (
                     User.Username + (
                         active != null
-                        ? ": " + active.TitleAppend()
+                        ? ": " + active.Title()
                         : ""
                     )
                 )
