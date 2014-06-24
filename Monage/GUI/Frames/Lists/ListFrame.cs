@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Data;
 using System.Linq;
@@ -10,7 +11,6 @@ using System.Windows.Forms;
 using Monage.GUI.Frames.Controls;
 using Monage.Models;
 using Monage.GUI.Dialogs;
-using System.ComponentModel.DataAnnotations;
 
 namespace Monage.GUI.Frames {
     public class ListItem : UserControl { }

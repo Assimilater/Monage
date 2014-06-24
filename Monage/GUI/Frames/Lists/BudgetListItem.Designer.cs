@@ -39,6 +39,7 @@
             this.refDelete.Size = new System.Drawing.Size(58, 20);
             this.refDelete.TabIndex = 8;
             this.refDelete.Text = "Delete";
+            this.refDelete.Visible = false;
             // 
             // refRename
             // 

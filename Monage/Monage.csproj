@@ -91,37 +91,37 @@
     <Compile Include="GUI\Dialogs\InputDialog.Designer.cs">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\AccountListPane.cs">
+    <Compile Include="GUI\Frames\Lists\AccountListPane.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\AccountListPane.Designer.cs">
+    <Compile Include="GUI\Frames\Lists\AccountListPane.Designer.cs">
       <DependentUpon>AccountListPane.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\BudgetListItem.cs">
+    <Compile Include="GUI\Frames\Lists\BudgetListItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\BudgetListItem.Designer.cs">
+    <Compile Include="GUI\Frames\Lists\BudgetListItem.Designer.cs">
       <DependentUpon>BudgetListItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\BudgetListPane.cs">
+    <Compile Include="GUI\Frames\Lists\BudgetListPane.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\BudgetListPane.Designer.cs">
+    <Compile Include="GUI\Frames\Lists\BudgetListPane.Designer.cs">
       <DependentUpon>BudgetListPane.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\ListFrame.cs">
+    <Compile Include="GUI\Frames\Lists\ListFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\ListFrame.Designer.cs">
+    <Compile Include="GUI\Frames\Lists\ListFrame.Designer.cs">
       <DependentUpon>ListFrame.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\AccountListItem.cs">
+    <Compile Include="GUI\Frames\Lists\AccountListItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\Controls\AccountListItem.designer.cs">
+    <Compile Include="GUI\Frames\Lists\AccountListItem.designer.cs">
       <DependentUpon>AccountListItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\_iFrame.cs">
+    <Compile Include="GUI\Frames\IFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GUI\Frames\History.cs">
@@ -247,13 +247,13 @@
     <EmbeddedResource Include="GUI\Dialogs\InputDialog.resx">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Frames\Controls\BudgetListItem.resx">
+    <EmbeddedResource Include="GUI\Frames\Lists\BudgetListItem.resx">
       <DependentUpon>BudgetListItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Frames\Controls\AccountListItem.resx">
+    <EmbeddedResource Include="GUI\Frames\Lists\AccountListItem.resx">
       <DependentUpon>AccountListItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Frames\Controls\ListFrame.resx">
+    <EmbeddedResource Include="GUI\Frames\Lists\ListFrame.resx">
       <DependentUpon>ListFrame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\MDIHost.resx">
