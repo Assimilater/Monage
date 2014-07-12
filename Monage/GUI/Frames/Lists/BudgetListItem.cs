@@ -22,16 +22,10 @@ namespace Monage.GUI.Frames.Controls {
             Budget = budget;
         }
     }
-    public class ExpenseListItem : FundListItem {
-        private Expense Expense { get; set; }
-        public ExpenseListItem(Expense expense) {
-            Expense = expense;
-        }
-    }
-    public class RevenueListItem : FundListItem {
-        private Revenue Revenue { get; set; }
-        public RevenueListItem(Revenue revenue) {
-            Revenue = revenue;
+    public class ExReListItem : FundListItem {
+        private Fund Fund { get; set; }
+        public ExReListItem(Fund fund) {
+            Fund = fund;
         }
     }
 }

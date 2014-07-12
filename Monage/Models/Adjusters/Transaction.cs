@@ -21,31 +21,32 @@ namespace Monage.Models {
         public DateTime Incurred { get; set; }
         public DateTime? Confirmed { get; set; }
 
-        public virtual List<Debit> Debits { get; set; }
-        public virtual List<Credit> Credits { get; set; }
+        public virtual List<Ticket> Tickets { get; set; }
+
+        public virtual User User { get; set; }
 
         #endregion
 
         public Transaction() {
-            Debits = new List<Debit>();
-            Credits = new List<Credit>();
+            Tickets = new List<Ticket>();
             Incurred = DateTime.Now;
             Confirmed = null;
         }
 
         public bool Valid() {
-            return false;
+            double sum = 0;
+            foreach (Ticket t in this.Tickets) {
+                sum += t.Amount;
+            }
+            return sum == 0;
         }
 
         public Transaction Save() {
             if (Valid()) {
                 if (ID == 0) {
                     Program.db.Transactions.Add(this);
-                    foreach (Debit t in Debits) {
-                        Program.db.Debits.Add(t);
-                    }
-                    foreach (Credit t in Credits) {
-                        Program.db.Credits.Add(t);
+                    foreach (Ticket t in this.Tickets) {
+                        Program.db.Tickets.Add(t);
                     }
                     Program.db.SaveChanges();
                 }

@@ -15,7 +15,6 @@ namespace Monage.Models {
         [Required]
         [MaxLength(Settings.NameLen)]
         public string Name { get; set; }
-        
         public string Description { get; set; }
 
         public virtual User User { get; set; }

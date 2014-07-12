@@ -177,8 +177,8 @@ namespace Monage.GUI.Frames {
 
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
-            foreach (Expense expense in Expense.Enumerate(this.User)) {
-                list.Add(new ExpenseListItem(expense).SetFrame(this.ParentFrame));
+            foreach (Fund expense in Fund.Enumerate(this.User, BalanceType.Debit)) {
+                list.Add(new ExReListItem(expense).SetFrame(this.ParentFrame));
             }
             setList(list);
         }
@@ -204,8 +204,8 @@ namespace Monage.GUI.Frames {
 
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
-            foreach (Revenue revenue in Revenue.Enumerate(this.User)) {
-                list.Add(new RevenueListItem(revenue).SetFrame(this.ParentFrame));
+            foreach (Fund revenue in Fund.Enumerate(this.User, BalanceType.Credit)) {
+                list.Add(new ExReListItem(revenue).SetFrame(this.ParentFrame));
             }
             setList(list);
         }

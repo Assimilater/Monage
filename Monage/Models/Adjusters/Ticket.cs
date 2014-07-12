@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Monage.Models {
-    public class Debit {
+    public class Ticket {
         #region Schema
 
         [Key]
@@ -14,15 +14,19 @@ namespace Monage.Models {
 
         [Required]
         public double Amount { get; set; }
-        public virtual Expense Expense { get; set; }
 
-        [Required]
+        public string Company { get; set; }
+        public virtual Fund Fund { get; set; }
+
         public virtual Bank Bank { get; set; }
         public virtual Bucket Bucket { get; set; }
 
+        public virtual User User { get; set; }
+        public virtual Transaction Transaction { get; set; }
+
         #endregion
 
-        public Debit() {
+        public Ticket() {
             Amount = 0;
         }
     }

@@ -13,5 +13,7 @@ namespace Monage.Models {
         public virtual Tier Tier { get; set; }
         public virtual Bucket Bucket { get; set; }
         public double Value { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

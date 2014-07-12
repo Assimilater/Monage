@@ -79,6 +79,18 @@
     <Compile Include="GUI\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Dialogs\DebitDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Dialogs\DebitDialog.Designer.cs">
+      <DependentUpon>DebitDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Dialogs\CreditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Dialogs\CreditDialog.Designer.cs">
+      <DependentUpon>CreditDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Dialogs\PairDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +178,14 @@
     <Compile Include="GUI\Splash.Designer.cs">
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407090443035_ReplaceExReWithFunds.cs" />
+    <Compile Include="Migrations\201407090443035_ReplaceExReWithFunds.Designer.cs">
+      <DependentUpon>201407090443035_ReplaceExReWithFunds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407121758586_ReduceToTickets.cs" />
+    <Compile Include="Migrations\201407121758586_ReduceToTickets.Designer.cs">
+      <DependentUpon>201407121758586_ReduceToTickets.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Deployed\201405200159363_Initial_AccountModels.cs" />
     <Compile Include="Migrations\Deployed\201405200159363_Initial_AccountModels.Designer.cs">
       <DependentUpon>201405200159363_Initial_AccountModels.cs</DependentUpon>
@@ -215,17 +235,15 @@
       <DependentUpon>201406190055461_RemoveBalancesAndTickets.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Accounts\Amount.cs" />
+    <Compile Include="Models\Helpers\Amount.cs" />
     <Compile Include="Models\Accounts\Bank.cs" />
     <Compile Include="Models\Accounts\Bucket.cs" />
-    <Compile Include="Models\Adjusters\Credit.cs" />
-    <Compile Include="Models\Adjusters\Debit.cs" />
+    <Compile Include="Models\Adjusters\Ticket.cs" />
     <Compile Include="Models\Adjusters\Transaction.cs" />
     <Compile Include="Models\Budgets\Budget.cs" />
     <Compile Include="Models\Budgets\Step.cs" />
     <Compile Include="Models\Budgets\Tier.cs" />
-    <Compile Include="Models\Funds\Expense.cs" />
-    <Compile Include="Models\Funds\Revenue.cs" />
+    <Compile Include="Models\Accounts\Fund.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -234,6 +252,12 @@
     <Compile Include="Utilities\Settings.cs" />
     <EmbeddedResource Include="GUI\About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Dialogs\DebitDialog.resx">
+      <DependentUpon>DebitDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Dialogs\CreditDialog.resx">
+      <DependentUpon>CreditDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Dialogs\PairDialog.resx">
       <DependentUpon>PairDialog.cs</DependentUpon>
@@ -264,6 +288,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407090443035_ReplaceExReWithFunds.resx">
+      <DependentUpon>201407090443035_ReplaceExReWithFunds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407121758586_ReduceToTickets.resx">
+      <DependentUpon>201407121758586_ReduceToTickets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Deployed\201405200159363_Initial_AccountModels.resx">
       <DependentUpon>201405200159363_Initial_AccountModels.cs</DependentUpon>
