@@ -24,16 +24,10 @@ namespace Monage.GUI {
 
             ConnectionString = con;
 
-            bool
-                isGants = Program.db.Users.Count() == 1,
-                noSetting = Settings.ActiveUser == Settings.NullInt,
-                errSetting = Program.db.Users.FirstOrDefault(x => x.ID == Settings.ActiveUser) == null;
-
             Login(
-                (isGants && noSetting)
+                (Program.db.Users.Count() == 1 && Settings.ActiveUser == Settings.NullInt)
                 ? Program.db.Users.First()
-                : ((noSetting || errSetting) ? null
-                : Program.db.Users.First(x => x.ID == Settings.ActiveUser))
+                : Program.db.Users.FirstOrDefault(x => x.ID == Settings.ActiveUser)
             );
         }
 

@@ -7,18 +7,27 @@ using Microsoft.Win32;
 using System.Drawing;
 
 namespace Monage {
-    public class Settings {
+    public static class Settings {
         #region Constants
 
         public const int NameLen = 45;
 
-        // Registry 'null' (aka default) values to compare against
-        public const int NullInt = -int.MaxValue;
-        public const string NullString = "";
-        
         #endregion
 
         #region RegistryValues
+
+        public static int ActiveUser {
+            get { return Reg.GetInt("ActiveUser"); }
+            set { Reg.SetInt("ActiveUser", value); }
+        }
+        public static bool Maximized {
+            get { return Reg.GetBool("Maximized", false); }
+            set { Reg.SetBool("Maximized", value); }
+        }
+
+        // null/default values to compare against
+        public const int NullInt = -int.MaxValue;
+
         private static class Reg {
             public static RegistryKey Key() {
                 return
@@ -27,52 +36,22 @@ namespace Monage {
                             .CreateSubKey("Monage");
             }
 
-            public static object GetValue(string name, object def) {
-                return Key().GetValue(name, def);
-            }
-            public static void SetValue(string name, object val) {
-                Key().SetValue(name, val);
-            }
+            // Expose RegistryKey Methods
+            public static object GetValue(string name, object def) { return Key().GetValue(name, def); }
+            public static void SetValue(string name, object val) { Key().SetValue(name, val); }
 
-            public static int GetInt(string name, int def = NullInt) {
-                return (int)Key().GetValue(name, def);
-            }
-            public static void SetInt(string name, int val) {
-                Key().SetValue(name, val);
-            }
+            // Custom handling of different data-types for convenience
+            public static int GetInt(string name, int def = NullInt) { return (int)Key().GetValue(name, def); }
+            public static void SetInt(string name, int val) { Key().SetValue(name, val); }
 
-            public static string GetString(string name, string def = NullString) {
-                return (string)Key().GetValue(name, def);
-            }
-            public static void SetString(string name, string val) {
-                Key().SetValue(name, val);
-            }
+            public static string GetString(string name, string def = "") { return (string)Key().GetValue(name, def); }
+            public static void SetString(string name, string val) { Key().SetValue(name, val); }
 
-            public static bool GetBool(string name, bool def = false) {
-                return (bool)Boolean.Parse(GetString(name, def.ToString()));
-            }
-            public static void SetBool(string name, bool val) {
-                SetString(name, val.ToString());
-            }
+            public static bool GetBool(string name, bool def = false) { return Boolean.Parse(GetString(name, def.ToString())); }
+            public static void SetBool(string name, bool val) { SetString(name, val.ToString()); }
 
-            public static Point? GetPoint(string name) {
-                Point val = new Point(GetInt(name + "_X"), GetInt(name + "_Y"));
-                if (val.X == NullInt || val.Y == NullInt) { return null; }
-                return val;
-            }
-            public static void SetPoint(string name, Point? val) {
-                SetInt(name + "_X", val == null ? NullInt : val.Value.X);
-                SetInt(name + "_Y", val == null ? NullInt : val.Value.Y);
-            }
-        }
-
-        public static int ActiveUser {
-            get { return Reg.GetInt("ActiveUser"); }
-            set { Reg.SetValue("ActiveUser", value); }
-        }
-        public static bool Maximized {
-            get { return Reg.GetBool("Maximized", false); }
-            set { Reg.SetValue("Maximized", value); }
+            public static Point GetPoint(string name) { return new Point(GetInt(name + "_X", 0), GetInt(name + "_Y", 0)); }
+            public static void SetPoint(string name, Point val) { SetInt(name + "_X", val.X); SetInt(name + "_Y", val.Y); }
         }
 
         #endregion
