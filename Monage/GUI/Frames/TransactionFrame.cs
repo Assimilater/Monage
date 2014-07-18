@@ -10,9 +10,10 @@ using System.Windows.Forms;
 using Monage.Models;
 
 namespace Monage.GUI.Frames {
-    public partial class TransactionFrame : DockedFrame {
+    public partial class TransactionFrame : Frame {
         Transaction Ticket;
-        public TransactionFrame(Transaction ticket = null) {
+        public TransactionFrame(Transaction ticket = null)
+            : base(FramePosition.TopCenter) {
             InitializeComponent();
             Ticket = ticket == null ? new Transaction() : ticket;
 
@@ -26,7 +27,7 @@ namespace Monage.GUI.Frames {
         public override string Title() { return "New Transaction"; }
         public override bool Ready(string conf) { return Program.ConfirmReady(Connection.ConnectionString, conf); }
 
-        public override IFrame Set(Shell connection, Panel canvas) {
+        public override Frame Set(Shell connection, Panel canvas) {
             base.Set(connection, canvas);
 
             BindingList<KeyValuePair<int, string>> Banks = new BindingList<KeyValuePair<int, string>>();

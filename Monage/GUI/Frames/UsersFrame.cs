@@ -12,11 +12,11 @@ using Monage.Models;
 using Monage.GUI.Dialogs;
 
 namespace Monage.GUI.Frames {
-    public partial class UsersFrame : CenteredFrame {
-        public UsersFrame() { InitializeComponent(); }
+    public partial class UsersFrame : Frame {
+        public UsersFrame() : base(FramePosition.Centered) { InitializeComponent(); }
         public override string Title() { return "Login"; }
         public override bool Ready(string conf) { return true; }
-        public override IFrame Set(Shell connection, Panel canvas) {
+        public override Frame Set(Shell connection, Panel canvas) {
             base.Set(connection, canvas);
             getList();
             return this;

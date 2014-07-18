@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Monage.GUI.Frames {
-    public partial class HistoryFrame : DockedFrame {
-        public HistoryFrame() {
+    public partial class HistoryFrame : Frame {
+        public HistoryFrame() : base(FramePosition.Docked) {
             InitializeComponent();
         }
         public override string Title() { return "Transaction History"; }

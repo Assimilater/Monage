@@ -133,7 +133,7 @@
     <Compile Include="GUI\Frames\Lists\AccountListItem.designer.cs">
       <DependentUpon>AccountListItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\IFrame.cs">
+    <Compile Include="GUI\Frames\Frame.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GUI\Frames\HistoryFrame.cs">

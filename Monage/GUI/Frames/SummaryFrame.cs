@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Monage.GUI.Frames {
-    public partial class SummaryFrame : DockedFrame {
-        public SummaryFrame() { InitializeComponent(); }
+    public partial class SummaryFrame : Frame {
+        public SummaryFrame() : base(FramePosition.Docked) { InitializeComponent(); }
         public override string Title() { return "Financial Summary"; }
-        public override IFrame Set(Shell connection, Panel canvas) {
+        public override Frame Set(Shell connection, Panel canvas) {
             base.Set(connection, canvas);
             banksFrame.Set(this, Connection.User);
             bucketsFrame.Set(this, Connection.User);
