@@ -38,7 +38,7 @@ namespace Monage.GUI.Frames {
             cbxBanks.ValueMember = "Key";
             cbxBanks.DisplayMember = "Value";
 
-            cbxExpense.Hide();
+            //cbxExpense.Hide();
             return this;
         }
 

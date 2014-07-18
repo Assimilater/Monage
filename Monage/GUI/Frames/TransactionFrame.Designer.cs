@@ -35,10 +35,11 @@
             // 
             // txtDetails
             // 
-            this.txtDetails.Location = new System.Drawing.Point(3, 305);
+            this.txtDetails.Location = new System.Drawing.Point(162, 3);
             this.txtDetails.Multiline = true;
             this.txtDetails.Name = "txtDetails";
-            this.txtDetails.Size = new System.Drawing.Size(558, 122);
+            this.txtDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDetails.Size = new System.Drawing.Size(428, 101);
             this.txtDetails.TabIndex = 1;
             this.txtDetails.TextChanged += new System.EventHandler(this.txtDetails_TextChanged);
             // 
@@ -50,10 +51,10 @@
             this.cbxCreditType.Items.AddRange(new object[] {
             "Expense",
             "Bank Account"});
-            this.cbxCreditType.Location = new System.Drawing.Point(3, 3);
+            this.cbxCreditType.Location = new System.Drawing.Point(3, 110);
             this.cbxCreditType.Name = "cbxCreditType";
-            this.cbxCreditType.Size = new System.Drawing.Size(232, 26);
-            this.cbxCreditType.TabIndex = 2;
+            this.cbxCreditType.Size = new System.Drawing.Size(153, 26);
+            this.cbxCreditType.TabIndex = 4;
             this.cbxCreditType.SelectedIndexChanged += new System.EventHandler(this.cbxCreditType_SelectedIndexChanged);
             // 
             // dtConfirm
@@ -61,7 +62,7 @@
             this.dtConfirm.CustomFormat = "  MM/dd/yyyy";
             this.dtConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtConfirm.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtConfirm.Location = new System.Drawing.Point(328, 275);
+            this.dtConfirm.Location = new System.Drawing.Point(3, 80);
             this.dtConfirm.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtConfirm.Name = "dtConfirm";
             this.dtConfirm.ShowCheckBox = true;
@@ -73,33 +74,33 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(247, 278);
+            this.label1.Location = new System.Drawing.Point(9, 60);
             this.label1.Margin = new System.Windows.Forms.Padding(9, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 17);
-            this.label1.TabIndex = 5;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Confirmed:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 278);
+            this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 17);
-            this.label2.TabIndex = 7;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Recorded:";
             // 
             // dtRecord
             // 
-            this.dtRecord.CustomFormat = "  MM/dd/yyyy";
+            this.dtRecord.CustomFormat = "        MM/dd/yyyy";
             this.dtRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtRecord.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtRecord.Location = new System.Drawing.Point(82, 275);
+            this.dtRecord.Location = new System.Drawing.Point(3, 20);
             this.dtRecord.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtRecord.Name = "dtRecord";
             this.dtRecord.Size = new System.Drawing.Size(153, 24);
-            this.dtRecord.TabIndex = 6;
+            this.dtRecord.TabIndex = 2;
             this.dtRecord.Value = new System.DateTime(2014, 6, 23, 0, 0, 0, 0);
             this.dtRecord.ValueChanged += new System.EventHandler(this.dtRecord_ValueChanged);
             // 
@@ -111,10 +112,10 @@
             this.cbxBanks.Items.AddRange(new object[] {
             "Expense",
             "Bank Account"});
-            this.cbxBanks.Location = new System.Drawing.Point(241, 3);
+            this.cbxBanks.Location = new System.Drawing.Point(162, 110);
             this.cbxBanks.Name = "cbxBanks";
-            this.cbxBanks.Size = new System.Drawing.Size(232, 26);
-            this.cbxBanks.TabIndex = 8;
+            this.cbxBanks.Size = new System.Drawing.Size(153, 26);
+            this.cbxBanks.TabIndex = 5;
             this.cbxBanks.SelectedIndexChanged += new System.EventHandler(this.cbxBanks_SelectedIndexChanged);
             // 
             // cbxExpense
@@ -125,10 +126,10 @@
             this.cbxExpense.Items.AddRange(new object[] {
             "Expense",
             "Bank Account"});
-            this.cbxExpense.Location = new System.Drawing.Point(241, 3);
+            this.cbxExpense.Location = new System.Drawing.Point(321, 110);
             this.cbxExpense.Name = "cbxExpense";
-            this.cbxExpense.Size = new System.Drawing.Size(232, 26);
-            this.cbxExpense.TabIndex = 9;
+            this.cbxExpense.Size = new System.Drawing.Size(153, 26);
+            this.cbxExpense.TabIndex = 6;
             this.cbxExpense.SelectedIndexChanged += new System.EventHandler(this.cbxExpense_SelectedIndexChanged);
             // 
             // TransactionFrame
@@ -144,7 +145,7 @@
             this.Controls.Add(this.cbxCreditType);
             this.Controls.Add(this.txtDetails);
             this.Name = "TransactionFrame";
-            this.Size = new System.Drawing.Size(564, 430);
+            this.Size = new System.Drawing.Size(593, 430);
             this.ResumeLayout(false);
             this.PerformLayout();
 

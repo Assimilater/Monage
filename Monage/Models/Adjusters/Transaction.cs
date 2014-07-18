@@ -33,23 +33,25 @@ namespace Monage.Models {
             Confirmed = null;
         }
 
-        public bool Valid() {
+        public void Validate() {
             double sum = 0;
             foreach (Ticket t in this.Tickets) {
+                t.Validate();
                 sum += t.Amount;
             }
-            return sum == 0;
+            if (sum != 0) {
+                throw new ValidationException("This transaction's tickets are not balanced");
+            }
         }
 
         public Transaction Save() {
-            if (Valid()) {
-                if (ID == 0) {
-                    Program.db.Transactions.Add(this);
-                    foreach (Ticket t in this.Tickets) {
-                        Program.db.Tickets.Add(t);
-                    }
-                    Program.db.SaveChanges();
+            Validate();
+            if (ID == 0) {
+                Program.db.Transactions.Add(this);
+                foreach (Ticket t in this.Tickets) {
+                    Program.db.Tickets.Add(t);
                 }
+                Program.db.SaveChanges();
             }
             return this;
         }

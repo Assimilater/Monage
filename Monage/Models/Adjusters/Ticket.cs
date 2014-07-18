@@ -29,5 +29,22 @@ namespace Monage.Models {
         public Ticket() {
             Amount = 0;
         }
+        public Ticket(User user, Transaction transaction) {
+            Amount = 0;
+            this.User = user;
+            this.Transaction = transaction;
+        }
+
+        public void Validate() {
+            if (this.Fund == null && this.Bank == null && this.Bucket == null) {
+                throw new ValidationException("A ticket is not tied to any fund, bank, or bucket");
+            }
+            if (this.Fund != null && (this.Bank != null || this.Bucket != null)) {
+                throw new ValidationException("A ticket cannot be tied to both an expense/revenue and a bank/bucket");
+            }
+            if ((this.Bank != null && this.Bucket == null) || (this.Bank == null && this.Bucket != null)) {
+                throw new ValidationException("A ticket does not have a valid bank/bucket combination");
+            }
+        }
     }
 }
