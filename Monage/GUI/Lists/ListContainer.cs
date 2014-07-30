@@ -13,19 +13,19 @@ using Monage.Models;
 using Monage.GUI.Dialogs;
 
 namespace Monage.GUI.Frames {
-    public partial class ListFrame : UserControl {
+    public partial class ListContainer : UserControl {
         public string Category {
             get { return lblCategory.Text; }
             private set { lblCategory.Text = value; }
         }
-        protected ListFrame(string category) {
+        protected ListContainer(string category) {
             InitializeComponent();
             this.Category = category;
         }
 
         protected User User { get; set; }
         protected SummaryFrame ParentFrame { get; set; }
-        public ListFrame Set(SummaryFrame parent, User user) {
+        public ListContainer Set(SummaryFrame parent, User user) {
             this.ParentFrame = parent;
             this.User = user;
             getList();
@@ -78,8 +78,8 @@ namespace Monage.GUI.Frames {
         public virtual bool Ready(string conf) { return true; }
     }
     
-    public class BucketsFrame : ListFrame {
-        public BucketsFrame() : base("Buckets") { }
+    public class BucketsList : ListContainer {
+        public BucketsList() : base("Buckets") { }
 
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
@@ -104,8 +104,8 @@ namespace Monage.GUI.Frames {
         }
     }
 
-    public class BanksFrame : ListFrame {
-        public BanksFrame() : base("Banks") { }
+    public class BanksList : ListContainer {
+        public BanksList() : base("Banks") { }
 
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
@@ -130,8 +130,8 @@ namespace Monage.GUI.Frames {
         }
     }
 
-    public class BudgetsFrame : ListFrame {
-        public BudgetsFrame() : base("Budgets") { }
+    public class BudgetsList : ListContainer {
+        public BudgetsList() : base("Budgets") { }
 
         //protected override void btnNew_Click(object sender, EventArgs e) {
         //    try {
@@ -157,8 +157,8 @@ namespace Monage.GUI.Frames {
         }
     }
 
-    public class ExpenseFrame : ListFrame {
-        public ExpenseFrame() : base("Expense Categories") { }
+    public class ExpensesList : ListContainer {
+        public ExpensesList() : base("Expense Categories") { }
 
         //protected override void btnNew_Click(object sender, EventArgs e) {
         //    try {
@@ -184,8 +184,8 @@ namespace Monage.GUI.Frames {
         }
     }
 
-    public class RevenueFrame : ListFrame {
-        public RevenueFrame() : base("Revenue Sources") { }
+    public class RevenuesList : ListContainer {
+        public RevenuesList() : base("Revenue Sources") { }
 
         //protected override void btnNew_Click(object sender, EventArgs e) {
         //    try {

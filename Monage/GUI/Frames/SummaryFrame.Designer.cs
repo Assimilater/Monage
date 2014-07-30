@@ -23,11 +23,11 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.budgetsFrame = new Monage.GUI.Frames.BudgetsFrame();
-            this.bucketsFrame = new Monage.GUI.Frames.BucketsFrame();
-            this.banksFrame = new Monage.GUI.Frames.BanksFrame();
-            this.expenseFrame = new Monage.GUI.Frames.ExpenseFrame();
-            this.revenueFrame = new Monage.GUI.Frames.RevenueFrame();
+            this.budgetsFrame = new Monage.GUI.Frames.BudgetsList();
+            this.bucketsFrame = new Monage.GUI.Frames.BucketsList();
+            this.banksFrame = new Monage.GUI.Frames.BanksList();
+            this.expenseFrame = new Monage.GUI.Frames.ExpensesList();
+            this.revenueFrame = new Monage.GUI.Frames.RevenuesList();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -113,11 +113,11 @@
 
         #endregion
 
-        private BanksFrame banksFrame;
-        private BucketsFrame bucketsFrame;
-        private BudgetsFrame budgetsFrame;
-        private ExpenseFrame expenseFrame;
-        private RevenueFrame revenueFrame;
+        private BanksList banksFrame;
+        private BucketsList bucketsFrame;
+        private BudgetsList budgetsFrame;
+        private ExpensesList expenseFrame;
+        private RevenuesList revenueFrame;
         private System.Windows.Forms.SplitContainer splitContainer;
 
 
