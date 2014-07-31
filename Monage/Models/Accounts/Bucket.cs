@@ -33,23 +33,23 @@ namespace Monage.Models {
             if (val != null) {
                 bool changes = false;
 
-                if (Description != val.Description) {
-                    Description = val.Description;
+                if (this.Description != val.Description) {
+                    this.Description = val.Description;
                     changes = true;
                 }
 
-                if (Name != val.Name && val.Name != "") {
-                    if (Program.db.Buckets.Where(x => x.User.ID == User.ID && x.Name == val.Name).Any()) {
+                if (this.Name != val.Name && val.Name != "") {
+                    if (Program.db.Buckets.Where(x => x.User.ID == this.User.ID && x.Name == val.Name).Any()) {
                         throw new ValidationException("A bucket named \"" + val.Name + "\" already exists");
                     } else {
-                        Name = val.Name;
+                        this.Name = val.Name;
                         changes = true;
                     }
                 }
 
                 if (changes) {
                     try {
-                        if (ID == 0) { Program.db.Buckets.Add(this); }
+                        if (this.ID == 0) { Program.db.Buckets.Add(this); }
                         Program.db.SaveChanges();
                     } catch {
                         throw new ValidationException("An unkown exception has occured");

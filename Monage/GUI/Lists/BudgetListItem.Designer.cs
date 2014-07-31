@@ -40,6 +40,7 @@
             this.refDelete.TabIndex = 8;
             this.refDelete.Text = "Delete";
             this.refDelete.Visible = false;
+            this.refDelete.Click += new System.EventHandler(this.refDelete_Click);
             // 
             // refRename
             // 
@@ -52,6 +53,7 @@
             this.refRename.Size = new System.Drawing.Size(71, 20);
             this.refRename.TabIndex = 7;
             this.refRename.Text = "Rename";
+            this.refRename.Click += new System.EventHandler(this.refRename_Click);
             // 
             // lblName
             // 

@@ -26,5 +26,41 @@ namespace Monage.Models {
         public static List<Fund> Enumerate(User u, BalanceType t) {
             return Program.db.Funds.Where(x => x.User.ID == u.ID && x.BalanceType == t).OrderBy(x => x.Name).ToList();
         }
+
+        public Fund() { this.BalanceType = BalanceType.Debit; }
+        public Fund(User user, BalanceType balancetype) {
+            this.User = user;
+            this.BalanceType = balancetype;
+        }
+
+        public Fund Rename(Pair val) {
+            if (val != null) {
+                bool changes = false;
+
+                if (this.Description != val.Description) {
+                    this.Description = val.Description;
+                    changes = true;
+                }
+
+                if (this.Name != val.Name && val.Name != "") {
+                    if (Program.db.Funds.Where(x => x.User.ID == this.User.ID && x.Name == val.Name).Any()) {
+                        throw new ValidationException("A fund named \"" + val.Name + "\" already exists");
+                    } else {
+                        this.Name = val.Name;
+                        changes = true;
+                    }
+                }
+
+                if (changes) {
+                    try {
+                        if (this.ID == 0) { Program.db.Funds.Add(this); }
+                        Program.db.SaveChanges();
+                    } catch {
+                        throw new ValidationException("An unkown exception has occured");
+                    }
+                }
+            }
+            return this;
+        }
     }
 }

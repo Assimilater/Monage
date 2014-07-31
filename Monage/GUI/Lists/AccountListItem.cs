@@ -25,20 +25,20 @@ namespace Monage.GUI.Lists {
     }
 
     public class BankListItem : AccountListItem {
-        private Bank bank;
-        public BankListItem(Bank b) : base() { bank = b; SetText(); }
-        private void SetText() { Caption = bank.Name; Amount = bank.GetBalance().ToString(); }
+        private Bank Bank;
+        public BankListItem(Bank bank) : base() { this.Bank = bank; this.SetText(); }
+        private void SetText() { this.Caption = this.Bank.Name; this.Amount = this.Bank.GetBalance().ToString(); }
         protected override void refRename_Click(object sender, EventArgs e) {
             try {
-                bank.Rename(
+                this.Bank.Rename(
                     PairDialog.ShowDialog(
-                        "Enter a new name for bank: " + bank.Name,
+                        "Enter a new name for bank: " + this.Bank.Name,
                         "Rename Bank",
-                        bank.Name,
-                        bank.Description
+                        this.Bank.Name,
+                        this.Bank.Description
                     )
                 );
-                SetText();
+                this.SetText();
             } catch (ValidationException ex) {
                 MessageBox.Show(Program.Host, ex.Message);
             }
@@ -49,20 +49,20 @@ namespace Monage.GUI.Lists {
     }
 
     public class BucketListItem : AccountListItem {
-        private Bucket bucket;
-        public BucketListItem(Bucket b) : base() { bucket = b; SetText(); }
-        private void SetText() { Caption = bucket.Name; Amount = bucket.GetBalance().ToString(); }
+        private Bucket Bucket;
+        public BucketListItem(Bucket bucket) : base() { this.Bucket = bucket; this.SetText(); }
+        private void SetText() { this.Caption = this.Bucket.Name; this.Amount = this.Bucket.GetBalance().ToString(); }
         protected override void refRename_Click(object sender, EventArgs e) {
             try {
-                bucket.Rename(
+                this.Bucket.Rename(
                     PairDialog.ShowDialog(
-                        "Enter a new name for bucket: " + bucket.Name,
+                        "Enter a new name for bucket: " + this.Bucket.Name,
                         "Rename Bucket",
-                        bucket.Name,
-                        bucket.Description
+                        this.Bucket.Name,
+                        this.Bucket.Description
                     )
                 );
-                SetText();
+                this.SetText();
             } catch (ValidationException ex) {
                 MessageBox.Show(Program.Host, ex.Message);
             }
@@ -71,5 +71,4 @@ namespace Monage.GUI.Lists {
 
         }
     }
-
 }

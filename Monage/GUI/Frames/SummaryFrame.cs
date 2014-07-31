@@ -18,6 +18,8 @@ namespace Monage.GUI.Frames {
             banksFrame.Set(this, Connection.User);
             bucketsFrame.Set(this, Connection.User);
             budgetsFrame.Set(this, Connection.User);
+            revenueFrame.Set(this, Connection.User);
+            expenseFrame.Set(this, Connection.User);
             return this;
         }
 

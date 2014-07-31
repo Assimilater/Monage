@@ -33,24 +33,24 @@ namespace Monage.Models {
         public Bank Rename(Pair val) {
             if (val != null) {
                 bool changes = false;
-                
-                if (Description != val.Description) {
-                    Description = val.Description;
+
+                if (this.Description != val.Description) {
+                    this.Description = val.Description;
                     changes = true;
                 }
 
-                if (Name != val.Name && val.Name != "") {
-                    if (Program.db.Banks.Where(x => x.User.ID == User.ID && x.Name == val.Name).Any()) {
+                if (this.Name != val.Name && val.Name != "") {
+                    if (Program.db.Banks.Where(x => x.User.ID == this.User.ID && x.Name == val.Name).Any()) {
                         throw new ValidationException("A bank named \"" + val.Name + "\" already exists");
                     } else {
-                        Name = val.Name;
+                        this.Name = val.Name;
                         changes = true;
                     }
                 }
                 
                 if (changes) {
                     try {
-                        if (ID == 0) { Program.db.Banks.Add(this); }
+                        if (this.ID == 0) { Program.db.Banks.Add(this); }
                         Program.db.SaveChanges();
                     } catch {
                         throw new ValidationException("An unkown exception has occured");

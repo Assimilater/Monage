@@ -161,20 +161,19 @@ namespace Monage.GUI.Lists {
     public class ExpensesList : ListContainer {
         public ExpensesList() : base("Expense Categories") { }
 
-        //protected override void btnNew_Click(object sender, EventArgs e) {
-        //    try {
-        //        // *FIX*
-        //        new Bank(this.User).Rename(
-        //            PairDialog.ShowDialog(
-        //                "Enter a name and description for your new bank",
-        //                "Create Bank"
-        //            )
-        //        );
-        //        getList();
-        //    } catch (ValidationException ex) {
-        //        MessageBox.Show(Program.Host, ex.Message);
-        //    }
-        //}
+        protected override void btnNew_Click(object sender, EventArgs e) {
+            try {
+                new Fund(this.User, BalanceType.Debit).Rename(
+                    PairDialog.ShowDialog(
+                        "Enter a name and description for your new expense category",
+                        "Create Expense Category"
+                    )
+                );
+                getList();
+            } catch (ValidationException ex) {
+                MessageBox.Show(Program.Host, ex.Message);
+            }
+        }
 
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
@@ -188,20 +187,19 @@ namespace Monage.GUI.Lists {
     public class RevenuesList : ListContainer {
         public RevenuesList() : base("Revenue Sources") { }
 
-        //protected override void btnNew_Click(object sender, EventArgs e) {
-        //    try {
-        //        // *FIX*
-        //        new Bank(this.User).Rename(
-        //            PairDialog.ShowDialog(
-        //                "Enter a name and description for your new bank",
-        //                "Create Bank"
-        //            )
-        //        );
-        //        getList();
-        //    } catch (ValidationException ex) {
-        //        MessageBox.Show(Program.Host, ex.Message);
-        //    }
-        //}
+        protected override void btnNew_Click(object sender, EventArgs e) {
+            try {
+                new Fund(this.User, BalanceType.Credit).Rename(
+                    PairDialog.ShowDialog(
+                        "Enter a name and description for your new revenue source",
+                        "Create Revenue Source"
+                    )
+                );
+                getList();
+            } catch (ValidationException ex) {
+                MessageBox.Show(Program.Host, ex.Message);
+            }
+        }
 
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
