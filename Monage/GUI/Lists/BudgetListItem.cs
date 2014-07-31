@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Monage.Models;
 
-namespace Monage.GUI.Frames.Controls {
+namespace Monage.GUI.Lists {
     public partial class FundListItem : ListItem {
         public FundListItem() {
             InitializeComponent();

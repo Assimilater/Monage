@@ -1,4 +1,5 @@
-﻿namespace Monage.GUI.Frames {
+﻿using Monage.GUI.Lists;
+namespace Monage.GUI.Frames {
     partial class SummaryFrame {
         /// <summary> 
         /// Required designer variable.
@@ -23,11 +24,11 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.budgetsFrame = new Monage.GUI.Frames.BudgetsList();
-            this.bucketsFrame = new Monage.GUI.Frames.BucketsList();
-            this.banksFrame = new Monage.GUI.Frames.BanksList();
-            this.expenseFrame = new Monage.GUI.Frames.ExpensesList();
-            this.revenueFrame = new Monage.GUI.Frames.RevenuesList();
+            this.budgetsFrame = new Monage.GUI.Lists.BudgetsList();
+            this.bucketsFrame = new Monage.GUI.Lists.BucketsList();
+            this.banksFrame = new Monage.GUI.Lists.BanksList();
+            this.expenseFrame = new Monage.GUI.Lists.ExpensesList();
+            this.revenueFrame = new Monage.GUI.Lists.RevenuesList();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -119,7 +120,6 @@
         private ExpensesList expenseFrame;
         private RevenuesList revenueFrame;
         private System.Windows.Forms.SplitContainer splitContainer;
-
 
     }
 }

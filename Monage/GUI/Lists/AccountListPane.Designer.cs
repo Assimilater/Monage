@@ -1,4 +1,4 @@
-﻿namespace Monage.GUI.Frames.Controls {
+﻿namespace Monage.GUI.Lists {
     partial class AccountListPane {
         /// <summary> 
         /// Required designer variable.

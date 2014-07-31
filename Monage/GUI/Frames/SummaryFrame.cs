@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Monage.GUI.Lists;
 
 namespace Monage.GUI.Frames {
     public partial class SummaryFrame : Frame {

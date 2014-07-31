@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Monage.GUI.Frames.Controls {
+namespace Monage.GUI.Lists {
     public partial class AccountListPane : ListPane {
         public AccountListPane() {
             InitializeComponent();

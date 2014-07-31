@@ -8,11 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Monage.GUI.Frames.Controls;
+using Monage.GUI.Lists;
 using Monage.Models;
 using Monage.GUI.Dialogs;
+using Monage.GUI.Frames;
 
-namespace Monage.GUI.Frames {
+namespace Monage.GUI.Lists {
     public partial class ListContainer : UserControl {
         public string Category {
             get { return lblCategory.Text; }

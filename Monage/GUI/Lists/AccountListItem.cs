@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using Monage.Models;
 using Monage.GUI.Dialogs;
 
-namespace Monage.GUI.Frames.Controls {
+namespace Monage.GUI.Lists {
     public partial class AccountListItem : ListItem {
         public AccountListItem() {
             InitializeComponent();

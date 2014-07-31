@@ -1,4 +1,4 @@
-﻿namespace Monage.GUI.Frames {
+﻿namespace Monage.GUI.Lists {
     partial class ListContainer {
         /// <summary> 
         /// Required designer variable.
