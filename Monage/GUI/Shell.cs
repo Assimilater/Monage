@@ -50,6 +50,11 @@ namespace Monage.GUI {
                 : true;
         }
 
+        public Shell GoHome() {
+            this.SetFrame(new SummaryFrame());
+            return this;
+        }
+
         private void SetFrame(Frame view, string conf = "Navigation") {
             if (Ready(conf)) {
                 active = view;
@@ -67,7 +72,7 @@ namespace Monage.GUI {
             UpdateMenuBar();
         }
 
-        public void UpdateTitle() {
+        public Shell UpdateTitle() {
             this.Text = ConnectionString + (
                 User == null
                 ? ""
@@ -79,6 +84,7 @@ namespace Monage.GUI {
                     )
                 )
             );
+            return this;
         }
 
         private void UpdateMenuBar() {
@@ -126,7 +132,7 @@ namespace Monage.GUI {
 
         #endregion
 
-        public void Login(User u) {
+        public Shell Login(User u) {
             User = u;
             Settings.ActiveUser = User == null ? -1 : User.ID;
 
@@ -136,6 +142,7 @@ namespace Monage.GUI {
                 : new SummaryFrame() as Frame;
 
             SetFrame(view, "Logout");
+            return this;
         }
     }
 }
