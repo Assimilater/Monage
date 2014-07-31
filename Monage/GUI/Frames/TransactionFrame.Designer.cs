@@ -45,12 +45,15 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnTicket = new System.Windows.Forms.Button();
+            this.btnAddTicket = new System.Windows.Forms.Button();
             this.txtCompany = new System.Windows.Forms.TextBox();
             this.numAmount = new System.Windows.Forms.NumericUpDown();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.lblTickets = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlTickets = new System.Windows.Forms.Panel();
+            this.lblCreditAmount = new System.Windows.Forms.Label();
+            this.lblDebitAmount = new System.Windows.Forms.Label();
+            this.lblCheck = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).BeginInit();
             this.lblTickets.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +64,7 @@
             this.txtDetails.Multiline = true;
             this.txtDetails.Name = "txtDetails";
             this.txtDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDetails.Size = new System.Drawing.Size(471, 104);
+            this.txtDetails.Size = new System.Drawing.Size(624, 104);
             this.txtDetails.TabIndex = 1;
             this.txtDetails.TextChanged += new System.EventHandler(this.txtDetails_TextChanged);
             // 
@@ -70,11 +73,11 @@
             this.dtConfirm.CustomFormat = "  MM/dd/yyyy";
             this.dtConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtConfirm.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtConfirm.Location = new System.Drawing.Point(162, 20);
+            this.dtConfirm.Location = new System.Drawing.Point(213, 20);
             this.dtConfirm.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtConfirm.Name = "dtConfirm";
             this.dtConfirm.ShowCheckBox = true;
-            this.dtConfirm.Size = new System.Drawing.Size(153, 24);
+            this.dtConfirm.Size = new System.Drawing.Size(204, 24);
             this.dtConfirm.TabIndex = 3;
             this.dtConfirm.Value = new System.DateTime(2014, 6, 23, 0, 0, 0, 0);
             this.dtConfirm.ValueChanged += new System.EventHandler(this.dtConfirm_ValueChanged);
@@ -82,7 +85,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(162, 0);
+            this.label2.Location = new System.Drawing.Point(213, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(9, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 17);
@@ -107,7 +110,7 @@
             this.dtRecord.Location = new System.Drawing.Point(3, 20);
             this.dtRecord.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtRecord.Name = "dtRecord";
-            this.dtRecord.Size = new System.Drawing.Size(153, 24);
+            this.dtRecord.Size = new System.Drawing.Size(204, 24);
             this.dtRecord.TabIndex = 2;
             this.dtRecord.Value = new System.DateTime(2014, 6, 23, 0, 0, 0, 0);
             this.dtRecord.ValueChanged += new System.EventHandler(this.dtRecord_ValueChanged);
@@ -117,9 +120,9 @@
             this.cbxBanks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxBanks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxBanks.FormattingEnabled = true;
-            this.cbxBanks.Location = new System.Drawing.Point(162, 70);
+            this.cbxBanks.Location = new System.Drawing.Point(213, 70);
             this.cbxBanks.Name = "cbxBanks";
-            this.cbxBanks.Size = new System.Drawing.Size(153, 26);
+            this.cbxBanks.Size = new System.Drawing.Size(204, 26);
             this.cbxBanks.TabIndex = 5;
             // 
             // cbxExpenses
@@ -127,9 +130,9 @@
             this.cbxExpenses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxExpenses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxExpenses.FormattingEnabled = true;
-            this.cbxExpenses.Location = new System.Drawing.Point(321, 122);
+            this.cbxExpenses.Location = new System.Drawing.Point(423, 122);
             this.cbxExpenses.Name = "cbxExpenses";
-            this.cbxExpenses.Size = new System.Drawing.Size(153, 26);
+            this.cbxExpenses.Size = new System.Drawing.Size(204, 26);
             this.cbxExpenses.TabIndex = 6;
             // 
             // cbxBuckets
@@ -137,9 +140,9 @@
             this.cbxBuckets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxBuckets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxBuckets.FormattingEnabled = true;
-            this.cbxBuckets.Location = new System.Drawing.Point(321, 70);
+            this.cbxBuckets.Location = new System.Drawing.Point(423, 70);
             this.cbxBuckets.Name = "cbxBuckets";
-            this.cbxBuckets.Size = new System.Drawing.Size(153, 26);
+            this.cbxBuckets.Size = new System.Drawing.Size(204, 26);
             this.cbxBuckets.TabIndex = 7;
             // 
             // cbxRevenues
@@ -147,15 +150,15 @@
             this.cbxRevenues.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRevenues.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxRevenues.FormattingEnabled = true;
-            this.cbxRevenues.Location = new System.Drawing.Point(162, 122);
+            this.cbxRevenues.Location = new System.Drawing.Point(213, 122);
             this.cbxRevenues.Name = "cbxRevenues";
-            this.cbxRevenues.Size = new System.Drawing.Size(153, 26);
+            this.cbxRevenues.Size = new System.Drawing.Size(204, 26);
             this.cbxRevenues.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(321, 0);
+            this.label3.Location = new System.Drawing.Point(423, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 17);
@@ -165,9 +168,9 @@
             // txtBrief
             // 
             this.txtBrief.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBrief.Location = new System.Drawing.Point(321, 20);
+            this.txtBrief.Location = new System.Drawing.Point(423, 20);
             this.txtBrief.Name = "txtBrief";
-            this.txtBrief.Size = new System.Drawing.Size(312, 24);
+            this.txtBrief.Size = new System.Drawing.Size(414, 24);
             this.txtBrief.TabIndex = 10;
             this.txtBrief.TextChanged += new System.EventHandler(this.txtBrief_TextChanged);
             // 
@@ -178,7 +181,7 @@
             this.cbxBudgets.FormattingEnabled = true;
             this.cbxBudgets.Location = new System.Drawing.Point(3, 122);
             this.cbxBudgets.Name = "cbxBudgets";
-            this.cbxBudgets.Size = new System.Drawing.Size(153, 26);
+            this.cbxBudgets.Size = new System.Drawing.Size(204, 26);
             this.cbxBudgets.TabIndex = 11;
             // 
             // label4
@@ -194,7 +197,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(162, 50);
+            this.label5.Location = new System.Drawing.Point(213, 50);
             this.label5.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 17);
@@ -204,7 +207,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(321, 50);
+            this.label6.Location = new System.Drawing.Point(423, 50);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 17);
@@ -227,20 +230,20 @@
             this.cbxAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxAction.FormattingEnabled = true;
             this.cbxAction.Items.AddRange(new object[] {
-            "Budget Income",
-            "Make Deposit",
-            "Make Withdrawal",
-            "Write Expense",
-            "Write Revenue"});
+            "Apply Budget",
+            "Deposit / Withdraw",
+            "Write Revenue",
+            "Write Expense"});
             this.cbxAction.Location = new System.Drawing.Point(3, 70);
             this.cbxAction.Name = "cbxAction";
-            this.cbxAction.Size = new System.Drawing.Size(153, 26);
+            this.cbxAction.Size = new System.Drawing.Size(204, 26);
             this.cbxAction.TabIndex = 16;
+            this.cbxAction.SelectedIndexChanged += new System.EventHandler(this.cbxAction_SelectedIndexChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(162, 102);
+            this.label8.Location = new System.Drawing.Point(213, 102);
             this.label8.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 17);
@@ -250,7 +253,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(321, 102);
+            this.label9.Location = new System.Drawing.Point(423, 102);
             this.label9.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(66, 17);
@@ -260,7 +263,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(480, 50);
+            this.label10.Location = new System.Drawing.Point(633, 50);
             this.label10.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(60, 17);
@@ -280,85 +283,128 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(480, 102);
+            this.label11.Location = new System.Drawing.Point(633, 102);
             this.label11.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(71, 17);
             this.label11.TabIndex = 20;
             this.label11.Text = "Company:";
             // 
-            // btnTicket
+            // btnAddTicket
             // 
-            this.btnTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTicket.Location = new System.Drawing.Point(480, 174);
-            this.btnTicket.Name = "btnTicket";
-            this.btnTicket.Size = new System.Drawing.Size(153, 49);
-            this.btnTicket.TabIndex = 22;
-            this.btnTicket.Text = "Add Ticket";
-            this.btnTicket.UseVisualStyleBackColor = true;
+            this.btnAddTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddTicket.Location = new System.Drawing.Point(633, 174);
+            this.btnAddTicket.Name = "btnAddTicket";
+            this.btnAddTicket.Size = new System.Drawing.Size(204, 49);
+            this.btnAddTicket.TabIndex = 22;
+            this.btnAddTicket.Text = "Add Ticket";
+            this.btnAddTicket.UseVisualStyleBackColor = true;
+            this.btnAddTicket.Click += new System.EventHandler(this.btnAddTicket_Click);
             // 
             // txtCompany
             // 
+            this.txtCompany.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtCompany.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCompany.Location = new System.Drawing.Point(480, 122);
+            this.txtCompany.Location = new System.Drawing.Point(633, 122);
             this.txtCompany.Name = "txtCompany";
-            this.txtCompany.Size = new System.Drawing.Size(153, 24);
+            this.txtCompany.Size = new System.Drawing.Size(204, 24);
             this.txtCompany.TabIndex = 23;
             // 
             // numAmount
             // 
             this.numAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numAmount.Location = new System.Drawing.Point(480, 69);
+            this.numAmount.Location = new System.Drawing.Point(633, 69);
             this.numAmount.Maximum = new decimal(new int[] {
             1000000000,
             0,
             0,
             0});
+            this.numAmount.Minimum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            -2147483648});
             this.numAmount.Name = "numAmount";
-            this.numAmount.Size = new System.Drawing.Size(153, 27);
+            this.numAmount.Size = new System.Drawing.Size(204, 27);
             this.numAmount.TabIndex = 24;
             this.numAmount.ThousandsSeparator = true;
             // 
-            // button2
+            // btnSave
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(480, 229);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(153, 49);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Save Transaction";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(633, 229);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(204, 49);
+            this.btnSave.TabIndex = 26;
+            this.btnSave.Text = "Save Transaction";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblTickets
             // 
-            this.lblTickets.Controls.Add(this.panel1);
+            this.lblTickets.Controls.Add(this.pnlTickets);
             this.lblTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTickets.Location = new System.Drawing.Point(3, 284);
             this.lblTickets.Name = "lblTickets";
-            this.lblTickets.Size = new System.Drawing.Size(630, 276);
+            this.lblTickets.Size = new System.Drawing.Size(834, 276);
             this.lblTickets.TabIndex = 27;
             this.lblTickets.TabStop = false;
             this.lblTickets.Text = "Tickets";
             // 
-            // panel1
+            // pnlTickets
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(3, 23);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(624, 250);
-            this.panel1.TabIndex = 0;
+            this.pnlTickets.AutoScroll = true;
+            this.pnlTickets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlTickets.Location = new System.Drawing.Point(3, 23);
+            this.pnlTickets.Name = "pnlTickets";
+            this.pnlTickets.Size = new System.Drawing.Size(828, 250);
+            this.pnlTickets.TabIndex = 0;
+            // 
+            // lblCreditAmount
+            // 
+            this.lblCreditAmount.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreditAmount.Location = new System.Drawing.Point(467, 563);
+            this.lblCreditAmount.Margin = new System.Windows.Forms.Padding(3);
+            this.lblCreditAmount.Name = "lblCreditAmount";
+            this.lblCreditAmount.Size = new System.Drawing.Size(167, 26);
+            this.lblCreditAmount.TabIndex = 29;
+            this.lblCreditAmount.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
+            // lblDebitAmount
+            // 
+            this.lblDebitAmount.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDebitAmount.Location = new System.Drawing.Point(640, 563);
+            this.lblDebitAmount.Margin = new System.Windows.Forms.Padding(3);
+            this.lblDebitAmount.Name = "lblDebitAmount";
+            this.lblDebitAmount.Size = new System.Drawing.Size(167, 26);
+            this.lblDebitAmount.TabIndex = 28;
+            this.lblDebitAmount.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
+            // lblCheck
+            // 
+            this.lblCheck.AutoSize = true;
+            this.lblCheck.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCheck.Location = new System.Drawing.Point(361, 566);
+            this.lblCheck.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
+            this.lblCheck.Name = "lblCheck";
+            this.lblCheck.Size = new System.Drawing.Size(101, 23);
+            this.lblCheck.TabIndex = 30;
+            this.lblCheck.Text = "Check Sum:";
             // 
             // TransactionFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblCheck);
+            this.Controls.Add(this.lblCreditAmount);
+            this.Controls.Add(this.lblDebitAmount);
             this.Controls.Add(this.lblTickets);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.numAmount);
             this.Controls.Add(this.txtCompany);
-            this.Controls.Add(this.btnTicket);
+            this.Controls.Add(this.btnAddTicket);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -382,7 +428,7 @@
             this.Controls.Add(this.dtConfirm);
             this.Controls.Add(this.txtDetails);
             this.Name = "TransactionFrame";
-            this.Size = new System.Drawing.Size(636, 563);
+            this.Size = new System.Drawing.Size(840, 595);
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).EndInit();
             this.lblTickets.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -414,11 +460,14 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnTicket;
+        private System.Windows.Forms.Button btnAddTicket;
         private System.Windows.Forms.TextBox txtCompany;
         private System.Windows.Forms.NumericUpDown numAmount;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox lblTickets;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlTickets;
+        private System.Windows.Forms.Label lblCreditAmount;
+        private System.Windows.Forms.Label lblDebitAmount;
+        private System.Windows.Forms.Label lblCheck;
     }
 }

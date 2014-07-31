@@ -34,12 +34,28 @@ namespace Monage.Models {
         }
 
         public void Validate() {
-            double sum = 0;
-            foreach (Ticket t in this.Tickets) {
-                t.Validate();
-                sum += t.Amount;
+            // Check that this transaction isn't meaningless
+            if (this.Tickets.Count() == 0) {
+                throw new ValidationException("This transaction has no tickets");
             }
-            if (sum != 0) {
+
+            // Check the incurred and confirmed dates
+            if (this.Confirmed != null) {
+                if (this.Confirmed < this.Incurred) {
+                    throw new ValidationException("Transaction marked as confirmed before it was incurred");
+                }
+            }
+
+            // Check that it has sufficient descriptors
+            if (this.Brief == "") {
+                throw new ValidationException("Add a brief description of what this transaction represents");
+            }
+
+            // Check each individual ticket is valid
+            foreach (Ticket ticket in this.Tickets) { ticket.Validate(); }
+
+            // Check the transaction is balanced
+            if (this.Tickets.Sum(x => x.Amount) != 0) {
                 throw new ValidationException("This transaction's tickets are not balanced");
             }
         }
