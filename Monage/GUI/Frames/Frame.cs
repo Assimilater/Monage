@@ -23,7 +23,7 @@ namespace Monage.GUI.Frames {
     }
 
     public abstract class Frame : UserControl {
-    //public class Frame : UserControl {
+        //public class Frame : UserControl {
         public FramePosition Position { get; private set; }
         public Shell Connection { get; private set; }
         public Panel Canvas { get; private set; }
@@ -37,7 +37,6 @@ namespace Monage.GUI.Frames {
 
             Canvas.Controls.Clear();
             Canvas.Controls.Add(this);
-            Adjust();
             return this;
         }
         public virtual Frame Adjust() {
