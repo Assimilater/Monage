@@ -60,8 +60,8 @@ namespace Monage.GUI.Frames {
                     )
                 );
                 getList();
-            } catch (ValidationException e) {
-                MessageBox.Show(Program.Host, e.Message);
+            } catch (ValidationException ex) {
+                MessageBox.Show(Program.Host, ex.Message);
             }
         }
     }
