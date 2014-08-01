@@ -184,8 +184,12 @@
     <Compile Include="GUI\Controls\TicketMaster.Designer.cs">
       <DependentUpon>TicketMaster.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201407090443035_ReplaceExReWithFunds.cs" />
-    <Compile Include="Migrations\201407090443035_ReplaceExReWithFunds.Designer.cs">
+    <Compile Include="Migrations\201408010122375_AddNavigionIdsToModels.cs" />
+    <Compile Include="Migrations\201408010122375_AddNavigionIdsToModels.Designer.cs">
+      <DependentUpon>201408010122375_AddNavigionIdsToModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Deployed\201407090443035_ReplaceExReWithFunds.cs" />
+    <Compile Include="Migrations\Deployed\201407090443035_ReplaceExReWithFunds.Designer.cs">
       <DependentUpon>201407090443035_ReplaceExReWithFunds.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201407121758586_ReduceToTickets.cs" />
@@ -236,8 +240,8 @@
     <Compile Include="Migrations\Deployed\201406061458497_RenameTransactionField.Designer.cs">
       <DependentUpon>201406061458497_RenameTransactionField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201406190055461_RemoveBalancesAndTickets.cs" />
-    <Compile Include="Migrations\201406190055461_RemoveBalancesAndTickets.Designer.cs">
+    <Compile Include="Migrations\Deployed\201406190055461_RemoveBalancesAndTickets.cs" />
+    <Compile Include="Migrations\Deployed\201406190055461_RemoveBalancesAndTickets.Designer.cs">
       <DependentUpon>201406190055461_RemoveBalancesAndTickets.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
@@ -298,7 +302,10 @@
     <EmbeddedResource Include="GUI\Splash.resx">
       <DependentUpon>Splash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201407090443035_ReplaceExReWithFunds.resx">
+    <EmbeddedResource Include="Migrations\201408010122375_AddNavigionIdsToModels.resx">
+      <DependentUpon>201408010122375_AddNavigionIdsToModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Deployed\201407090443035_ReplaceExReWithFunds.resx">
       <DependentUpon>201407090443035_ReplaceExReWithFunds.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407121758586_ReduceToTickets.resx">
@@ -337,7 +344,7 @@
     <EmbeddedResource Include="Migrations\Deployed\201406061458497_RenameTransactionField.resx">
       <DependentUpon>201406061458497_RenameTransactionField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201406190055461_RemoveBalancesAndTickets.resx">
+    <EmbeddedResource Include="Migrations\Deployed\201406190055461_RemoveBalancesAndTickets.resx">
       <DependentUpon>201406190055461_RemoveBalancesAndTickets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

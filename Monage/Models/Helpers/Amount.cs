@@ -22,10 +22,10 @@ namespace Monage.Models {
 
             IEnumerable<Ticket> Aggregate = Program.db.Tickets;
             if (bank != null) {
-                Aggregate = Aggregate.Where(x => x.Bank.ID == bank.ID);
+                Aggregate = Aggregate.Where(x => x.Bank_ID == bank.ID);
             }
             if (bucket != null) {
-                Aggregate = Aggregate.Where(x => x.Bucket.ID == bucket.ID);
+                Aggregate = Aggregate.Where(x => x.Bucket_ID == bucket.ID);
             }
 
             this.Confirmed = Aggregate.Where(x => x.Transaction.Confirmed != null).Sum(x => x.Amount);

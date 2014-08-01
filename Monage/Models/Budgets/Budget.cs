@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,14 +18,20 @@ namespace Monage.Models {
         public string Name { get; set; }
         public string Description { get; set; }
 
+        [ForeignKey("User_ID")]
         public virtual User User { get; set; }
+        public int User_ID { get; set; }
+
+        [ForeignKey("Final_ID")]
         public virtual Bucket Final { get; set; }
+        public int Final_ID { get; set; }
+
         public virtual List<Tier> Tiers { get; set; }
 
         #endregion
 
         public static List<Budget> Enumerate(User u) {
-            //return Program.db.Budgets.Where(x => x.User.ID == u.ID).OrderBy(x => x.Name).ToList();
+            //return Program.db.Budgets.Where(x => x.User_ID == u.ID).OrderBy(x => x.Name).ToList();
             return new List<Budget>();
         }
 
@@ -38,8 +45,8 @@ namespace Monage.Models {
 
         private void Validate() {
             if (this.ID == 0 &&
-                Program.db.Buckets.Count(x => x.User.ID == this.User.ID) == 0 &&
-                Program.db.Banks.Count(x => x.User.ID == this.User.ID) == 0) {
+                Program.db.Buckets.Count(x => x.User_ID == this.User_ID) == 0 &&
+                Program.db.Banks.Count(x => x.User_ID == this.User_ID) == 0) {
                 throw new ValidationException("You can't create a budget without at least one bank and one bucket");
             }
         }
@@ -64,7 +71,7 @@ namespace Monage.Models {
                 }
 
                 if (this.Name != val.Name && val.Name != "") {
-                    //if (Program.db.Budgets.Where(x => x.User.ID == this.User.ID && x.Name == val.Name).Any()) {
+                    //if (Program.db.Budgets.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
                     //    throw new ValidationException("A budget named \"" + val.Name + "\" already exists");
                     //} else {
                     //    this.Name = val.Name;

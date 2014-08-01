@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,13 +17,26 @@ namespace Monage.Models {
         public double Amount { get; set; }
 
         public string Company { get; set; }
+
+        [ForeignKey("Fund_ID")]
         public virtual Fund Fund { get; set; }
+        public int? Fund_ID { get; set; }
 
+        [ForeignKey("Bank_ID")]
         public virtual Bank Bank { get; set; }
-        public virtual Bucket Bucket { get; set; }
+        public int? Bank_ID { get; set; }
 
+        [ForeignKey("Bucket_ID")]
+        public virtual Bucket Bucket { get; set; }
+        public int? Bucket_ID { get; set; }
+
+        [ForeignKey("User_ID")]
         public virtual User User { get; set; }
+        public int User_ID { get; set; }
+
+        [ForeignKey("Transaction_ID")]
         public virtual Transaction Transaction { get; set; }
+        public int Transaction_ID { get; set; }
 
         #endregion
 

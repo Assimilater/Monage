@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,12 +20,14 @@ namespace Monage.Models {
         public string Description { get; set; }
         public BalanceType BalanceType { get; set; }
 
+        [ForeignKey("User_ID")]
         public virtual User User { get; set; }
+        public int User_ID { get; set; }
 
         #endregion
 
         public static List<Fund> Enumerate(User u, BalanceType t) {
-            return Program.db.Funds.Where(x => x.User.ID == u.ID && x.BalanceType == t).OrderBy(x => x.Name).ToList();
+            return Program.db.Funds.Where(x => x.User_ID == u.ID && x.BalanceType == t).OrderBy(x => x.Name).ToList();
         }
 
         public Fund() { this.BalanceType = BalanceType.Debit; }
@@ -43,7 +46,7 @@ namespace Monage.Models {
                 }
 
                 if (this.Name != val.Name && val.Name != "") {
-                    if (Program.db.Funds.Where(x => x.User.ID == this.User.ID && x.Name == val.Name).Any()) {
+                    if (Program.db.Funds.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
                         throw new ValidationException("A fund named \"" + val.Name + "\" already exists");
                     } else {
                         this.Name = val.Name;
