@@ -25,8 +25,8 @@ namespace Monage.GUI.Frames {
         private void getList() {
             int prev = cbxUsers.SelectedIndex;
             cbxUsers.Items.Clear();
-            foreach (User u in Program.db.Users) {
-                cbxUsers.Items.Add(u.Username);
+            foreach (User user in Program.db.Users) {
+                cbxUsers.Items.Add(user.Username);
             }
 
             cbxUsers.SelectedIndex =

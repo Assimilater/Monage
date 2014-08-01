@@ -34,7 +34,7 @@ namespace Monage.Models {
 
         public override string ToString() {
             return String.Format(
-                "{0:C} [{1:C}]",
+                "{0:C} [ {1:C} ]",
                 Confirmed,
                 Expected
             );

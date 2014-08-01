@@ -24,14 +24,17 @@ namespace Monage.Models {
 
         #endregion
 
-        public static List<Bucket> Enumerate(User u) {
-            return Program.db.Buckets.Where(x => x.User_ID == u.ID).OrderBy(x => x.Name).ToList();
+        public static IEnumerable<Bucket> Enumerate(User user) {
+            return Program.db.Buckets.Where(x => x.User_ID == user.ID).OrderBy(x => x.Name);
         }
 
         public Bucket() { }
-        public Bucket(User user) { User = user; }
+        public Bucket(User user) {
+            this.User = user;
+            this.User_ID = user.ID;
+        }
 
-        public Amount GetBalance(Bank b = null) { return new Amount(b, this); }
+        public Amount GetBalance(Bank bank = null) { return new Amount(bank, this); }
 
         public Bucket Rename(Pair val) {
             if (val != null) {

@@ -41,12 +41,14 @@ namespace Monage.Models {
         #endregion
 
         public Ticket() {
-            Amount = 0;
+            this.Amount = 0;
         }
         public Ticket(User user, Transaction transaction) {
-            Amount = 0;
+            this.Amount = 0;
             this.User = user;
+            this.User_ID = user.ID;
             this.Transaction = transaction;
+            this.Transaction_ID = transaction.ID;
         }
 
         public void Validate() {

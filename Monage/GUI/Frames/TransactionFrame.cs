@@ -13,7 +13,8 @@ using Monage.GUI.Controls;
 
 namespace Monage.GUI.Frames {
     public partial class TransactionFrame : Frame {
-        bool Saved;
+        string FrameTitle;
+        bool Saved, ReadyState;
         Transaction Transaction;
 
         public TransactionFrame(Transaction transaction = null)
@@ -21,20 +22,39 @@ namespace Monage.GUI.Frames {
             InitializeComponent();
             cbxAction.SelectedIndex = 0;
 
-            this.Saved = false;
-            this.Transaction = transaction == null ? new Transaction() : transaction;
+            this.FrameTitle = transaction == null
+                ? "New Transaction"
+                : "Update Transaction";
 
-            this.getTicketList();
+            this.Saved = false;
+            this.ReadyState = false;
+            this.Transaction = transaction;
         }
 
-        public override string Title() { return "New Transaction"; }
+        public override string Title() { return this.FrameTitle; }
         public override bool Ready(string conf) {
             return this.Saved ||
                 Program.ConfirmReady(Connection.ConnectionString, conf);
         }
         public override Frame Set(Shell connection, Panel canvas) {
             base.Set(connection, canvas);
+
+            if (this.Transaction == null) {
+                this.Transaction = new Transaction(this.Connection.User);
+            }
+
+            txtBrief.Text = this.Transaction.Brief;
+            txtDetails.Text = this.Transaction.Details;
+            dtIncur.Value = this.Transaction.Incurred;
+            dtConfirm.Value = this.Transaction.Confirmed != null
+                ? this.Transaction.Confirmed.Value
+                : DateTime.Now;
+            dtConfirm.Checked = this.Transaction.Confirmed != null;
+
+            this.getTicketList();
             this.getLists();
+
+            this.ReadyState = true;
             return this;
         }
         public override Frame Adjust() {
@@ -48,9 +68,12 @@ namespace Monage.GUI.Frames {
         }
 
         private class TicketResult {
-            public TicketResult() { this.Tickets = new List<Ticket>(); }
             public List<Ticket> Tickets { get; set; }
             public string AppendedNotes { get; set; }
+            public TicketResult() {
+                this.Tickets = new List<Ticket>();
+                this.AppendedNotes = "";
+            }
         }
         private void btnAddTicket_Click(object sender, EventArgs e) {
             TicketResult tr = new TicketResult();
@@ -82,7 +105,7 @@ namespace Monage.GUI.Frames {
             }
 
             // Append to the notes section any new information
-            txtDetails.Text += Environment.NewLine + tr.AppendedNotes;
+            txtDetails.Text += tr.AppendedNotes;
 
             // Add all tickets associated with this action
             foreach (Ticket ticket in tr.Tickets) {
@@ -122,7 +145,7 @@ namespace Monage.GUI.Frames {
             double subAmount, subTotal;
 
             // Apply the budget
-            tr.AppendedNotes += separator
+            tr.AppendedNotes += Environment.NewLine + separator
                 + "Applying budget: " + budget.Name + Environment.NewLine;
 
             List<Ticket> staged = new List<Ticket>();
@@ -336,20 +359,22 @@ namespace Monage.GUI.Frames {
         }
 
         private void dtConfirm_ValueChanged(object sender, EventArgs e) {
-            if (dtConfirm.Checked) {
-                this.Transaction.Confirmed = dtConfirm.Value;
-            } else {
-                this.Transaction.Confirmed = null;
+            if (this.ReadyState) {
+                if (dtConfirm.Checked) {
+                    this.Transaction.Confirmed = dtConfirm.Value;
+                } else {
+                    this.Transaction.Confirmed = null;
+                }
             }
         }
-        private void dtRecord_ValueChanged(object sender, EventArgs e) {
-            this.Transaction.Incurred = dtRecord.Value;
+        private void dtIncur_ValueChanged(object sender, EventArgs e) {
+            if (this.ReadyState) { this.Transaction.Incurred = dtIncur.Value; }
         }
         private void txtDetails_TextChanged(object sender, EventArgs e) {
-            this.Transaction.Details = txtDetails.Text;
+            if (this.ReadyState) { this.Transaction.Details = txtDetails.Text; }
         }
         private void txtBrief_TextChanged(object sender, EventArgs e) {
-            this.Transaction.Brief = txtBrief.Text;
+            if (this.ReadyState) { this.Transaction.Brief = txtBrief.Text; }
         }
         private void cbxAction_SelectedIndexChanged(object sender, EventArgs e) {
             switch (cbxAction.SelectedItem.ToString()) {

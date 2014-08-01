@@ -26,13 +26,14 @@ namespace Monage.Models {
 
         #endregion
 
-        public static List<Fund> Enumerate(User u, BalanceType t) {
-            return Program.db.Funds.Where(x => x.User_ID == u.ID && x.BalanceType == t).OrderBy(x => x.Name).ToList();
+        public static IEnumerable<Fund> Enumerate(User user, BalanceType balancetype) {
+            return Program.db.Funds.Where(x => x.User_ID == user.ID && x.BalanceType == balancetype).OrderBy(x => x.Name);
         }
 
         public Fund() { this.BalanceType = BalanceType.Debit; }
         public Fund(User user, BalanceType balancetype) {
             this.User = user;
+            this.User_ID = user.ID;
             this.BalanceType = balancetype;
         }
 

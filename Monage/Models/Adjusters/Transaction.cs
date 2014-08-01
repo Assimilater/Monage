@@ -31,9 +31,20 @@ namespace Monage.Models {
         #endregion
 
         public Transaction() {
-            Tickets = new List<Ticket>();
-            Incurred = DateTime.Now;
-            Confirmed = null;
+            this.Tickets = new List<Ticket>();
+            this.Brief = "";
+            this.Details = "";
+            this.Incurred = DateTime.Now;
+            this.Confirmed = null;
+        }
+        public Transaction(User user) {
+            this.User = user;
+            this.User_ID = user.ID;
+            this.Brief = "";
+            this.Details = "";
+            this.Tickets = new List<Ticket>();
+            this.Incurred = DateTime.Now;
+            this.Confirmed = null;
         }
 
         public void Validate() {
@@ -50,8 +61,12 @@ namespace Monage.Models {
             }
 
             // Check that it has sufficient descriptors
-            if (this.Brief == "") {
+            if (this.Brief.Trim() == "") {
                 throw new ValidationException("Add a brief description of what this transaction represents");
+            }
+
+            if (this.Brief.Length > Settings.NameLen) {
+                throw new ValidationException("Brief is too long, make it brief (less than 45 characters)");
             }
 
             // Check each individual ticket is valid
@@ -64,11 +79,11 @@ namespace Monage.Models {
         }
 
         public Transaction Save() {
-            Validate();
-            if (ID == 0) {
+            this.Validate();
+            if (this.ID == 0) {
                 Program.db.Transactions.Add(this);
-                foreach (Ticket t in this.Tickets) {
-                    Program.db.Tickets.Add(t);
+                foreach (Ticket ticket in this.Tickets) {
+                    Program.db.Tickets.Add(ticket);
                 }
                 Program.db.SaveChanges();
             }

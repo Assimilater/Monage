@@ -23,19 +23,19 @@ namespace Monage.Models {
         #endregion
 
         public User() {
-            Banks = new List<Bank>();
-            Buckets = new List<Bucket>();
-            Budgets = new List<Budget>();
+            this.Banks = new List<Bank>();
+            this.Buckets = new List<Bucket>();
+            this.Budgets = new List<Budget>();
         }
 
         public User Rename(String name) {
-            if (Username != name && name != null && name != "") {
+            if (this.Username != name && name != null && name != "") {
                 if (Program.db.Users.Where(x => x.Username == name).Any()) {
                     throw new ValidationException("Username \"" + name + "\" is already in use");
                 } else {
                     try {
-                        Username = name;
-                        if (ID == 0) { Program.db.Users.Add(this); }
+                        this.Username = name;
+                        if (this.ID == 0) { Program.db.Users.Add(this); }
                         Program.db.SaveChanges();
                     } catch {
                         throw new ValidationException("An unkown exception has occured");

@@ -129,8 +129,8 @@ namespace Monage.GUI {
 
         #endregion
 
-        public Shell Login(User u) {
-            this.User = u;
+        public Shell Login(User user) {
+            this.User = user;
             Settings.ActiveUser = User == null ? -1 : this.User.ID;
 
             Frame view =

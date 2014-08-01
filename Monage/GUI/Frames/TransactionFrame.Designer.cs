@@ -27,7 +27,7 @@
             this.dtConfirm = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtRecord = new System.Windows.Forms.DateTimePicker();
+            this.dtIncur = new System.Windows.Forms.DateTimePicker();
             this.cbxBanks = new System.Windows.Forms.ComboBox();
             this.cbxExpenses = new System.Windows.Forms.ComboBox();
             this.cbxBuckets = new System.Windows.Forms.ComboBox();
@@ -98,22 +98,22 @@
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 17);
+            this.label1.Size = new System.Drawing.Size(64, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Recorded:";
+            this.label1.Text = "Incurred:";
             // 
-            // dtRecord
+            // dtIncur
             // 
-            this.dtRecord.CustomFormat = "  MM/dd/yyyy";
-            this.dtRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtRecord.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtRecord.Location = new System.Drawing.Point(3, 20);
-            this.dtRecord.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
-            this.dtRecord.Name = "dtRecord";
-            this.dtRecord.Size = new System.Drawing.Size(204, 24);
-            this.dtRecord.TabIndex = 2;
-            this.dtRecord.Value = new System.DateTime(2014, 6, 23, 0, 0, 0, 0);
-            this.dtRecord.ValueChanged += new System.EventHandler(this.dtRecord_ValueChanged);
+            this.dtIncur.CustomFormat = "  MM/dd/yyyy";
+            this.dtIncur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtIncur.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtIncur.Location = new System.Drawing.Point(3, 20);
+            this.dtIncur.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dtIncur.Name = "dtIncur";
+            this.dtIncur.Size = new System.Drawing.Size(204, 24);
+            this.dtIncur.TabIndex = 2;
+            this.dtIncur.Value = new System.DateTime(2014, 6, 23, 0, 0, 0, 0);
+            this.dtIncur.ValueChanged += new System.EventHandler(this.dtIncur_ValueChanged);
             // 
             // cbxBanks
             // 
@@ -423,7 +423,7 @@
             this.Controls.Add(this.cbxExpenses);
             this.Controls.Add(this.cbxBanks);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtRecord);
+            this.Controls.Add(this.dtIncur);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtConfirm);
             this.Controls.Add(this.txtDetails);
@@ -442,7 +442,7 @@
         private System.Windows.Forms.DateTimePicker dtConfirm;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dtRecord;
+        private System.Windows.Forms.DateTimePicker dtIncur;
         private System.Windows.Forms.ComboBox cbxBanks;
         private System.Windows.Forms.ComboBox cbxExpenses;
         private System.Windows.Forms.ComboBox cbxBuckets;

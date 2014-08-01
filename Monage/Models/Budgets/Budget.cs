@@ -30,17 +30,17 @@ namespace Monage.Models {
 
         #endregion
 
-        public static List<Budget> Enumerate(User u) {
-            //return Program.db.Budgets.Where(x => x.User_ID == u.ID).OrderBy(x => x.Name).ToList();
+        public static IEnumerable<Budget> Enumerate(User user) {
+            //return Program.db.Budgets.Where(x => x.User_ID == user.ID).OrderBy(x => x.Name);
             return new List<Budget>();
         }
 
         public Budget() {
-            Tiers = new List<Tier>();
+            this.Tiers = new List<Tier>();
         }
-        public Budget(User user) { 
-            User = user;
-            Tiers = new List<Tier>();
+        public Budget(User user) {
+            this.User = user;
+            this.Tiers = new List<Tier>();
         }
 
         private void Validate() {
@@ -52,7 +52,7 @@ namespace Monage.Models {
         }
 
         public void Save() {
-            Validate();
+            this.Validate();
             try {
                 //if (this.ID == 0) { Program.db.Budgets.Add(this); }
                 Program.db.SaveChanges();
@@ -80,9 +80,9 @@ namespace Monage.Models {
                 }
 
                 if (changes && this.ID == 0) {
-                    Validate();
+                    this.Validate();
                 } else if (changes) {
-                    Save();
+                    this.Save();
                 }
             }
             return this;
