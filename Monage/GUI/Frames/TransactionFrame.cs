@@ -290,14 +290,16 @@ namespace Monage.GUI.Frames {
             IEnumerable<Ticket> tickets = this.Transaction.Tickets;
 
             int cnt = 0;
+            TicketMaster tm = null;
             foreach (Ticket ticket in tickets.OrderByDescending(x => x.Amount)) {
-                TicketMaster tm = new TicketMaster(this, ticket);
-                tm.Location = new Point(
-                    tm.Margin.Left,
-                    tm.Margin.Top + ((tm.Margin.Top + tm.Size.Height + tm.Margin.Bottom) * cnt++)
-                );
+                tm = new TicketMaster(this, ticket);
+                tm.BackColor = cnt % 2 == 0 ? Color.White : Color.WhiteSmoke;
+                tm.Location = new Point(tm.Margin.Left, tm.Size.Height * cnt++);
                 pnlTickets.Controls.Add(tm);
             }
+
+            // So the bottom border is visible
+            if (tm != null) { tm.Height += 1; }
 
             lblCheck.ForeColor = tickets.Sum(x => x.Amount) == 0 ? Color.Green : Color.Red;
             lblDebitAmount.Text = tickets.Where(x => x.Amount > 0).Sum(x => x.Amount).ToString("C");

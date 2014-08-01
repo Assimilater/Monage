@@ -33,40 +33,45 @@
             // lblCredit
             // 
             this.lblCredit.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCredit.Location = new System.Drawing.Point(127, 3);
+            this.lblCredit.Location = new System.Drawing.Point(84, 1);
             this.lblCredit.Margin = new System.Windows.Forms.Padding(3);
             this.lblCredit.Name = "lblCredit";
-            this.lblCredit.Size = new System.Drawing.Size(325, 26);
+            this.lblCredit.Size = new System.Drawing.Size(378, 30);
             this.lblCredit.TabIndex = 0;
+            this.lblCredit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblDebitAmount
             // 
+            this.lblDebitAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDebitAmount.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDebitAmount.Location = new System.Drawing.Point(458, 3);
+            this.lblDebitAmount.Location = new System.Drawing.Point(462, 0);
             this.lblDebitAmount.Margin = new System.Windows.Forms.Padding(3);
             this.lblDebitAmount.Name = "lblDebitAmount";
-            this.lblDebitAmount.Size = new System.Drawing.Size(167, 26);
+            this.lblDebitAmount.Size = new System.Drawing.Size(170, 33);
             this.lblDebitAmount.TabIndex = 1;
-            this.lblDebitAmount.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblDebitAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblCreditAmount
             // 
+            this.lblCreditAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCreditAmount.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditAmount.Location = new System.Drawing.Point(631, 3);
+            this.lblCreditAmount.Location = new System.Drawing.Point(631, 0);
             this.lblCreditAmount.Margin = new System.Windows.Forms.Padding(3);
             this.lblCreditAmount.Name = "lblCreditAmount";
-            this.lblCreditAmount.Size = new System.Drawing.Size(167, 26);
+            this.lblCreditAmount.Size = new System.Drawing.Size(170, 33);
             this.lblCreditAmount.TabIndex = 2;
-            this.lblCreditAmount.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblCreditAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblDebit
             // 
+            this.lblDebit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDebit.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDebit.Location = new System.Drawing.Point(55, 3);
+            this.lblDebit.Location = new System.Drawing.Point(35, 0);
             this.lblDebit.Margin = new System.Windows.Forms.Padding(3);
             this.lblDebit.Name = "lblDebit";
-            this.lblDebit.Size = new System.Drawing.Size(397, 26);
+            this.lblDebit.Size = new System.Drawing.Size(428, 33);
             this.lblDebit.TabIndex = 3;
+            this.lblDebit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnDelete
             // 
@@ -88,11 +93,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblCredit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblCreditAmount);
             this.Controls.Add(this.lblDebitAmount);
-            this.Controls.Add(this.lblCredit);
             this.Controls.Add(this.lblDebit);
+            this.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.Name = "TicketMaster";
             this.Size = new System.Drawing.Size(801, 32);
             this.ResumeLayout(false);

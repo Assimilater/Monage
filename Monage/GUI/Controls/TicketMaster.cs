@@ -35,8 +35,6 @@ namespace Monage.GUI.Controls {
                     : this.Ticket.Fund.Name + (this.Ticket.Company != "" ? " [" + this.Ticket.Company + "]" : "");
 
                 lblCreditAmount.Text = (this.Ticket.Amount * -1).ToString("C");
-                lblDebit.Hide();
-                lblDebitAmount.Hide();
             } else {
                 lblDebit.Text =
                     this.Ticket.Bank != null
@@ -45,7 +43,6 @@ namespace Monage.GUI.Controls {
 
                 lblDebitAmount.Text = this.Ticket.Amount.ToString("C");
                 lblCredit.Hide();
-                lblCreditAmount.Hide();
             }
         }
     }
