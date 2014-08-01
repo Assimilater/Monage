@@ -42,7 +42,7 @@
             // lblDebitAmount
             // 
             this.lblDebitAmount.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDebitAmount.Location = new System.Drawing.Point(631, 3);
+            this.lblDebitAmount.Location = new System.Drawing.Point(458, 3);
             this.lblDebitAmount.Margin = new System.Windows.Forms.Padding(3);
             this.lblDebitAmount.Name = "lblDebitAmount";
             this.lblDebitAmount.Size = new System.Drawing.Size(167, 26);
@@ -52,7 +52,7 @@
             // lblCreditAmount
             // 
             this.lblCreditAmount.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditAmount.Location = new System.Drawing.Point(458, 3);
+            this.lblCreditAmount.Location = new System.Drawing.Point(631, 3);
             this.lblCreditAmount.Margin = new System.Windows.Forms.Padding(3);
             this.lblCreditAmount.Name = "lblCreditAmount";
             this.lblCreditAmount.Size = new System.Drawing.Size(167, 26);

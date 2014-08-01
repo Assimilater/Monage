@@ -55,7 +55,7 @@ namespace Monage.GUI.Frames {
         private void btnAddTicket_Click(object sender, EventArgs e) {
             TicketResult tr = new TicketResult();
 
-            switch (cbxAction.SelectedText) {
+            switch (cbxAction.SelectedItem.ToString()) {
                 case "Apply Budget":
                     if ((tr = this.ApplyBudget(tr)) == null) { return; }
                     break;
@@ -273,6 +273,7 @@ namespace Monage.GUI.Frames {
                     tm.Margin.Left,
                     tm.Margin.Top + ((tm.Margin.Top + tm.Size.Height + tm.Margin.Bottom) * cnt++)
                 );
+                pnlTickets.Controls.Add(tm);
             }
 
             lblCheck.ForeColor = tickets.Sum(x => x.Amount) == 0 ? Color.Green : Color.Red;
