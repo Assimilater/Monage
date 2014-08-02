@@ -40,7 +40,7 @@ namespace Monage.GUI.Controls {
                 // Set the background color
                 bool valid = true;
                 try { ticket.Validate(); } catch { valid = false; }
-                tm.BackColor = valid
+                tm.BackColor = !valid
                     ? Color.MistyRose : (cnt % 2 == 0
                     ? Color.WhiteSmoke
                     : Color.White);
