@@ -49,13 +49,12 @@
             this.txtCompany = new System.Windows.Forms.TextBox();
             this.numAmount = new System.Windows.Forms.NumericUpDown();
             this.btnSave = new System.Windows.Forms.Button();
-            this.lblTickets = new System.Windows.Forms.GroupBox();
-            this.pnlTickets = new System.Windows.Forms.Panel();
             this.lblCreditAmount = new System.Windows.Forms.Label();
             this.lblDebitAmount = new System.Windows.Forms.Label();
             this.lblCheck = new System.Windows.Forms.Label();
+            this.pnlCheck = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).BeginInit();
-            this.lblTickets.SuspendLayout();
+            this.pnlCheck.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtDetails
@@ -169,6 +168,7 @@
             // 
             this.txtBrief.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBrief.Location = new System.Drawing.Point(423, 20);
+            this.txtBrief.MaxLength = 45;
             this.txtBrief.Name = "txtBrief";
             this.txtBrief.Size = new System.Drawing.Size(414, 24);
             this.txtBrief.TabIndex = 10;
@@ -307,6 +307,7 @@
             this.txtCompany.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCompany.Location = new System.Drawing.Point(633, 122);
+            this.txtCompany.MaxLength = 45;
             this.txtCompany.Name = "txtCompany";
             this.txtCompany.Size = new System.Drawing.Size(204, 24);
             this.txtCompany.TabIndex = 23;
@@ -341,31 +342,10 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // lblTickets
-            // 
-            this.lblTickets.Controls.Add(this.pnlTickets);
-            this.lblTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTickets.Location = new System.Drawing.Point(3, 284);
-            this.lblTickets.Name = "lblTickets";
-            this.lblTickets.Size = new System.Drawing.Size(834, 276);
-            this.lblTickets.TabIndex = 27;
-            this.lblTickets.TabStop = false;
-            this.lblTickets.Text = "Tickets";
-            // 
-            // pnlTickets
-            // 
-            this.pnlTickets.AutoScroll = true;
-            this.pnlTickets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlTickets.Location = new System.Drawing.Point(3, 23);
-            this.pnlTickets.Name = "pnlTickets";
-            this.pnlTickets.Size = new System.Drawing.Size(828, 250);
-            this.pnlTickets.TabIndex = 0;
-            // 
             // lblCreditAmount
             // 
             this.lblCreditAmount.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditAmount.Location = new System.Drawing.Point(467, 563);
+            this.lblCreditAmount.Location = new System.Drawing.Point(609, 2);
             this.lblCreditAmount.Margin = new System.Windows.Forms.Padding(3);
             this.lblCreditAmount.Name = "lblCreditAmount";
             this.lblCreditAmount.Size = new System.Drawing.Size(167, 26);
@@ -375,7 +355,7 @@
             // lblDebitAmount
             // 
             this.lblDebitAmount.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDebitAmount.Location = new System.Drawing.Point(640, 563);
+            this.lblDebitAmount.Location = new System.Drawing.Point(436, 1);
             this.lblDebitAmount.Margin = new System.Windows.Forms.Padding(3);
             this.lblDebitAmount.Name = "lblDebitAmount";
             this.lblDebitAmount.Size = new System.Drawing.Size(167, 26);
@@ -386,21 +366,30 @@
             // 
             this.lblCheck.AutoSize = true;
             this.lblCheck.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCheck.Location = new System.Drawing.Point(361, 566);
+            this.lblCheck.Location = new System.Drawing.Point(330, 4);
             this.lblCheck.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.lblCheck.Name = "lblCheck";
             this.lblCheck.Size = new System.Drawing.Size(101, 23);
             this.lblCheck.TabIndex = 30;
             this.lblCheck.Text = "Check Sum:";
             // 
+            // pnlCheck
+            // 
+            this.pnlCheck.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlCheck.Controls.Add(this.lblDebitAmount);
+            this.pnlCheck.Controls.Add(this.lblCheck);
+            this.pnlCheck.Controls.Add(this.lblCreditAmount);
+            this.pnlCheck.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlCheck.Location = new System.Drawing.Point(0, 562);
+            this.pnlCheck.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlCheck.Name = "pnlCheck";
+            this.pnlCheck.Size = new System.Drawing.Size(840, 33);
+            this.pnlCheck.TabIndex = 31;
+            // 
             // TransactionFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblCheck);
-            this.Controls.Add(this.lblCreditAmount);
-            this.Controls.Add(this.lblDebitAmount);
-            this.Controls.Add(this.lblTickets);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.numAmount);
             this.Controls.Add(this.txtCompany);
@@ -427,10 +416,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtConfirm);
             this.Controls.Add(this.txtDetails);
+            this.Controls.Add(this.pnlCheck);
             this.Name = "TransactionFrame";
             this.Size = new System.Drawing.Size(840, 595);
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).EndInit();
-            this.lblTickets.ResumeLayout(false);
+            this.pnlCheck.ResumeLayout(false);
+            this.pnlCheck.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,10 +455,9 @@
         private System.Windows.Forms.TextBox txtCompany;
         private System.Windows.Forms.NumericUpDown numAmount;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.GroupBox lblTickets;
-        private System.Windows.Forms.Panel pnlTickets;
         private System.Windows.Forms.Label lblCreditAmount;
         private System.Windows.Forms.Label lblDebitAmount;
         private System.Windows.Forms.Label lblCheck;
+        private System.Windows.Forms.Panel pnlCheck;
     }
 }

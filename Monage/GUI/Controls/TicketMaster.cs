@@ -14,14 +14,21 @@ namespace Monage.GUI.Controls {
     public partial class TicketMaster : UserControl {
         private Ticket Ticket;
         private TransactionFrame ParentFrame;
-        private void btnDelete_Click(object sender, EventArgs e) { ParentFrame.RemoveTicket(this.Ticket); }
-
         public TicketMaster() { InitializeComponent(); }
-        public TicketMaster(TransactionFrame parentframe, Ticket ticket) {
+        public TicketMaster(Ticket ticket, TransactionFrame parentframe) {
             InitializeComponent();
+            if (parentframe == null) {
+                // Shrink the control appropriately if we're not in edit mode
+                this.Width -= 32;
+                btnDelete.Hide();
+            }
+
             this.ParentFrame = parentframe;
             this.Ticket = ticket;
+            this.Setup();
+        }
 
+        private void Setup() {
             try {
                 this.Ticket.Validate();
             } catch {
@@ -43,6 +50,12 @@ namespace Monage.GUI.Controls {
 
                 lblDebitAmount.Text = this.Ticket.Amount.ToString("C");
                 lblCredit.Hide();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e) {
+            if (this.ParentFrame != null) {
+                ParentFrame.RemoveTicket(this.Ticket);
             }
         }
     }

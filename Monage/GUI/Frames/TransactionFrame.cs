@@ -16,6 +16,7 @@ namespace Monage.GUI.Frames {
         string FrameTitle;
         bool Saved, ReadyState;
         Transaction Transaction;
+        TicketList TicketList;
 
         public TransactionFrame(Transaction transaction = null)
             : base(FramePosition.TopCenter) {
@@ -51,7 +52,12 @@ namespace Monage.GUI.Frames {
                 : DateTime.Now;
             dtConfirm.Checked = this.Transaction.Confirmed != null;
 
-            this.getTicketList();
+            // Add a live view of the tickets
+            this.TicketList = new TicketList(this.Transaction, this);
+            this.TicketList.Location = new Point(3, 284);
+            this.Controls.Add(this.TicketList);
+
+            this.getTicketUpdate();
             this.getLists();
 
             this.ReadyState = true;
@@ -60,10 +66,7 @@ namespace Monage.GUI.Frames {
         public override Frame Adjust() {
             base.Adjust();
             this.Height = this.Canvas.Height;
-            this.lblTickets.Height = this.Height - 319;
-            lblCheck.Location = new Point(361, this.Height - 29);
-            lblDebitAmount.Location = new Point(467, this.Height - 32);
-            lblCreditAmount.Location = new Point(640, this.Height - 32);
+            this.TicketList.Height = this.Height - 319;
             return this;
         }
 
@@ -113,7 +116,7 @@ namespace Monage.GUI.Frames {
             }
 
             // Update the ticket list
-            this.getTicketList();
+            this.getTicketUpdate();
         }
 
         private TicketResult ApplyBudget(TicketResult tr) {
@@ -285,25 +288,13 @@ namespace Monage.GUI.Frames {
             return tr;
         }
 
-        private void getTicketList() {
-            pnlTickets.Controls.Clear();
+        private void getTicketUpdate() {
             IEnumerable<Ticket> tickets = this.Transaction.Tickets;
-
-            int cnt = 0;
-            TicketMaster tm = null;
-            foreach (Ticket ticket in tickets.OrderByDescending(x => x.Amount)) {
-                tm = new TicketMaster(this, ticket);
-                tm.BackColor = cnt % 2 == 0 ? Color.White : Color.WhiteSmoke;
-                tm.Location = new Point(tm.Margin.Left, tm.Size.Height * cnt++);
-                pnlTickets.Controls.Add(tm);
-            }
-
-            // So the bottom border is visible
-            if (tm != null) { tm.Height += 1; }
-
-            lblCheck.ForeColor = tickets.Sum(x => x.Amount) == 0 ? Color.Green : Color.Red;
+            pnlCheck.BackColor = tickets.Sum(x => x.Amount) == 0 ? Color.Honeydew : Color.MistyRose;
             lblDebitAmount.Text = tickets.Where(x => x.Amount > 0).Sum(x => x.Amount).ToString("C");
             lblCreditAmount.Text = (tickets.Where(x => x.Amount < 0).Sum(x => x.Amount) * -1).ToString("C");
+
+            this.TicketList.getUpdate();
         }
         private void getLists() {
             // Populate the combo boxes with the available accounts
@@ -351,13 +342,15 @@ namespace Monage.GUI.Frames {
             cbxRevenues.DisplayMember = "Value";
 
             // Prepare an auto complete source for the company field
-            txtCompany.AutoCompleteCustomSource = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection data = new AutoCompleteStringCollection();
             foreach (IGrouping<string, Ticket> group in
                 Program.db.Tickets
                     .Where(x => x.Company != "")
                     .GroupBy(x => x.Company)) {
-                txtCompany.AutoCompleteCustomSource.Add(group.Key);
+
+                if (group.Key != null) { data.Add(group.Key); }
             }
+            txtCompany.AutoCompleteCustomSource = data;
         }
 
         private void dtConfirm_ValueChanged(object sender, EventArgs e) {
@@ -435,7 +428,7 @@ namespace Monage.GUI.Frames {
 
         public void RemoveTicket(Ticket ticket) {
             this.Transaction.Tickets.Remove(ticket);
-            this.getTicketList();
+            this.getTicketUpdate();
         }
     }
 }

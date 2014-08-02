@@ -79,6 +79,12 @@
     <Compile Include="GUI\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Controls\TicketList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\TicketList.Designer.cs">
+      <DependentUpon>TicketList.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Dialogs\DebitDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +268,9 @@
     <Compile Include="Utilities\Settings.cs" />
     <EmbeddedResource Include="GUI\About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\TicketList.resx">
+      <DependentUpon>TicketList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Controls\TicketMaster.resx">
       <DependentUpon>TicketMaster.cs</DependentUpon>

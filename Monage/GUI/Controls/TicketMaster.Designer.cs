@@ -33,7 +33,7 @@
             // lblCredit
             // 
             this.lblCredit.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCredit.Location = new System.Drawing.Point(84, 1);
+            this.lblCredit.Location = new System.Drawing.Point(49, 1);
             this.lblCredit.Margin = new System.Windows.Forms.Padding(3);
             this.lblCredit.Name = "lblCredit";
             this.lblCredit.Size = new System.Drawing.Size(378, 30);
@@ -44,7 +44,7 @@
             // 
             this.lblDebitAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDebitAmount.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDebitAmount.Location = new System.Drawing.Point(462, 0);
+            this.lblDebitAmount.Location = new System.Drawing.Point(427, 0);
             this.lblDebitAmount.Margin = new System.Windows.Forms.Padding(3);
             this.lblDebitAmount.Name = "lblDebitAmount";
             this.lblDebitAmount.Size = new System.Drawing.Size(170, 33);
@@ -55,7 +55,7 @@
             // 
             this.lblCreditAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCreditAmount.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreditAmount.Location = new System.Drawing.Point(631, 0);
+            this.lblCreditAmount.Location = new System.Drawing.Point(596, 0);
             this.lblCreditAmount.Margin = new System.Windows.Forms.Padding(3);
             this.lblCreditAmount.Name = "lblCreditAmount";
             this.lblCreditAmount.Size = new System.Drawing.Size(170, 33);
@@ -66,7 +66,7 @@
             // 
             this.lblDebit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDebit.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDebit.Location = new System.Drawing.Point(35, 0);
+            this.lblDebit.Location = new System.Drawing.Point(0, 0);
             this.lblDebit.Margin = new System.Windows.Forms.Padding(3);
             this.lblDebit.Name = "lblDebit";
             this.lblDebit.Size = new System.Drawing.Size(428, 33);
@@ -79,7 +79,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.Red;
-            this.btnDelete.Location = new System.Drawing.Point(3, 3);
+            this.btnDelete.Location = new System.Drawing.Point(772, 3);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(26, 26);
             this.btnDelete.TabIndex = 4;
