@@ -76,6 +76,8 @@
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.Snow;
+            this.btnDelete.BackgroundImage = global::Monage.Properties.Resources.IconTrash;
+            this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.Red;
@@ -83,8 +85,6 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(26, 26);
             this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "X";
-            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
