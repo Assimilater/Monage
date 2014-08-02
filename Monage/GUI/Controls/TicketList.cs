@@ -35,8 +35,16 @@ namespace Monage.GUI.Controls {
             TicketMaster tm = null;
             foreach (Ticket ticket in tickets.OrderByDescending(x => x.Amount)) {
                 tm = new TicketMaster(ticket, this.ParentFrame);
-                tm.BackColor = cnt % 2 == 0 ? Color.White : Color.WhiteSmoke;
                 tm.Location = new Point(tm.Margin.Left, tm.Size.Height * cnt++);
+
+                // Set the background color
+                bool valid = true;
+                try { ticket.Validate(); } catch { valid = false; }
+                tm.BackColor = valid
+                    ? Color.MistyRose : (cnt % 2 == 0
+                    ? Color.WhiteSmoke
+                    : Color.White);
+
                 pnlTickets.Controls.Add(tm);
             }
 

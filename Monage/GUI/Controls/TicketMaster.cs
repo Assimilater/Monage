@@ -29,12 +29,6 @@ namespace Monage.GUI.Controls {
         }
 
         private void Setup() {
-            try {
-                this.Ticket.Validate();
-            } catch {
-                this.BackColor = Color.MistyRose;
-            }
-
             if (this.Ticket.Amount < 0) {
                 lblCredit.Text =
                     this.Ticket.Bank != null
