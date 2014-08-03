@@ -423,6 +423,7 @@
   <ItemGroup>
     <Content Include="Resources\IconClose.png" />
     <Content Include="Resources\IconMinus.png" />
+    <Content Include="Resources\IconPencil.png" />
     <Content Include="Resources\IconPlus.png" />
     <Content Include="Resources\IconTrash.png" />
   </ItemGroup>
