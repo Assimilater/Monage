@@ -85,8 +85,19 @@ namespace Monage.GUI.Frames {
                 case "Apply Budget":
                     if ((tr = this.ApplyBudget(tr)) == null) { return; }
                     break;
-                case "Deposit / Withdraw":
-                    if ((tr = this.AdjustBank(tr)) == null) { return; }
+                case "Deposit Revenue":
+                    if ((tr = this.AdjustBank(tr, 1)) == null) { return; }
+                    if ((tr = this.WriteRevenue(tr)) == null) { return; }
+                    break;
+                case "Withdraw Expense":
+                    if ((tr = this.AdjustBank(tr, -1)) == null) { return; }
+                    if ((tr = this.WriteExpense(tr)) == null) { return; }
+                    break;
+                case "Make Deposit":
+                    if ((tr = this.AdjustBank(tr, 1)) == null) { return; }
+                    break;
+                case "Make Withdrawal":
+                    if ((tr = this.AdjustBank(tr, -1)) == null) { return; }
                     break;
                 case "Write Revenue":
                     if ((tr = this.WriteRevenue(tr)) == null) { return; }
@@ -219,9 +230,9 @@ namespace Monage.GUI.Frames {
 
             return tr;
         }
-        private TicketResult AdjustBank(TicketResult tr) {
+        private TicketResult AdjustBank(TicketResult tr, int sign) {
             Ticket ticket = new Ticket(this.Connection.User, this.Transaction);
-            ticket.Amount = (double)Math.Round(numAmount.Value, 2);
+            ticket.Amount = (double)Math.Round(numAmount.Value * sign, 2);
 
             ticket.Bank = Bank.Enumerate(this.Connection.User)
                 .FirstOrDefault(x => x.ID == (int)cbxBanks.SelectedValue);
@@ -382,7 +393,25 @@ namespace Monage.GUI.Frames {
                     txtCompany.Enabled = true;
                     break;
 
-                case "Deposit / Withdraw":
+                case "Deposit Revenue":
+                    cbxBanks.Enabled = true;
+                    cbxBuckets.Enabled = true;
+                    cbxBudgets.Enabled = false;
+                    cbxRevenues.Enabled = true;
+                    cbxExpenses.Enabled = false;
+                    txtCompany.Enabled = true;
+                    break;
+
+                case "Withdraw Expense":
+                    cbxBanks.Enabled = true;
+                    cbxBuckets.Enabled = true;
+                    cbxBudgets.Enabled = false;
+                    cbxRevenues.Enabled = false;
+                    cbxExpenses.Enabled = true;
+                    txtCompany.Enabled = true;
+                    break;
+
+                case "Make Deposit": case "Make Withdrawal":
                     cbxBanks.Enabled = true;
                     cbxBuckets.Enabled = true;
                     cbxBudgets.Enabled = false;
@@ -427,6 +456,9 @@ namespace Monage.GUI.Frames {
         }
 
         public void RemoveTicket(Ticket ticket) {
+            if (ticket.ID != 0) {
+                Program.db.Tickets.Remove(ticket);
+            }
             this.Transaction.Tickets.Remove(ticket);
             this.getTicketUpdate();
         }

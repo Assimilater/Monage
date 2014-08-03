@@ -23,7 +23,6 @@ namespace Monage.GUI.Frames {
             return this;
         }
 
-
         private ListPane Pane { get; set; }
         protected ListItem Item { get; set; }
         public void SelectItem(ListItem item) {
