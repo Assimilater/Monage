@@ -21,11 +21,12 @@ namespace Monage.GUI.Frames {
             getList();
             return this;
         }
-        
+
         private void getList() {
             int prev = cbxUsers.SelectedIndex;
             cbxUsers.Items.Clear();
-            foreach (User user in Program.db.Users) {
+            Session.Refresh();
+            foreach (User user in Session.db.Users) {
                 cbxUsers.Items.Add(user.Username);
             }
 
@@ -35,7 +36,7 @@ namespace Monage.GUI.Frames {
 
         private void btnOpen_Click(object sender, EventArgs e) {
             if (cbxUsers.SelectedIndex != -1) {
-                Connection.Login(Program.db.Users.Where(x => x.Username == (string)cbxUsers.SelectedItem).First());
+                Connection.Login(Session.Login((string)cbxUsers.SelectedItem));
             } else {
                 MessageBox.Show(Program.Host, "No user selected");
             }
@@ -44,7 +45,7 @@ namespace Monage.GUI.Frames {
         private void btnNew_Click(object sender, EventArgs e) { getUsername(new User()); }
         private void btnRename_Click(object sender, EventArgs e) {
             if (cbxUsers.SelectedIndex != -1) {
-                getUsername(Program.db.Users.Where(x => x.Username == (string)cbxUsers.SelectedItem).First());
+                getUsername(Session.db.Users.Where(x => x.Username == (string)cbxUsers.SelectedItem).First());
             } else {
                 MessageBox.Show(Program.Host, "No user selected");
             }

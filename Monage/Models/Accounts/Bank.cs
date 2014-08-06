@@ -25,8 +25,8 @@ namespace Monage.Models {
 
         #endregion
 
-        public static IEnumerable<Bank> Enumerate(User user) {
-            return Program.db.Banks.Where(x => x.User_ID == user.ID).OrderBy(x => x.Name);
+        public static IEnumerable<Bank> Enumerate() {
+            return Session.db.Banks.Where(x => x.User_ID == Session.User.ID).OrderBy(x => x.Name);
         }
 
         public Bank() { }
@@ -34,7 +34,7 @@ namespace Monage.Models {
             this.User = user;
             this.User_ID = user.ID;
         }
-        
+
         public Amount GetBalance(Bucket bucket = null) { return new Amount(this, bucket); }
 
         public Bank Rename(Pair val) {
@@ -47,7 +47,7 @@ namespace Monage.Models {
                 }
 
                 if (this.Name != val.Name && val.Name != "") {
-                    if (Program.db.Banks.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
+                    if (Session.db.Banks.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
                         throw new ValidationException("A bank named \"" + val.Name + "\" already exists");
                     } else {
                         this.Name = val.Name;
@@ -57,8 +57,8 @@ namespace Monage.Models {
                 
                 if (changes) {
                     try {
-                        if (this.ID == 0) { Program.db.Banks.Add(this); }
-                        Program.db.SaveChanges();
+                        if (this.ID == 0) { Session.db.Banks.Add(this); }
+                        Session.db.SaveChanges();
                     } catch {
                         throw new ValidationException("An unkown exception has occured");
                     }

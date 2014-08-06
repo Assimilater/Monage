@@ -24,11 +24,9 @@ namespace Monage.GUI.Lists {
             this.Category = category;
         }
 
-        protected User User { get; set; }
         protected SummaryFrame ParentFrame { get; set; }
-        public ListContainer Set(SummaryFrame parent, User user) {
+        public ListContainer Set(SummaryFrame parent) {
             this.ParentFrame = parent;
-            this.User = user;
             getList();
             return this;
         }
@@ -84,7 +82,7 @@ namespace Monage.GUI.Lists {
 
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
-                new Bucket(this.User).Rename(
+                new Bucket(Session.User).Rename(
                     PairDialog.ShowDialog(
                         "Enter a name and description  for your new bucket",
                         "Create Bucket"
@@ -98,7 +96,7 @@ namespace Monage.GUI.Lists {
 
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
-            foreach (Bucket bucket in Bucket.Enumerate(this.User)) {
+            foreach (Bucket bucket in Bucket.Enumerate()) {
                 list.Add(new BucketListItem(bucket).SetFrame(this.ParentFrame));
             }
             setList(list);
@@ -110,7 +108,7 @@ namespace Monage.GUI.Lists {
 
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
-                new Bank(this.User).Rename(
+                new Bank(Session.User).Rename(
                     PairDialog.ShowDialog(
                         "Enter a name and description for your new bank",
                         "Create Bank"
@@ -124,7 +122,7 @@ namespace Monage.GUI.Lists {
 
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
-            foreach (Bank bank in Bank.Enumerate(this.User)) {
+            foreach (Bank bank in Bank.Enumerate()) {
                 list.Add(new BankListItem(bank).SetFrame(this.ParentFrame));
             }
             setList(list);
@@ -151,7 +149,7 @@ namespace Monage.GUI.Lists {
 
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
-            foreach (Budget budget in Budget.Enumerate(this.User)) {
+            foreach (Budget budget in Budget.Enumerate()) {
                 list.Add(new BudgetListItem(budget).SetFrame(this.ParentFrame));
             }
             setList(list);
@@ -163,7 +161,7 @@ namespace Monage.GUI.Lists {
 
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
-                new Fund(this.User, BalanceType.Debit).Rename(
+                new Fund(Session.User, BalanceType.Debit).Rename(
                     PairDialog.ShowDialog(
                         "Enter a name and description for your new expense category",
                         "Create Expense Category"
@@ -177,7 +175,7 @@ namespace Monage.GUI.Lists {
 
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
-            foreach (Fund expense in Fund.Enumerate(this.User, BalanceType.Debit)) {
+            foreach (Fund expense in Fund.Enumerate(BalanceType.Debit)) {
                 list.Add(new ExReListItem(expense).SetFrame(this.ParentFrame));
             }
             setList(list);
@@ -189,7 +187,7 @@ namespace Monage.GUI.Lists {
 
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
-                new Fund(this.User, BalanceType.Credit).Rename(
+                new Fund(Session.User, BalanceType.Credit).Rename(
                     PairDialog.ShowDialog(
                         "Enter a name and description for your new revenue source",
                         "Create Revenue Source"
@@ -203,7 +201,7 @@ namespace Monage.GUI.Lists {
 
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
-            foreach (Fund revenue in Fund.Enumerate(this.User, BalanceType.Credit)) {
+            foreach (Fund revenue in Fund.Enumerate(BalanceType.Credit)) {
                 list.Add(new ExReListItem(revenue).SetFrame(this.ParentFrame));
             }
             setList(list);

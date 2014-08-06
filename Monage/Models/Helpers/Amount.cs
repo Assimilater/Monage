@@ -20,7 +20,7 @@ namespace Monage.Models {
                 throw new Exception("A null bank/bucket pair is invalid");
             }
 
-            IEnumerable<Ticket> Aggregate = Program.db.Tickets;
+            IEnumerable<Ticket> Aggregate = Session.db.Tickets;
             if (bank != null) {
                 Aggregate = Aggregate.Where(x => x.Bank_ID == bank.ID);
             }

@@ -30,8 +30,8 @@ namespace Monage.Models {
 
         #endregion
 
-        public static IEnumerable<Budget> Enumerate(User user) {
-            //return Program.db.Budgets.Where(x => x.User_ID == user.ID).OrderBy(x => x.Name);
+        public static IEnumerable<Budget> Enumerate() {
+            //return Session.db.Budgets.Where(x => x.User_ID == Session.User.ID).OrderBy(x => x.Name);
             return new List<Budget>();
         }
 
@@ -45,8 +45,8 @@ namespace Monage.Models {
 
         private void Validate() {
             if (this.ID == 0 &&
-                Program.db.Buckets.Count(x => x.User_ID == this.User_ID) == 0 &&
-                Program.db.Banks.Count(x => x.User_ID == this.User_ID) == 0) {
+                Session.db.Buckets.Count(x => x.User_ID == this.User_ID) == 0 &&
+                Session.db.Banks.Count(x => x.User_ID == this.User_ID) == 0) {
                 throw new ValidationException("You can't create a budget without at least one bank and one bucket");
             }
         }
@@ -54,8 +54,8 @@ namespace Monage.Models {
         public void Save() {
             this.Validate();
             try {
-                //if (this.ID == 0) { Program.db.Budgets.Add(this); }
-                Program.db.SaveChanges();
+                //if (this.ID == 0) { Session.db.Budgets.Add(this); }
+                Session.db.SaveChanges();
             } catch {
                 throw new ValidationException("An unkown exception has occured");
             }
@@ -71,7 +71,7 @@ namespace Monage.Models {
                 }
 
                 if (this.Name != val.Name && val.Name != "") {
-                    //if (Program.db.Budgets.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
+                    //if (Session.db.Budgets.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
                     //    throw new ValidationException("A budget named \"" + val.Name + "\" already exists");
                     //} else {
                     //    this.Name = val.Name;

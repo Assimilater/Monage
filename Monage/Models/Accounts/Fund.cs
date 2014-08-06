@@ -26,8 +26,8 @@ namespace Monage.Models {
 
         #endregion
 
-        public static IEnumerable<Fund> Enumerate(User user, BalanceType balancetype) {
-            return Program.db.Funds.Where(x => x.User_ID == user.ID && x.BalanceType == balancetype).OrderBy(x => x.Name);
+        public static IEnumerable<Fund> Enumerate(BalanceType balancetype) {
+            return Session.db.Funds.Where(x => x.User_ID == Session.User.ID && x.BalanceType == balancetype).OrderBy(x => x.Name);
         }
 
         public Fund() { this.BalanceType = BalanceType.Debit; }
@@ -47,7 +47,7 @@ namespace Monage.Models {
                 }
 
                 if (this.Name != val.Name && val.Name != "") {
-                    if (Program.db.Funds.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
+                    if (Session.db.Funds.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
                         throw new ValidationException("A fund named \"" + val.Name + "\" already exists");
                     } else {
                         this.Name = val.Name;
@@ -57,8 +57,8 @@ namespace Monage.Models {
 
                 if (changes) {
                     try {
-                        if (this.ID == 0) { Program.db.Funds.Add(this); }
-                        Program.db.SaveChanges();
+                        if (this.ID == 0) { Session.db.Funds.Add(this); }
+                        Session.db.SaveChanges();
                     } catch {
                         throw new ValidationException("An unkown exception has occured");
                     }

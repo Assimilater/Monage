@@ -81,16 +81,16 @@ namespace Monage.Models {
         public Transaction Save() {
             this.Validate();
             if (this.ID == 0) {
-                Program.db.Transactions.Add(this);
+                Session.db.Transactions.Add(this);
             }
-            Program.db.SaveChanges();
+            Session.db.SaveChanges();
             foreach (Ticket ticket in this.Tickets) {
                 if (ticket.ID == 0) {
                     ticket.Transaction_ID = this.ID;
-                    Program.db.Tickets.Add(ticket);
+                    Session.db.Tickets.Add(ticket);
                 }
             }
-            Program.db.SaveChanges();
+            Session.db.SaveChanges();
             return this;
         }
     }

@@ -24,8 +24,8 @@ namespace Monage.Models {
 
         #endregion
 
-        public static IEnumerable<Bucket> Enumerate(User user) {
-            return Program.db.Buckets.Where(x => x.User_ID == user.ID).OrderBy(x => x.Name);
+        public static IEnumerable<Bucket> Enumerate() {
+            return Session.db.Buckets.Where(x => x.User_ID == Session.User.ID).OrderBy(x => x.Name);
         }
 
         public Bucket() { }
@@ -46,7 +46,7 @@ namespace Monage.Models {
                 }
 
                 if (this.Name != val.Name && val.Name != "") {
-                    if (Program.db.Buckets.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
+                    if (Session.db.Buckets.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
                         throw new ValidationException("A bucket named \"" + val.Name + "\" already exists");
                     } else {
                         this.Name = val.Name;
@@ -56,8 +56,8 @@ namespace Monage.Models {
 
                 if (changes) {
                     try {
-                        if (this.ID == 0) { Program.db.Buckets.Add(this); }
-                        Program.db.SaveChanges();
+                        if (this.ID == 0) { Session.db.Buckets.Add(this); }
+                        Session.db.SaveChanges();
                     } catch {
                         throw new ValidationException("An unkown exception has occured");
                     }

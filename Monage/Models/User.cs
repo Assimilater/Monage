@@ -30,13 +30,13 @@ namespace Monage.Models {
 
         public User Rename(String name) {
             if (this.Username != name && name != null && name != "") {
-                if (Program.db.Users.Where(x => x.Username == name).Any()) {
+                if (Session.db.Users.Where(x => x.Username == name).Any()) {
                     throw new ValidationException("Username \"" + name + "\" is already in use");
                 } else {
                     try {
                         this.Username = name;
-                        if (this.ID == 0) { Program.db.Users.Add(this); }
-                        Program.db.SaveChanges();
+                        if (this.ID == 0) { Session.db.Users.Add(this); }
+                        Session.db.SaveChanges();
                     } catch {
                         throw new ValidationException("An unkown exception has occured");
                     }

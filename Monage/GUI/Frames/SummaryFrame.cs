@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Monage.GUI.Lists;
+using Monage.Models;
 
 namespace Monage.GUI.Frames {
     public partial class SummaryFrame : Frame {
@@ -15,11 +16,13 @@ namespace Monage.GUI.Frames {
         public override string Title() { return "Financial Summary"; }
         public override Frame Set(Shell connection, Panel canvas) {
             base.Set(connection, canvas);
-            banksFrame.Set(this, Connection.User);
-            bucketsFrame.Set(this, Connection.User);
-            budgetsFrame.Set(this, Connection.User);
-            revenueFrame.Set(this, Connection.User);
-            expenseFrame.Set(this, Connection.User);
+            Session.Refresh();
+
+            banksFrame.Set(this);
+            bucketsFrame.Set(this);
+            budgetsFrame.Set(this);
+            revenueFrame.Set(this);
+            expenseFrame.Set(this);
             return this;
         }
 

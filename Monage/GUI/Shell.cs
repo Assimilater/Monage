@@ -13,7 +13,6 @@ using System.Windows.Forms;
 
 namespace Monage.GUI {
     public partial class Shell : Form {
-        public User User { get; private set; }
         public string ConnectionString { get; private set; }
         private Frame active;
 
@@ -23,12 +22,7 @@ namespace Monage.GUI {
             InitializeComponent();
 
             this.ConnectionString = con;
-
-            Login(
-                (Program.db.Users.Count() == 1 && Settings.ActiveUser == Settings.NullInt)
-                ? Program.db.Users.First()
-                : Program.db.Users.FirstOrDefault(x => x.ID == Settings.ActiveUser)
-            );
+            this.Login(Session.User);
         }
 
         private void cloneConnectionToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -39,7 +33,6 @@ namespace Monage.GUI {
             InitializeComponent();
 
             this.ConnectionString = Program.Host.AddShell(this);
-            this.User = copy.User;
             this.SetFrame(new SummaryFrame());
         }
 
@@ -55,8 +48,8 @@ namespace Monage.GUI {
             return this;
         }
 
-        private void SetFrame(Frame view, string conf = "Navigation") {
-            if (this.Ready(conf)) {
+        private void SetFrame(Frame view, string conf = "Navigation", bool force = false) {
+            if (force || this.Ready(conf)) {
                 this.active = view;
                 this.active.Set(this, Content);
                 this.active.Adjust();
@@ -71,10 +64,10 @@ namespace Monage.GUI {
 
         public Shell UpdateTitle() {
             this.Text = ConnectionString + (
-                this.User == null
+                Session.User == null
                 ? ""
                 : " - " + (
-                    this.User.Username + (
+                    Session.User.Username + (
                         this.active != null
                         ? ": " + this.active.Title()
                         : ""
@@ -92,33 +85,35 @@ namespace Monage.GUI {
             toolStripSeparator1.Visible =
             logoutToolStripMenuItem.Visible =
 
-                this.User != null;
+                Session.User != null;
         }
 
         #endregion
 
         #region MenuBar Event Handlers
-        
+
         private void summaryToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (this.User != null) {
+            if (Session.User != null) {
                 this.SetFrame(new SummaryFrame());
             }
         }
 
         private void newTransactionToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (this.User != null) {
+            if (Session.User != null) {
                 this.SetFrame(new TransactionFrame());
             }
         }
 
         private void historyToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (this.User != null) {
+            if (Session.User != null) {
                 this.SetFrame(new HistoryFrame());
             }
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
-            this.Login(null);
+            if (this.Ready("Logout")) {
+                this.Login(Session.Logout());
+            }
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -130,15 +125,12 @@ namespace Monage.GUI {
         #endregion
 
         public Shell Login(User user) {
-            this.User = user;
-            Settings.ActiveUser = User == null ? -1 : this.User.ID;
-
             Frame view =
-                this.User == null
+                user == null
                 ? new UsersFrame() as Frame
                 : new SummaryFrame() as Frame;
 
-            this.SetFrame(view, "Logout");
+            this.SetFrame(view, "Logout", true);
             return this;
         }
     }

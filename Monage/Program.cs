@@ -11,7 +11,6 @@ using System.Windows.Forms;
 namespace Monage {
     public static class Program {
         public static MDIHost Host;
-        public static Context db;
 
         [STAThread]
         public static void Main() {
@@ -22,9 +21,9 @@ namespace Monage {
             Splash s = new Splash();
             s.Show();
 
-            // Run Migrations and Establish Database Connection
+            // Run migrations with a temporarily established database connection
             new MigrateDatabaseToLatestVersion<Context, Configuration>()
-                .InitializeDatabase(Program.db = new Context());
+                .InitializeDatabase(Session.Start());
             
             // Close the splash screen
             s.Close();

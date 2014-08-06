@@ -13,23 +13,21 @@ using Monage.GUI.Controls;
 
 namespace Monage.GUI.Frames {
     public partial class TransactionFrame : Frame {
-        string FrameTitle;
-        bool Saved, ReadyState;
-        Transaction Transaction;
-        TicketList TicketList;
+        private Transaction Transaction;
+        private TicketList TicketList;
+        private int TransactionID;
+        private string FrameTitle;
+        private bool Saved, ReadyState;
 
-        public TransactionFrame(Transaction transaction = null)
+        public TransactionFrame(int TransactionID = 0)
             : base(FramePosition.TopCenter) {
             InitializeComponent();
             cbxAction.SelectedIndex = 0;
-
-            this.FrameTitle = transaction == null
-                ? "New Transaction"
-                : "Update Transaction";
+            this.FrameTitle = "Update Transaction";
 
             this.Saved = false;
             this.ReadyState = false;
-            this.Transaction = transaction;
+            this.TransactionID = TransactionID;
         }
 
         public override string Title() { return this.FrameTitle; }
@@ -40,9 +38,12 @@ namespace Monage.GUI.Frames {
         public override Frame Set(Shell connection, Panel canvas) {
             base.Set(connection, canvas);
 
-            if (this.Transaction == null) {
-                this.Transaction = new Transaction(this.Connection.User);
-            }
+            this.Transaction =
+                Session.db.Transactions
+                    .FirstOrDefault(x =>
+                        x.ID == TransactionID &&
+                        x.User_ID == Session.User.ID)
+                ?? new Transaction(Session.User);
 
             txtBrief.Text = this.Transaction.Brief;
             txtDetails.Text = this.Transaction.Details;
@@ -139,10 +140,10 @@ namespace Monage.GUI.Frames {
             if (tr == null) { return null; }
 
             // Validate the bank/budget selection
-            Budget budget = Budget.Enumerate(this.Connection.User)
+            Budget budget = Budget.Enumerate()
                 .FirstOrDefault(x => x.ID == (int)cbxBudgets.SelectedValue);
 
-            Bank bank = Bank.Enumerate(this.Connection.User)
+            Bank bank = Bank.Enumerate()
                 .FirstOrDefault(x => x.ID == (int)cbxBanks.SelectedValue);
 
             if (budget == null) {
@@ -172,7 +173,7 @@ namespace Monage.GUI.Frames {
                 foreach (Step step in tier.Steps.OrderBy(x => x.Order)) {
                     Ticket ticket = staged.FirstOrDefault(x => x.Bucket == step.Bucket);
                     if (ticket == null) {
-                        ticket = new Ticket(this.Connection.User, this.Transaction);
+                        ticket = new Ticket(Session.User, this.Transaction);
                         ticket.Bank = bank;
                         ticket.Bucket = step.Bucket;
                     }
@@ -212,7 +213,7 @@ namespace Monage.GUI.Frames {
             if (Amount != 0) {
                 Ticket final = staged.FirstOrDefault(x => x.Bucket == budget.Final);
                 if (final == null) {
-                    final = new Ticket(this.Connection.User, this.Transaction);
+                    final = new Ticket(Session.User, this.Transaction);
                     final.Bank = bank;
                     final.Bucket = budget.Final;
                 }
@@ -231,13 +232,13 @@ namespace Monage.GUI.Frames {
             return tr;
         }
         private TicketResult AdjustBank(TicketResult tr, int sign) {
-            Ticket ticket = new Ticket(this.Connection.User, this.Transaction);
+            Ticket ticket = new Ticket(Session.User, this.Transaction);
             ticket.Amount = (double)Math.Round(numAmount.Value * sign, 2);
 
-            ticket.Bank = Bank.Enumerate(this.Connection.User)
+            ticket.Bank = Bank.Enumerate()
                 .FirstOrDefault(x => x.ID == (int)cbxBanks.SelectedValue);
 
-            ticket.Bucket = Bucket.Enumerate(this.Connection.User)
+            ticket.Bucket = Bucket.Enumerate()
                 .FirstOrDefault(x => x.ID == (int)cbxBuckets.SelectedValue);
 
             if (ticket.Bank == null) {
@@ -253,10 +254,10 @@ namespace Monage.GUI.Frames {
             return tr;
         }
         private TicketResult WriteRevenue(TicketResult tr) {
-            Ticket ticket = new Ticket(this.Connection.User, this.Transaction);
+            Ticket ticket = new Ticket(Session.User, this.Transaction);
             ticket.Amount = (double)Math.Round(-1 * numAmount.Value, 2);
             ticket.Company = txtCompany.Text;
-            ticket.Fund = Fund.Enumerate(this.Connection.User, BalanceType.Credit)
+            ticket.Fund = Fund.Enumerate(BalanceType.Credit)
                 .FirstOrDefault(x => x.ID == (int)cbxRevenues.SelectedValue);
 
             if (ticket.Amount >= 0) {
@@ -276,10 +277,10 @@ namespace Monage.GUI.Frames {
             return tr;
         }
         private TicketResult WriteExpense(TicketResult tr) {
-            Ticket ticket = new Ticket(this.Connection.User, this.Transaction);
+            Ticket ticket = new Ticket(Session.User, this.Transaction);
             ticket.Amount = (double)Math.Round(numAmount.Value, 2);
             ticket.Company = txtCompany.Text;
-            ticket.Fund = Fund.Enumerate(this.Connection.User, BalanceType.Debit)
+            ticket.Fund = Fund.Enumerate(BalanceType.Debit)
                 .FirstOrDefault(x => x.ID == (int)cbxExpenses.SelectedValue);
 
             if (ticket.Amount <= 0) {
@@ -316,19 +317,19 @@ namespace Monage.GUI.Frames {
                 Expenses = new BindingList<KeyValuePair<int, string>>(),
                 Revenues = new BindingList<KeyValuePair<int, string>>();
 
-            foreach (Bank bank in Bank.Enumerate(Connection.User)) {
+            foreach (Bank bank in Bank.Enumerate()) {
                 Banks.Add(new KeyValuePair<int, string>(bank.ID, bank.Name));
             }
-            foreach (Bucket bucket in Bucket.Enumerate(Connection.User)) {
+            foreach (Bucket bucket in Bucket.Enumerate()) {
                 Buckets.Add(new KeyValuePair<int, string>(bucket.ID, bucket.Name));
             }
-            foreach (Budget budget in Budget.Enumerate(Connection.User)) {
+            foreach (Budget budget in Budget.Enumerate()) {
                 Budgets.Add(new KeyValuePair<int, string>(budget.ID, budget.Name));
             }
-            foreach (Fund expense in Fund.Enumerate(Connection.User, BalanceType.Debit)) {
+            foreach (Fund expense in Fund.Enumerate(BalanceType.Debit)) {
                 Expenses.Add(new KeyValuePair<int, string>(expense.ID, expense.Name));
             }
-            foreach (Fund revenue in Fund.Enumerate(Connection.User, BalanceType.Credit)) {
+            foreach (Fund revenue in Fund.Enumerate(BalanceType.Credit)) {
                 Revenues.Add(new KeyValuePair<int, string>(revenue.ID, revenue.Name));
             }
 
@@ -355,7 +356,7 @@ namespace Monage.GUI.Frames {
             // Prepare an auto complete source for the company field
             AutoCompleteStringCollection data = new AutoCompleteStringCollection();
             foreach (IGrouping<string, Ticket> group in
-                Program.db.Tickets
+                Session.db.Tickets
                     .Where(x => x.Company != "")
                     .GroupBy(x => x.Company)) {
 
@@ -457,7 +458,7 @@ namespace Monage.GUI.Frames {
 
         public void RemoveTicket(Ticket ticket) {
             if (ticket.ID != 0) {
-                Program.db.Tickets.Remove(ticket);
+                Session.db.Tickets.Remove(ticket);
             }
             this.Transaction.Tickets.Remove(ticket);
             this.getTicketUpdate();
