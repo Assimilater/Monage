@@ -12,23 +12,22 @@ using Monage.Models;
 
 namespace Monage.GUI.Frames {
     public partial class SummaryFrame : Frame {
-        public SummaryFrame() : base(FramePosition.Docked) { InitializeComponent(); }
-        public override string Title() { return "Financial Summary"; }
-        public override Frame Set(Shell connection, Panel canvas) {
-            base.Set(connection, canvas);
-            Session.Refresh();
+        public SummaryFrame()
+            : base(Position.Docked) {
+            InitializeComponent();
 
             banksFrame.Set(this);
             bucketsFrame.Set(this);
             budgetsFrame.Set(this);
             revenueFrame.Set(this);
             expenseFrame.Set(this);
-            return this;
         }
+        public override string Title() { return "Financial Summary"; }
 
         private ListPane Pane { get; set; }
         protected ListItem Item { get; set; }
         public void SelectItem(ListItem item) {
+            /*
             if (this.Ready("Navigation")) {
                 if (this.Item != null) {
                     this.Item.Toggle(false);
@@ -37,17 +36,15 @@ namespace Monage.GUI.Frames {
                 this.Item.Toggle(true);
 
                 splitContainer.Panel2.Controls.Clear();
-                this.Pane = this.Item.getPane(this.Connection);
+                this.Pane = this.Item.getPane();
                 if (this.Pane != null) {
                     splitContainer.Panel2.Controls.Add(this.Pane);
                 }
             }
+            */
         }
-        public override bool Ready(string conf) {
-            return
-                this.Pane != null
-                ? this.Pane.Ready(conf)
-                : true;
+        public override void Ready() {
+
         }
     }
 }

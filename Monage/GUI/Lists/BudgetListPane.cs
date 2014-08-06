@@ -13,6 +13,5 @@ namespace Monage.GUI.Lists {
         public BudgetListPane() {
             InitializeComponent();
         }
-        public override bool Ready(string conf) { return true; }
     }
 }

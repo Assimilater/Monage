@@ -13,14 +13,9 @@ using Monage.GUI.Dialogs;
 
 namespace Monage.GUI.Frames {
     public partial class UsersFrame : Frame {
-        public UsersFrame() : base(FramePosition.Centered) { InitializeComponent(); }
+        public UsersFrame() : base(Position.Centered) { InitializeComponent(); }
         public override string Title() { return "Login"; }
-        public override bool Ready(string conf) { return true; }
-        public override Frame Set(Shell connection, Panel canvas) {
-            base.Set(connection, canvas);
-            getList();
-            return this;
-        }
+        public override void Ready() { this.getList(); }
 
         private void getList() {
             int prev = cbxUsers.SelectedIndex;
@@ -36,7 +31,7 @@ namespace Monage.GUI.Frames {
 
         private void btnOpen_Click(object sender, EventArgs e) {
             if (cbxUsers.SelectedIndex != -1) {
-                Connection.Login(Session.Login((string)cbxUsers.SelectedItem));
+                Program.Host.Login(Session.Login((string)cbxUsers.SelectedItem));
             } else {
                 MessageBox.Show(Program.Host, "No user selected");
             }

@@ -17,33 +17,31 @@ namespace Monage.GUI.Frames {
         private TicketList TicketList;
         private int TransactionID;
         private string FrameTitle;
-        private bool Saved, ReadyState;
+        private bool ReadyState;
 
         public TransactionFrame(int TransactionID = 0)
-            : base(FramePosition.TopCenter) {
+            : base(Position.TopCenter | Position.FullHeight, State.Confirm) {
             InitializeComponent();
             cbxAction.SelectedIndex = 0;
-            this.FrameTitle = "Update Transaction";
 
-            this.Saved = false;
             this.ReadyState = false;
+
             this.TransactionID = TransactionID;
         }
 
         public override string Title() { return this.FrameTitle; }
-        public override bool Ready(string conf) {
-            return this.Saved ||
-                Program.ConfirmReady(Connection.ConnectionString, conf);
-        }
-        public override Frame Set(Shell connection, Panel canvas) {
-            base.Set(connection, canvas);
-
+        public override void Ready() {
             this.Transaction =
                 Session.db.Transactions
                     .FirstOrDefault(x =>
-                        x.ID == TransactionID &&
+                        x.ID == this.TransactionID &&
                         x.User_ID == Session.User.ID)
                 ?? new Transaction(Session.User);
+
+            this.FrameTitle =
+                this.Transaction.ID == 0
+                    ? "New Transaction"
+                    : "Update Transaction";
 
             txtBrief.Text = this.Transaction.Brief;
             txtDetails.Text = this.Transaction.Details;
@@ -60,14 +58,13 @@ namespace Monage.GUI.Frames {
 
             this.getTicketUpdate();
             this.getLists();
-
             this.ReadyState = true;
-            return this;
         }
-        public override Frame Adjust() {
-            base.Adjust();
-            this.Height = this.Canvas.Height;
-            this.TicketList.Height = this.Height - 319;
+        public override Frame Adjust(Panel Canvas) {
+            base.Adjust(Canvas);
+            if (this.TicketList != null) {
+                this.TicketList.Height = this.Height - 319;
+            }
             return this;
         }
 
@@ -449,8 +446,8 @@ namespace Monage.GUI.Frames {
                 this.Transaction.Save();
 
                 // If successful go back to the summary page
-                this.Saved = true;
-                this.Connection.GoHome();
+                this.State = Frames.State.Ready;
+                Program.Host.GoHome();
             } catch (ValidationException ex) {
                 MessageBox.Show(Program.Host, ex.Message);
             }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Monage {
     public static class Program {
-        public static MDIHost Host;
+        public static Host Host;
 
         [STAThread]
         public static void Main() {
@@ -21,26 +21,23 @@ namespace Monage {
             Splash s = new Splash();
             s.Show();
 
-            // Run migrations with a temporarily established database connection
+            // Run migrations and open a database connection
             new MigrateDatabaseToLatestVersion<Context, Configuration>()
                 .InitializeDatabase(Session.Start());
-            
+
             // Close the splash screen
             s.Close();
 
             // Start the application
-            Host = new MDIHost();
-            Application.Run(Host);
+            Application.Run(Host = new Host());
         }
 
-        public static bool ConfirmReady(string con, string conf) {
-            return DialogResult.Yes == MessageBox.Show(
-                Host,
-                con + ":\n" +
-                    "You have unsaved changes.\n" +
-                    "These changes will be lost.\n" +
-                    "Are you sure you wish to proceed?",
-                "Confirm " + conf,
+        public static bool ConfirmReady(string action) {
+            return DialogResult.Yes == MessageBox.Show(Program.Host,
+                "You have unsaved changes.\n" +
+                "These changes will be lost.\n" +
+                "Are you sure you wish to proceed?",
+                "Confirm " + action,
                 MessageBoxButtons.YesNo
             );
         }

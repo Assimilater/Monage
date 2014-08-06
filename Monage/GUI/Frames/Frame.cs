@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Monage.GUI.Frames {
     [Flags]
-    public enum FramePosition {
+    public enum Position {
         // Common Cases
         Docked = 0, Centered = 18,
 
@@ -19,42 +19,51 @@ namespace Monage.GUI.Frames {
         // Combined Values
         TopLeft = 9, TopCenter = 17, TopRight = 33,
         MiddleLeft = 10, MiddleCenter = 18, MiddleRight = 34,
-        BottomLeft = 12, BottomCenter = 20, BottomRight = 36
+        BottomLeft = 12, BottomCenter = 20, BottomRight = 36,
+
+        // Other Modifiers
+        FullHeight = 64, FullWidth = 128
+    }
+
+    public enum State {
+        Ready,
+        Confirm
     }
 
     public abstract class Frame : UserControl {
-        //public class Frame : UserControl {
-        public FramePosition Position { get; private set; }
-        public Shell Connection { get; private set; }
-        public Panel Canvas { get; private set; }
+    //public class Frame : UserControl {
+        public Position Position { get; protected set; }
+        public State State { get; protected set; }
 
-        //public Frame() { this.Position = FramePosition.Docked; }
-        public Frame(FramePosition position) { this.Position = position; }
-
-        public virtual Frame Set(Shell connection, Panel canvas) {
-            Connection = connection;
-            Canvas = canvas;
-
-            Canvas.Controls.Clear();
-            Canvas.Controls.Add(this);
-            return this;
+        public Frame(Position position = Position.Docked, State state = State.Ready) { 
+            this.Position = position;
+            this.State = state;
         }
-        public virtual Frame Adjust() {
-            if (this.Position != FramePosition.Docked) {
+
+        public virtual Frame Adjust(Panel Canvas) {
+            if (this.Position != Position.Docked) {
                 this.Dock = DockStyle.None;
                 this.Location = new Point(
                     // Horizontal
-                    this.Position.HasFlag(FramePosition.Left)
-                    ? 0 : (this.Position.HasFlag(FramePosition.Center)
+                    this.Position.HasFlag(Position.Left)
+                    ? 0 : (this.Position.HasFlag(Position.Center)
                     ? Canvas.Width / 2 - (this.Width / 2)
                     : Canvas.Width - this.Width),
 
                     // Vertical
-                    this.Position.HasFlag(FramePosition.Top)
-                    ? 0 : (this.Position.HasFlag(FramePosition.Middle)
+                    this.Position.HasFlag(Position.Top)
+                    ? 0 : (this.Position.HasFlag(Position.Middle)
                     ? Canvas.Height / 2 - (this.Height / 2)
                     : Canvas.Height - this.Height)
                 );
+
+                if (this.Position.HasFlag(Position.FullHeight)) {
+                    this.Height = Canvas.Height;
+                }
+
+                if (this.Position.HasFlag(Position.FullWidth)) {
+                    this.Width = Canvas.Width;
+                }
             } else {
                 this.Dock = DockStyle.Fill;
                 this.Location = new Point(0, 0);
@@ -64,8 +73,8 @@ namespace Monage.GUI.Frames {
 
         // Methods to pass on to derrived classes
         public abstract string Title();
-        public abstract bool Ready(string conf);
+        public abstract void Ready();
         //public virtual string Title() { return ""; }
-        //public virtual bool Ready(string conf) { return true; }
+        //public virtual void Ready() { }
     }
 }

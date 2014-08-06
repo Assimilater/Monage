@@ -46,7 +46,7 @@ namespace Monage.GUI.Lists {
 
     public class ListItem : UserControl {
         public ListItem() { this.Click += ListItem_Click; }
-        public virtual ListPane getPane(Shell connection) { return null; }
+        public virtual ListPane getPane() { return null; }
 
         protected SummaryFrame Frame { get; set; }
         public ListItem SetFrame(SummaryFrame frame) {
@@ -66,15 +66,14 @@ namespace Monage.GUI.Lists {
     }
 
     public class ListPane : UserControl {
-        protected Shell Connection { get; set; }
-        public ListPane Set(Shell connection) {
+        protected Host Connection { get; set; }
+        public ListPane Set(Host connection) {
             this.Connection = connection;
             this.getInfo();
             return this;
         }
 
         protected virtual ListPane getInfo() { return this; }
-        public virtual bool Ready(string conf) { return true; }
     }
     
     public class BucketsList : ListContainer {

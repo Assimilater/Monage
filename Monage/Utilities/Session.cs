@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Monage {
-    public class Session {
+    public static class Session {
         public static Context db { get; private set; }
         public static User User { get; private set; }
         private static int UserID {

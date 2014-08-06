@@ -13,6 +13,5 @@ namespace Monage.GUI.Lists {
         public AccountListPane() {
             InitializeComponent();
         }
-        public override bool Ready(string conf) { return true; }
     }
 }

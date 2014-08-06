@@ -13,28 +13,19 @@ using Monage.Models;
 namespace Monage.GUI.Frames {
     public partial class HistoryFrame : Frame {
         private List<TransactionMaster> Transactions;
-        public HistoryFrame() : base(FramePosition.TopCenter) { InitializeComponent(); }
+        public HistoryFrame()
+            : base(Position.TopCenter | Position.FullHeight) {
+            InitializeComponent();
+        }
         public override string Title() { return "Transaction History"; }
-        public override bool Ready(string conf) { return true; }
-        public override Frame Set(Shell connection, Panel canvas) {
-            base.Set(connection, canvas);
-
+        public override void Ready() {
             this.Transactions = new List<TransactionMaster>();
-            using (Context db = new Context()) {
-                foreach (Transaction transaction in db.Transactions.OrderBy(x => x.Incurred)) {
-                    TransactionMaster tm = new TransactionMaster(transaction, this);
-                    this.Transactions.Add(tm);
-                    pnlTransactions.Controls.Add(tm);
-                }
+            foreach (Transaction transaction in Session.db.Transactions.OrderBy(x => x.Incurred)) {
+                TransactionMaster tm = new TransactionMaster(transaction, this);
+                this.Transactions.Add(tm);
+                pnlTransactions.Controls.Add(tm);
             }
             this.AdjustList();
-
-            return this;
-        }
-        public override Frame Adjust() {
-            base.Adjust();
-            this.Height = this.Canvas.Height;
-            return this;
         }
 
         public void AdjustList() {
