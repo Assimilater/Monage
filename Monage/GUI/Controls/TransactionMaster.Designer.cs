@@ -26,7 +26,7 @@
             this.lblBrief = new System.Windows.Forms.Label();
             this.lblConfirmed = new System.Windows.Forms.Label();
             this.lblAfter = new System.Windows.Forms.Label();
-            this.lblAmount = new System.Windows.Forms.Label();
+            this.lblBefore = new System.Windows.Forms.Label();
             this.pnlIndent = new System.Windows.Forms.Panel();
             this.pnlRow = new System.Windows.Forms.Panel();
             this.lblIncurred = new System.Windows.Forms.Label();
@@ -74,16 +74,16 @@
             this.lblAfter.TabIndex = 6;
             this.lblAfter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblAmount
+            // lblBefore
             // 
-            this.lblAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblAmount.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmount.Location = new System.Drawing.Point(619, -1);
-            this.lblAmount.Margin = new System.Windows.Forms.Padding(3);
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(140, 34);
-            this.lblAmount.TabIndex = 7;
-            this.lblAmount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblBefore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblBefore.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBefore.Location = new System.Drawing.Point(619, -1);
+            this.lblBefore.Margin = new System.Windows.Forms.Padding(3);
+            this.lblBefore.Name = "lblBefore";
+            this.lblBefore.Size = new System.Drawing.Size(140, 34);
+            this.lblBefore.TabIndex = 7;
+            this.lblBefore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlIndent
             // 
@@ -98,10 +98,10 @@
             this.pnlRow.Controls.Add(this.lblIncurred);
             this.pnlRow.Controls.Add(this.btnExpand);
             this.pnlRow.Controls.Add(this.lblConfirmed);
-            this.pnlRow.Controls.Add(this.lblAmount);
             this.pnlRow.Controls.Add(this.btnEdit);
             this.pnlRow.Controls.Add(this.lblAfter);
             this.pnlRow.Controls.Add(this.lblBrief);
+            this.pnlRow.Controls.Add(this.lblBefore);
             this.pnlRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlRow.Location = new System.Drawing.Point(0, 0);
             this.pnlRow.Name = "pnlRow";
@@ -216,7 +216,7 @@
         private System.Windows.Forms.Label lblConfirmed;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Label lblAfter;
-        private System.Windows.Forms.Label lblAmount;
+        private System.Windows.Forms.Label lblBefore;
         private System.Windows.Forms.Button btnExpand;
         private System.Windows.Forms.Panel pnlIndent;
         private System.Windows.Forms.Panel pnlRow;

@@ -24,8 +24,11 @@
         /// </summary>
         private void InitializeComponent() {
             this.pnlFilter = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblSort = new System.Windows.Forms.Label();
+            this.rdbConfirmed = new System.Windows.Forms.RadioButton();
+            this.rdbIncurred = new System.Windows.Forms.RadioButton();
+            this.lblFilterBucket = new System.Windows.Forms.Label();
+            this.lblFilterBank = new System.Windows.Forms.Label();
             this.cbxBuckets = new System.Windows.Forms.ComboBox();
             this.cbxBanks = new System.Windows.Forms.ComboBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
@@ -35,20 +38,18 @@
             this.lblConfirmed = new System.Windows.Forms.Label();
             this.lblIncurred = new System.Windows.Forms.Label();
             this.pnlTransactions = new System.Windows.Forms.Panel();
-            this.rdbIncurred = new System.Windows.Forms.RadioButton();
-            this.rdbConfirmed = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCashflow = new System.Windows.Forms.Label();
             this.pnlFilter.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlFilter
             // 
-            this.pnlFilter.Controls.Add(this.label1);
+            this.pnlFilter.Controls.Add(this.lblSort);
             this.pnlFilter.Controls.Add(this.rdbConfirmed);
             this.pnlFilter.Controls.Add(this.rdbIncurred);
-            this.pnlFilter.Controls.Add(this.label6);
-            this.pnlFilter.Controls.Add(this.label5);
+            this.pnlFilter.Controls.Add(this.lblFilterBucket);
+            this.pnlFilter.Controls.Add(this.lblFilterBank);
             this.pnlFilter.Controls.Add(this.cbxBuckets);
             this.pnlFilter.Controls.Add(this.cbxBanks);
             this.pnlFilter.Controls.Add(this.pnlHeader);
@@ -58,25 +59,59 @@
             this.pnlFilter.Size = new System.Drawing.Size(985, 58);
             this.pnlFilter.TabIndex = 0;
             // 
-            // label6
+            // lblSort
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(289, 8);
-            this.label6.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 17);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Bucket:";
+            this.lblSort.AutoSize = true;
+            this.lblSort.Location = new System.Drawing.Point(739, 8);
+            this.lblSort.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
+            this.lblSort.Name = "lblSort";
+            this.lblSort.Size = new System.Drawing.Size(58, 17);
+            this.lblSort.TabIndex = 21;
+            this.lblSort.Text = "Sort By:";
             // 
-            // label5
+            // rdbConfirmed
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 8);
-            this.label5.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 17);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Bank:";
+            this.rdbConfirmed.AutoSize = true;
+            this.rdbConfirmed.Location = new System.Drawing.Point(889, 6);
+            this.rdbConfirmed.Name = "rdbConfirmed";
+            this.rdbConfirmed.Size = new System.Drawing.Size(93, 21);
+            this.rdbConfirmed.TabIndex = 20;
+            this.rdbConfirmed.Text = "Confirmed";
+            this.rdbConfirmed.UseVisualStyleBackColor = true;
+            this.rdbConfirmed.Click += new System.EventHandler(this.UpdateFilters);
+            // 
+            // rdbIncurred
+            // 
+            this.rdbIncurred.AutoSize = true;
+            this.rdbIncurred.Checked = true;
+            this.rdbIncurred.Location = new System.Drawing.Point(802, 6);
+            this.rdbIncurred.Name = "rdbIncurred";
+            this.rdbIncurred.Size = new System.Drawing.Size(81, 21);
+            this.rdbIncurred.TabIndex = 19;
+            this.rdbIncurred.TabStop = true;
+            this.rdbIncurred.Text = "Incurred";
+            this.rdbIncurred.UseVisualStyleBackColor = true;
+            this.rdbIncurred.Click += new System.EventHandler(this.UpdateFilters);
+            // 
+            // lblFilterBucket
+            // 
+            this.lblFilterBucket.AutoSize = true;
+            this.lblFilterBucket.Location = new System.Drawing.Point(289, 8);
+            this.lblFilterBucket.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
+            this.lblFilterBucket.Name = "lblFilterBucket";
+            this.lblFilterBucket.Size = new System.Drawing.Size(55, 17);
+            this.lblFilterBucket.TabIndex = 18;
+            this.lblFilterBucket.Text = "Bucket:";
+            // 
+            // lblFilterBank
+            // 
+            this.lblFilterBank.AutoSize = true;
+            this.lblFilterBank.Location = new System.Drawing.Point(8, 8);
+            this.lblFilterBank.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
+            this.lblFilterBank.Name = "lblFilterBank";
+            this.lblFilterBank.Size = new System.Drawing.Size(44, 17);
+            this.lblFilterBank.TabIndex = 17;
+            this.lblFilterBank.Text = "Bank:";
             // 
             // cbxBuckets
             // 
@@ -102,6 +137,7 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.Controls.Add(this.lblCashflow);
             this.pnlHeader.Controls.Add(this.lblAfter);
             this.pnlHeader.Controls.Add(this.lblBefore);
             this.pnlHeader.Controls.Add(this.lblBrief);
@@ -172,39 +208,15 @@
             this.pnlTransactions.Size = new System.Drawing.Size(985, 507);
             this.pnlTransactions.TabIndex = 1;
             // 
-            // rdbIncurred
+            // lblTotal
             // 
-            this.rdbIncurred.AutoSize = true;
-            this.rdbIncurred.Checked = true;
-            this.rdbIncurred.Location = new System.Drawing.Point(802, 6);
-            this.rdbIncurred.Name = "rdbIncurred";
-            this.rdbIncurred.Size = new System.Drawing.Size(81, 21);
-            this.rdbIncurred.TabIndex = 19;
-            this.rdbIncurred.TabStop = true;
-            this.rdbIncurred.Text = "Incurred";
-            this.rdbIncurred.UseVisualStyleBackColor = true;
-            this.rdbIncurred.Click += new System.EventHandler(this.UpdateFilters);
-            // 
-            // rdbConfirmed
-            // 
-            this.rdbConfirmed.AutoSize = true;
-            this.rdbConfirmed.Location = new System.Drawing.Point(889, 6);
-            this.rdbConfirmed.Name = "rdbConfirmed";
-            this.rdbConfirmed.Size = new System.Drawing.Size(93, 21);
-            this.rdbConfirmed.TabIndex = 20;
-            this.rdbConfirmed.Text = "Confirmed";
-            this.rdbConfirmed.UseVisualStyleBackColor = true;
-            this.rdbConfirmed.Click += new System.EventHandler(this.UpdateFilters);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(739, 8);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 17);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Sort By:";
+            this.lblCashflow.AutoSize = true;
+            this.lblCashflow.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCashflow.Location = new System.Drawing.Point(760, 2);
+            this.lblCashflow.Name = "lblTotal";
+            this.lblCashflow.Size = new System.Drawing.Size(71, 20);
+            this.lblCashflow.TabIndex = 5;
+            this.lblCashflow.Text = "Cashflow";
             // 
             // HistoryFrame
             // 
@@ -232,12 +244,13 @@
         private System.Windows.Forms.Label lblBrief;
         private System.Windows.Forms.Label lblConfirmed;
         private System.Windows.Forms.Label lblIncurred;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblFilterBucket;
+        private System.Windows.Forms.Label lblFilterBank;
         private System.Windows.Forms.ComboBox cbxBuckets;
         private System.Windows.Forms.ComboBox cbxBanks;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSort;
         private System.Windows.Forms.RadioButton rdbConfirmed;
         private System.Windows.Forms.RadioButton rdbIncurred;
+        private System.Windows.Forms.Label lblCashflow;
     }
 }

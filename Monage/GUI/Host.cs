@@ -50,11 +50,7 @@ namespace Monage.GUI {
                 : true;
         }
 
-        public void GoHome() {
-            this.SetFrame(new SummaryFrame());
-        }
-
-        private void SetFrame(Frame view, string action = "Navigation", bool force = false) {
+        public void SetFrame(Frame view, string action = "Navigation", bool force = false) {
             if (force || this.Ready(action)) {
                 Content.Controls.Clear();
                 Content.Controls.Add(view);

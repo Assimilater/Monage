@@ -75,12 +75,24 @@ namespace Monage.GUI.Frames {
 
             if (rdbConfirmed.Checked) {
                 transactions = transactions
-                    .OrderByDescending(x => x.Confirmed);
+                    .OrderByDescending(x => x.Confirmed == null)
+                    .ThenByDescending(x => x.Confirmed)
+                    .ThenByDescending(x => x.Incurred);
                 Settings.FilterConfirmed = true;
             } else {
                 transactions = transactions
                     .OrderByDescending(x => x.Incurred);
                 Settings.FilterConfirmed = false;
+            }
+
+            if (Settings.FilterBanks == 0 && Settings.FilterBuckets == 0) {
+                lblCashflow.Show();
+                lblBefore.Hide();
+                lblAfter.Hide();
+            } else {
+                lblCashflow.Hide();
+                lblBefore.Show();
+                lblAfter.Show();
             }
 
             if (Settings.FilterBanks != 0) {
