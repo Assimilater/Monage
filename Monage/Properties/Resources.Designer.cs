@@ -73,6 +73,16 @@ namespace Monage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconCheck {
+            get {
+                object obj = ResourceManager.GetObject("IconCheck", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconClose {
             get {
                 object obj = ResourceManager.GetObject("IconClose", resourceCulture);

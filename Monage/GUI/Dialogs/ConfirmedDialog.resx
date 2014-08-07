@@ -117,4 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblPrompt.Text" xml:space="preserve">
+    <value>Confirmation that the following transaction:
+
+Paycheck from TankLogix
+Incurred On: 06/25/2014
+Affecting: Checking
+Prior Balance: $125.35
+Remaining Balance: $725.13
+
+Was proccessed by the bank on:</value>
+  </data>
 </root>

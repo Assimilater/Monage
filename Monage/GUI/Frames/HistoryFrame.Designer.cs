@@ -37,8 +37,8 @@
             this.lblBrief = new System.Windows.Forms.Label();
             this.lblConfirmed = new System.Windows.Forms.Label();
             this.lblIncurred = new System.Windows.Forms.Label();
-            this.pnlTransactions = new System.Windows.Forms.Panel();
             this.lblCashflow = new System.Windows.Forms.Label();
+            this.pnlTransactions = new System.Windows.Forms.Panel();
             this.pnlFilter.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -56,13 +56,13 @@
             this.pnlFilter.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFilter.Location = new System.Drawing.Point(0, 0);
             this.pnlFilter.Name = "pnlFilter";
-            this.pnlFilter.Size = new System.Drawing.Size(985, 58);
+            this.pnlFilter.Size = new System.Drawing.Size(1014, 58);
             this.pnlFilter.TabIndex = 0;
             // 
             // lblSort
             // 
             this.lblSort.AutoSize = true;
-            this.lblSort.Location = new System.Drawing.Point(739, 8);
+            this.lblSort.Location = new System.Drawing.Point(767, 8);
             this.lblSort.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.lblSort.Name = "lblSort";
             this.lblSort.Size = new System.Drawing.Size(58, 17);
@@ -72,7 +72,7 @@
             // rdbConfirmed
             // 
             this.rdbConfirmed.AutoSize = true;
-            this.rdbConfirmed.Location = new System.Drawing.Point(889, 6);
+            this.rdbConfirmed.Location = new System.Drawing.Point(917, 6);
             this.rdbConfirmed.Name = "rdbConfirmed";
             this.rdbConfirmed.Size = new System.Drawing.Size(93, 21);
             this.rdbConfirmed.TabIndex = 20;
@@ -84,7 +84,7 @@
             // 
             this.rdbIncurred.AutoSize = true;
             this.rdbIncurred.Checked = true;
-            this.rdbIncurred.Location = new System.Drawing.Point(802, 6);
+            this.rdbIncurred.Location = new System.Drawing.Point(830, 6);
             this.rdbIncurred.Name = "rdbIncurred";
             this.rdbIncurred.Size = new System.Drawing.Size(81, 21);
             this.rdbIncurred.TabIndex = 19;
@@ -137,16 +137,16 @@
             // 
             // pnlHeader
             // 
-            this.pnlHeader.Controls.Add(this.lblCashflow);
             this.pnlHeader.Controls.Add(this.lblAfter);
             this.pnlHeader.Controls.Add(this.lblBefore);
             this.pnlHeader.Controls.Add(this.lblBrief);
             this.pnlHeader.Controls.Add(this.lblConfirmed);
             this.pnlHeader.Controls.Add(this.lblIncurred);
+            this.pnlHeader.Controls.Add(this.lblCashflow);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlHeader.Location = new System.Drawing.Point(0, 33);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(985, 25);
+            this.pnlHeader.Size = new System.Drawing.Size(1014, 25);
             this.pnlHeader.TabIndex = 3;
             // 
             // lblAfter
@@ -199,24 +199,24 @@
             this.lblIncurred.TabIndex = 0;
             this.lblIncurred.Text = "Incurred";
             // 
+            // lblCashflow
+            // 
+            this.lblCashflow.AutoSize = true;
+            this.lblCashflow.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCashflow.Location = new System.Drawing.Point(760, 3);
+            this.lblCashflow.Name = "lblCashflow";
+            this.lblCashflow.Size = new System.Drawing.Size(71, 20);
+            this.lblCashflow.TabIndex = 5;
+            this.lblCashflow.Text = "Cashflow";
+            // 
             // pnlTransactions
             // 
             this.pnlTransactions.AutoScroll = true;
             this.pnlTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTransactions.Location = new System.Drawing.Point(0, 58);
             this.pnlTransactions.Name = "pnlTransactions";
-            this.pnlTransactions.Size = new System.Drawing.Size(985, 507);
+            this.pnlTransactions.Size = new System.Drawing.Size(1014, 507);
             this.pnlTransactions.TabIndex = 1;
-            // 
-            // lblTotal
-            // 
-            this.lblCashflow.AutoSize = true;
-            this.lblCashflow.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCashflow.Location = new System.Drawing.Point(760, 2);
-            this.lblCashflow.Name = "lblTotal";
-            this.lblCashflow.Size = new System.Drawing.Size(71, 20);
-            this.lblCashflow.TabIndex = 5;
-            this.lblCashflow.Text = "Cashflow";
             // 
             // HistoryFrame
             // 
@@ -225,7 +225,7 @@
             this.Controls.Add(this.pnlTransactions);
             this.Controls.Add(this.pnlFilter);
             this.Name = "HistoryFrame";
-            this.Size = new System.Drawing.Size(985, 565);
+            this.Size = new System.Drawing.Size(1014, 565);
             this.pnlFilter.ResumeLayout(false);
             this.pnlFilter.PerformLayout();
             this.pnlHeader.ResumeLayout(false);

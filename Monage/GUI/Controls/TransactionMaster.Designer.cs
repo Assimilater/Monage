@@ -27,8 +27,9 @@
             this.lblConfirmed = new System.Windows.Forms.Label();
             this.lblAfter = new System.Windows.Forms.Label();
             this.lblBefore = new System.Windows.Forms.Label();
-            this.pnlIndent = new System.Windows.Forms.Panel();
+            this.pnlLeftIndent = new System.Windows.Forms.Panel();
             this.pnlRow = new System.Windows.Forms.Panel();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.lblIncurred = new System.Windows.Forms.Label();
             this.btnExpand = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -36,6 +37,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.pnlOverflow = new System.Windows.Forms.Panel();
             this.lblDetails = new System.Windows.Forms.Label();
+            this.pnlRightIndent = new System.Windows.Forms.Panel();
             this.pnlRow.SuspendLayout();
             this.pnlExpanded.SuspendLayout();
             this.pnlOverflow.SuspendLayout();
@@ -85,16 +87,17 @@
             this.lblBefore.TabIndex = 7;
             this.lblBefore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // pnlIndent
+            // pnlLeftIndent
             // 
-            this.pnlIndent.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlIndent.Location = new System.Drawing.Point(0, 33);
-            this.pnlIndent.Name = "pnlIndent";
-            this.pnlIndent.Size = new System.Drawing.Size(150, 442);
-            this.pnlIndent.TabIndex = 10;
+            this.pnlLeftIndent.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlLeftIndent.Location = new System.Drawing.Point(0, 33);
+            this.pnlLeftIndent.Name = "pnlLeftIndent";
+            this.pnlLeftIndent.Size = new System.Drawing.Size(90, 442);
+            this.pnlLeftIndent.TabIndex = 10;
             // 
             // pnlRow
             // 
+            this.pnlRow.Controls.Add(this.btnConfirm);
             this.pnlRow.Controls.Add(this.lblIncurred);
             this.pnlRow.Controls.Add(this.btnExpand);
             this.pnlRow.Controls.Add(this.lblConfirmed);
@@ -105,8 +108,24 @@
             this.pnlRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlRow.Location = new System.Drawing.Point(0, 0);
             this.pnlRow.Name = "pnlRow";
-            this.pnlRow.Size = new System.Drawing.Size(961, 33);
+            this.pnlRow.Size = new System.Drawing.Size(990, 33);
             this.pnlRow.TabIndex = 11;
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.BackColor = System.Drawing.Color.Snow;
+            this.btnConfirm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirm.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.ForeColor = System.Drawing.Color.Blue;
+            this.btnConfirm.Image = global::Monage.Properties.Resources.IconCheck;
+            this.btnConfirm.Location = new System.Drawing.Point(901, 3);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(26, 26);
+            this.btnConfirm.TabIndex = 10;
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // lblIncurred
             // 
@@ -127,7 +146,7 @@
             this.btnExpand.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExpand.ForeColor = System.Drawing.Color.Blue;
             this.btnExpand.Image = global::Monage.Properties.Resources.IconPlus;
-            this.btnExpand.Location = new System.Drawing.Point(930, 3);
+            this.btnExpand.Location = new System.Drawing.Point(959, 3);
             this.btnExpand.Name = "btnExpand";
             this.btnExpand.Size = new System.Drawing.Size(26, 26);
             this.btnExpand.TabIndex = 8;
@@ -142,7 +161,7 @@
             this.btnEdit.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.Blue;
             this.btnEdit.Image = global::Monage.Properties.Resources.IconPencil;
-            this.btnEdit.Location = new System.Drawing.Point(901, 3);
+            this.btnEdit.Location = new System.Drawing.Point(930, 3);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(26, 26);
@@ -155,15 +174,15 @@
             this.pnlExpanded.Controls.Add(this.label12);
             this.pnlExpanded.Controls.Add(this.pnlOverflow);
             this.pnlExpanded.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlExpanded.Location = new System.Drawing.Point(150, 33);
+            this.pnlExpanded.Location = new System.Drawing.Point(90, 33);
             this.pnlExpanded.Name = "pnlExpanded";
-            this.pnlExpanded.Size = new System.Drawing.Size(811, 442);
+            this.pnlExpanded.Size = new System.Drawing.Size(900, 442);
             this.pnlExpanded.TabIndex = 11;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 6);
+            this.label12.Location = new System.Drawing.Point(6, 3);
             this.label12.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(49, 17);
@@ -190,6 +209,14 @@
             this.lblDetails.TabIndex = 10;
             this.lblDetails.Text = "This transaction\'s notes go here";
             // 
+            // pnlRightIndent
+            // 
+            this.pnlRightIndent.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlRightIndent.Location = new System.Drawing.Point(811, 0);
+            this.pnlRightIndent.Name = "pnlRightIndent";
+            this.pnlRightIndent.Size = new System.Drawing.Size(89, 442);
+            this.pnlRightIndent.TabIndex = 11;
+            // 
             // TransactionMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -197,10 +224,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.pnlExpanded);
-            this.Controls.Add(this.pnlIndent);
+            this.Controls.Add(this.pnlLeftIndent);
+            this.Controls.Add(this.pnlRightIndent);
             this.Controls.Add(this.pnlRow);
             this.Name = "TransactionMaster";
-            this.Size = new System.Drawing.Size(961, 475);
+            this.Size = new System.Drawing.Size(990, 475);
             this.pnlRow.ResumeLayout(false);
             this.pnlExpanded.ResumeLayout(false);
             this.pnlExpanded.PerformLayout();
@@ -218,12 +246,14 @@
         private System.Windows.Forms.Label lblAfter;
         private System.Windows.Forms.Label lblBefore;
         private System.Windows.Forms.Button btnExpand;
-        private System.Windows.Forms.Panel pnlIndent;
+        private System.Windows.Forms.Panel pnlLeftIndent;
         private System.Windows.Forms.Panel pnlRow;
         private System.Windows.Forms.Panel pnlExpanded;
         private System.Windows.Forms.Label lblDetails;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel pnlOverflow;
         private System.Windows.Forms.Label lblIncurred;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Panel pnlRightIndent;
     }
 }

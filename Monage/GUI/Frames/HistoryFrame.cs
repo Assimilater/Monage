@@ -30,15 +30,7 @@ namespace Monage.GUI.Frames {
                 rdbIncurred.Checked = true;
             }
             this.watch = true;
-            this.UpdateFilters(null, null);
-        }
-
-        public void AdjustList() {
-            int y = 0;
-            foreach (TransactionMaster row in this.Transactions) {
-                row.Location = new Point(3, y);
-                y += row.Height - 1;
-            }
+            this.UpdateFilters();
         }
 
         private void GetLists() {
@@ -66,7 +58,7 @@ namespace Monage.GUI.Frames {
             cbxBuckets.DisplayMember = "Value";
         }
 
-        private void UpdateFilters(object sender, EventArgs e) {
+        public void UpdateFilters(object sender = null, EventArgs e = null) {
             if (!this.watch) { return; }
             pnlTransactions.Controls.Clear();
             Settings.FilterBanks = (int)cbxBanks.SelectedValue;
@@ -113,7 +105,15 @@ namespace Monage.GUI.Frames {
                 this.Transactions.Add(tm);
                 pnlTransactions.Controls.Add(tm);
             }
-            this.AdjustList();
+            this.Accordion();
+        }
+
+        public void Accordion(TransactionMaster tm = null) {
+            int y = 0;
+            foreach (TransactionMaster row in this.Transactions) {
+                row.Location = new Point(3, y);
+                y += row.CollapseRow(row == tm) - 1;
+            }
         }
     }
 }
