@@ -41,7 +41,7 @@ namespace Monage.GUI.Frames {
             this.budgetsFrame.Dock = System.Windows.Forms.DockStyle.Left;
             this.budgetsFrame.Location = new System.Drawing.Point(612, 0);
             this.budgetsFrame.Name = "budgetsFrame";
-            this.budgetsFrame.Size = new System.Drawing.Size(306, 557);
+            this.budgetsFrame.Size = new System.Drawing.Size(306, 578);
             this.budgetsFrame.TabIndex = 3;
             // 
             // bucketsFrame
@@ -50,7 +50,7 @@ namespace Monage.GUI.Frames {
             this.bucketsFrame.Dock = System.Windows.Forms.DockStyle.Left;
             this.bucketsFrame.Location = new System.Drawing.Point(306, 0);
             this.bucketsFrame.Name = "bucketsFrame";
-            this.bucketsFrame.Size = new System.Drawing.Size(306, 557);
+            this.bucketsFrame.Size = new System.Drawing.Size(306, 578);
             this.bucketsFrame.TabIndex = 2;
             // 
             // banksFrame
@@ -59,7 +59,7 @@ namespace Monage.GUI.Frames {
             this.banksFrame.Dock = System.Windows.Forms.DockStyle.Left;
             this.banksFrame.Location = new System.Drawing.Point(0, 0);
             this.banksFrame.Name = "banksFrame";
-            this.banksFrame.Size = new System.Drawing.Size(306, 557);
+            this.banksFrame.Size = new System.Drawing.Size(306, 578);
             this.banksFrame.TabIndex = 1;
             // 
             // expenseFrame
@@ -67,7 +67,7 @@ namespace Monage.GUI.Frames {
             this.expenseFrame.Dock = System.Windows.Forms.DockStyle.Left;
             this.expenseFrame.Location = new System.Drawing.Point(1224, 0);
             this.expenseFrame.Name = "expenseFrame";
-            this.expenseFrame.Size = new System.Drawing.Size(306, 557);
+            this.expenseFrame.Size = new System.Drawing.Size(306, 578);
             this.expenseFrame.TabIndex = 5;
             // 
             // revenueFrame
@@ -75,7 +75,7 @@ namespace Monage.GUI.Frames {
             this.revenueFrame.Dock = System.Windows.Forms.DockStyle.Left;
             this.revenueFrame.Location = new System.Drawing.Point(918, 0);
             this.revenueFrame.Name = "revenueFrame";
-            this.revenueFrame.Size = new System.Drawing.Size(306, 557);
+            this.revenueFrame.Size = new System.Drawing.Size(306, 578);
             this.revenueFrame.TabIndex = 4;
             // 
             // splitContainer
@@ -94,9 +94,10 @@ namespace Monage.GUI.Frames {
             this.splitContainer.Panel1.Controls.Add(this.budgetsFrame);
             this.splitContainer.Panel1.Controls.Add(this.bucketsFrame);
             this.splitContainer.Panel1.Controls.Add(this.banksFrame);
-            this.splitContainer.Size = new System.Drawing.Size(1230, 582);
-            this.splitContainer.SplitterDistance = 615;
+            this.splitContainer.Size = new System.Drawing.Size(1800, 582);
+            this.splitContainer.SplitterDistance = 1534;
             this.splitContainer.TabIndex = 16;
+            this.splitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer_SplitterMoved);
             // 
             // SummaryFrame
             // 
@@ -104,7 +105,7 @@ namespace Monage.GUI.Frames {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer);
             this.Name = "SummaryFrame";
-            this.Size = new System.Drawing.Size(1230, 582);
+            this.Size = new System.Drawing.Size(1800, 582);
             this.splitContainer.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);

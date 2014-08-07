@@ -21,6 +21,11 @@ namespace Monage {
             set { Reg.SetInt("ActiveUser", value); }
         }
 
+        public static int SplitterDistance {
+            get { return Reg.GetInt("SplitterDistance", 1534); }
+            set { Reg.SetInt("SplitterDistance", value); }
+        }
+
         public static int FilterBanks {
             get { return Reg.GetInt("FilterBanks", 0); }
             set { Reg.SetInt("FilterBanks", value); }

@@ -15,6 +15,7 @@ namespace Monage.GUI.Frames {
         public SummaryFrame()
             : base(Position.Docked) {
             InitializeComponent();
+            splitContainer.SplitterDistance = Settings.SplitterDistance;
 
             banksFrame.Set(this);
             bucketsFrame.Set(this);
@@ -45,6 +46,10 @@ namespace Monage.GUI.Frames {
         }
         public override void Ready() {
 
+        }
+
+        private void splitContainer_SplitterMoved(object sender, SplitterEventArgs e) {
+            Settings.SplitterDistance = splitContainer.SplitterDistance;
         }
     }
 }
