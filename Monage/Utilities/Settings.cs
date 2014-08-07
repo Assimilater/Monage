@@ -20,6 +20,22 @@ namespace Monage {
             get { return Reg.GetInt("ActiveUser"); }
             set { Reg.SetInt("ActiveUser", value); }
         }
+
+        public static int FilterBanks {
+            get { return Reg.GetInt("FilterBanks", 0); }
+            set { Reg.SetInt("FilterBanks", value); }
+        }
+
+        public static int FilterBuckets {
+            get { return Reg.GetInt("FilterBuckets", 0); }
+            set { Reg.SetInt("FilterBuckets", value); }
+        }
+
+        public static bool FilterConfirmed {
+            get { return Reg.GetBool("FilterConfirmed", false); }
+            set { Reg.SetBool("FilterConfirmed", value); }
+        }
+
         public static bool Maximized {
             get { return Reg.GetBool("Maximized", false); }
             set { Reg.SetBool("Maximized", value); }
