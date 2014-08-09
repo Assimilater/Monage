@@ -64,7 +64,7 @@
             this.txtDetails.Name = "txtDetails";
             this.txtDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDetails.Size = new System.Drawing.Size(624, 104);
-            this.txtDetails.TabIndex = 1;
+            this.txtDetails.TabIndex = 5;
             this.txtDetails.TextChanged += new System.EventHandler(this.txtDetails_TextChanged);
             // 
             // dtConfirm
@@ -77,7 +77,7 @@
             this.dtConfirm.Name = "dtConfirm";
             this.dtConfirm.ShowCheckBox = true;
             this.dtConfirm.Size = new System.Drawing.Size(204, 24);
-            this.dtConfirm.TabIndex = 3;
+            this.dtConfirm.TabIndex = 1;
             this.dtConfirm.Value = new System.DateTime(2014, 6, 23, 0, 0, 0, 0);
             this.dtConfirm.ValueChanged += new System.EventHandler(this.dtConfirm_ValueChanged);
             // 
@@ -110,7 +110,7 @@
             this.dtIncur.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtIncur.Name = "dtIncur";
             this.dtIncur.Size = new System.Drawing.Size(204, 24);
-            this.dtIncur.TabIndex = 2;
+            this.dtIncur.TabIndex = 0;
             this.dtIncur.Value = new System.DateTime(2014, 6, 23, 0, 0, 0, 0);
             this.dtIncur.ValueChanged += new System.EventHandler(this.dtIncur_ValueChanged);
             // 
@@ -122,7 +122,7 @@
             this.cbxBanks.Location = new System.Drawing.Point(213, 70);
             this.cbxBanks.Name = "cbxBanks";
             this.cbxBanks.Size = new System.Drawing.Size(204, 26);
-            this.cbxBanks.TabIndex = 5;
+            this.cbxBanks.TabIndex = 7;
             // 
             // cbxExpenses
             // 
@@ -132,7 +132,7 @@
             this.cbxExpenses.Location = new System.Drawing.Point(423, 122);
             this.cbxExpenses.Name = "cbxExpenses";
             this.cbxExpenses.Size = new System.Drawing.Size(204, 26);
-            this.cbxExpenses.TabIndex = 6;
+            this.cbxExpenses.TabIndex = 11;
             // 
             // cbxBuckets
             // 
@@ -142,7 +142,7 @@
             this.cbxBuckets.Location = new System.Drawing.Point(423, 70);
             this.cbxBuckets.Name = "cbxBuckets";
             this.cbxBuckets.Size = new System.Drawing.Size(204, 26);
-            this.cbxBuckets.TabIndex = 7;
+            this.cbxBuckets.TabIndex = 8;
             // 
             // cbxRevenues
             // 
@@ -152,7 +152,7 @@
             this.cbxRevenues.Location = new System.Drawing.Point(213, 122);
             this.cbxRevenues.Name = "cbxRevenues";
             this.cbxRevenues.Size = new System.Drawing.Size(204, 26);
-            this.cbxRevenues.TabIndex = 8;
+            this.cbxRevenues.TabIndex = 10;
             // 
             // label3
             // 
@@ -173,7 +173,7 @@
             this.txtBrief.MaxLength = 45;
             this.txtBrief.Name = "txtBrief";
             this.txtBrief.Size = new System.Drawing.Size(414, 24);
-            this.txtBrief.TabIndex = 10;
+            this.txtBrief.TabIndex = 2;
             this.txtBrief.TextChanged += new System.EventHandler(this.txtBrief_TextChanged);
             // 
             // cbxBudgets
@@ -184,7 +184,7 @@
             this.cbxBudgets.Location = new System.Drawing.Point(3, 122);
             this.cbxBudgets.Name = "cbxBudgets";
             this.cbxBudgets.Size = new System.Drawing.Size(204, 26);
-            this.cbxBudgets.TabIndex = 11;
+            this.cbxBudgets.TabIndex = 9;
             // 
             // label4
             // 
@@ -242,7 +242,7 @@
             this.cbxAction.Location = new System.Drawing.Point(3, 70);
             this.cbxAction.Name = "cbxAction";
             this.cbxAction.Size = new System.Drawing.Size(204, 26);
-            this.cbxAction.TabIndex = 16;
+            this.cbxAction.TabIndex = 6;
             this.cbxAction.SelectedIndexChanged += new System.EventHandler(this.cbxAction_SelectedIndexChanged);
             // 
             // label8
@@ -301,7 +301,7 @@
             this.btnAddTicket.Location = new System.Drawing.Point(633, 174);
             this.btnAddTicket.Name = "btnAddTicket";
             this.btnAddTicket.Size = new System.Drawing.Size(204, 49);
-            this.btnAddTicket.TabIndex = 22;
+            this.btnAddTicket.TabIndex = 12;
             this.btnAddTicket.Text = "Add Ticket(s)";
             this.btnAddTicket.UseVisualStyleBackColor = true;
             this.btnAddTicket.Click += new System.EventHandler(this.btnAddTicket_Click);
@@ -315,7 +315,7 @@
             this.txtCompany.MaxLength = 45;
             this.txtCompany.Name = "txtCompany";
             this.txtCompany.Size = new System.Drawing.Size(204, 24);
-            this.txtCompany.TabIndex = 23;
+            this.txtCompany.TabIndex = 4;
             // 
             // numAmount
             // 
@@ -329,7 +329,7 @@
             0});
             this.numAmount.Name = "numAmount";
             this.numAmount.Size = new System.Drawing.Size(204, 27);
-            this.numAmount.TabIndex = 24;
+            this.numAmount.TabIndex = 3;
             this.numAmount.ThousandsSeparator = true;
             // 
             // btnSave
@@ -338,7 +338,7 @@
             this.btnSave.Location = new System.Drawing.Point(633, 229);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(204, 49);
-            this.btnSave.TabIndex = 26;
+            this.btnSave.TabIndex = 13;
             this.btnSave.Text = "Save Transaction";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
