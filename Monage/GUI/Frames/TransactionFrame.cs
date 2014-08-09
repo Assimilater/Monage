@@ -121,7 +121,20 @@ namespace Monage.GUI.Frames {
 
             // Add all tickets associated with this action
             foreach (Ticket ticket in tr.Tickets) {
-                this.Transaction.Tickets.Add(ticket);
+                Ticket existing = this.Transaction.Tickets
+                    .FirstOrDefault(x =>
+                        x.Bank_ID == ticket.Bank_ID &&
+                        x.Bucket_ID == ticket.Bucket_ID &&
+                        x.Fund_ID == ticket.Fund_ID &&
+                        x.Company == ticket.Company);
+                if (existing == null) {
+                    this.Transaction.Tickets.Add(ticket);
+                } else {
+                    existing.Amount += ticket.Amount;
+                    if (existing.Amount == 0) {
+                        this.Transaction.Tickets.Remove(existing);
+                    }
+                }
             }
 
             // Update the ticket list
