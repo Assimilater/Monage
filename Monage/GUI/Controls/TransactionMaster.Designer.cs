@@ -25,8 +25,8 @@
         private void InitializeComponent() {
             this.lblBrief = new System.Windows.Forms.Label();
             this.lblConfirmed = new System.Windows.Forms.Label();
-            this.lblAfter = new System.Windows.Forms.Label();
-            this.lblBefore = new System.Windows.Forms.Label();
+            this.lblBalance = new System.Windows.Forms.Label();
+            this.lblAmount = new System.Windows.Forms.Label();
             this.pnlLeftIndent = new System.Windows.Forms.Panel();
             this.pnlRow = new System.Windows.Forms.Panel();
             this.btnConfirm = new System.Windows.Forms.Button();
@@ -65,27 +65,27 @@
             this.lblConfirmed.TabIndex = 3;
             this.lblConfirmed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblAfter
+            // lblBalance
             // 
-            this.lblAfter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblAfter.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAfter.Location = new System.Drawing.Point(758, -1);
-            this.lblAfter.Margin = new System.Windows.Forms.Padding(3);
-            this.lblAfter.Name = "lblAfter";
-            this.lblAfter.Size = new System.Drawing.Size(140, 34);
-            this.lblAfter.TabIndex = 6;
-            this.lblAfter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblBalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblBalance.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBalance.Location = new System.Drawing.Point(758, -1);
+            this.lblBalance.Margin = new System.Windows.Forms.Padding(3);
+            this.lblBalance.Name = "lblBalance";
+            this.lblBalance.Size = new System.Drawing.Size(140, 34);
+            this.lblBalance.TabIndex = 6;
+            this.lblBalance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblBefore
+            // lblAmount
             // 
-            this.lblBefore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblBefore.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBefore.Location = new System.Drawing.Point(619, -1);
-            this.lblBefore.Margin = new System.Windows.Forms.Padding(3);
-            this.lblBefore.Name = "lblBefore";
-            this.lblBefore.Size = new System.Drawing.Size(140, 34);
-            this.lblBefore.TabIndex = 7;
-            this.lblBefore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblAmount.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAmount.Location = new System.Drawing.Point(619, -1);
+            this.lblAmount.Margin = new System.Windows.Forms.Padding(3);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(140, 34);
+            this.lblAmount.TabIndex = 7;
+            this.lblAmount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlLeftIndent
             // 
@@ -102,9 +102,9 @@
             this.pnlRow.Controls.Add(this.btnExpand);
             this.pnlRow.Controls.Add(this.lblConfirmed);
             this.pnlRow.Controls.Add(this.btnEdit);
-            this.pnlRow.Controls.Add(this.lblAfter);
+            this.pnlRow.Controls.Add(this.lblBalance);
             this.pnlRow.Controls.Add(this.lblBrief);
-            this.pnlRow.Controls.Add(this.lblBefore);
+            this.pnlRow.Controls.Add(this.lblAmount);
             this.pnlRow.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlRow.Location = new System.Drawing.Point(0, 0);
             this.pnlRow.Name = "pnlRow";
@@ -176,7 +176,7 @@
             this.pnlExpanded.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlExpanded.Location = new System.Drawing.Point(90, 33);
             this.pnlExpanded.Name = "pnlExpanded";
-            this.pnlExpanded.Size = new System.Drawing.Size(900, 442);
+            this.pnlExpanded.Size = new System.Drawing.Size(811, 442);
             this.pnlExpanded.TabIndex = 11;
             // 
             // label12
@@ -196,7 +196,7 @@
             this.pnlOverflow.Controls.Add(this.lblDetails);
             this.pnlOverflow.Location = new System.Drawing.Point(6, 23);
             this.pnlOverflow.Name = "pnlOverflow";
-            this.pnlOverflow.Size = new System.Drawing.Size(802, 160);
+            this.pnlOverflow.Size = new System.Drawing.Size(802, 159);
             this.pnlOverflow.TabIndex = 23;
             // 
             // lblDetails
@@ -212,7 +212,7 @@
             // pnlRightIndent
             // 
             this.pnlRightIndent.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlRightIndent.Location = new System.Drawing.Point(811, 0);
+            this.pnlRightIndent.Location = new System.Drawing.Point(901, 33);
             this.pnlRightIndent.Name = "pnlRightIndent";
             this.pnlRightIndent.Size = new System.Drawing.Size(89, 442);
             this.pnlRightIndent.TabIndex = 11;
@@ -243,8 +243,8 @@
         private System.Windows.Forms.Label lblBrief;
         private System.Windows.Forms.Label lblConfirmed;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Label lblAfter;
-        private System.Windows.Forms.Label lblBefore;
+        private System.Windows.Forms.Label lblBalance;
+        private System.Windows.Forms.Label lblAmount;
         private System.Windows.Forms.Button btnExpand;
         private System.Windows.Forms.Panel pnlLeftIndent;
         private System.Windows.Forms.Panel pnlRow;

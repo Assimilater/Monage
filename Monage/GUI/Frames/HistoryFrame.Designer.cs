@@ -24,16 +24,18 @@
         /// </summary>
         private void InitializeComponent() {
             this.pnlFilter = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtEnd = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtStart = new System.Windows.Forms.DateTimePicker();
             this.lblSort = new System.Windows.Forms.Label();
             this.rdbConfirmed = new System.Windows.Forms.RadioButton();
             this.rdbIncurred = new System.Windows.Forms.RadioButton();
-            this.lblFilterBucket = new System.Windows.Forms.Label();
-            this.lblFilterBank = new System.Windows.Forms.Label();
             this.cbxBuckets = new System.Windows.Forms.ComboBox();
             this.cbxBanks = new System.Windows.Forms.ComboBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblAfter = new System.Windows.Forms.Label();
-            this.lblBefore = new System.Windows.Forms.Label();
+            this.lblBalance = new System.Windows.Forms.Label();
+            this.lblAmount = new System.Windows.Forms.Label();
             this.lblBrief = new System.Windows.Forms.Label();
             this.lblConfirmed = new System.Windows.Forms.Label();
             this.lblIncurred = new System.Windows.Forms.Label();
@@ -45,11 +47,13 @@
             // 
             // pnlFilter
             // 
+            this.pnlFilter.Controls.Add(this.label2);
+            this.pnlFilter.Controls.Add(this.dtEnd);
+            this.pnlFilter.Controls.Add(this.label1);
+            this.pnlFilter.Controls.Add(this.dtStart);
             this.pnlFilter.Controls.Add(this.lblSort);
             this.pnlFilter.Controls.Add(this.rdbConfirmed);
             this.pnlFilter.Controls.Add(this.rdbIncurred);
-            this.pnlFilter.Controls.Add(this.lblFilterBucket);
-            this.pnlFilter.Controls.Add(this.lblFilterBank);
             this.pnlFilter.Controls.Add(this.cbxBuckets);
             this.pnlFilter.Controls.Add(this.cbxBanks);
             this.pnlFilter.Controls.Add(this.pnlHeader);
@@ -58,6 +62,50 @@
             this.pnlFilter.Name = "pnlFilter";
             this.pnlFilter.Size = new System.Drawing.Size(1014, 58);
             this.pnlFilter.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(604, 8);
+            this.label2.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 17);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "To:";
+            // 
+            // dtEnd
+            // 
+            this.dtEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtEnd.Location = new System.Drawing.Point(638, 5);
+            this.dtEnd.MinDate = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
+            this.dtEnd.Name = "dtEnd";
+            this.dtEnd.Size = new System.Drawing.Size(123, 24);
+            this.dtEnd.TabIndex = 24;
+            this.dtEnd.Value = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
+            this.dtEnd.ValueChanged += new System.EventHandler(this.UpdateFilters);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(423, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "From:";
+            // 
+            // dtStart
+            // 
+            this.dtStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtStart.Location = new System.Drawing.Point(472, 5);
+            this.dtStart.MinDate = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
+            this.dtStart.Name = "dtStart";
+            this.dtStart.Size = new System.Drawing.Size(123, 24);
+            this.dtStart.TabIndex = 22;
+            this.dtStart.Value = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
+            this.dtStart.ValueChanged += new System.EventHandler(this.UpdateFilters);
             // 
             // lblSort
             // 
@@ -93,32 +141,12 @@
             this.rdbIncurred.UseVisualStyleBackColor = true;
             this.rdbIncurred.Click += new System.EventHandler(this.UpdateFilters);
             // 
-            // lblFilterBucket
-            // 
-            this.lblFilterBucket.AutoSize = true;
-            this.lblFilterBucket.Location = new System.Drawing.Point(289, 8);
-            this.lblFilterBucket.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
-            this.lblFilterBucket.Name = "lblFilterBucket";
-            this.lblFilterBucket.Size = new System.Drawing.Size(55, 17);
-            this.lblFilterBucket.TabIndex = 18;
-            this.lblFilterBucket.Text = "Bucket:";
-            // 
-            // lblFilterBank
-            // 
-            this.lblFilterBank.AutoSize = true;
-            this.lblFilterBank.Location = new System.Drawing.Point(8, 8);
-            this.lblFilterBank.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
-            this.lblFilterBank.Name = "lblFilterBank";
-            this.lblFilterBank.Size = new System.Drawing.Size(44, 17);
-            this.lblFilterBank.TabIndex = 17;
-            this.lblFilterBank.Text = "Bank:";
-            // 
             // cbxBuckets
             // 
             this.cbxBuckets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxBuckets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxBuckets.FormattingEnabled = true;
-            this.cbxBuckets.Location = new System.Drawing.Point(349, 3);
+            this.cbxBuckets.Location = new System.Drawing.Point(213, 3);
             this.cbxBuckets.Name = "cbxBuckets";
             this.cbxBuckets.Size = new System.Drawing.Size(204, 26);
             this.cbxBuckets.TabIndex = 16;
@@ -129,7 +157,7 @@
             this.cbxBanks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxBanks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxBanks.FormattingEnabled = true;
-            this.cbxBanks.Location = new System.Drawing.Point(57, 3);
+            this.cbxBanks.Location = new System.Drawing.Point(3, 3);
             this.cbxBanks.Name = "cbxBanks";
             this.cbxBanks.Size = new System.Drawing.Size(204, 26);
             this.cbxBanks.TabIndex = 15;
@@ -137,8 +165,8 @@
             // 
             // pnlHeader
             // 
-            this.pnlHeader.Controls.Add(this.lblAfter);
-            this.pnlHeader.Controls.Add(this.lblBefore);
+            this.pnlHeader.Controls.Add(this.lblBalance);
+            this.pnlHeader.Controls.Add(this.lblAmount);
             this.pnlHeader.Controls.Add(this.lblBrief);
             this.pnlHeader.Controls.Add(this.lblConfirmed);
             this.pnlHeader.Controls.Add(this.lblIncurred);
@@ -149,25 +177,25 @@
             this.pnlHeader.Size = new System.Drawing.Size(1014, 25);
             this.pnlHeader.TabIndex = 3;
             // 
-            // lblAfter
+            // lblBalance
             // 
-            this.lblAfter.AutoSize = true;
-            this.lblAfter.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAfter.Location = new System.Drawing.Point(760, 3);
-            this.lblAfter.Name = "lblAfter";
-            this.lblAfter.Size = new System.Drawing.Size(43, 20);
-            this.lblAfter.TabIndex = 4;
-            this.lblAfter.Text = "After";
+            this.lblBalance.AutoSize = true;
+            this.lblBalance.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBalance.Location = new System.Drawing.Point(760, 3);
+            this.lblBalance.Name = "lblBalance";
+            this.lblBalance.Size = new System.Drawing.Size(59, 20);
+            this.lblBalance.TabIndex = 4;
+            this.lblBalance.Text = "Balance";
             // 
-            // lblBefore
+            // lblAmount
             // 
-            this.lblBefore.AutoSize = true;
-            this.lblBefore.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBefore.Location = new System.Drawing.Point(621, 3);
-            this.lblBefore.Name = "lblBefore";
-            this.lblBefore.Size = new System.Drawing.Size(51, 20);
-            this.lblBefore.TabIndex = 3;
-            this.lblBefore.Text = "Before";
+            this.lblAmount.AutoSize = true;
+            this.lblAmount.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAmount.Location = new System.Drawing.Point(621, 3);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(65, 20);
+            this.lblAmount.TabIndex = 3;
+            this.lblAmount.Text = "Amount";
             // 
             // lblBrief
             // 
@@ -239,18 +267,20 @@
         private System.Windows.Forms.Panel pnlFilter;
         private System.Windows.Forms.Panel pnlTransactions;
         private System.Windows.Forms.Panel pnlHeader;
-        private System.Windows.Forms.Label lblAfter;
-        private System.Windows.Forms.Label lblBefore;
+        private System.Windows.Forms.Label lblBalance;
+        private System.Windows.Forms.Label lblAmount;
         private System.Windows.Forms.Label lblBrief;
         private System.Windows.Forms.Label lblConfirmed;
         private System.Windows.Forms.Label lblIncurred;
-        private System.Windows.Forms.Label lblFilterBucket;
-        private System.Windows.Forms.Label lblFilterBank;
         private System.Windows.Forms.ComboBox cbxBuckets;
         private System.Windows.Forms.ComboBox cbxBanks;
         private System.Windows.Forms.Label lblSort;
         private System.Windows.Forms.RadioButton rdbConfirmed;
         private System.Windows.Forms.RadioButton rdbIncurred;
         private System.Windows.Forms.Label lblCashflow;
+        private System.Windows.Forms.DateTimePicker dtStart;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtEnd;
+        private System.Windows.Forms.Label label1;
     }
 }

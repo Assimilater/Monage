@@ -13,7 +13,9 @@ using Monage.GUI.Dialogs;
 
 namespace Monage.GUI.Controls {
     public partial class TransactionMaster : UserControl {
+        private bool _expanded;
         public int CollapseRow(bool expanded) {
+            this._expanded = expanded;
             this.btnExpand.Image = expanded
                 ? Properties.Resources.IconMinus
                 : Properties.Resources.IconPlus;
@@ -41,6 +43,7 @@ namespace Monage.GUI.Controls {
         public TransactionMaster(Transaction transaction, HistoryFrame parentframe) {
             InitializeComponent();
 
+            this._expanded = false;
             this.ParentFrame = parentframe;
             this.Transaction = transaction;
             this.TransactionID = transaction.ID;
@@ -51,53 +54,50 @@ namespace Monage.GUI.Controls {
                 ? "Never" : transaction.Confirmed.Value.ToString("MM/dd/yyyy");
 
             this.TicketList = new TicketList(transaction);
-            this.TicketList.Location = new Point(6, 189);
+            this.TicketList.Location = new Point(6, 188);
             pnlExpanded.Controls.Add(this.TicketList);
 
             if (Settings.FilterBanks == 0 && Settings.FilterBuckets == 0) {
-                lblAfter.Text = this.confirmCashflow = transaction.Tickets
+                lblBalance.Text = this.confirmCashflow = transaction.Tickets
                     .Where(x => x.Amount > 0)
                     .Sum(x => x.Amount)
                     .ToString("C");
             } else {
-                IEnumerable<Ticket> tickets = Session.db.Tickets;
+                IEnumerable<Ticket>
+                    allTickets = Session.db.Tickets,
+                    thisTickets = this.Transaction.Tickets;
 
                 if (Settings.FilterConfirmed) {
                     if (this.Transaction.Confirmed != null) {
-                        tickets = tickets
+                        allTickets = allTickets
                             .Where(x => x.Transaction.Confirmed <= this.Transaction.Confirmed);
                     } else {
-                        tickets = tickets
+                        allTickets = allTickets
                             .Where(x => x.Transaction.Confirmed != null
                                 || x.Transaction.Incurred <= this.Transaction.Incurred);
                     }
                 } else {
-                    tickets = tickets
+                    allTickets = allTickets
                         .Where(x => x.Transaction.Incurred <= this.Transaction.Incurred);
                 }
 
                 if (Settings.FilterBanks != 0) {
-                    tickets = tickets.Where(x => x.Bank_ID == Settings.FilterBanks);
+                    allTickets = allTickets.Where(x => x.Bank_ID == Settings.FilterBanks);
+                    thisTickets = thisTickets.Where(x => x.Bank_ID == Settings.FilterBanks);
                 }
 
                 if (Settings.FilterBuckets != 0) {
-                    tickets = tickets.Where(x => x.Bucket_ID == Settings.FilterBuckets);
+                    allTickets = allTickets.Where(x => x.Bucket_ID == Settings.FilterBuckets);
+                    thisTickets = thisTickets.Where(x => x.Bucket_ID == Settings.FilterBuckets);
                 }
 
-                double
-                    after = tickets.Sum(x => x.Amount),
-                    before = tickets
-                        .Where(x => x.Transaction_ID != this.TransactionID)
-                        .Sum(x => x.Amount);
-
-                lblBefore.Text = before.ToString("C");
-                lblAfter.Text = after.ToString("C");
-
+                lblAmount.Text = thisTickets.Sum(x => x.Amount).ToString("C");
+                lblBalance.Text = allTickets.Sum(x => x.Amount).ToString("C");
             }
         }
 
         private void btnExpand_Click(object sender, EventArgs e) {
-            this.ParentFrame.Accordion(this);
+            this.ParentFrame.Accordion(this, !_expanded);
         }
         private void btnEdit_Click(object sender, EventArgs e) {
             Program.Host.SetFrame(new TransactionFrame(this.TransactionID));

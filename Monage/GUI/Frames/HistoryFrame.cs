@@ -18,6 +18,8 @@ namespace Monage.GUI.Frames {
             : base(Position.TopCenter | Position.FullHeight) {
             this.watch = false;
             InitializeComponent();
+            dtStart.Value = DateTime.Today.AddDays(-31);
+            dtEnd.Value = DateTime.Today;
             this.GetLists();
         }
         public override string Title() { return "Transaction History"; }
@@ -67,24 +69,26 @@ namespace Monage.GUI.Frames {
 
             if (rdbConfirmed.Checked) {
                 transactions = transactions
+                    .Where(x => x.Confirmed >= dtStart.Value && x.Confirmed <= dtEnd.Value)
                     .OrderByDescending(x => x.Confirmed == null)
                     .ThenByDescending(x => x.Confirmed)
                     .ThenByDescending(x => x.Incurred);
                 Settings.FilterConfirmed = true;
             } else {
                 transactions = transactions
+                    .Where(x => x.Incurred >= dtStart.Value && x.Incurred <= dtEnd.Value)
                     .OrderByDescending(x => x.Incurred);
                 Settings.FilterConfirmed = false;
             }
 
             if (Settings.FilterBanks == 0 && Settings.FilterBuckets == 0) {
                 lblCashflow.Show();
-                lblBefore.Hide();
-                lblAfter.Hide();
+                lblAmount.Hide();
+                lblBalance.Hide();
             } else {
                 lblCashflow.Hide();
-                lblBefore.Show();
-                lblAfter.Show();
+                lblAmount.Show();
+                lblBalance.Show();
             }
 
             if (Settings.FilterBanks != 0) {
@@ -108,11 +112,11 @@ namespace Monage.GUI.Frames {
             this.Accordion();
         }
 
-        public void Accordion(TransactionMaster tm = null) {
+        public void Accordion(TransactionMaster tm = null, bool expand = true) {
             int y = 0;
             foreach (TransactionMaster row in this.Transactions) {
                 row.Location = new Point(3, y);
-                y += row.CollapseRow(row == tm) - 1;
+                y += row.CollapseRow(row == tm && expand) - 1;
             }
         }
     }

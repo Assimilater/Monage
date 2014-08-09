@@ -56,7 +56,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblTickets);
             this.Name = "TicketList";
-            this.Size = new System.Drawing.Size(834, 250);
+            this.Size = new System.Drawing.Size(834, 251);
             this.lblTickets.ResumeLayout(false);
             this.ResumeLayout(false);
 
