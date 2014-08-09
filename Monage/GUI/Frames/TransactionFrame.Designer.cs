@@ -166,6 +166,8 @@
             // 
             // txtBrief
             // 
+            this.txtBrief.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtBrief.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtBrief.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBrief.Location = new System.Drawing.Point(423, 20);
             this.txtBrief.MaxLength = 45;
@@ -300,7 +302,7 @@
             this.btnAddTicket.Name = "btnAddTicket";
             this.btnAddTicket.Size = new System.Drawing.Size(204, 49);
             this.btnAddTicket.TabIndex = 22;
-            this.btnAddTicket.Text = "Add Ticket";
+            this.btnAddTicket.Text = "Add Ticket(s)";
             this.btnAddTicket.UseVisualStyleBackColor = true;
             this.btnAddTicket.Click += new System.EventHandler(this.btnAddTicket_Click);
             // 

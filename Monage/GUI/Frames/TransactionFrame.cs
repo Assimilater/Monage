@@ -350,16 +350,26 @@ namespace Monage.GUI.Frames {
             cbxRevenues.ValueMember = "Key";
             cbxRevenues.DisplayMember = "Value";
 
-            // Prepare an auto complete source for the company field
-            AutoCompleteStringCollection data = new AutoCompleteStringCollection();
+            // Prepare an auto complete source for the brief and company fields
+            AutoCompleteStringCollection
+                briefs = new AutoCompleteStringCollection(),
+                companies = new AutoCompleteStringCollection();
+
+            foreach (IGrouping<string, Transaction> group in
+                Session.db.Transactions
+                    .Where(x => x.Brief != "")
+                    .GroupBy(x => x.Brief)) {
+                if (group.Key != null) { briefs.Add(group.Key); }
+            }
             foreach (IGrouping<string, Ticket> group in
                 Session.db.Tickets
                     .Where(x => x.Company != "")
                     .GroupBy(x => x.Company)) {
-
-                if (group.Key != null) { data.Add(group.Key); }
+                if (group.Key != null) { companies.Add(group.Key); }
             }
-            txtCompany.AutoCompleteCustomSource = data;
+
+            txtBrief.AutoCompleteCustomSource = briefs;
+            txtCompany.AutoCompleteCustomSource = companies;
         }
 
         private void dtConfirm_ValueChanged(object sender, EventArgs e) {
