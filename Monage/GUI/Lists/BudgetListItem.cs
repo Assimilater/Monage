@@ -47,7 +47,7 @@ namespace Monage.GUI.Lists {
                 );
                 this.SetText();
             } catch (ValidationException ex) {
-                MessageBox.Show(Program.Host, ex.Message);
+                MessageBox.Show(Program.Window, ex.Message);
             }
         }
         protected override void refDelete_Click(object sender, EventArgs e) {

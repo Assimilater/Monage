@@ -66,8 +66,8 @@ namespace Monage.GUI.Lists {
     }
 
     public class ListPane : UserControl {
-        protected Host Connection { get; set; }
-        public ListPane Set(Host connection) {
+        protected Shell Connection { get; set; }
+        public ListPane Set(Shell connection) {
             this.Connection = connection;
             this.getInfo();
             return this;
@@ -89,7 +89,7 @@ namespace Monage.GUI.Lists {
                 );
                 getList();
             } catch (ValidationException ex) {
-                MessageBox.Show(Program.Host, ex.Message);
+                MessageBox.Show(Program.Window, ex.Message);
             }
         }
 
@@ -115,7 +115,7 @@ namespace Monage.GUI.Lists {
                 );
                 getList();
             } catch (ValidationException ex) {
-                MessageBox.Show(Program.Host, ex.Message);
+                MessageBox.Show(Program.Window, ex.Message);
             }
         }
 
@@ -168,7 +168,7 @@ namespace Monage.GUI.Lists {
                 );
                 getList();
             } catch (ValidationException ex) {
-                MessageBox.Show(Program.Host, ex.Message);
+                MessageBox.Show(Program.Window, ex.Message);
             }
         }
 
@@ -194,7 +194,7 @@ namespace Monage.GUI.Lists {
                 );
                 getList();
             } catch (ValidationException ex) {
-                MessageBox.Show(Program.Host, ex.Message);
+                MessageBox.Show(Program.Window, ex.Message);
             }
         }
 

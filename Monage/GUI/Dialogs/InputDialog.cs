@@ -20,7 +20,7 @@ namespace Monage.GUI.Dialogs {
 
         public static String ShowDialog(string prompt, string caption, string val = "") {
             InputDialog i = new InputDialog(prompt, caption, val);
-            return i.ShowDialog(Program.Host) == DialogResult.OK ? i.txtResponse.Text : null;
+            return i.ShowDialog(Program.Window) == DialogResult.OK ? i.txtResponse.Text : null;
         }
     }
 }

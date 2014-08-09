@@ -62,7 +62,7 @@ namespace Monage.GUI.Dialogs {
             ConfirmedDialog i = new ConfirmedDialog();
             i.SetPrompt(incurred, brief, cashflow);
 
-            if (i.ShowDialog(Program.Host) == DialogResult.OK) {
+            if (i.ShowDialog(Program.Window) == DialogResult.OK) {
                 return i.dtConfirm.Value;
             }
             return null;
@@ -71,7 +71,7 @@ namespace Monage.GUI.Dialogs {
             ConfirmedDialog i = new ConfirmedDialog();
             i.SetPrompt(incurred, brief, affecting, before, after);
 
-            if (i.ShowDialog(Program.Host) == DialogResult.OK) {
+            if (i.ShowDialog(Program.Window) == DialogResult.OK) {
                 return i.dtConfirm.Value;
             }
             return null;

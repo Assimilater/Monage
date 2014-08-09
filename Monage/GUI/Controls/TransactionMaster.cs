@@ -100,7 +100,7 @@ namespace Monage.GUI.Controls {
             this.ParentFrame.Accordion(this, !_expanded);
         }
         private void btnEdit_Click(object sender, EventArgs e) {
-            Program.Host.SetFrame(new TransactionFrame(this.TransactionID));
+            Program.Window.SetFrame(new TransactionFrame(this.TransactionID));
         }
         private void btnConfirm_Click(object sender, EventArgs e) {
             DateTime? confirmed =

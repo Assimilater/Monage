@@ -112,7 +112,7 @@ namespace Monage.GUI.Frames {
             try {
                 foreach (Ticket ticket in tr.Tickets) { ticket.Validate(); }
             } catch (ValidationException ex) {
-                MessageBox.Show(Program.Host, ex.Message);
+                MessageBox.Show(Program.Window, ex.Message);
                 return;
             }
 
@@ -447,9 +447,9 @@ namespace Monage.GUI.Frames {
 
                 // If successful go back to the summary page
                 this.State = Frames.State.Ready;
-                Program.Host.SetFrame(new SummaryFrame());
+                Program.Window.SetFrame(new SummaryFrame());
             } catch (ValidationException ex) {
-                MessageBox.Show(Program.Host, ex.Message);
+                MessageBox.Show(Program.Window, ex.Message);
             }
         }
 

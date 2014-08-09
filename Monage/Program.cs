@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Monage {
     public static class Program {
-        public static Host Host;
+        public static Shell Window;
 
         [STAThread]
         public static void Main() {
@@ -29,11 +29,11 @@ namespace Monage {
             s.Close();
 
             // Start the application
-            Application.Run(Host = new Host());
+            Application.Run(Window = new Shell());
         }
 
         public static bool ConfirmReady(string action) {
-            return DialogResult.Yes == MessageBox.Show(Program.Host,
+            return DialogResult.Yes == MessageBox.Show(Program.Window,
                 "You have unsaved changes.\n" +
                 "These changes will be lost.\n" +
                 "Are you sure you wish to proceed?",

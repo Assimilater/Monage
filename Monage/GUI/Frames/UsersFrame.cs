@@ -31,9 +31,9 @@ namespace Monage.GUI.Frames {
 
         private void btnOpen_Click(object sender, EventArgs e) {
             if (cbxUsers.SelectedIndex != -1) {
-                Program.Host.Login(Session.Login((string)cbxUsers.SelectedItem));
+                Program.Window.Login(Session.Login((string)cbxUsers.SelectedItem));
             } else {
-                MessageBox.Show(Program.Host, "No user selected");
+                MessageBox.Show(Program.Window, "No user selected");
             }
         }
 
@@ -42,7 +42,7 @@ namespace Monage.GUI.Frames {
             if (cbxUsers.SelectedIndex != -1) {
                 getUsername(Session.db.Users.Where(x => x.Username == (string)cbxUsers.SelectedItem).First());
             } else {
-                MessageBox.Show(Program.Host, "No user selected");
+                MessageBox.Show(Program.Window, "No user selected");
             }
         }
 
@@ -57,7 +57,7 @@ namespace Monage.GUI.Frames {
                 );
                 getList();
             } catch (ValidationException ex) {
-                MessageBox.Show(Program.Host, ex.Message);
+                MessageBox.Show(Program.Window, ex.Message);
             }
         }
     }

@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Monage.GUI {
-    public partial class Host : Form {
+    public partial class Shell : Form {
         private const string fileFilter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
         private Frame active;
         private bool watch = false;
 
         #region Shell Control-Flow Management
 
-        public Host() {
+        public Shell() {
             InitializeComponent();
 
             this.WindowState =
@@ -55,14 +55,14 @@ namespace Monage.GUI {
                 Content.Controls.Clear();
                 Content.Controls.Add(view);
                 this.active = view;
-                this.active.Adjust(Content);
                 this.active.Ready();
+                this.active.Adjust(Content);
             }
             this.UpdateTitle();
             this.UpdateMenuBar();
         }
 
-        public Host UpdateTitle() {
+        public Shell UpdateTitle() {
             this.Text = "Monage - " +
                 (Session.User == null ? "" :
                     Session.User.Username) +
@@ -152,7 +152,7 @@ namespace Monage.GUI {
 
         #endregion
 
-        public Host Login(User user) {
+        public Shell Login(User user) {
             Frame view =
                 user == null
                 ? new UsersFrame() as Frame

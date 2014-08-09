@@ -23,7 +23,7 @@ namespace Monage.GUI.Dialogs {
         public static Pair ShowDialog(string prompt, string caption, string val = "", string description = "") {
             PairDialog i = new PairDialog(prompt, caption, val, description);
             return
-                i.ShowDialog(Program.Host) == DialogResult.OK
+                i.ShowDialog(Program.Window) == DialogResult.OK
                 ? new Pair(i.txtName.Text, i.txtDescription.Text)
                 : null;
         }
