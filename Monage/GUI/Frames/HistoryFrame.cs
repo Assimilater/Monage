@@ -69,7 +69,8 @@ namespace Monage.GUI.Frames {
 
             if (rdbConfirmed.Checked) {
                 transactions = transactions
-                    .Where(x => x.Confirmed >= dtStart.Value && x.Confirmed <= dtEnd.Value)
+                    .Where(x => x.Confirmed >= dtStart.Value && x.Confirmed <= dtEnd.Value ||
+                        dtEnd.Value.Date >= DateTime.Today && x.Confirmed == null)
                     .OrderByDescending(x => x.Confirmed == null)
                     .ThenByDescending(x => x.Confirmed)
                     .ThenByDescending(x => x.Incurred);
