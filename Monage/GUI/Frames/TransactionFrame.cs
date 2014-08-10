@@ -282,7 +282,7 @@ namespace Monage.GUI.Frames {
                 MessageBox.Show("Error finding selected revenue");
                 return null;
             }
-            if (txtCompany.Text == "") {
+            if (String.IsNullOrEmpty(txtCompany.Text)) {
                 MessageBox.Show("Enter a company name");
                 return null;
             }
@@ -305,7 +305,7 @@ namespace Monage.GUI.Frames {
                 MessageBox.Show("Error finding selected expense");
                 return null;
             }
-            if (txtCompany.Text == "") {
+            if (String.IsNullOrEmpty(txtCompany.Text)) {
                 MessageBox.Show("Enter a company name");
                 return null;
             }

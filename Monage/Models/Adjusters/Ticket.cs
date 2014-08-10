@@ -64,7 +64,7 @@ namespace Monage.Models {
             if ((this.Bank != null && this.Bucket == null) || (this.Bank == null && this.Bucket != null)) {
                 throw new ValidationException("A ticket does not have a valid bank/bucket combination");
             }
-            if (this.Fund != null && this.Company == "") {
+            if (this.Fund != null && String.IsNullOrEmpty(this.Company)) {
                 throw new ValidationException("A ticket does not have a company to atribute the espense or revenue to");
             }
         }

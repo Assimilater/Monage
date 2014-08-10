@@ -61,7 +61,7 @@ namespace Monage.Models {
             }
 
             // Check that it has sufficient descriptors
-            if (this.Brief.Trim() == "") {
+            if (String.IsNullOrEmpty(this.Brief.Trim())) {
                 throw new ValidationException("Add a brief description of what this transaction represents");
             }
 

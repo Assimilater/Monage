@@ -31,8 +31,8 @@ namespace Monage.GUI.Controls {
             confirmBrief = null,
             confirmCashflow = null,
             confirmAffecting = null,
-            confirmBefore = null,
-            confirmAfter = null;
+            confirmAmount = null,
+            confirmBalance = null;
 
         private int TransactionID;
         private Transaction Transaction;
@@ -84,15 +84,24 @@ namespace Monage.GUI.Controls {
                 if (Settings.FilterBanks != 0) {
                     allTickets = allTickets.Where(x => x.Bank_ID == Settings.FilterBanks);
                     thisTickets = thisTickets.Where(x => x.Bank_ID == Settings.FilterBanks);
+                    this.confirmAffecting = Session.db.Banks
+                        .First(x => x.ID == Settings.FilterBanks).Name;
                 }
 
                 if (Settings.FilterBuckets != 0) {
                     allTickets = allTickets.Where(x => x.Bucket_ID == Settings.FilterBuckets);
                     thisTickets = thisTickets.Where(x => x.Bucket_ID == Settings.FilterBuckets);
+                    string bucket = Session.db.Buckets
+                        .First(x => x.ID == Settings.FilterBuckets).Name;
+                    if (String.IsNullOrEmpty(this.confirmAffecting)) {
+                        this.confirmAffecting = bucket;
+                    } else {
+                        this.confirmAffecting += " [" + bucket + "]";
+                    }
                 }
 
-                lblAmount.Text = thisTickets.Sum(x => x.Amount).ToString("C");
-                lblBalance.Text = allTickets.Sum(x => x.Amount).ToString("C");
+                lblAmount.Text = this.confirmAmount = thisTickets.Sum(x => x.Amount).ToString("C");
+                lblBalance.Text = this.confirmBalance = allTickets.Sum(x => x.Amount).ToString("C");
             }
         }
 
@@ -106,7 +115,7 @@ namespace Monage.GUI.Controls {
             DateTime? confirmed =
                 this.confirmAffecting == null
                 ? ConfirmedDialog.ShowDialog(this.confirmIncurred, this.confirmBrief, this.confirmCashflow)
-                : ConfirmedDialog.ShowDialog(this.confirmIncurred, this.confirmBrief, this.confirmAffecting, this.confirmBefore, this.confirmAfter);
+                : ConfirmedDialog.ShowDialog(this.confirmIncurred, this.confirmBrief, this.confirmAffecting, this.confirmAmount, this.confirmBalance);
 
             if (confirmed != null) {
                 this.Transaction.Confirmed = confirmed;

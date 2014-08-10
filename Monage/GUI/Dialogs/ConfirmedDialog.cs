@@ -45,15 +45,15 @@ namespace Monage.GUI.Dialogs {
                 Environment.NewLine +
                 "Was proccessed by the bank on:";
         }
-        private void SetPrompt(string incurred, string brief, string affecting, string before, string after) {
+        private void SetPrompt(string incurred, string brief, string affecting, string amount, string balance) {
             lblPrompt.Text =
                 "Confirmation that the following transaction:" + Environment.NewLine +
                 Environment.NewLine +
                 brief + Environment.NewLine +
                 "Incurred On: " + incurred + Environment.NewLine +
                 "Affecting: " + affecting + Environment.NewLine +
-                "Prior Balance: " + before + Environment.NewLine +
-                "Remaining Balance: " + after + Environment.NewLine +
+                "Of the Amount: " + amount + Environment.NewLine +
+                "Remaining Balance: " + balance + Environment.NewLine +
                 Environment.NewLine +
                 "Was proccessed by the bank on:";
         }
@@ -67,9 +67,9 @@ namespace Monage.GUI.Dialogs {
             }
             return null;
         }
-        public static DateTime? ShowDialog(string incurred, string brief, string affecting, string before, string after) {
+        public static DateTime? ShowDialog(string incurred, string brief, string affecting, string amount, string balance) {
             ConfirmedDialog i = new ConfirmedDialog();
-            i.SetPrompt(incurred, brief, affecting, before, after);
+            i.SetPrompt(incurred, brief, affecting, amount, balance);
 
             if (i.ShowDialog(Program.Window) == DialogResult.OK) {
                 return i.dtConfirm.Value;
