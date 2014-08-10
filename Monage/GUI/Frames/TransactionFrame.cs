@@ -254,10 +254,14 @@ namespace Monage.GUI.Frames {
             if (ticket.Bank == null) {
                 MessageBox.Show("Error finding selected bank");
                 return null;
+            } else {
+                ticket.Bank_ID = ticket.Bank.ID;
             }
             if (ticket.Bucket == null) {
                 MessageBox.Show("Error finding selected bucket");
                 return null;
+            } else {
+                ticket.Bucket_ID = ticket.Bucket.ID;
             }
 
             tr.Tickets.Add(ticket);
