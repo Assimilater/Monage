@@ -55,7 +55,7 @@ namespace Monage.Models {
 
             // Check the incurred and confirmed dates
             if (this.Confirmed != null) {
-                if (this.Confirmed < this.Incurred) {
+                if (this.Confirmed.Value.Date < this.Incurred.Date) {
                     throw new ValidationException("Transaction marked as confirmed before it was incurred");
                 }
             }
