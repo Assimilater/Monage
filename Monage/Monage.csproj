@@ -109,22 +109,34 @@
     <Compile Include="GUI\Dialogs\InputDialog.Designer.cs">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Lists\AccountListPane.cs">
+    <Compile Include="GUI\Frames\SummaryFrames\FundFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Lists\AccountListPane.Designer.cs">
+    <Compile Include="GUI\Frames\SummaryFrames\FundFrame.Designer.cs">
+      <DependentUpon>FundFrame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Frames\SummaryFrames\BudgetFrame.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Frames\SummaryFrames\BudgetFrame.Designer.cs">
+      <DependentUpon>BudgetFrame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Lists\Panes\AccountListPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Lists\Panes\AccountListPane.Designer.cs">
       <DependentUpon>AccountListPane.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Lists\BudgetListItem.cs">
+    <Compile Include="GUI\Lists\Items\BasicListItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Lists\BudgetListItem.Designer.cs">
-      <DependentUpon>BudgetListItem.cs</DependentUpon>
+    <Compile Include="GUI\Lists\Items\BasicListItem.Designer.cs">
+      <DependentUpon>BasicListItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Lists\BudgetListPane.cs">
+    <Compile Include="GUI\Lists\Panes\BudgetListPane.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Lists\BudgetListPane.Designer.cs">
+    <Compile Include="GUI\Lists\Panes\BudgetListPane.Designer.cs">
       <DependentUpon>BudgetListPane.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Lists\ListContainer.cs">
@@ -133,10 +145,10 @@
     <Compile Include="GUI\Lists\ListContainer.Designer.cs">
       <DependentUpon>ListContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Lists\AccountListItem.cs">
+    <Compile Include="GUI\Lists\Items\AccountListItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Lists\AccountListItem.designer.cs">
+    <Compile Include="GUI\Lists\Items\AccountListItem.designer.cs">
       <DependentUpon>AccountListItem.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Frames\Frame.cs">
@@ -154,11 +166,11 @@
     <Compile Include="GUI\Frames\TransactionFrame.Designer.cs">
       <DependentUpon>TransactionFrame.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Frames\SummaryFrame.cs">
+    <Compile Include="GUI\Frames\SummaryFrames\BankFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Frames\SummaryFrame.Designer.cs">
-      <DependentUpon>SummaryFrame.cs</DependentUpon>
+    <Compile Include="GUI\Frames\SummaryFrames\BankFrame.Designer.cs">
+      <DependentUpon>BankFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Frames\UsersFrame.cs">
       <SubType>UserControl</SubType>
@@ -282,20 +294,26 @@
     <EmbeddedResource Include="GUI\Dialogs\InputDialog.resx">
       <DependentUpon>InputDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Frames\SummaryFrames\FundFrame.resx">
+      <DependentUpon>FundFrame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Frames\SummaryFrames\BudgetFrame.resx">
+      <DependentUpon>BudgetFrame.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Frames\HistoryFrame.resx">
       <DependentUpon>HistoryFrame.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Lists\BudgetListItem.resx">
-      <DependentUpon>BudgetListItem.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Lists\Items\BasicListItem.resx">
+      <DependentUpon>BasicListItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Lists\AccountListItem.resx">
+    <EmbeddedResource Include="GUI\Lists\Items\AccountListItem.resx">
       <DependentUpon>AccountListItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Lists\ListContainer.resx">
       <DependentUpon>ListContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Frames\SummaryFrame.resx">
-      <DependentUpon>SummaryFrame.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Frames\SummaryFrames\BankFrame.resx">
+      <DependentUpon>BankFrame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Frames\TransactionFrame.resx">
       <DependentUpon>TransactionFrame.cs</DependentUpon>

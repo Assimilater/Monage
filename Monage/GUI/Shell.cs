@@ -71,9 +71,8 @@ namespace Monage.GUI {
         }
 
         private void UpdateMenuBar() {
-            accountSummaryToolStripMenuItem.Visible = 
-            newTransactionToolStripMenuItem.Visible =
-            transactionHistoryToolStripMenuItem.Visible =
+            editToolStripMenuItem.Visible = 
+            transactionsToolStripMenuItem.Visible =
 
             logoutToolStripMenuItem.Visible =
 
@@ -124,21 +123,33 @@ namespace Monage.GUI {
             this.Close();
         }
 
-        private void summaryToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void budgetsToolStripMenuItem_Click(object sender, EventArgs e) {
             if (Session.User != null) {
-                this.SetFrame(new SummaryFrame());
+                this.SetFrame(new BudgetFrame());
             }
         }
 
-        private void newTransactionToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void banksAndBucketsToolStripMenuItem_Click(object sender, EventArgs e) {
             if (Session.User != null) {
-                this.SetFrame(new TransactionFrame());
+                this.SetFrame(new BankFrame());
+            }
+        }
+
+        private void expensesAndRevenuesToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (Session.User != null) {
+                this.SetFrame(new FundFrame());
             }
         }
 
         private void transactionHistoryToolStripMenuItem_Click(object sender, EventArgs e) {
             if (Session.User != null) {
                 this.SetFrame(new HistoryFrame());
+            }
+        }
+
+        private void newTransactionToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (Session.User != null) {
+                this.SetFrame(new TransactionFrame());
             }
         }
 
@@ -156,7 +167,7 @@ namespace Monage.GUI {
             Frame view =
                 user == null
                 ? new UsersFrame() as Frame
-                : new SummaryFrame() as Frame;
+                : new HistoryFrame() as Frame;
 
             this.SetFrame(view, "Logout", true);
             return this;

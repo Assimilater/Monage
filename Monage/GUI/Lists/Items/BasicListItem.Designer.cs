@@ -1,5 +1,5 @@
 ﻿namespace Monage.GUI.Lists {
-    partial class FundListItem {
+    partial class BasicListItem {
         /// <summary> 
         /// Required designer variable.
         /// </summary>

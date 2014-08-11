@@ -31,8 +31,7 @@ namespace Monage.Models {
         #endregion
 
         public static IEnumerable<Budget> Enumerate() {
-            //return Session.db.Budgets.Where(x => x.User_ID == Session.User.ID).OrderBy(x => x.Name);
-            return new List<Budget>();
+            return Session.db.Budgets.Where(x => x.User_ID == Session.User.ID).OrderBy(x => x.Name);
         }
 
         public Budget() {
@@ -40,6 +39,7 @@ namespace Monage.Models {
         }
         public Budget(User user) {
             this.User = user;
+            this.User_ID = user.ID;
             this.Tiers = new List<Tier>();
         }
 
@@ -54,7 +54,7 @@ namespace Monage.Models {
         public void Save() {
             this.Validate();
             try {
-                //if (this.ID == 0) { Session.db.Budgets.Add(this); }
+                if (this.ID == 0) { Session.db.Budgets.Add(this); }
                 Session.db.SaveChanges();
             } catch {
                 throw new ValidationException("An unkown exception has occured");
@@ -71,12 +71,12 @@ namespace Monage.Models {
                 }
 
                 if (this.Name != val.Name && val.Name != "") {
-                    //if (Session.db.Budgets.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
-                    //    throw new ValidationException("A budget named \"" + val.Name + "\" already exists");
-                    //} else {
-                    //    this.Name = val.Name;
-                    //    changes = true;
-                    //}
+                    if (Session.db.Budgets.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
+                        throw new ValidationException("A budget named \"" + val.Name + "\" already exists");
+                    } else {
+                        this.Name = val.Name;
+                        changes = true;
+                    }
                 }
 
                 if (changes && this.ID == 0) {

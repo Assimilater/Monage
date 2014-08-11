@@ -27,7 +27,7 @@ namespace Monage.GUI.Lists {
         protected SummaryFrame ParentFrame { get; set; }
         public ListContainer Set(SummaryFrame parent) {
             this.ParentFrame = parent;
-            getList();
+            this.getList();
             return this;
         }
 
@@ -37,9 +37,8 @@ namespace Monage.GUI.Lists {
             lbxList.Controls.Clear();
             int cnt = 0;
             foreach (ListItem item in items) {
-                item.Location = new Point(3, 7 + ((item.Height) * cnt));
+                item.Location = new Point(3, 7 + ((item.Height) * cnt++));
                 lbxList.Controls.Add(item);
-                ++cnt;
             }
         }
     }
@@ -55,7 +54,7 @@ namespace Monage.GUI.Lists {
         }
 
         protected void ListItem_Click(object sender, EventArgs e) {
-            Frame.SelectItem(this);
+            this.Frame.SelectItem(this);
         }
         public void Toggle(bool isSelected) {
             this.BackColor =
@@ -131,20 +130,19 @@ namespace Monage.GUI.Lists {
     public class BudgetsList : ListContainer {
         public BudgetsList() : base("Budgets") { }
 
-        //protected override void btnNew_Click(object sender, EventArgs e) {
-        //    try {
-        //        // *FIX*
-        //        new Budget(this.User).Rename(
-        //            PairDialog.ShowDialog(
-        //                "Enter a name and description for your new budget",
-        //                "Create Budget"
-        //            )
-        //        );
-        //        getList();
-        //    } catch (ValidationException ex) {
-        //        MessageBox.Show(Program.Host, ex.Message);
-        //    }
-        //}
+        protected override void btnNew_Click(object sender, EventArgs e) {
+            try {
+                new Budget(Session.User).Rename(
+                    PairDialog.ShowDialog(
+                        "Enter a name and description for your new budget",
+                        "Create Budget"
+                    )
+                );
+                getList();
+            } catch (ValidationException ex) {
+                MessageBox.Show(Program.Window, ex.Message);
+            }
+        }
 
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
@@ -175,7 +173,7 @@ namespace Monage.GUI.Lists {
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
             foreach (Fund expense in Fund.Enumerate(BalanceType.Debit)) {
-                list.Add(new ExReListItem(expense).SetFrame(this.ParentFrame));
+                list.Add(new FundListItem(expense).SetFrame(this.ParentFrame));
             }
             setList(list);
         }
@@ -201,7 +199,7 @@ namespace Monage.GUI.Lists {
         protected override void getList() {
             List<ListItem> list = new List<ListItem>();
             foreach (Fund revenue in Fund.Enumerate(BalanceType.Credit)) {
-                list.Add(new ExReListItem(revenue).SetFrame(this.ParentFrame));
+                list.Add(new FundListItem(revenue).SetFrame(this.ParentFrame));
             }
             setList(list);
         }

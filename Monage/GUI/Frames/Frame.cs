@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Monage.GUI.Lists;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -35,6 +36,7 @@ namespace Monage.GUI.Frames {
         public Position Position { get; protected set; }
         public State State { get; protected set; }
 
+        //public Frame() { this.Position = Position.Docked; this.State = State.Ready; }
         public Frame(Position position = Position.Docked, State state = State.Ready) { 
             this.Position = position;
             this.State = state;
@@ -76,5 +78,35 @@ namespace Monage.GUI.Frames {
         public abstract void Ready();
         //public virtual string Title() { return ""; }
         //public virtual void Ready() { }
+    }
+
+    public abstract class SummaryFrame : Frame {
+    //public class SummaryFrame : Frame {
+        protected Panel ContentPane { get; set; }
+        public SummaryFrame() : base(Position.Docked) { }
+
+        private ListPane Pane { get; set; }
+        protected ListItem Item { get; set; }
+        public void SelectItem(ListItem item) {
+            if (this.State != State.Confirm || Program.ConfirmReady("Navigation")) {
+                if (this.Item != null) {
+                    this.Item.Toggle(false);
+                }
+                this.Item = item;
+                this.Item.Toggle(true);
+
+                this.ContentPane.Controls.Clear();
+                this.Pane = this.Item.getPane();
+                if (this.Pane != null) {
+                    this.ContentPane.Controls.Add(this.Pane);
+                }
+            }
+        }
+
+        // Methods to pass on to derrived classes
+        public override abstract string Title();
+        public override abstract void Ready();
+        //public override string Title() { return ""; }
+        //public override void Ready() { }
     }
 }

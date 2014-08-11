@@ -35,10 +35,13 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.accountSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.budgetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.banksAndBucketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expensesAndRevenuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Content = new System.Windows.Forms.Panel();
@@ -49,7 +52,8 @@
             // 
             this.MenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
-            this.connectionToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.transactionsToolStripMenuItem,
             this.helpMenu});
             this.MenuBar.Location = new System.Drawing.Point(0, 0);
             this.MenuBar.Name = "MenuBar";
@@ -146,41 +150,63 @@
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolsStripMenuItem_Click);
             // 
-            // connectionToolStripMenuItem
+            // editToolStripMenuItem
             // 
-            this.connectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.accountSummaryToolStripMenuItem,
-            this.newTransactionToolStripMenuItem,
-            this.transactionHistoryToolStripMenuItem});
-            this.connectionToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
-            this.connectionToolStripMenuItem.MergeIndex = 1;
-            this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
-            this.connectionToolStripMenuItem.Text = "&Connection";
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.budgetsToolStripMenuItem,
+            this.banksAndBucketsToolStripMenuItem,
+            this.expensesAndRevenuesToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
+            this.editToolStripMenuItem.Text = "&Edit";
             // 
-            // accountSummaryToolStripMenuItem
+            // budgetsToolStripMenuItem
             // 
-            this.accountSummaryToolStripMenuItem.Name = "accountSummaryToolStripMenuItem";
-            this.accountSummaryToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.accountSummaryToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
-            this.accountSummaryToolStripMenuItem.Text = "Account &Summary";
-            this.accountSummaryToolStripMenuItem.Click += new System.EventHandler(this.summaryToolStripMenuItem_Click);
+            this.budgetsToolStripMenuItem.Name = "budgetsToolStripMenuItem";
+            this.budgetsToolStripMenuItem.Size = new System.Drawing.Size(233, 24);
+            this.budgetsToolStripMenuItem.Text = "Budgets";
+            this.budgetsToolStripMenuItem.Click += new System.EventHandler(this.budgetsToolStripMenuItem_Click);
             // 
-            // newTransactionToolStripMenuItem
+            // banksAndBucketsToolStripMenuItem
             // 
-            this.newTransactionToolStripMenuItem.Name = "newTransactionToolStripMenuItem";
-            this.newTransactionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.newTransactionToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
-            this.newTransactionToolStripMenuItem.Text = "New &Transaction";
-            this.newTransactionToolStripMenuItem.Click += new System.EventHandler(this.newTransactionToolStripMenuItem_Click);
+            this.banksAndBucketsToolStripMenuItem.Name = "banksAndBucketsToolStripMenuItem";
+            this.banksAndBucketsToolStripMenuItem.Size = new System.Drawing.Size(233, 24);
+            this.banksAndBucketsToolStripMenuItem.Text = "Banks and Buckets";
+            this.banksAndBucketsToolStripMenuItem.Click += new System.EventHandler(this.banksAndBucketsToolStripMenuItem_Click);
+            // 
+            // expensesAndRevenuesToolStripMenuItem
+            // 
+            this.expensesAndRevenuesToolStripMenuItem.Name = "expensesAndRevenuesToolStripMenuItem";
+            this.expensesAndRevenuesToolStripMenuItem.Size = new System.Drawing.Size(233, 24);
+            this.expensesAndRevenuesToolStripMenuItem.Text = "Expenses and Revenues";
+            this.expensesAndRevenuesToolStripMenuItem.Click += new System.EventHandler(this.expensesAndRevenuesToolStripMenuItem_Click);
+            // 
+            // transactionsToolStripMenuItem
+            // 
+            this.transactionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.transactionHistoryToolStripMenuItem,
+            this.newTransactionToolStripMenuItem});
+            this.transactionsToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
+            this.transactionsToolStripMenuItem.MergeIndex = 1;
+            this.transactionsToolStripMenuItem.Name = "transactionsToolStripMenuItem";
+            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(103, 24);
+            this.transactionsToolStripMenuItem.Text = "&Transactions";
             // 
             // transactionHistoryToolStripMenuItem
             // 
             this.transactionHistoryToolStripMenuItem.Name = "transactionHistoryToolStripMenuItem";
             this.transactionHistoryToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.transactionHistoryToolStripMenuItem.Size = new System.Drawing.Size(258, 24);
-            this.transactionHistoryToolStripMenuItem.Text = "Transaction &History";
+            this.transactionHistoryToolStripMenuItem.Size = new System.Drawing.Size(241, 24);
+            this.transactionHistoryToolStripMenuItem.Text = "&History";
             this.transactionHistoryToolStripMenuItem.Click += new System.EventHandler(this.transactionHistoryToolStripMenuItem_Click);
+            // 
+            // newTransactionToolStripMenuItem
+            // 
+            this.newTransactionToolStripMenuItem.Name = "newTransactionToolStripMenuItem";
+            this.newTransactionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newTransactionToolStripMenuItem.Size = new System.Drawing.Size(241, 24);
+            this.newTransactionToolStripMenuItem.Text = "New &Transaction";
+            this.newTransactionToolStripMenuItem.Click += new System.EventHandler(this.newTransactionToolStripMenuItem_Click);
             // 
             // helpMenu
             // 
@@ -207,7 +233,7 @@
             this.Content.Size = new System.Drawing.Size(772, 349);
             this.Content.TabIndex = 1;
             // 
-            // Host
+            // Shell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -216,7 +242,7 @@
             this.Controls.Add(this.MenuBar);
             this.Icon = global::Monage.Properties.Resources.favicon;
             this.MainMenuStrip = this.MenuBar;
-            this.Name = "Host";
+            this.Name = "Shell";
             this.Text = "Monage";
             this.SizeChanged += new System.EventHandler(this.Host_SizeChanged);
             this.MenuBar.ResumeLayout(false);
@@ -230,9 +256,8 @@
 
         private System.Windows.Forms.MenuStrip MenuBar;
         private System.Windows.Forms.Panel Content;
-        private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transactionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newTransactionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem accountSummaryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transactionHistoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileMenu;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
@@ -246,5 +271,9 @@
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpMenu;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem budgetsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem banksAndBucketsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem expensesAndRevenuesToolStripMenuItem;
     }
 }

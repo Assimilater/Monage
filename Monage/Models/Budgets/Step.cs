@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace Monage.Models {
     public class Step {
+        #region Schema
+
         [Key]
         public int ID { get; set; }
         public int Order { get; set; }
@@ -24,5 +26,9 @@ namespace Monage.Models {
         [ForeignKey("User_ID")]
         public virtual User User { get; set; }
         public int User_ID { get; set; }
+
+        #endregion
+
+
     }
 }

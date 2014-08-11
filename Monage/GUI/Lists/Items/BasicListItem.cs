@@ -12,8 +12,8 @@ using Monage.GUI.Dialogs;
 using System.ComponentModel.DataAnnotations;
 
 namespace Monage.GUI.Lists {
-    public partial class FundListItem : ListItem {
-        public FundListItem() {
+    public partial class BasicListItem : ListItem {
+        public BasicListItem() {
             InitializeComponent();
             lblName.Click += this.ListItem_Click;
         }
@@ -21,15 +21,32 @@ namespace Monage.GUI.Lists {
         protected virtual void refRename_Click(object sender, EventArgs e) { }
         protected virtual void refDelete_Click(object sender, EventArgs e) { }
     }
-    public class BudgetListItem : FundListItem {
+    public class BudgetListItem : BasicListItem {
         private Budget Budget { get; set; }
-        public BudgetListItem(Budget budget) {
-            Budget = budget;
+        public BudgetListItem(Budget budget) { this.Budget = budget; this.SetText(); }
+        private void SetText() { this.Caption = this.Budget.Name; }
+        protected override void refRename_Click(object sender, EventArgs e) {
+            try {
+                this.Budget.Rename(
+                    PairDialog.ShowDialog(
+                        "Enter a new name for Budget: " + this.Budget.Name,
+                        "Rename Budget",
+                        this.Budget.Name,
+                        this.Budget.Description
+                    )
+                );
+                this.SetText();
+            } catch (ValidationException ex) {
+                MessageBox.Show(Program.Window, ex.Message);
+            }
+        }
+        protected override void refDelete_Click(object sender, EventArgs e) {
+
         }
     }
-    public class ExReListItem : FundListItem {
+    public class FundListItem : BasicListItem {
         private Fund Fund { get; set; }
-        public ExReListItem(Fund fund) : base() { this.Fund = fund; this.SetText(); }
+        public FundListItem(Fund fund) { this.Fund = fund; this.SetText(); }
         private void SetText() { this.Caption = this.Fund.Name; }
         protected override void refRename_Click(object sender, EventArgs e) {
             string type = this.Fund.BalanceType == BalanceType.Debit

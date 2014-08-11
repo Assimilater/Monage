@@ -474,7 +474,7 @@ namespace Monage.GUI.Frames {
 
                 // If successful go back to the summary page
                 this.State = Frames.State.Ready;
-                Program.Window.SetFrame(new SummaryFrame());
+                Program.Window.SetFrame(new HistoryFrame());
             } catch (ValidationException ex) {
                 MessageBox.Show(Program.Window, ex.Message);
             }
