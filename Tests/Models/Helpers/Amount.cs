@@ -14,13 +14,13 @@ namespace Tests.Models {
         public void Amount_StringFormat() {
             Amount a = new Amount(10, 15);
             Assert.IsTrue(
-                a.ToString().Equals("$10.00 [$15.00]"),
+                a.ToString().Equals("$10.00 [ $15.00 ]"),
                 "Unexpected Result: " + a.ToString()
             );
 
             a = new Amount(-5, -4.3);
             Assert.IsTrue(
-                a.ToString().Equals("($5.00) [($4.30)]"),
+                a.ToString().Equals("($5.00) [ ($4.30) ]"),
                 "Unexpected Result: " + a.ToString()
             );
         }
