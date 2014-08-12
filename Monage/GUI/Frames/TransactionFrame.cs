@@ -14,13 +14,12 @@ using Monage.GUI.Controls;
 namespace Monage.GUI.Frames {
     public partial class TransactionFrame : Frame {
         private Transaction Transaction;
-        private TicketList TicketList;
         private int TransactionID;
         private string FrameTitle;
         private bool ReadyState;
 
         public TransactionFrame(int TransactionID = 0)
-            : base(Position.TopCenter | Position.FullHeight, State.Confirm) {
+            : base(Position.Centered, State.Confirm) {
             InitializeComponent();
             cbxAction.SelectedIndex = 0;
 
@@ -52,20 +51,11 @@ namespace Monage.GUI.Frames {
             dtConfirm.Checked = this.Transaction.Confirmed != null;
 
             // Add a live view of the tickets
-            this.TicketList = new TicketList(this.Transaction, this);
-            this.TicketList.Location = new Point(3, 284);
-            this.Controls.Add(this.TicketList);
+            TicketList.Set(this.Transaction, this);
 
             this.getTicketUpdate();
             this.getLists();
             this.ReadyState = true;
-        }
-        public override Frame Adjust(Panel Canvas) {
-            base.Adjust(Canvas);
-            if (this.TicketList != null) {
-                this.TicketList.Height = this.Height - 319;
-            }
-            return this;
         }
 
         private class TicketResult {
@@ -138,6 +128,7 @@ namespace Monage.GUI.Frames {
             }
 
             // Update the ticket list
+            this.State = State.Confirm;
             this.getTicketUpdate();
         }
 
@@ -281,6 +272,8 @@ namespace Monage.GUI.Frames {
             if (ticket.Fund == null) {
                 MessageBox.Show("Error finding selected revenue");
                 return null;
+            } else {
+                ticket.Fund_ID = ticket.Fund.ID;
             }
             if (String.IsNullOrEmpty(txtCompany.Text)) {
                 MessageBox.Show("Enter a company name");
@@ -304,6 +297,8 @@ namespace Monage.GUI.Frames {
             if (ticket.Fund == null) {
                 MessageBox.Show("Error finding selected expense");
                 return null;
+            } else {
+                ticket.Fund_ID = ticket.Fund.ID;
             }
             if (String.IsNullOrEmpty(txtCompany.Text)) {
                 MessageBox.Show("Enter a company name");
@@ -314,13 +309,12 @@ namespace Monage.GUI.Frames {
             return tr;
         }
 
-        private void getTicketUpdate() {
+        public void getTicketUpdate() {
             IEnumerable<Ticket> tickets = this.Transaction.Tickets;
             pnlCheck.BackColor = tickets.Sum(x => x.Amount) == 0 ? Color.Honeydew : Color.MistyRose;
             lblDebitAmount.Text = tickets.Where(x => x.Amount > 0).Sum(x => x.Amount).ToString("C");
             lblCreditAmount.Text = (tickets.Where(x => x.Amount < 0).Sum(x => x.Amount) * -1).ToString("C");
-
-            this.TicketList.getUpdate();
+            TicketList.getUpdate();
         }
         private void getLists() {
             // Populate the combo boxes with the available accounts
@@ -391,6 +385,7 @@ namespace Monage.GUI.Frames {
 
         private void dtConfirm_ValueChanged(object sender, EventArgs e) {
             if (this.ReadyState) {
+                this.State = State.Confirm;
                 if (dtConfirm.Checked) {
                     this.Transaction.Confirmed = dtConfirm.Value;
                 } else {
@@ -399,13 +394,22 @@ namespace Monage.GUI.Frames {
             }
         }
         private void dtIncur_ValueChanged(object sender, EventArgs e) {
-            if (this.ReadyState) { this.Transaction.Incurred = dtIncur.Value; }
+            if (this.ReadyState) {
+                this.State = State.Confirm;
+                this.Transaction.Incurred = dtIncur.Value;
+            }
         }
         private void txtDetails_TextChanged(object sender, EventArgs e) {
-            if (this.ReadyState) { this.Transaction.Details = txtDetails.Text; }
+            if (this.ReadyState) {
+                this.State = State.Confirm;
+                this.Transaction.Details = txtDetails.Text;
+            }
         }
         private void txtBrief_TextChanged(object sender, EventArgs e) {
-            if (this.ReadyState) { this.Transaction.Brief = txtBrief.Text; }
+            if (this.ReadyState) {
+                this.State = State.Confirm;
+                this.Transaction.Brief = txtBrief.Text;
+            }
         }
         private void cbxAction_SelectedIndexChanged(object sender, EventArgs e) {
             switch (cbxAction.SelectedItem.ToString()) {
@@ -436,7 +440,8 @@ namespace Monage.GUI.Frames {
                     txtCompany.Enabled = true;
                     break;
 
-                case "Make Deposit": case "Make Withdrawal":
+                case "Make Deposit":
+                case "Make Withdrawal":
                     cbxBanks.Enabled = true;
                     cbxBuckets.Enabled = true;
                     cbxBudgets.Enabled = false;
@@ -473,7 +478,7 @@ namespace Monage.GUI.Frames {
                 this.Transaction.Save();
 
                 // If successful go back to the summary page
-                this.State = Frames.State.Ready;
+                this.State = State.Ready;
                 Program.Window.SetFrame(new HistoryFrame());
             } catch (ValidationException ex) {
                 MessageBox.Show(Program.Window, ex.Message);
@@ -481,6 +486,7 @@ namespace Monage.GUI.Frames {
         }
 
         public void RemoveTicket(Ticket ticket) {
+            this.State = State.Confirm;
             if (ticket.ID != 0) {
                 Session.db.Tickets.Remove(ticket);
             }

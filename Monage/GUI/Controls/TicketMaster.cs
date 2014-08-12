@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Monage.Models;
 using Monage.GUI.Frames;
+using Monage.GUI.Dialogs;
 
 namespace Monage.GUI.Controls {
     public partial class TicketMaster : UserControl {
@@ -19,7 +20,8 @@ namespace Monage.GUI.Controls {
             InitializeComponent();
             if (parentframe == null) {
                 // Shrink the control appropriately if we're not in edit mode
-                this.Width -= 32;
+                this.Width -= 61;
+                btnAdjust.Hide();
                 btnDelete.Hide();
             }
 
@@ -50,6 +52,16 @@ namespace Monage.GUI.Controls {
         private void btnDelete_Click(object sender, EventArgs e) {
             if (this.ParentFrame != null) {
                 ParentFrame.RemoveTicket(this.Ticket);
+            }
+        }
+
+        private void btnAdjust_Click(object sender, EventArgs e) {
+            if (this.ParentFrame != null) {
+                double? amount = AmountDialog.ShowDialog(this.Ticket.Amount);
+                if (amount != null) {
+                    this.Ticket.Amount = amount.Value;
+                    this.ParentFrame.getTicketUpdate();
+                }
             }
         }
     }

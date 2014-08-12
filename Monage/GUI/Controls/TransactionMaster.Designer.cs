@@ -176,7 +176,7 @@
             this.pnlExpanded.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlExpanded.Location = new System.Drawing.Point(90, 33);
             this.pnlExpanded.Name = "pnlExpanded";
-            this.pnlExpanded.Size = new System.Drawing.Size(811, 442);
+            this.pnlExpanded.Size = new System.Drawing.Size(810, 442);
             this.pnlExpanded.TabIndex = 11;
             // 
             // label12
@@ -196,7 +196,7 @@
             this.pnlOverflow.Controls.Add(this.lblDetails);
             this.pnlOverflow.Location = new System.Drawing.Point(6, 23);
             this.pnlOverflow.Name = "pnlOverflow";
-            this.pnlOverflow.Size = new System.Drawing.Size(802, 159);
+            this.pnlOverflow.Size = new System.Drawing.Size(799, 159);
             this.pnlOverflow.TabIndex = 23;
             // 
             // lblDetails
@@ -212,9 +212,9 @@
             // pnlRightIndent
             // 
             this.pnlRightIndent.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlRightIndent.Location = new System.Drawing.Point(901, 33);
+            this.pnlRightIndent.Location = new System.Drawing.Point(900, 33);
             this.pnlRightIndent.Name = "pnlRightIndent";
-            this.pnlRightIndent.Size = new System.Drawing.Size(89, 442);
+            this.pnlRightIndent.Size = new System.Drawing.Size(90, 442);
             this.pnlRightIndent.TabIndex = 11;
             // 
             // TransactionMaster

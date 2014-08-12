@@ -97,6 +97,12 @@
     <Compile Include="GUI\Dialogs\ConfirmedDialog.Designer.cs">
       <DependentUpon>ConfirmedDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Dialogs\AmountDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Dialogs\AmountDialog.Designer.cs">
+      <DependentUpon>AmountDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Dialogs\PairDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Dialogs\ConfirmedDialog.resx">
       <DependentUpon>ConfirmedDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Dialogs\AmountDialog.resx">
+      <DependentUpon>AmountDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Dialogs\PairDialog.resx">
       <DependentUpon>PairDialog.cs</DependentUpon>

@@ -15,11 +15,10 @@ namespace Monage.GUI.Controls {
         private Transaction Transaction;
         private TransactionFrame ParentFrame;
         public TicketList() { InitializeComponent(); }
-        public TicketList(Transaction transaction, TransactionFrame parentframe = null) {
-            InitializeComponent();
+        public void Set(Transaction transaction, TransactionFrame parentframe = null) {
             if (parentframe == null) {
                 // Shrink the control appropriately if we're not in edit mode
-                this.Width -= 32;
+                this.Width -= 61;
             }
 
             this.ParentFrame = parentframe;
@@ -35,7 +34,7 @@ namespace Monage.GUI.Controls {
             TicketMaster tm = null;
             foreach (Ticket ticket in tickets.OrderByDescending(x => x.Amount)) {
                 tm = new TicketMaster(ticket, this.ParentFrame);
-                tm.Location = new Point(tm.Margin.Left, tm.Size.Height * cnt++);
+                tm.Location = new Point(tm.Margin.Left, (tm.Size.Height - 1) * cnt++);
 
                 // Set the background color
                 bool valid = true;
@@ -47,9 +46,6 @@ namespace Monage.GUI.Controls {
 
                 pnlTickets.Controls.Add(tm);
             }
-
-            // So the bottom border is visible
-            if (tm != null) { tm.Height += 1; }
         }
     }
 }

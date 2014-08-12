@@ -35,7 +35,7 @@
             this.lblTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTickets.Location = new System.Drawing.Point(0, 0);
             this.lblTickets.Name = "lblTickets";
-            this.lblTickets.Size = new System.Drawing.Size(834, 250);
+            this.lblTickets.Size = new System.Drawing.Size(860, 251);
             this.lblTickets.TabIndex = 28;
             this.lblTickets.TabStop = false;
             this.lblTickets.Text = "Tickets";
@@ -47,7 +47,7 @@
             this.pnlTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlTickets.Location = new System.Drawing.Point(3, 23);
             this.pnlTickets.Name = "pnlTickets";
-            this.pnlTickets.Size = new System.Drawing.Size(828, 224);
+            this.pnlTickets.Size = new System.Drawing.Size(854, 225);
             this.pnlTickets.TabIndex = 0;
             // 
             // TicketList
@@ -56,7 +56,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblTickets);
             this.Name = "TicketList";
-            this.Size = new System.Drawing.Size(834, 251);
+            this.Size = new System.Drawing.Size(860, 251);
             this.lblTickets.ResumeLayout(false);
             this.ResumeLayout(false);
 

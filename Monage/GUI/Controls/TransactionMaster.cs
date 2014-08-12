@@ -53,7 +53,8 @@ namespace Monage.GUI.Controls {
             lblConfirmed.Text = transaction.Confirmed == null
                 ? "Never" : transaction.Confirmed.Value.ToString("MM/dd/yyyy");
 
-            this.TicketList = new TicketList(transaction);
+            this.TicketList = new TicketList();
+            this.TicketList.Set(transaction);
             this.TicketList.Location = new Point(6, 188);
             pnlExpanded.Controls.Add(this.TicketList);
 

@@ -53,8 +53,15 @@
             this.lblDebitAmount = new System.Windows.Forms.Label();
             this.lblCheck = new System.Windows.Forms.Label();
             this.pnlCheck = new System.Windows.Forms.Panel();
+            this.TicketList = new Monage.GUI.Controls.TicketList();
+            this.pnlEdit = new System.Windows.Forms.Panel();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.pnlLeftIndent = new System.Windows.Forms.Panel();
+            this.pnlRightIndent = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).BeginInit();
             this.pnlCheck.SuspendLayout();
+            this.pnlEdit.SuspendLayout();
+            this.pnlTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtDetails
@@ -63,7 +70,7 @@
             this.txtDetails.Multiline = true;
             this.txtDetails.Name = "txtDetails";
             this.txtDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDetails.Size = new System.Drawing.Size(624, 104);
+            this.txtDetails.Size = new System.Drawing.Size(406, 98);
             this.txtDetails.TabIndex = 5;
             this.txtDetails.TextChanged += new System.EventHandler(this.txtDetails_TextChanged);
             // 
@@ -72,11 +79,11 @@
             this.dtConfirm.CustomFormat = "  MM/dd/yyyy";
             this.dtConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtConfirm.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtConfirm.Location = new System.Drawing.Point(213, 20);
+            this.dtConfirm.Location = new System.Drawing.Point(209, 20);
             this.dtConfirm.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtConfirm.Name = "dtConfirm";
             this.dtConfirm.ShowCheckBox = true;
-            this.dtConfirm.Size = new System.Drawing.Size(204, 24);
+            this.dtConfirm.Size = new System.Drawing.Size(200, 24);
             this.dtConfirm.TabIndex = 1;
             this.dtConfirm.Value = new System.DateTime(2014, 6, 23, 0, 0, 0, 0);
             this.dtConfirm.ValueChanged += new System.EventHandler(this.dtConfirm_ValueChanged);
@@ -84,7 +91,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(213, 0);
+            this.label2.Location = new System.Drawing.Point(209, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(9, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 17);
@@ -109,7 +116,7 @@
             this.dtIncur.Location = new System.Drawing.Point(3, 20);
             this.dtIncur.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtIncur.Name = "dtIncur";
-            this.dtIncur.Size = new System.Drawing.Size(204, 24);
+            this.dtIncur.Size = new System.Drawing.Size(200, 24);
             this.dtIncur.TabIndex = 0;
             this.dtIncur.Value = new System.DateTime(2014, 6, 23, 0, 0, 0, 0);
             this.dtIncur.ValueChanged += new System.EventHandler(this.dtIncur_ValueChanged);
@@ -119,9 +126,9 @@
             this.cbxBanks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxBanks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxBanks.FormattingEnabled = true;
-            this.cbxBanks.Location = new System.Drawing.Point(213, 70);
+            this.cbxBanks.Location = new System.Drawing.Point(209, 70);
             this.cbxBanks.Name = "cbxBanks";
-            this.cbxBanks.Size = new System.Drawing.Size(204, 26);
+            this.cbxBanks.Size = new System.Drawing.Size(200, 26);
             this.cbxBanks.TabIndex = 7;
             // 
             // cbxExpenses
@@ -129,9 +136,9 @@
             this.cbxExpenses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxExpenses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxExpenses.FormattingEnabled = true;
-            this.cbxExpenses.Location = new System.Drawing.Point(423, 122);
+            this.cbxExpenses.Location = new System.Drawing.Point(415, 122);
             this.cbxExpenses.Name = "cbxExpenses";
-            this.cbxExpenses.Size = new System.Drawing.Size(204, 26);
+            this.cbxExpenses.Size = new System.Drawing.Size(200, 26);
             this.cbxExpenses.TabIndex = 11;
             // 
             // cbxBuckets
@@ -139,9 +146,9 @@
             this.cbxBuckets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxBuckets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxBuckets.FormattingEnabled = true;
-            this.cbxBuckets.Location = new System.Drawing.Point(423, 70);
+            this.cbxBuckets.Location = new System.Drawing.Point(415, 70);
             this.cbxBuckets.Name = "cbxBuckets";
-            this.cbxBuckets.Size = new System.Drawing.Size(204, 26);
+            this.cbxBuckets.Size = new System.Drawing.Size(200, 26);
             this.cbxBuckets.TabIndex = 8;
             // 
             // cbxRevenues
@@ -149,15 +156,15 @@
             this.cbxRevenues.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRevenues.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxRevenues.FormattingEnabled = true;
-            this.cbxRevenues.Location = new System.Drawing.Point(213, 122);
+            this.cbxRevenues.Location = new System.Drawing.Point(209, 122);
             this.cbxRevenues.Name = "cbxRevenues";
-            this.cbxRevenues.Size = new System.Drawing.Size(204, 26);
+            this.cbxRevenues.Size = new System.Drawing.Size(200, 26);
             this.cbxRevenues.TabIndex = 10;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(423, 0);
+            this.label3.Location = new System.Drawing.Point(415, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 17);
@@ -169,10 +176,10 @@
             this.txtBrief.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtBrief.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtBrief.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBrief.Location = new System.Drawing.Point(423, 20);
+            this.txtBrief.Location = new System.Drawing.Point(415, 20);
             this.txtBrief.MaxLength = 45;
             this.txtBrief.Name = "txtBrief";
-            this.txtBrief.Size = new System.Drawing.Size(414, 24);
+            this.txtBrief.Size = new System.Drawing.Size(365, 24);
             this.txtBrief.TabIndex = 2;
             this.txtBrief.TextChanged += new System.EventHandler(this.txtBrief_TextChanged);
             // 
@@ -183,7 +190,7 @@
             this.cbxBudgets.FormattingEnabled = true;
             this.cbxBudgets.Location = new System.Drawing.Point(3, 122);
             this.cbxBudgets.Name = "cbxBudgets";
-            this.cbxBudgets.Size = new System.Drawing.Size(204, 26);
+            this.cbxBudgets.Size = new System.Drawing.Size(200, 26);
             this.cbxBudgets.TabIndex = 9;
             // 
             // label4
@@ -199,7 +206,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(213, 50);
+            this.label5.Location = new System.Drawing.Point(209, 50);
             this.label5.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 17);
@@ -209,7 +216,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(423, 50);
+            this.label6.Location = new System.Drawing.Point(415, 50);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 17);
@@ -241,14 +248,14 @@
             "Write Expense"});
             this.cbxAction.Location = new System.Drawing.Point(3, 70);
             this.cbxAction.Name = "cbxAction";
-            this.cbxAction.Size = new System.Drawing.Size(204, 26);
+            this.cbxAction.Size = new System.Drawing.Size(200, 26);
             this.cbxAction.TabIndex = 6;
             this.cbxAction.SelectedIndexChanged += new System.EventHandler(this.cbxAction_SelectedIndexChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(213, 102);
+            this.label8.Location = new System.Drawing.Point(209, 102);
             this.label8.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 17);
@@ -258,7 +265,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(423, 102);
+            this.label9.Location = new System.Drawing.Point(415, 102);
             this.label9.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(66, 17);
@@ -268,7 +275,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(633, 50);
+            this.label10.Location = new System.Drawing.Point(621, 50);
             this.label10.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(60, 17);
@@ -288,7 +295,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(633, 102);
+            this.label11.Location = new System.Drawing.Point(621, 102);
             this.label11.Margin = new System.Windows.Forms.Padding(3, 3, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(71, 17);
@@ -298,9 +305,9 @@
             // btnAddTicket
             // 
             this.btnAddTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTicket.Location = new System.Drawing.Point(633, 174);
+            this.btnAddTicket.Location = new System.Drawing.Point(415, 174);
             this.btnAddTicket.Name = "btnAddTicket";
-            this.btnAddTicket.Size = new System.Drawing.Size(204, 49);
+            this.btnAddTicket.Size = new System.Drawing.Size(365, 46);
             this.btnAddTicket.TabIndex = 12;
             this.btnAddTicket.Text = "Add Ticket(s)";
             this.btnAddTicket.UseVisualStyleBackColor = true;
@@ -311,33 +318,33 @@
             this.txtCompany.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtCompany.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCompany.Location = new System.Drawing.Point(633, 122);
+            this.txtCompany.Location = new System.Drawing.Point(621, 122);
             this.txtCompany.MaxLength = 45;
             this.txtCompany.Name = "txtCompany";
-            this.txtCompany.Size = new System.Drawing.Size(204, 24);
+            this.txtCompany.Size = new System.Drawing.Size(159, 24);
             this.txtCompany.TabIndex = 4;
             // 
             // numAmount
             // 
             this.numAmount.DecimalPlaces = 2;
             this.numAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numAmount.Location = new System.Drawing.Point(633, 69);
+            this.numAmount.Location = new System.Drawing.Point(621, 69);
             this.numAmount.Maximum = new decimal(new int[] {
             1000000000,
             0,
             0,
             0});
             this.numAmount.Name = "numAmount";
-            this.numAmount.Size = new System.Drawing.Size(204, 27);
+            this.numAmount.Size = new System.Drawing.Size(159, 27);
             this.numAmount.TabIndex = 3;
             this.numAmount.ThousandsSeparator = true;
             // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(633, 229);
+            this.btnSave.Location = new System.Drawing.Point(415, 226);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(204, 49);
+            this.btnSave.Size = new System.Drawing.Size(365, 46);
             this.btnSave.TabIndex = 13;
             this.btnSave.Text = "Save Transaction";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -380,51 +387,96 @@
             this.pnlCheck.Controls.Add(this.lblDebitAmount);
             this.pnlCheck.Controls.Add(this.lblCheck);
             this.pnlCheck.Controls.Add(this.lblCreditAmount);
-            this.pnlCheck.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlCheck.Location = new System.Drawing.Point(0, 562);
+            this.pnlCheck.Location = new System.Drawing.Point(0, 532);
             this.pnlCheck.Margin = new System.Windows.Forms.Padding(0);
             this.pnlCheck.Name = "pnlCheck";
-            this.pnlCheck.Size = new System.Drawing.Size(840, 33);
+            this.pnlCheck.Size = new System.Drawing.Size(866, 33);
             this.pnlCheck.TabIndex = 31;
+            // 
+            // TicketList
+            // 
+            this.TicketList.Location = new System.Drawing.Point(3, 278);
+            this.TicketList.Name = "TicketList";
+            this.TicketList.Size = new System.Drawing.Size(860, 251);
+            this.TicketList.TabIndex = 32;
+            // 
+            // pnlEdit
+            // 
+            this.pnlEdit.Controls.Add(this.btnSave);
+            this.pnlEdit.Controls.Add(this.txtDetails);
+            this.pnlEdit.Controls.Add(this.numAmount);
+            this.pnlEdit.Controls.Add(this.dtConfirm);
+            this.pnlEdit.Controls.Add(this.txtCompany);
+            this.pnlEdit.Controls.Add(this.label2);
+            this.pnlEdit.Controls.Add(this.btnAddTicket);
+            this.pnlEdit.Controls.Add(this.dtIncur);
+            this.pnlEdit.Controls.Add(this.label12);
+            this.pnlEdit.Controls.Add(this.label1);
+            this.pnlEdit.Controls.Add(this.label11);
+            this.pnlEdit.Controls.Add(this.cbxBanks);
+            this.pnlEdit.Controls.Add(this.label10);
+            this.pnlEdit.Controls.Add(this.cbxExpenses);
+            this.pnlEdit.Controls.Add(this.label9);
+            this.pnlEdit.Controls.Add(this.cbxBuckets);
+            this.pnlEdit.Controls.Add(this.label8);
+            this.pnlEdit.Controls.Add(this.cbxRevenues);
+            this.pnlEdit.Controls.Add(this.cbxAction);
+            this.pnlEdit.Controls.Add(this.label3);
+            this.pnlEdit.Controls.Add(this.label7);
+            this.pnlEdit.Controls.Add(this.txtBrief);
+            this.pnlEdit.Controls.Add(this.label6);
+            this.pnlEdit.Controls.Add(this.cbxBudgets);
+            this.pnlEdit.Controls.Add(this.label5);
+            this.pnlEdit.Controls.Add(this.label4);
+            this.pnlEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlEdit.Location = new System.Drawing.Point(40, 0);
+            this.pnlEdit.Name = "pnlEdit";
+            this.pnlEdit.Size = new System.Drawing.Size(786, 272);
+            this.pnlEdit.TabIndex = 33;
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.Controls.Add(this.pnlEdit);
+            this.pnlTop.Controls.Add(this.pnlLeftIndent);
+            this.pnlTop.Controls.Add(this.pnlRightIndent);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(866, 272);
+            this.pnlTop.TabIndex = 36;
+            // 
+            // pnlLeftIndent
+            // 
+            this.pnlLeftIndent.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlLeftIndent.Location = new System.Drawing.Point(0, 0);
+            this.pnlLeftIndent.Name = "pnlLeftIndent";
+            this.pnlLeftIndent.Size = new System.Drawing.Size(40, 272);
+            this.pnlLeftIndent.TabIndex = 36;
+            // 
+            // pnlRightIndent
+            // 
+            this.pnlRightIndent.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlRightIndent.Location = new System.Drawing.Point(826, 0);
+            this.pnlRightIndent.Name = "pnlRightIndent";
+            this.pnlRightIndent.Size = new System.Drawing.Size(40, 272);
+            this.pnlRightIndent.TabIndex = 37;
             // 
             // TransactionFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.numAmount);
-            this.Controls.Add(this.txtCompany);
-            this.Controls.Add(this.btnAddTicket);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.cbxAction);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.cbxBudgets);
-            this.Controls.Add(this.txtBrief);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cbxRevenues);
-            this.Controls.Add(this.cbxBuckets);
-            this.Controls.Add(this.cbxExpenses);
-            this.Controls.Add(this.cbxBanks);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtIncur);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.dtConfirm);
-            this.Controls.Add(this.txtDetails);
+            this.Controls.Add(this.pnlTop);
+            this.Controls.Add(this.TicketList);
             this.Controls.Add(this.pnlCheck);
             this.Name = "TransactionFrame";
-            this.Size = new System.Drawing.Size(840, 595);
+            this.Size = new System.Drawing.Size(866, 565);
             ((System.ComponentModel.ISupportInitialize)(this.numAmount)).EndInit();
             this.pnlCheck.ResumeLayout(false);
             this.pnlCheck.PerformLayout();
+            this.pnlEdit.ResumeLayout(false);
+            this.pnlEdit.PerformLayout();
+            this.pnlTop.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -460,5 +512,10 @@
         private System.Windows.Forms.Label lblDebitAmount;
         private System.Windows.Forms.Label lblCheck;
         private System.Windows.Forms.Panel pnlCheck;
+        private Controls.TicketList TicketList;
+        private System.Windows.Forms.Panel pnlEdit;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.Panel pnlLeftIndent;
+        private System.Windows.Forms.Panel pnlRightIndent;
     }
 }
