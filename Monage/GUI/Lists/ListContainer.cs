@@ -43,7 +43,7 @@ namespace Monage.GUI.Lists {
         }
     }
 
-    public class ListPane : UserControl { }
+    public class ListPane : Frame { }
     public class ListItem : UserControl {
         public ListItem() { this.Click += ListItem_Click; }
         public virtual ListPane getPane() { return null; }

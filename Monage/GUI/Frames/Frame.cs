@@ -31,13 +31,12 @@ namespace Monage.GUI.Frames {
         Confirm
     }
 
-    public abstract class Frame : UserControl {
-    //public class Frame : UserControl {
+    public class Frame : UserControl {
         public Position Position { get; protected set; }
         public State State { get; protected set; }
 
-        //public Frame() { this.Position = Position.Docked; this.State = State.Ready; }
-        public Frame(Position position = Position.Docked, State state = State.Ready) { 
+        public Frame() { this.Position = Position.Docked; this.State = State.Ready; }
+        public Frame(Position position = Position.Docked, State state = State.Ready) {
             this.Position = position;
             this.State = state;
         }
@@ -74,14 +73,11 @@ namespace Monage.GUI.Frames {
         }
 
         // Methods to pass on to derrived classes
-        public abstract string Title();
-        public abstract void Ready();
-        //public virtual string Title() { return ""; }
-        //public virtual void Ready() { }
+        public virtual string Title() { return ""; }
+        public virtual void Ready() { }
     }
 
-    public abstract class SummaryFrame : Frame {
-    //public class SummaryFrame : Frame {
+    public class SummaryFrame : Frame {
         protected Panel ContentPane { get; set; }
         public SummaryFrame() : base(Position.Docked) { }
 
@@ -103,10 +99,16 @@ namespace Monage.GUI.Frames {
             }
         }
 
+        public override Frame Adjust(Panel Canvas) {
+            base.Adjust(Canvas);
+            if (this.Pane != null) {
+                this.Pane.Adjust(this.ContentPane);
+            }
+            return this;
+        }
+
         // Methods to pass on to derrived classes
-        public override abstract string Title();
-        public override abstract void Ready();
-        //public override string Title() { return ""; }
-        //public override void Ready() { }
+        public override string Title() { return ""; }
+        public override void Ready() { }
     }
 }
