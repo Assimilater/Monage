@@ -81,7 +81,7 @@ namespace Monage.GUI.Frames {
         protected Panel ContentPane { get; set; }
         public SummaryFrame() : base(Position.Docked) { }
 
-        private ListPane Pane { get; set; }
+        private Frame Pane { get; set; }
         protected ListItem Item { get; set; }
         public void SelectItem(ListItem item) {
             if (this.State != State.Confirm || Program.ConfirmReady("Navigation")) {

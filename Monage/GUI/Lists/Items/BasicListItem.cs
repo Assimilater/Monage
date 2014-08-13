@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Monage.Models;
 using Monage.GUI.Dialogs;
 using System.ComponentModel.DataAnnotations;
+using Monage.GUI.Frames;
 
 namespace Monage.GUI.Lists {
     public partial class BasicListItem : ListItem {
@@ -24,7 +25,7 @@ namespace Monage.GUI.Lists {
     public class BudgetListItem : BasicListItem {
         private Budget Budget { get; set; }
         public BudgetListItem(Budget budget) { this.Budget = budget; this.SetText(); }
-        public override ListPane getPane() { return new BudgetListPane(this.Budget, this.Frame); }
+        public override Frame getPane() { return new BudgetListPane(this.Budget, this.Frame); }
 
         private void SetText() { this.Caption = this.Budget.Name; }
         protected override void refRename_Click(object sender, EventArgs e) {
