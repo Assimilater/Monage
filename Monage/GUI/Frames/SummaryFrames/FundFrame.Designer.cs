@@ -53,14 +53,14 @@ namespace Monage.GUI.Frames {
             this.pnlEditor.Size = new System.Drawing.Size(458, 582);
             this.pnlEditor.TabIndex = 8;
             // 
-            // ExReFrame
+            // FundFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlEditor);
             this.Controls.Add(this.expenseFrame);
             this.Controls.Add(this.revenueFrame);
-            this.Name = "ExReFrame";
+            this.Name = "FundFrame";
             this.Size = new System.Drawing.Size(1070, 582);
             this.ResumeLayout(false);
 

@@ -43,6 +43,7 @@ namespace Monage.GUI.Lists {
         }
     }
 
+    public class ListPane : UserControl { }
     public class ListItem : UserControl {
         public ListItem() { this.Click += ListItem_Click; }
         public virtual ListPane getPane() { return null; }
@@ -64,17 +65,6 @@ namespace Monage.GUI.Lists {
         }
     }
 
-    public class ListPane : UserControl {
-        protected Shell Connection { get; set; }
-        public ListPane Set(Shell connection) {
-            this.Connection = connection;
-            this.getInfo();
-            return this;
-        }
-
-        protected virtual ListPane getInfo() { return this; }
-    }
-    
     public class BucketsList : ListContainer {
         public BucketsList() : base("Buckets") { }
 
@@ -133,7 +123,7 @@ namespace Monage.GUI.Lists {
         protected override void btnNew_Click(object sender, EventArgs e) {
             try {
                 new Budget(Session.User).Rename(
-                    PairDialog.ShowDialog(
+                    BudgetDialog.ShowDialog(
                         "Enter a name and description for your new budget",
                         "Create Budget"
                     )

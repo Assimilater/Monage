@@ -24,15 +24,18 @@ namespace Monage.GUI.Lists {
     public class BudgetListItem : BasicListItem {
         private Budget Budget { get; set; }
         public BudgetListItem(Budget budget) { this.Budget = budget; this.SetText(); }
+        public override ListPane getPane() { return new BudgetListPane(this.Budget, this.Frame); }
+
         private void SetText() { this.Caption = this.Budget.Name; }
         protected override void refRename_Click(object sender, EventArgs e) {
             try {
                 this.Budget.Rename(
-                    PairDialog.ShowDialog(
+                    BudgetDialog.ShowDialog(
                         "Enter a new name for Budget: " + this.Budget.Name,
                         "Rename Budget",
                         this.Budget.Name,
-                        this.Budget.Description
+                        this.Budget.Description,
+                        this.Budget.Final_ID
                     )
                 );
                 this.SetText();
@@ -40,6 +43,7 @@ namespace Monage.GUI.Lists {
                 MessageBox.Show(Program.Window, ex.Message);
             }
         }
+
         protected override void refDelete_Click(object sender, EventArgs e) {
 
         }
@@ -47,6 +51,7 @@ namespace Monage.GUI.Lists {
     public class FundListItem : BasicListItem {
         private Fund Fund { get; set; }
         public FundListItem(Fund fund) { this.Fund = fund; this.SetText(); }
+
         private void SetText() { this.Caption = this.Fund.Name; }
         protected override void refRename_Click(object sender, EventArgs e) {
             string type = this.Fund.BalanceType == BalanceType.Debit
@@ -67,6 +72,7 @@ namespace Monage.GUI.Lists {
                 MessageBox.Show(Program.Window, ex.Message);
             }
         }
+
         protected override void refDelete_Click(object sender, EventArgs e) {
 
         }

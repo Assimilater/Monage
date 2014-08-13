@@ -103,6 +103,12 @@
     <Compile Include="GUI\Dialogs\AmountDialog.Designer.cs">
       <DependentUpon>AmountDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Dialogs\BudgetDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Dialogs\BudgetDialog.Designer.cs">
+      <DependentUpon>BudgetDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Dialogs\PairDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,6 +303,9 @@
     <EmbeddedResource Include="GUI\Dialogs\AmountDialog.resx">
       <DependentUpon>AmountDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Dialogs\BudgetDialog.resx">
+      <DependentUpon>BudgetDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Dialogs\PairDialog.resx">
       <DependentUpon>PairDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -326,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Frames\TransactionFrame.resx">
       <DependentUpon>TransactionFrame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Lists\Panes\BudgetListPane.resx">
+      <DependentUpon>BudgetListPane.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Shell.resx">
       <DependentUpon>Shell.cs</DependentUpon>

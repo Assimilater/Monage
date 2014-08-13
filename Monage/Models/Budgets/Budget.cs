@@ -51,19 +51,19 @@ namespace Monage.Models {
             }
         }
 
-        public void Save() {
-            this.Validate();
-            try {
-                if (this.ID == 0) { Session.db.Budgets.Add(this); }
-                Session.db.SaveChanges();
-            } catch {
-                throw new ValidationException("An unkown exception has occured");
-            }
-        }
-
-        public Budget Rename(Pair val) {
+        public Budget Rename(Trio val) {
             if (val != null) {
                 bool changes = false;
+
+                if (val.Bucket == null) {
+                    throw new ValidationException("Final bucket not found");
+                }
+
+                if (this.Final_ID != val.Bucket.ID) {
+                    this.Final = val.Bucket;
+                    this.Final_ID = val.Bucket.ID;
+                    changes = true;
+                }
 
                 if (this.Description != val.Description) {
                     this.Description = val.Description;
@@ -79,10 +79,14 @@ namespace Monage.Models {
                     }
                 }
 
-                if (changes && this.ID == 0) {
+                if (changes) {
                     this.Validate();
-                } else if (changes) {
-                    this.Save();
+                    try {
+                        if (this.ID == 0) { Session.db.Budgets.Add(this); }
+                        Session.db.SaveChanges();
+                    } catch {
+                        throw new ValidationException("An unkown exception has occured");
+                    }
                 }
             }
             return this;

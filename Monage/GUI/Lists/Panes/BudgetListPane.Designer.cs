@@ -23,10 +23,18 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // BudgetListPane
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "BudgetListPane";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
     }
 }
