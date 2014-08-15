@@ -29,6 +29,14 @@ namespace Monage.Models {
 
         #endregion
 
+        public Step() {
+            this.Value = 0;
+        }
 
+        public void Validate() {
+            if (this.Value <= 0) {
+                throw new ValidationException("Step with zero or negative value");
+            }
+        }
     }
 }

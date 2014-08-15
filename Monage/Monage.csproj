@@ -79,6 +79,18 @@
     <Compile Include="GUI\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Controls\StepList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\StepList.Designer.cs">
+      <DependentUpon>StepList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Controls\StepMaster.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\StepMaster.Designer.cs">
+      <DependentUpon>StepMaster.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Controls\TicketList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -288,6 +300,12 @@
     <EmbeddedResource Include="GUI\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\StepList.resx">
+      <DependentUpon>StepList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\StepMaster.resx">
+      <DependentUpon>StepMaster.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Controls\TicketList.resx">
       <DependentUpon>TicketList.cs</DependentUpon>
     </EmbeddedResource>
@@ -442,10 +460,12 @@
   <ItemGroup>
     <Content Include="Resources\IconCheck.png" />
     <Content Include="Resources\IconClose.png" />
+    <None Include="Resources\IconDown.png" />
     <Content Include="Resources\IconMinus.png" />
     <Content Include="Resources\IconPencil.png" />
     <Content Include="Resources\IconPlus.png" />
     <Content Include="Resources\IconTrash.png" />
+    <Content Include="Resources\IconUp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -179,7 +179,7 @@ namespace Monage.GUI.Frames {
                         ticket.Bucket = step.Bucket;
                     }
 
-                    if (tier.Type == TierClass.Ratio) {
+                    if (tier.Type == TierStrategy.Ratio) {
                         subAmount = Math.Round(Amount * step.Value, 2);
                         tr.AppendedNotes +=
                             "Add ratio: " + step.Value.ToString("P") + " (" + subAmount.ToString("C") + ")"

@@ -16,16 +16,16 @@ namespace Monage.GUI.Controls {
         private Ticket Ticket;
         private TransactionFrame ParentFrame;
         public TicketMaster() { InitializeComponent(); }
-        public TicketMaster(Ticket ticket, TransactionFrame parentframe) {
+        public TicketMaster(Ticket ticket, TransactionFrame parent) {
             InitializeComponent();
-            if (parentframe == null) {
+            if (parent == null) {
                 // Shrink the control appropriately if we're not in edit mode
                 this.Width -= 61;
                 btnAdjust.Hide();
                 btnDelete.Hide();
             }
 
-            this.ParentFrame = parentframe;
+            this.ParentFrame = parent;
             this.Ticket = ticket;
             this.Setup();
         }

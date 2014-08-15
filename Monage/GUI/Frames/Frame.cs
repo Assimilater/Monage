@@ -95,6 +95,7 @@ namespace Monage.GUI.Frames {
                 this.Pane = this.Item.getPane();
                 if (this.Pane != null) {
                     this.ContentPane.Controls.Add(this.Pane);
+                    this.Pane.Adjust(this.ContentPane);
                 }
             }
         }

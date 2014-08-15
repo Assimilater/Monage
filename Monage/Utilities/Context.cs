@@ -21,6 +21,6 @@ namespace Monage {
 
         public DbSet<Budget> Budgets { get; set; }
         public DbSet<Tier> Tiers { get; set; }
-        public DbSet<Step> Step { get; set; }
+        public DbSet<Step> Steps { get; set; }
     }
 }

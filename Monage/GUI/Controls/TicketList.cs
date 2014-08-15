@@ -15,13 +15,13 @@ namespace Monage.GUI.Controls {
         private Transaction Transaction;
         private TransactionFrame ParentFrame;
         public TicketList() { InitializeComponent(); }
-        public void Set(Transaction transaction, TransactionFrame parentframe = null) {
-            if (parentframe == null) {
+        public void Set(Transaction transaction, TransactionFrame parent = null) {
+            if (parent == null) {
                 // Shrink the control appropriately if we're not in edit mode
                 this.Width -= 61;
             }
 
-            this.ParentFrame = parentframe;
+            this.ParentFrame = parent;
             this.Transaction = transaction;
             this.getUpdate();
         }

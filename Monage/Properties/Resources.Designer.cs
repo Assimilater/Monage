@@ -93,6 +93,16 @@ namespace Monage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconDown {
+            get {
+                object obj = ResourceManager.GetObject("IconDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IconMinus {
             get {
                 object obj = ResourceManager.GetObject("IconMinus", resourceCulture);
@@ -126,6 +136,16 @@ namespace Monage.Properties {
         internal static System.Drawing.Bitmap IconTrash {
             get {
                 object obj = ResourceManager.GetObject("IconTrash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconUp {
+            get {
+                object obj = ResourceManager.GetObject("IconUp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

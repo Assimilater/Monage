@@ -40,11 +40,11 @@ namespace Monage.GUI.Controls {
         private TicketList TicketList;
 
         public TransactionMaster() { InitializeComponent(); }
-        public TransactionMaster(Transaction transaction, HistoryFrame parentframe) {
+        public TransactionMaster(Transaction transaction, HistoryFrame parent) {
             InitializeComponent();
 
             this._expanded = false;
-            this.ParentFrame = parentframe;
+            this.ParentFrame = parent;
             this.Transaction = transaction;
             this.TransactionID = transaction.ID;
             lblDetails.Text = transaction.Details;

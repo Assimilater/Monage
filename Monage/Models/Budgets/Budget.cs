@@ -91,5 +91,46 @@ namespace Monage.Models {
             }
             return this;
         }
+
+        public void Save() {
+            // Validation
+            int count = 1;
+            foreach (Tier tier in this.Tiers.OrderBy(x => x.Order)) {
+                tier.Validate();
+                if (tier.Order < count) {
+                    throw new ValidationException(
+                        "Budget contains two tiers with index " + tier.Order);
+                } else if (tier.Order > count) {
+                    throw new ValidationException(
+                        "Budget contains gap at index " + count);
+                }
+                ++count;
+            }
+
+            foreach (Tier tier in this.Tiers) {
+                if (tier.ID == 0) {
+                    Session.db.Tiers.Add(tier);
+                }
+                Session.db.SaveChanges();
+                foreach (Step step in tier.Steps) {
+                    step.Tier = tier;
+                    step.Tier_ID = tier.ID;
+                    if (step.ID == 0) {
+                        Session.db.Steps.Add(step);
+                    }
+                    Session.db.SaveChanges();
+                }
+            }
+        }
+
+        public void AddTier() {
+            Tier tier = new Tier();
+            tier.User = this.User;
+            tier.User_ID = this.User_ID;
+            tier.Budget = this;
+            tier.Budget_ID = this.ID;
+            tier.Order = this.Tiers.Count() + 1;
+            this.Tiers.Add(tier);
+        }
     }
 }
