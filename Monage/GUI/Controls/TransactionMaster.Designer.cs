@@ -53,6 +53,7 @@
             this.lblBrief.Size = new System.Drawing.Size(429, 34);
             this.lblBrief.TabIndex = 1;
             this.lblBrief.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblBrief.UseMnemonic = false;
             // 
             // lblConfirmed
             // 
@@ -64,6 +65,7 @@
             this.lblConfirmed.Size = new System.Drawing.Size(97, 34);
             this.lblConfirmed.TabIndex = 3;
             this.lblConfirmed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblConfirmed.UseMnemonic = false;
             // 
             // lblBalance
             // 
@@ -75,6 +77,7 @@
             this.lblBalance.Size = new System.Drawing.Size(140, 34);
             this.lblBalance.TabIndex = 6;
             this.lblBalance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblBalance.UseMnemonic = false;
             // 
             // lblAmount
             // 
@@ -86,6 +89,7 @@
             this.lblAmount.Size = new System.Drawing.Size(140, 34);
             this.lblAmount.TabIndex = 7;
             this.lblAmount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblAmount.UseMnemonic = false;
             // 
             // pnlLeftIndent
             // 
@@ -137,6 +141,7 @@
             this.lblIncurred.Size = new System.Drawing.Size(97, 34);
             this.lblIncurred.TabIndex = 9;
             this.lblIncurred.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblIncurred.UseMnemonic = false;
             // 
             // btnExpand
             // 

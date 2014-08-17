@@ -40,6 +40,7 @@
             this.lblCredit.Size = new System.Drawing.Size(378, 34);
             this.lblCredit.TabIndex = 0;
             this.lblCredit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblCredit.UseMnemonic = false;
             // 
             // lblDebitAmount
             // 
@@ -51,6 +52,7 @@
             this.lblDebitAmount.Size = new System.Drawing.Size(170, 35);
             this.lblDebitAmount.TabIndex = 1;
             this.lblDebitAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDebitAmount.UseMnemonic = false;
             // 
             // lblCreditAmount
             // 
@@ -62,6 +64,7 @@
             this.lblCreditAmount.Size = new System.Drawing.Size(170, 35);
             this.lblCreditAmount.TabIndex = 2;
             this.lblCreditAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblCreditAmount.UseMnemonic = false;
             // 
             // lblDebit
             // 
@@ -73,6 +76,7 @@
             this.lblDebit.Size = new System.Drawing.Size(428, 35);
             this.lblDebit.TabIndex = 3;
             this.lblDebit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDebit.UseMnemonic = false;
             // 
             // btnDelete
             // 

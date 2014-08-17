@@ -85,10 +85,13 @@ namespace Monage.GUI.Controls {
                     .Where(x => x.Order > this.Step.Order)) {
                 step.Order -= 1;
             }
+
+            this.Step.Tier.Steps.Remove(this.Step);
+
             if (this.Step.ID != 0) {
                 Session.db.Steps.Remove(this.Step);
             }
-            this.Step.Tier.Steps.Remove(this.Step);
+
             this.ParentFrame.getList();
         }
     }

@@ -7,7 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Monage.Models {
-    public enum TierStrategy { Ratio, Fixed }
+    public enum TierStrategy {
+        Ratio = 0,
+        Fixed = 1
+    }
     public class Tier {
         [Key]
         public int ID { get; set; }
@@ -25,7 +28,6 @@ namespace Monage.Models {
         public int User_ID { get; set; }
 
         public Tier() {
-            this.Type = TierStrategy.Ratio;
             this.Steps = new List<Step>();
         }
 

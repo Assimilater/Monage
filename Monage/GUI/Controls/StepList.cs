@@ -14,18 +14,19 @@ namespace Monage.GUI.Controls {
     public partial class StepList : UserControl {
         private BudgetListPane ParentFrame { get; set; }
         private Tier Tier { get; set; }
+        private bool watch;
         public StepList() { InitializeComponent(); }
         public StepList(BudgetListPane parent, Tier tier) {
+            this.watch = false;
             InitializeComponent();
             this.ParentFrame = parent;
             this.Tier = tier;
 
-            BindingList<string> types = new BindingList<string>();
-            foreach (string type in Enum.GetNames(typeof(TierStrategy))) { types.Add(type); }
-            cbxType.DataSource = types;
-            cbxType.SelectedText = Enum.GetName(typeof(TierStrategy), this.Tier.Type);
+            cbxType.DataSource = Enum.GetValues(typeof(TierStrategy));
+            cbxType.SelectedItem = this.Tier.Type;
 
             this.getList();
+            this.watch = true;
         }
 
         public void getList() {
@@ -63,8 +64,14 @@ namespace Monage.GUI.Controls {
         }
 
         private void cbxType_SelectedIndexChanged(object sender, EventArgs e) {
-            cbxType.SelectedText = Enum.GetName(typeof(TierStrategy), this.Tier.Type);
+            if (!this.watch) { return; }
+            TierStrategy
+                before = this.Tier.Type,
+                after = (TierStrategy)cbxType.SelectedItem;
+
+            this.Tier.Type = after;
             this.updateChecksum();
+            this.getList();
         }
 
         private void btnAdd_Click(object sender, EventArgs e) {
