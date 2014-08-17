@@ -224,6 +224,10 @@
     <Compile Include="Migrations\201408010122375_AddNavigionIdsToModels.Designer.cs">
       <DependentUpon>201408010122375_AddNavigionIdsToModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408172205583_ConvertToDecimal.cs" />
+    <Compile Include="Migrations\201408172205583_ConvertToDecimal.Designer.cs">
+      <DependentUpon>201408172205583_ConvertToDecimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Deployed\201407090443035_ReplaceExReWithFunds.cs" />
     <Compile Include="Migrations\Deployed\201407090443035_ReplaceExReWithFunds.Designer.cs">
       <DependentUpon>201407090443035_ReplaceExReWithFunds.cs</DependentUpon>
@@ -365,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408010122375_AddNavigionIdsToModels.resx">
       <DependentUpon>201408010122375_AddNavigionIdsToModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408172205583_ConvertToDecimal.resx">
+      <DependentUpon>201408172205583_ConvertToDecimal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Deployed\201407090443035_ReplaceExReWithFunds.resx">
       <DependentUpon>201407090443035_ReplaceExReWithFunds.cs</DependentUpon>

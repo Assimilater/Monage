@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Monage.Models {
     public class Amount {
-        public double Confirmed { get; private set; }
-        public double Expected { get; private set; }
+        public decimal Confirmed { get; private set; }
+        public decimal Expected { get; private set; }
 
-        public Amount(double confirmed, double expected) {
+        public Amount(decimal confirmed, decimal expected) {
             this.Expected = expected;
             this.Confirmed = confirmed;
         }

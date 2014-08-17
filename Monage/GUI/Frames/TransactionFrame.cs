@@ -107,6 +107,10 @@ namespace Monage.GUI.Frames {
             }
 
             // Append to the notes section any new information
+            if (txtDetails.Text != "" && tr.AppendedNotes != "") {
+                tr.AppendedNotes = Environment.NewLine
+                    + tr.AppendedNotes;
+            }
             txtDetails.Text += tr.AppendedNotes;
 
             // Add all tickets associated with this action
@@ -157,11 +161,11 @@ namespace Monage.GUI.Frames {
             }
 
             // Initialize money trackers
-            double Amount = (double)Math.Round(numAmount.Value, 2);
-            double subAmount, subTotal;
+            decimal Amount = Math.Round(numAmount.Value, 2);
+            decimal subAmount, subTotal;
 
             // Apply the budget
-            tr.AppendedNotes += Environment.NewLine + separator
+            tr.AppendedNotes += separator
                 + "Applying budget: " + budget.Name + Environment.NewLine;
 
             List<Ticket> staged = new List<Ticket>();
@@ -172,17 +176,20 @@ namespace Monage.GUI.Frames {
 
                 subTotal = Amount;
                 foreach (Step step in tier.Steps.OrderBy(x => x.Order)) {
-                    Ticket ticket = staged.FirstOrDefault(x => x.Bucket == step.Bucket);
+                    Ticket ticket = staged.FirstOrDefault(x => x.Bucket_ID == step.Bucket_ID);
                     if (ticket == null) {
                         ticket = new Ticket(Session.User, this.Transaction);
+                        staged.Add(ticket);
                         ticket.Bank = bank;
+                        ticket.Bank_ID = bank.ID;
                         ticket.Bucket = step.Bucket;
+                        ticket.Bucket_ID = step.Bucket.ID;
                     }
 
                     if (tier.Type == TierStrategy.Ratio) {
                         subAmount = Math.Round(Amount * step.Value, 2);
                         tr.AppendedNotes +=
-                            "Add ratio: " + step.Value.ToString("P") + " (" + subAmount.ToString("C") + ")"
+                            "Add ratio: " + step.Value.ToString("#0.##%") + " (" + subAmount.ToString("C") + ")"
                                  + " to " + step.Bucket.Name + Environment.NewLine;
                     } else {
                         if (subTotal - step.Value < 0) {
@@ -212,16 +219,20 @@ namespace Monage.GUI.Frames {
 
             // Finish remaining amount
             if (Amount != 0) {
-                Ticket final = staged.FirstOrDefault(x => x.Bucket == budget.Final);
-                if (final == null) {
-                    final = new Ticket(Session.User, this.Transaction);
-                    final.Bank = bank;
-                    final.Bucket = budget.Final;
+                Ticket ticket = staged.FirstOrDefault(x => x.Bucket_ID == budget.Final.ID);
+                if (ticket == null) {
+                    ticket = new Ticket(Session.User, this.Transaction);
+                    staged.Add(ticket);
+                    ticket.Bank = bank;
+                    ticket.Bank_ID = bank.ID;
+                    ticket.Bucket = budget.Final;
+                    ticket.Bucket_ID = budget.Final.ID;
                 }
-                final.Amount += Amount;
+                ticket.Amount += Amount;
                 tr.AppendedNotes += separator
-                    + "Add offset: " + Amount.ToString("C") + " to " + final.Bucket.Name + Environment.NewLine;
+                    + "Add offset: " + Amount.ToString("C") + " to " + ticket.Bucket.Name + Environment.NewLine;
             }
+            tr.AppendedNotes += separator;
 
             // Add tickets with a zero-balance to the TicketResult
             foreach (Ticket ticket in staged) {
@@ -234,7 +245,7 @@ namespace Monage.GUI.Frames {
         }
         private TicketResult AdjustBank(TicketResult tr, int sign) {
             Ticket ticket = new Ticket(Session.User, this.Transaction);
-            ticket.Amount = (double)Math.Round(numAmount.Value * sign, 2);
+            ticket.Amount = Math.Round(numAmount.Value * sign, 2);
 
             ticket.Bank = Bank.Enumerate()
                 .FirstOrDefault(x => x.ID == (int)cbxBanks.SelectedValue);
@@ -260,7 +271,7 @@ namespace Monage.GUI.Frames {
         }
         private TicketResult WriteRevenue(TicketResult tr) {
             Ticket ticket = new Ticket(Session.User, this.Transaction);
-            ticket.Amount = (double)Math.Round(-1 * numAmount.Value, 2);
+            ticket.Amount = Math.Round(-1 * numAmount.Value, 2);
             ticket.Company = txtCompany.Text;
             ticket.Fund = Fund.Enumerate(BalanceType.Credit)
                 .FirstOrDefault(x => x.ID == (int)cbxRevenues.SelectedValue);
@@ -285,7 +296,7 @@ namespace Monage.GUI.Frames {
         }
         private TicketResult WriteExpense(TicketResult tr) {
             Ticket ticket = new Ticket(Session.User, this.Transaction);
-            ticket.Amount = (double)Math.Round(numAmount.Value, 2);
+            ticket.Amount = Math.Round(numAmount.Value, 2);
             ticket.Company = txtCompany.Text;
             ticket.Fund = Fund.Enumerate(BalanceType.Debit)
                 .FirstOrDefault(x => x.ID == (int)cbxExpenses.SelectedValue);
@@ -310,10 +321,18 @@ namespace Monage.GUI.Frames {
         }
 
         public void getTicketUpdate() {
-            IEnumerable<Ticket> tickets = this.Transaction.Tickets;
-            pnlCheck.BackColor = tickets.Sum(x => x.Amount) == 0 ? Color.Honeydew : Color.MistyRose;
-            lblDebitAmount.Text = tickets.Where(x => x.Amount > 0).Sum(x => x.Amount).ToString("C");
-            lblCreditAmount.Text = (tickets.Where(x => x.Amount < 0).Sum(x => x.Amount) * -1).ToString("C");
+            List<Ticket> tickets = this.Transaction.Tickets;
+            decimal
+                net = tickets.Sum(x => x.Amount),
+                debit = tickets.Where(x => x.Amount > 0).Sum(x => x.Amount),
+                credit = tickets.Where(x => x.Amount < 0).Sum(x => x.Amount) * -1;
+
+            pnlCheck.BackColor = net == 0
+                ? Color.Honeydew
+                : Color.MistyRose;
+
+            lblDebitAmount.Text = debit.ToString("C");
+            lblCreditAmount.Text = credit.ToString("C");
             TicketList.getUpdate();
         }
         private void getLists() {

@@ -57,7 +57,7 @@ namespace Monage.GUI.Controls {
 
         private void btnAdjust_Click(object sender, EventArgs e) {
             if (this.ParentFrame != null) {
-                double? amount = AmountDialog.ShowDialog(this.Ticket.Amount);
+                decimal? amount = AmountDialog.ShowDialog(this.Ticket.Amount);
                 if (amount != null) {
                     this.Ticket.Amount = amount.Value;
                     this.ParentFrame.getTicketUpdate();

@@ -20,9 +20,9 @@ namespace Monage.GUI.Controls {
             this.ParentFrame = parent;
             this.Step = step;
             if (this.Step.Tier.Type == TierStrategy.Ratio) {
-                numAmount.Value = (decimal)(step.Value * 100);
+                numAmount.Value = step.Value * 100;
             } else {
-                numAmount.Value = (decimal)step.Value;
+                numAmount.Value = step.Value;
             }
 
             // Get the list of buckets
@@ -51,9 +51,9 @@ namespace Monage.GUI.Controls {
         private void numAmount_ValueChanged(object sender, EventArgs e) {
             if (this.watch) {
                 if (this.Step.Tier.Type == TierStrategy.Ratio) {
-                    this.Step.Value = (double)Math.Round(numAmount.Value / 100, 4);
+                    this.Step.Value = Math.Round(numAmount.Value / 100, 4);
                 } else {
-                    this.Step.Value = (double)numAmount.Value;
+                    this.Step.Value = numAmount.Value;
                 }
                 this.ParentFrame.updateChecksum();
             }

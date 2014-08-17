@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace Monage.GUI.Dialogs {
     public partial class AmountDialog : Form {
-        private AmountDialog(double val) {
+        private AmountDialog(decimal val) {
             InitializeComponent();
-            this.numAmount.Value = (decimal)val;
+            this.numAmount.Value = val;
             numAmount.Focus();
         }
 
-        public static double? ShowDialog(double val = 0) {
+        public static decimal? ShowDialog(decimal val = 0) {
             AmountDialog i = new AmountDialog(val);
             if (i.ShowDialog(Program.Window) == DialogResult.OK) {
-                return (double)i.numAmount.Value;
+                return i.numAmount.Value;
             }
             return null;
         }

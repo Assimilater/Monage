@@ -13,7 +13,7 @@ namespace Monage.Models {
         [Key]
         public int ID { get; set; }
         public int Order { get; set; }
-        public double Value { get; set; }
+        public decimal Value { get; set; }
 
         [ForeignKey("Tier_ID")]
         public virtual Tier Tier { get; set; }

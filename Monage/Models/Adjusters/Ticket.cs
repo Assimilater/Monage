@@ -14,7 +14,7 @@ namespace Monage.Models {
         public int ID { get; set; }
 
         [Required]
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
 
         public string Company { get; set; }
 
