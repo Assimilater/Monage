@@ -46,15 +46,15 @@ namespace Monage.GUI.Controls {
             switch (this.Tier.Type) {
                 case TierStrategy.Ratio:
                     lblDebitAmount.Text = total.ToString("#0.##%");
-                    pnlCheck.BackColor = total <= 0 || total > 100
+                    pnlCheck.BackColor = total <= 0 || total > 1
                         ? Color.MistyRose
-                        : Color.White;
+                        : Color.Honeydew;
                     break;
                 case TierStrategy.Fixed:
                     lblDebitAmount.Text = total.ToString("C");
                     pnlCheck.BackColor = total <= 0
                         ? Color.MistyRose
-                        : Color.White;
+                        : Color.Honeydew;
                     break;
                 default:
                     lblDebitAmount.Text = "#ERROR#";

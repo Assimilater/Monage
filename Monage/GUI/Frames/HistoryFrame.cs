@@ -18,7 +18,7 @@ namespace Monage.GUI.Frames {
             : base(Position.TopCenter | Position.FullHeight) {
             this.watch = false;
             InitializeComponent();
-            dtStart.Value = DateTime.Today.AddDays(-31);
+            dtStart.Value = DateTime.Today.AddDays(-15);
             dtEnd.Value = DateTime.Today;
             this.GetLists();
         }

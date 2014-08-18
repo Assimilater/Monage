@@ -43,20 +43,21 @@ namespace Monage.GUI.Frames {
 
         public virtual Frame Adjust(Panel Canvas) {
             if (this.Position != Position.Docked) {
-                this.Dock = DockStyle.None;
-                this.Location = new Point(
-                    // Horizontal
-                    this.Position.HasFlag(Position.Left)
-                    ? 0 : (this.Position.HasFlag(Position.Center)
-                    ? Canvas.Width / 2 - (this.Width / 2)
-                    : Canvas.Width - this.Width),
+                int x = // Horizontal
+                        this.Position.HasFlag(Position.Left)
+                        ? 0 : (this.Position.HasFlag(Position.Center)
+                        ? Canvas.Width / 2 - (this.Width / 2)
+                        : Canvas.Width - this.Width),
+                    y = // Vertical
+                        this.Position.HasFlag(Position.Top)
+                        ? 0 : (this.Position.HasFlag(Position.Middle)
+                        ? Canvas.Height / 2 - (this.Height / 2)
+                        : Canvas.Height - this.Height);
 
-                    // Vertical
-                    this.Position.HasFlag(Position.Top)
-                    ? 0 : (this.Position.HasFlag(Position.Middle)
-                    ? Canvas.Height / 2 - (this.Height / 2)
-                    : Canvas.Height - this.Height)
-                );
+                if (x < 0) { x = 0; }
+                if (y < 0) { y = 0; }
+                this.Location = new Point(x, y);
+                this.Dock = DockStyle.None;
 
                 if (this.Position.HasFlag(Position.FullHeight)) {
                     this.Height = Canvas.Height;
@@ -66,8 +67,8 @@ namespace Monage.GUI.Frames {
                     this.Width = Canvas.Width;
                 }
             } else {
-                this.Dock = DockStyle.Fill;
                 this.Location = new Point(0, 0);
+                this.Dock = DockStyle.Fill;
             }
             return this;
         }
@@ -96,6 +97,7 @@ namespace Monage.GUI.Frames {
                 if (this.Pane != null) {
                     this.ContentPane.Controls.Add(this.Pane);
                     this.Pane.Adjust(this.ContentPane);
+                    this.Pane.Focus();
                 }
             }
         }

@@ -81,7 +81,7 @@
             this.dtEnd.MinDate = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
             this.dtEnd.Name = "dtEnd";
             this.dtEnd.Size = new System.Drawing.Size(123, 24);
-            this.dtEnd.TabIndex = 24;
+            this.dtEnd.TabIndex = 3;
             this.dtEnd.Value = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
             this.dtEnd.ValueChanged += new System.EventHandler(this.UpdateFilters);
             // 
@@ -103,7 +103,7 @@
             this.dtStart.MinDate = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
             this.dtStart.Name = "dtStart";
             this.dtStart.Size = new System.Drawing.Size(123, 24);
-            this.dtStart.TabIndex = 22;
+            this.dtStart.TabIndex = 2;
             this.dtStart.Value = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
             this.dtStart.ValueChanged += new System.EventHandler(this.UpdateFilters);
             // 
@@ -123,7 +123,7 @@
             this.rdbConfirmed.Location = new System.Drawing.Point(917, 6);
             this.rdbConfirmed.Name = "rdbConfirmed";
             this.rdbConfirmed.Size = new System.Drawing.Size(93, 21);
-            this.rdbConfirmed.TabIndex = 20;
+            this.rdbConfirmed.TabIndex = 5;
             this.rdbConfirmed.Text = "Confirmed";
             this.rdbConfirmed.UseVisualStyleBackColor = true;
             this.rdbConfirmed.Click += new System.EventHandler(this.UpdateFilters);
@@ -135,7 +135,7 @@
             this.rdbIncurred.Location = new System.Drawing.Point(830, 6);
             this.rdbIncurred.Name = "rdbIncurred";
             this.rdbIncurred.Size = new System.Drawing.Size(81, 21);
-            this.rdbIncurred.TabIndex = 19;
+            this.rdbIncurred.TabIndex = 4;
             this.rdbIncurred.TabStop = true;
             this.rdbIncurred.Text = "Incurred";
             this.rdbIncurred.UseVisualStyleBackColor = true;
@@ -149,7 +149,7 @@
             this.cbxBuckets.Location = new System.Drawing.Point(213, 3);
             this.cbxBuckets.Name = "cbxBuckets";
             this.cbxBuckets.Size = new System.Drawing.Size(204, 26);
-            this.cbxBuckets.TabIndex = 16;
+            this.cbxBuckets.TabIndex = 1;
             this.cbxBuckets.SelectedIndexChanged += new System.EventHandler(this.UpdateFilters);
             // 
             // cbxBanks
@@ -160,7 +160,7 @@
             this.cbxBanks.Location = new System.Drawing.Point(3, 3);
             this.cbxBanks.Name = "cbxBanks";
             this.cbxBanks.Size = new System.Drawing.Size(204, 26);
-            this.cbxBanks.TabIndex = 15;
+            this.cbxBanks.TabIndex = 0;
             this.cbxBanks.SelectedIndexChanged += new System.EventHandler(this.UpdateFilters);
             // 
             // pnlHeader
@@ -244,7 +244,7 @@
             this.pnlTransactions.Location = new System.Drawing.Point(0, 58);
             this.pnlTransactions.Name = "pnlTransactions";
             this.pnlTransactions.Size = new System.Drawing.Size(1014, 507);
-            this.pnlTransactions.TabIndex = 1;
+            this.pnlTransactions.TabIndex = 0;
             // 
             // HistoryFrame
             // 

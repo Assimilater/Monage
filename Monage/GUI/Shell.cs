@@ -57,6 +57,7 @@ namespace Monage.GUI {
                 this.active = view;
                 this.active.Ready();
                 this.active.Adjust(Content);
+                this.active.Focus();
             }
             this.UpdateTitle();
             this.UpdateMenuBar();
