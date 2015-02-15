@@ -49,7 +49,7 @@ namespace Monage.Models {
 
         public void Validate() {
             // Check that this transaction isn't meaningless
-            if (this.Tickets.Count() == 0) {
+            if (!this.Tickets.Any()) {
                 throw new ValidationException("This transaction has no tickets");
             }
 

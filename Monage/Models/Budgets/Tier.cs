@@ -44,7 +44,7 @@ namespace Monage.Models {
         }
 
         public void Validate() {
-            if (this.Steps.Count() == 0) {
+            if (!this.Steps.Any()) {
                 throw new ValidationException("Tier does not contain any steps");
             }
             int count = 1;

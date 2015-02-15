@@ -29,8 +29,8 @@ namespace Monage.Models {
         }
 
         public User Rename(String name) {
-            if (this.Username != name && name != null && name != "") {
-                if (Session.db.Users.Where(x => x.Username == name).Any()) {
+            if (this.Username != name && !String.IsNullOrEmpty(name)) {
+                if (Session.db.Users.Any(x => x.Username == name)) {
                     throw new ValidationException("Username \"" + name + "\" is already in use");
                 } else {
                     try {

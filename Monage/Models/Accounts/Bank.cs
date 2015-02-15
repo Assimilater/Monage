@@ -47,7 +47,7 @@ namespace Monage.Models {
                 }
 
                 if (this.Name != val.Name && val.Name != "") {
-                    if (Session.db.Banks.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
+                    if (Session.db.Banks.Any(x => x.User_ID == this.User_ID && x.Name == val.Name)) {
                         throw new ValidationException("A bank named \"" + val.Name + "\" already exists");
                     } else {
                         this.Name = val.Name;

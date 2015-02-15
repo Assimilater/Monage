@@ -46,7 +46,7 @@ namespace Monage.Models {
                 }
 
                 if (this.Name != val.Name && val.Name != "") {
-                    if (Session.db.Buckets.Where(x => x.User_ID == this.User_ID && x.Name == val.Name).Any()) {
+                    if (Session.db.Buckets.Any(x => x.User_ID == this.User_ID && x.Name == val.Name)) {
                         throw new ValidationException("A bucket named \"" + val.Name + "\" already exists");
                     } else {
                         this.Name = val.Name;
