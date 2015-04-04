@@ -23,18 +23,12 @@ namespace Monage.Models {
 
         public virtual List<Step> Steps { get; set; }
 
-        [ForeignKey("User_ID")]
-        public virtual User User { get; set; }
-        public int User_ID { get; set; }
-
         public Tier() {
             this.Steps = new List<Step>();
         }
 
         public void AddStep() {
             Step step = new Step();
-            step.User = this.User;
-            step.User_ID = this.User_ID;
             step.Tier = this;
             step.Tier_ID = this.ID;
             step.Order = this.Steps.Count() + 1;

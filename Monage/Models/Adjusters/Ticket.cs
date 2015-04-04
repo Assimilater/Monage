@@ -30,10 +30,6 @@ namespace Monage.Models {
         public virtual Bucket Bucket { get; set; }
         public int? Bucket_ID { get; set; }
 
-        [ForeignKey("User_ID")]
-        public virtual User User { get; set; }
-        public int User_ID { get; set; }
-
         [ForeignKey("Transaction_ID")]
         public virtual Transaction Transaction { get; set; }
         public int Transaction_ID { get; set; }
@@ -45,8 +41,6 @@ namespace Monage.Models {
         }
         public Ticket(User user, Transaction transaction) {
             this.Amount = 0;
-            this.User = user;
-            this.User_ID = user.ID;
             this.Transaction = transaction;
             this.Transaction_ID = transaction.ID;
         }

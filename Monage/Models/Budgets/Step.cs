@@ -23,10 +23,6 @@ namespace Monage.Models {
         public virtual Bucket Bucket { get; set; }
         public int Bucket_ID { get; set; }
 
-        [ForeignKey("User_ID")]
-        public virtual User User { get; set; }
-        public int User_ID { get; set; }
-
         #endregion
 
         public Step() {

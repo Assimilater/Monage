@@ -125,8 +125,6 @@ namespace Monage.Models {
 
         public void AddTier() {
             Tier tier = new Tier();
-            tier.User = this.User;
-            tier.User_ID = this.User_ID;
             tier.Budget = this;
             tier.Budget_ID = this.ID;
             tier.Order = this.Tiers.Count() + 1;
