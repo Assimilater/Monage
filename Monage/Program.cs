@@ -3,6 +3,7 @@ using Monage.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,10 +23,13 @@ namespace Monage {
             s.Show();
 
             // Run migrations and open a database connection
-            new MigrateDatabaseToLatestVersion<Context, Configuration>()
-                .InitializeDatabase(Session.Start());
+            var Initializer = new MigrateDatabaseToLatestVersion<Context, Configuration>();
+            Database.SetInitializer(Initializer);
+            Initializer.InitializeDatabase(Session.Start());
+            DbMigrator dbMigrator = new DbMigrator(new Configuration());
+            dbMigrator.Update();
 
-            // Close the splash screen
+            // Close the splash screen  
             s.Close();
 
             // Start the application
