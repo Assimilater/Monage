@@ -18,7 +18,7 @@ namespace Tests.Models {
                 "Unexpected Result: " + a.ToString()
             );
 
-            a = new Amount(-5, -4.3);
+            a = new Amount(-5, (decimal) -4.3);
             Assert.IsTrue(
                 a.ToString().Equals("($5.00) [ ($4.30) ]"),
                 "Unexpected Result: " + a.ToString()
